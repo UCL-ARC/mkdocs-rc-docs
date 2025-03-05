@@ -396,39 +396,39 @@ from there to Myriad.
 
 ## How do I submit a job to the scheduler?
 
-To submit a job to the scheduler you need to write a jobscript that contains the resources the job is asking for and the actual commands you want to run. This jobscript is then submitted using the `qsub` command.
+To submit a job to the scheduler you need to write a jobscript that contains the resources the job is asking for and the actual commands you want to run. This jobscript is then submitted using the `srun` command.
 
 ```
-qsub myjobscript
+srun myjobscript
 ```
 
 It will be put in to the queue and will begin running on the compute nodes at some point later when it has been allocated resources.
 
-### Passing in qsub options on the command line
+### Passing in srun options on the command line
 
-The `#$` lines in your jobscript are options to qsub. It will take each line which has `#$` as the first two characters and use the contents beyond that as an option. 
+The `#SBATCH` lines in your jobscript are options to srun. It will take each line which has `#SBATCH` as the first two characters and use the contents beyond that as an option. 
 
 You can also pass options directly to the qsub command and this will override the settings in your script. This can be useful if you are scripting your job submissions in more complicated ways.
 
 For example, if you want to change the name of the job for this one instance of the job you can submit your script with:
 ```
-qsub -N NewName myscript.sh
+srun -N NewName myscript.sh
 ```
 
 Or if you want to increase the wall-clock time to 24 hours:
 ```
-qsub -l h_rt=24:0:0 myscript.sh
+srun -l h_rt=24:0:0 myscript.sh
 ```
 
 You can submit jobs with dependencies by using the `-hold_jid` option. For example, the command below submits a job that won't run until job 12345 has finished:
 ```
-qsub -hold_jid 12345 myscript.sh
+srun -hold_jid 12345 myscript.sh
 ```
 
 You may specify node type with the `-ac allow=` flags as below: 
 
 ```
-qsub -ac allow=L myscript.sh
+srun -ac allow=L myscript.sh
 ```
 
 This command tells this GPU job to only run the type L nodes which have Nvidia A100s
