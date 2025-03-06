@@ -30,7 +30,9 @@ export AF3_OUTPUT=/scratch/scratch/uccaoke/af3_output # Replace with your output
 export AF3_WEIGHTS=/scratch/scratch/uccaoke/weights # Replace with the folder you put the weights in
 ```
 
-Then write a job script that requests GPU nodes:
+## Running AlphaFold3
+
+Write a job script that requests GPU nodes:
 
 ```
 #!/bin/bash -l
@@ -100,4 +102,4 @@ export AF3_WEIGHTS=/scratch/scratch/uccaoke/weights # Replace with the folder yo
 apptainer exec --nv --bind ${AF3_INPUT}:/root/af_input --bind ${AF3_OUTPUT}:/root/af_output --bind ${AF3_WEIGHTS}:/root/models --bind /shared/ucl/apps/AlphaFold3_db:/root/public_databases --no-home --no-mount bind-paths  /shared/ucl/apps/AlphaFold3/alphafold3.sif sh -c "python3 /app/alphafold/run_alphafold.py --json_path=/root/af_input/${AF3_INPUT_FILE} --model_dir=/root/models --db_dir=/root/public_databases --output_dir=/root/af_output"
 ```
 
-For other options you can pass to AlphaFold 3, please consult DeepMind's documentation.
+For other options you can pass to AlphaFold 3, please consult [DeepMind's documentation](https://github.com/google-deepmind/alphafold3/tree/main/docs).
