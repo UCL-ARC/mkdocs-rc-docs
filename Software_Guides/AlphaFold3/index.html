@@ -12,13 +12,13 @@
         <meta name="author" content="UCL RCAS Team">
       
       
-        <link rel="canonical" href="https://www.rc.ucl.ac.uk/docs/Supplementary/X-Forwarding/">
+        <link rel="canonical" href="https://www.rc.ucl.ac.uk/docs/Software_Guides/AlphaFold3/">
       
       
-        <link rel="prev" href="../Troubleshooting/">
+        <link rel="prev" href="../Other_Software/">
       
       
-        <link rel="next" href="../Young_GPU_Nodes/">
+        <link rel="next" href="../Installing_Software/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>X-Forwarding - UCL Research Computing Documentation</title>
+        <title>MATLAB - UCL Research Computing Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#windows" class="md-skip">
+        <a href="#setup" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              X-Forwarding
+              MATLAB
             
           </span>
         </div>
@@ -1173,17 +1173,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" checked>
         
           
           <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
@@ -1198,7 +1200,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_22">
             <span class="md-nav__icon md-icon"></span>
             Software Guides
@@ -1212,7 +1214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Software_Guides/ANSYS/" class="md-nav__link">
+      <a href="../ANSYS/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1234,7 +1236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Software_Guides/Matlab/" class="md-nav__link">
+      <a href="../Matlab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1256,7 +1258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Software_Guides/Singularity/" class="md-nav__link">
+      <a href="../Singularity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1278,7 +1280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Software_Guides/R/" class="md-nav__link">
+      <a href="../R/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1300,7 +1302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Software_Guides/Other_Software/" class="md-nav__link">
+      <a href="../Other_Software/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1319,10 +1321,29 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../Software_Guides/AlphaFold3/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    MATLAB
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1332,6 +1353,33 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1344,7 +1392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Software_Guides/Installing_Software/" class="md-nav__link">
+      <a href="../Installing_Software/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1500,60 +1548,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#windows" class="md-nav__link">
+  <a href="#setup" class="md-nav__link">
     <span class="md-ellipsis">
-      Windows
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Windows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#installing-exceed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installing Exceed
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#using-putty-with-exceed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using PuTTY with Exceed
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#macos" class="md-nav__link">
-    <span class="md-ellipsis">
-      macOS
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      Linux
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#checking-your-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Checking your Setup
+      Setup
     </span>
   </a>
   
@@ -1578,69 +1575,90 @@
   
 
 
-  <h1>X-Forwarding</h1>
+  <h1>MATLAB</h1>
 
-<p>X is a system and protocol that lets remote computers push interactive windows to your local computer over a network. We use a method known as X-Forwarding, together with an SSH client, to direct the network messages for X over the same connection you use for the command-line.</p>
-<p>The setup steps for getting this working on Windows, Linux, and macOS are each different, and we've put them below.</p>
-<h2 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">§</a></h2>
-<p>Windows doesn't natively have the ability to receive X windows, so you need to install an X server separately.</p>
-<p>There are a few choices; UCL has a site-wide license (covering UCL-owned and personal computers) for one called <a href="https://www.opentext.co.uk/products-and-solutions/products/specialty-technologies/connectivity/exceed">Exceed</a>, which is pretty reliable and seems to handle 3D content well, but there's also <a href="http://www.straightrunning.com/XmingNotes/">Xming</a>, which is free and open-source if that's a concern.</p>
-<p>Exceed is installed on all UCL's centrally-managed Windows computers.</p>
-<h3 id="installing-exceed">Installing Exceed<a class="headerlink" href="#installing-exceed" title="Permanent link">§</a></h3>
-<p>Exceed comes in two parts: the main package, and the add-on that handles certain types of rendered 3D content.</p>
-<p>You can download both parts from the <a href="http://swdb.ucl.ac.uk/package/view/id/150">Exceed page in the UCL Software Database</a>. First, install the main package, then the 3D package.</p>
-<h3 id="using-putty-with-exceed">Using PuTTY with Exceed<a class="headerlink" href="#using-putty-with-exceed" title="Permanent link">§</a></h3>
-<p>When you run the Exceed program, it will automatically wait in the background until you run a remote application, so you only have to configure PuTTY to pass the data through.</p>
-<p>To do this, first fill in the details for your PuTTY connection as normal with the hostname and any other details you'd normally use to connect, and then, in the pane labelled "Category" on the left, click the "+" next to "SSH" and then select "X11".</p>
-<p>The main pane should change to one labelled "Options controlling SSH X11 forwarding". Check the box labelled "Enable X11 Forwarding".</p>
-<p>You can now click "Open" to start the connection, or you can return to the "Session" options to save this setup. </p>
-<h2 id="macos">macOS<a class="headerlink" href="#macos" title="Permanent link">§</a></h2>
-<p>Like Windows, macOS doesn't come with an X server to receive X windows. The most commonly used X server for macOS is <a href="https://www.xquartz.org/">XQuartz</a>. If you download and install that, you can follow the Linux instructions below. When you connect with X-Forwarding enabled, the XQuartz server program should start automatically, ready to present remote windows.</p>
-<p>If you need to use remote 3D rendering (e.g. for GaussView), you will also need to enable "Indirect rendering", which allows rendering instructions to be sent to your computer.</p>
-<p>If you install XQuartz from the link above, you will need to open a terminal and run:</p>
-<div class="codehilite"><pre><span></span><code>defaults write org.macosforge.xquartz.X11 enable_iglx -bool true
+<p>The AlphaFold 3 Inference pipeline was developed by Google Deepmind to predict protein structures.</p>
+<p>It is installed on Myriad as an Apptainer package meaning it is not in environment modules.</p>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">§</a></h2>
+<p>You will need to apply to Google for access to the model parameters which you can do <a href="https://forms.gle/svvpY4u2jsHEwWYS6">here</a>.</p>
+<p>Once you have downloaded them, put them in a filesystem you have access to on Myriad.</p>
+<p>The databases are already downloaded and put in <code>/shared/ucl/apps/AlphaFold3_db</code>.</p>
+<p><strong>Note on V100s</strong></p>
+<p>Most of the GPUs on Myriad are V100s, which need to have additional parameters passed to the container, namely setting an environment variable in the contaner (<code>XLA_FLAGS='--xla_disable_hlo_passes=custom-kernel-fusion-rewriter</code>) and passing a command line option to AlphaFold3 itself (<code>--flash_attention_implementation=xla</code>) in order to produce good structures. You can find more details on this on <a href="https://github.com/google-deepmind/alphafold3/issues/59">this Github issue</a>.</p>
+<p>Having added the model weights, you will also need to create input and output directories.</p>
+<p>You should now have three locations which are unique to you. For ease of reference  in the job script I'm going to set environment variables to them so that the command-line is consistent and so you can change them without messing with the command line options.</p>
+<div class="codehilite"><pre><span></span><code>export AF3_INPUT=/scratch/scratch/uccaoke/af3_input # Replace with your input folder
+export AF3_INPUT_FILE=fold_input.json # Replace with a file in your input folder
+export AF3_OUTPUT=/scratch/scratch/uccaoke/af3_output # Replace with your output folder
+export AF3_WEIGHTS=/scratch/scratch/uccaoke/weights # Replace with the folder you put the weights in
 </code></pre></div>
 
-<p>It is also possible to install Xorg from MacPorts -- in that case the command is instead:</p>
-<div class="codehilite"><pre><span></span><code>defaults write org.macports.X11 enable_iglx -bool true
+<p>Then write a job script that requests GPU nodes:</p>
+<div class="codehilite"><pre><span></span><code>#!/bin/bash -l
+
+# Batch script to run AlphaFold 3 on a V100 job under SGE.
+
+# Request one V100
+#$ -l gpu=1
+#$ -ac allow=EF
+
+# Request 18 cores (half a node)
+#$ -pe smp 18
+
+# Request ten minutes of wallclock time (format hours:minutes:seconds).
+#$ -l h_rt=1:0:0
+
+# Request 5 gigabyte of RAM per core.
+#$ -l mem=5G
+
+# Set the name of the job.
+#$ -N AlphaFold3
+
+# Set the working directory to the current working directory.
+#$ -cwd
+
+export AF3_INPUT=/scratch/scratch/uccaoke/af3_input # Replace with your input folder
+export AF3_INPUT_FILE=fold_input.json # Replace with a file in your input folder
+export AF3_OUTPUT=/scratch/scratch/uccaoke/af3_output # Replace with your output folder
+export AF3_WEIGHTS=/scratch/scratch/uccaoke/weights # Replace with the folder you put the weights in
+
+apptainer exec --nv --bind ${AF3_INPUT}:/root/af_input --bind A${F3_OUTPUT}:/root/af_output --bind ${AF3_WEIGHTS}:/root/models --bind /shared/ucl/apps/AlphaFold3_db:/root/public_databases --no-home --no-mount bind-paths  /shared/ucl/apps/AlphaFold3/alphafold3.sif sh -c &quot;XLA_FLAGS=&#39;--xla_disable_hlo_passes=custom-kernel-fusion-rewriter&#39; python3 /app/alphafold/run_alphafold.py --json_path=/root/af_input/${AF3_INPUT_FILE} --model_dir=/root/models --db_dir=/root/public_databases --output_dir=/root/af_output --flash_attention_implementation=xla&quot;
 </code></pre></div>
 
-<p>In either case, you will need to restart any running X11/Xorg/XQuartz processes.</p>
-<h2 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">§</a></h2>
-<p>Almost all Linux versions that have a graphical desktop use an X server to provide it, so you don't have to install a separate one.</p>
-<p>You still have to set up your SSH client's connection to "tunnel" the X windows from the remote computer, though. You can do this by simply adding the <code>-X</code> option to your <code>ssh</code> command line, so for example to connect to Myriad with X-Forwarding:</p>
-<div class="codehilite"><pre><span></span><code>ssh -X ccaaxyz@myriad.rc.ucl.ac.uk
+<p>The flags which are set to work on V100s almost certainly modestly harm performance on A100 so we set this job to request a V100 (the line that says <code>#$ -ac allow=EF</code>). If you delete that line the job will run on any GPU in the cluster.</p>
+<p>If you wish to queue for an A100, this job should work:</p>
+<div class="codehilite"><pre><span></span><code>#!/bin/bash -l
+
+# Batch script to run AlphaFold 3 on a V100 job under SGE.
+
+# Request one A100
+#$ -l gpu=1
+#$ -ac allow=L
+
+# Request 18 cores (half a node)
+#$ -pe smp 18
+
+# Request ten minutes of wallclock time (format hours:minutes:seconds).
+#$ -l h_rt=1:0:0
+
+# Request 5 gigabyte of RAM per core.
+#$ -l mem=5G
+
+# Set the name of the job.
+#$ -N AlphaFold3
+
+# Set the working directory to the current working directory.
+#$ -cwd
+
+export AF3_INPUT=/scratch/scratch/uccaoke/af3_input # Replace with your input folder
+export AF3_INPUT_FILE=fold_input.json # Replace with a file in your input folder
+export AF3_OUTPUT=/scratch/scratch/uccaoke/af3_output # Replace with your output folder
+export AF3_WEIGHTS=/scratch/scratch/uccaoke/weights # Replace with the folder you put the weights in
+
+apptainer exec --nv --bind ${AF3_INPUT}:/root/af_input --bind A${F3_OUTPUT}:/root/af_output --bind ${AF3_WEIGHTS}:/root/models --bind /shared/ucl/apps/AlphaFold3_db:/root/public_databases --no-home --no-mount bind-paths  /shared/ucl/apps/AlphaFold3/alphafold3.sif sh -c &quot;python3 /app/alphafold/run_alphafold.py --json_path=/root/af_input/${AF3_INPUT_FILE} --model_dir=/root/models --db_dir=/root/public_databases --output_dir=/root/af_output&quot;
 </code></pre></div>
 
-<p>To use X-Forwarding from outside UCL, you must either use the VPN, or use the SSH Gateway system, with the appropriate flags for <em>both</em> <code>ssh</code> steps, for example:</p>
-<div class="codehilite"><pre><span></span><code>[me@my_computer ~]$ ssh -X ccaaxyz@ssh-gateway.ucl.ac.uk
-[...]
-[ccaaxyz@ejp-gateway-01 ~]$ ssh -X ccaaxyz@myriad.rc.ucl.ac.uk
-</code></pre></div>
-
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This assumes you use a Linux distribution that uses Xorg as its display server. If your distribution uses Wayland instead, and you aren't sure how to make this work, please <a href="../../Contact_Us/">contact us</a>, letting us know what version of which distribution you're using.</p>
-</div>
-<h2 id="checking-your-setup">Checking your Setup<a class="headerlink" href="#checking-your-setup" title="Permanent link">§</a></h2>
-<p>There are some simple programs on the system that use X, which can be used to check whether your setup is working correctly.</p>
-<ul>
-<li>
-<p><code>xterm</code> is a terminal emulator -- it presents a terminal much like you would already be using.</p>
-</li>
-<li>
-<p><code>glxgears</code> is a small test/benchmark program for the 3D remote rendering capability. It presents a small set of animated gears.</p>
-</li>
-</ul>
-<p>If these work, you have a working X connection. If not, you should see an error when you try to run them that may look something like:</p>
-<div class="codehilite"><pre><span></span><code>xterm: Xt error: Can&#39;t open display:
-</code></pre></div>
-
-<p>Or:</p>
-<div class="codehilite"><pre><span></span><code>Error: couldn&#39;t open display (null)
-</code></pre></div>
-
-<p>If you see these, please check you have followed all the appropriate steps above, and if you still have problems, contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#114;&#99;&#45;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#117;&#99;&#108;&#46;&#97;&#99;&#46;&#117;&#107;">&#114;&#99;&#45;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#117;&#99;&#108;&#46;&#97;&#99;&#46;&#117;&#107;</a> for assistance.</p>
+<p>For other options you can pass to AlphaFold 3, please consult DeepMind's documentation.</p>
 
 
 
