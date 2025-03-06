@@ -1376,6 +1376,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#running-alphafold3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running AlphaFold3
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1556,6 +1565,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#running-alphafold3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running AlphaFold3
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1593,7 +1611,8 @@ export AF3_OUTPUT=/scratch/scratch/uccaoke/af3_output # Replace with your output
 export AF3_WEIGHTS=/scratch/scratch/uccaoke/weights # Replace with the folder you put the weights in
 </code></pre></div>
 
-<p>Then write a job script that requests GPU nodes:</p>
+<h2 id="running-alphafold3">Running AlphaFold3<a class="headerlink" href="#running-alphafold3" title="Permanent link">§</a></h2>
+<p>Write a job script that requests GPU nodes:</p>
 <div class="codehilite"><pre><span></span><code>#!/bin/bash -l
 
 # Batch script to run AlphaFold 3 on a V100 job under SGE.
@@ -1658,7 +1677,7 @@ export AF3_WEIGHTS=/scratch/scratch/uccaoke/weights # Replace with the folder yo
 apptainer exec --nv --bind ${AF3_INPUT}:/root/af_input --bind ${AF3_OUTPUT}:/root/af_output --bind ${AF3_WEIGHTS}:/root/models --bind /shared/ucl/apps/AlphaFold3_db:/root/public_databases --no-home --no-mount bind-paths  /shared/ucl/apps/AlphaFold3/alphafold3.sif sh -c &quot;python3 /app/alphafold/run_alphafold.py --json_path=/root/af_input/${AF3_INPUT_FILE} --model_dir=/root/models --db_dir=/root/public_databases --output_dir=/root/af_output&quot;
 </code></pre></div>
 
-<p>For other options you can pass to AlphaFold 3, please consult DeepMind's documentation.</p>
+<p>For other options you can pass to AlphaFold 3, please consult <a href="https://github.com/google-deepmind/alphafold3/tree/main/docs">DeepMind's documentation</a>.</p>
 
 
 
