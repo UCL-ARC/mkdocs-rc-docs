@@ -9,7 +9,8 @@ It is installed on Myriad as an Apptainer package meaning it is not in environme
 
 ## Setup
 
-You will need to apply to Google for access to the model parameters which you can do [here](https://forms.gle/svvpY4u2jsHEwWYS6).
+!!! important
+    You will need to apply to Google for access to the model parameters which you can do [here](https://forms.gle/svvpY4u2jsHEwWYS6).
 
 Once you have downloaded them, put them in a filesystem you have access to on Myriad.
 
@@ -46,7 +47,7 @@ Write a job script that requests GPU nodes:
 # Request 18 cores (half a node)
 #$ -pe smp 18
 
-# Request ten minutes of wallclock time (format hours:minutes:seconds).
+# Request one hour of wallclock time (format hours:minutes:seconds).
 #$ -l h_rt=1:0:0
 
 # Request 5 gigabyte of RAM per core.
