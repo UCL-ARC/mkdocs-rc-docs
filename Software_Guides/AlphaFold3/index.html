@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
@@ -1416,6 +1416,28 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RFAA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RoseTTAFold All-Atom
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1598,7 +1620,10 @@
 <p>The AlphaFold 3 Inference pipeline was developed by Google Deepmind to predict protein structures.</p>
 <p>It is installed on Myriad as an Apptainer package meaning it is not in environment modules.</p>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">§</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p>You will need to apply to Google for access to the model parameters which you can do <a href="https://forms.gle/svvpY4u2jsHEwWYS6">here</a>.</p>
+</div>
 <p>Once you have downloaded them, put them in a filesystem you have access to on Myriad.</p>
 <p>The databases are already downloaded and put in <code>/shared/ucl/apps/AlphaFold3_db</code>.</p>
 <p><strong>Note on V100s</strong></p>
@@ -1624,7 +1649,7 @@ export AF3_WEIGHTS=/scratch/scratch/uccaoke/weights # Replace with the folder yo
 # Request 18 cores (half a node)
 #$ -pe smp 18
 
-# Request ten minutes of wallclock time (format hours:minutes:seconds).
+# Request one hour of wallclock time (format hours:minutes:seconds).
 #$ -l h_rt=1:0:0
 
 # Request 5 gigabyte of RAM per core.
