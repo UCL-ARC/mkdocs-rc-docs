@@ -12,6 +12,9 @@ The version of it that is current on the 4th of March 2025 is installed on Myria
 
 ## Using RFAA
 
+!!! important
+    RFAA contains an embedded miniforge3 install and so conflicts with other versions of Python.
+
 When run, RFAA relies on some very large databases (about 2.5TiB) as well as the model weights from the original paper. These, and other files are expected to be in a predictable structure in the input directory which you run the code in. To facilitate this, we have placed those reference sets in a central location and provided a shell script `prepare_rfaa_input_directory` with which will either make appropriate file-system links in the current working directory, or, if given an argument will do so there so:
 
 ```
@@ -93,7 +96,33 @@ python3 -m rf2aa.run_inference --config-path=$(pwd) --config-name protein
 
 Note that we specify where to find the config files with the `--config-path` option and give it a configuration name to run with `--config-name`.
 
-When the process has run, we should find in our current working directory both a PDB file with the structure and a PyTorch file (`.pt`) with some statistical information about the run, as per the documentation.
+```
+$ python3 -m rf2aa.run_inference --config-path=$(pwd) --config-name protein
+/shared/ucl/apps/rfaa/20250304/miniforge3/envs/RFAA/lib/python3.10/site-packages/hydra/_internal/defaults_list.py:251: UserWarning: In 'protein': Defaults list is missing `_self_`. See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/default_composition_order for more information
+  warnings.warn(msg, UserWarning)
+Using the cif atom ordering for TRP.
+make_msa.sh 7u7w_A.fasta 7u7w_protein/A 4 64  pdb100_2021Mar03/pdb100_2021Mar03
+Predicting: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:04<00:00,  4.52s/sequences]
+Running HHblits against UniRef30 with E-value cutoff 1e-10
+- 16:46:14.500 INFO: Input file = 7u7w_protein/A/hhblits/t000_.1e-10.a3m
+
+- 16:46:14.500 INFO: Output file = 7u7w_protein/A/hhblits/t000_.1e-10.id90cov75.a3m
+
+- 16:46:14.727 WARNING: Maximum number 100000 of sequences exceeded in file 7u7w_protein/A/hhblits/t000_.1e-10.a3m
+
+- 16:46:48.226 INFO: Input file = 7u7w_protein/A/hhblits/t000_.1e-10.a3m
+
+- 16:46:48.226 INFO: Output file = 7u7w_protein/A/hhblits/t000_.1e-10.id90cov50.a3m
+
+- 16:46:48.451 WARNING: Maximum number 100000 of sequences exceeded in file 7u7w_protein/A/hhblits/t000_.1e-10.a3m
+
+Running PSIPRED
+Running hhsearch
+$ ls
+u7w_A.fasta  7u7w_protein  7u7w_protein_aux.pt  7u7w_protein.pdb  base.yaml  bfd  outputs  pdb100_2021Mar03  protein.yaml  RFAA_paper_weights.pt  UniRef30_2020_06
+```
+
+When the process has run, we should find in our current working directory both a PDB file (`7u7w_protein.pdb`)  with the structure and a PyTorch file (`7u7w_protein_aux.pt`) with some statistical information about the run, as per the documentation.
 
 ## Writing a job script
 
