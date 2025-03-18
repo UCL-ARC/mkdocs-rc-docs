@@ -419,6 +419,7 @@ For the first approach, to submit a job to the scheduler you need to write a job
 ```
 batch myjobscript
 ```
+
  You can also launch parallel tasks by using `srun` inside the jobscript you are running with `sbatch`. 
 
 ```
@@ -429,7 +430,7 @@ Practical examples of how to run parallel tasks can be found in [`Example Jobscr
 
 ### Passing in command-line arguments
 
-You can also pass options directly to the `sbatch` commands and this will override the settings in your script. This can be useful if you are scripting your job submissions in more complicated ways. The `srun` command only accepts comand-line arguments
+You can also pass options directly to the `sbatch` command and this will override the settings in your script. This can be useful if you are scripting your job submissions in more complicated ways. 
 
 For example, if you want to change the name of the job for this one instance of the job you can submit your script with:
 ```
@@ -438,37 +439,25 @@ sbatch --job-name=NewName myscript.sh
 
 Or if you want to increase the wall-clock time to 24 hours:
 
-
-
-
-
-It will be put in to the queue and will begin running on the compute nodes at some point later when it has been allocated resources.
-
-### Passing in srun options on the command line
-
-The `#SBATCH` lines in your jobscript are options to srun. It will take each line which has `#SBATCH` as the first two characters and use the contents beyond that as an option. 
-
-You can also pass options directly to the qsub command and this will override the settings in your script. This can be useful if you are scripting your job submissions in more complicated ways.
-
-For example, if you want to change the name of the job for this one instance of the job you can submit your script with:
 ```
-srun -N NewName myscript.sh
+sbatch -t 0-24:00:00 myscript.sh
 ```
 
-Or if you want to increase the wall-clock time to 24 hours:
-```
-srun -l h_rt=24:0:0 myscript.sh
-```
-
-You can submit jobs with dependencies by using the `-hold_jid` option. For example, the command below submits a job that won't run until job 12345 has finished:
-```
-srun -hold_jid 12345 myscript.sh
-```
-
-You may specify node type with the `-ac allow=` flags as below: 
+You can also use `srun` to submit your jobscript. `srun` only accepts command-line arguments.
 
 ```
-srun -ac allow=L myscript.sh
+srun myjobscript
+```
+
+You can submit jobs with dependencies by using the `--depend` option. For example, the command below submits a job that won't run until job 12345 has finished:
+```
+srun --depend=12345 myscript.sh
+```
+
+You may specify node type with the ` ` flags as below: 
+
+```
+srun - =L myscript.sh
 ```
 
 This command tells this GPU job to only run the type L nodes which have Nvidia A100s
@@ -512,7 +501,7 @@ The queue name (`Yorick` here) is generally not useful. The head node name (`nod
 
 If you want to get more information on a particular job, note its job ID and then use the -f and -j flags to get full output about that job. Most of this information is not very useful.
 ```
-qstat -f -j 12345
+squeue -f -j 12345
 ```
 
 #### Job states
@@ -531,19 +520,19 @@ Many jobs cycling between `Rq` and `Rr` generally means there is a dodgy compute
 
 If a job stays in `t` or `dr` state for a long time, the node it was on is likely to be unresponsive - again let us know and we'll investigate.
 
-A job in `Eqw` will remain in that state until you delete it - you should first have a look at what the error was with `qexplain`.
+A job in `Eqw` will remain in that state until you delete it - you should first have a look at what the error was with `scontrol show job `.
 
-### qexplain
+### scontrol
 
-This is a utility to show you the non-truncated error reported by your job. `qstat -j` will show you a truncated version near the bottom of the output.
+This is a utility to display detailed information about the specified job.
 
 ```
-qexplain 123454
+scontrol show job 123454
 ```
 
-### qdel
+### scancel
 
-You use `qdel` to delete a job from the queue.
+You use `scancel` to delete a job from the queue.
 
 ```
 scancel 123454
@@ -551,12 +540,12 @@ scancel 123454
 
 You can delete all your jobs at once:
 ```
-qdel '*'
+scancel '*'
 ```
 
 ### More scheduler commands
 
-Have a look at `man qstat` and note the commands shown in the `SEE ALSO` section of the manual page. Exit the manual page and then look at the `man` pages for those. (You will not be able to run all commands).
+Have a look at `man squeue` and note the commands shown in the `SEE ALSO` section of the manual page. Exit the manual page and then look at the `man` pages for those. (You will not be able to run all commands).
 
 ### nodesforjob
 
@@ -582,10 +571,10 @@ running on four nodes, and node-r99a-238 is the head node (the one that launched
 shows up in both Primary and Secondaries. The load is very unbalanced - it is using two nodes 
 flat out, and two are mostly doing nothing. Memory use is low. Swap use is essentially zero.
 
-### jobhist
+### sacct
 
-Once a job ends, it no longer shows up in `qstat`. To see information about your finished jobs - 
-when they started, when they ended, what node they ran on - use the command `jobhist`, part of
+Once a job ends, it no longer shows up in `squeue`. To see information about your finished jobs - 
+when they started, when they ended, what node they ran on - use the command `sacct`, part of
 the [`userscripts`](Installed_Software_Lists/module-packages.md) module.
 
 ```
@@ -604,7 +593,7 @@ the [`userscripts`](Installed_Software_Lists/module-packages.md) module.
 
 This shows jobs that finished in the last 24 hours by default. You can search for longer as well:
 ```
-jobhist --hours=200
+sacct --hours=200
 ```
 
 If a job ended and didn't create the files you expect, check the start and end times to see whether 
