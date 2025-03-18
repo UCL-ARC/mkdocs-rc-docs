@@ -398,7 +398,7 @@ from there to Myriad.
 
 We have migrated from SGE to Slurm scheduler. While both are job schedulers for HPC clusters, they differ in their architecture, commands, and features.
 
-![Rosseta Slurm-SGE](img/Rosetta_Slurm-SGE.pdf)
+![Rosseta_Slurm-SGE](img/Rosetta_Slurm-SGE.pdf)
 
 
 Our scheduler **Slurm** provides two approaches to submit jobs: 
@@ -538,7 +538,7 @@ qexplain 123454
 You use `qdel` to delete a job from the queue.
 
 ```
-qdel 123454
+scancel 123454
 ```
 
 You can delete all your jobs at once:
