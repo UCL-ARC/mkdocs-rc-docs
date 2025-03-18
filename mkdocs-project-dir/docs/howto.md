@@ -396,7 +396,7 @@ from there to Myriad.
 
 ## How do I submit a job to the scheduler?
 
-We have migrated from SGE to Slurm scheduler 
+We have migrated from SGE to Slurm scheduler. While both are job schedulers for HPC clusters, they differ in their architecture, commands, and features.
 
 
 
