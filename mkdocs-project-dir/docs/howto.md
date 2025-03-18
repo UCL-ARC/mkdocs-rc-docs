@@ -398,7 +398,7 @@ from there to Myriad.
 
 We have migrated from SGE to Slurm scheduler. While both are job schedulers for HPC clusters, they differ in their architecture, commands, and features.
 
-
+![Rosseta Slurm-SGE](Rosetta_Slurm-SGE.pdf)
 
 
 Our scheduler **Slurm** provides two approaches to submit jobs: 
