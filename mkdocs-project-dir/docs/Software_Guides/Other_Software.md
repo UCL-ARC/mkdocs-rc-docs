@@ -203,7 +203,7 @@ export PARROT_CVMFS_ALIEN_CACHE=</path/to/cache>
 
 CFD-ACE+ is a commercial computational fluid dynamics solver developed by ESI Group. It solves the conservation equations of mass, momentum, energy, chemical species and other scalar transport equations using the finite volume method. These equations enable coupled simulations of fluid, thermal, chemical, biological, electrical and mechanical phenomena.
 
-The license is owned by the Department of Mechanical Engineering who must give permission for users to be added to the group `lgcfdace`.
+The license is owned by the Department of Mechanical Engineering who must give permission for users to be added to the group `ag-archpc-cfdace`.
 
 ```
 module load cfd-ace/2018.0
@@ -217,7 +217,7 @@ CFD-SOLVER -model 3Dstepchannel_060414.DTF -num $NSLOTS -wd `pwd` \
 
 COMSOL Multiphysics is a cross-platform finite element analysis, solver and multiphysics simulation software.
 
-Electrical Engineering have a group license for version 52 and must give permission for users to be added to the group `legcomsl`. Chemical Engineering have a Departmental License for version 53 and members of that department may be added to the group `lgcomsol`. 
+Electrical Engineering have a group license for version 52 and must give permission for users to be added to the group `ag-archpc-comsol-eee`. Chemical Engineering have a Departmental License for version 53 and members of that department may be added to the group `ag-archpc-comsol-chemeng`. 
 
 ```
 # Run a parallel COMSOL job
@@ -1049,7 +1049,7 @@ The MRtrix GUI tools are unavailable: `mrview` and `shview` in MRtrix 3 cannot b
 
 MuTect is a tool developed at the Broad Institute for the reliable and accurate identification of somatic point mutations in next generation sequencing data of cancer genomes. It is built on top of the GenomeAnalysisToolkit (GATK), which is also developed at the Broad Institute, so it uses the same command-line conventions and (almost all) the same input and output file formats. 
 
-MuTect requires you to agree to the GATK license before we can add you to the `lgmutect` group which gives you access: you can do this by downloading MuTect from [The Broad Institute CGA page](https://software.broadinstitute.org/cancer/cga/mutect). You may need to create a gatkforums account before you can download.
+MuTect requires you to agree to the GATK license before we can add you to the `ag-archpc-mutect` group which gives you access: you can do this by downloading MuTect from [The Broad Institute CGA page](https://software.broadinstitute.org/cancer/cga/mutect). You may need to create a gatkforums account before you can download.
 
 MuTect is currently not compatible with Java 1.8, so you need to use the system Java 1.7. Set up your modules as follows: 
 ```

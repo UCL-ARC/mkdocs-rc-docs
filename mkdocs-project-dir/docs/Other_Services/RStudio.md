@@ -23,7 +23,7 @@ by emailing the above address and provide the SITS code of the
 relevant module(s) and a pdf or link to the syllabus. Students who are
 registered on those SITS modules will then be added automatically.
 
-In addition we have a smalll number of Named Researcher licenses for
+In addition we have a small number of Named Researcher licenses for
 RStudio Pro which also run on this instance. Staff and Research
 Postgraduates who would like to have access to one of these licenses
 should email rc-support@ucl.ac.uk to request access explaining why
