@@ -9,7 +9,7 @@ our clusters.
 
 After creating your script, submit it to the scheduler with:
 
-`qsub my_script.sh`
+`sbatch my_script.sh`
 
 ## Service Differences
 
@@ -40,10 +40,10 @@ Most users of UCL's internal clusters will not need to specify a project and wil
 project. Users of the Michael and Young services should refer to the specific 
 pages for those machines, and the information they were given when they registered.
 
-To specify a project ID in a job script, use the `-P` object as below:
+To specify a project ID in a job script, use the `--wckey` object as below:
 
 ```
-#$ -P <your_project_id>
+#SBATCH --wckey=<your_project_id>
 ```
 
 ## Resources
@@ -73,21 +73,21 @@ Shown below is a simple job script that runs /bin/date (which prints the current
 # Batch script to run a serial job under SGE.
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
-#$ -l h_rt=0:10:0
+#SBATCH -l h_rt=0:10:0
 
 # Request 1 gigabyte of RAM (must be an integer followed by M, G, or T)
-#$ -l mem=1G
+#SBATCH -l mem=1G
 
 # Request 15 gigabyte of TMPDIR space (default is 10 GB - remove if cluster is diskless)
-#$ -l tmpfs=15G
+#SBATCH -l tmpfs=15G
 
 # Set the name of the job.
-#$ -N Serial_Job
+#SBATCH -N Serial_Job
 
 # Set the working directory to somewhere in your scratch space.  
 #  This is a necessary step as compute nodes cannot write to $HOME.
 # Replace "<your_UCL_id>" with your UCL user ID.
-#$ -wd /home/<your_UCL_id>/Scratch/workspace
+#SBATCH -wd /home/<your_UCL_id>/Scratch/workspace
 
 # Your work should be done in $TMPDIR 
 cd $TMPDIR
@@ -113,24 +113,24 @@ Note that this job script works directly in scratch instead of in the temporary 
 # Batch script to run an OpenMP threaded job under SGE.
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
-#$ -l h_rt=0:10:0
+#SBATCH -l h_rt=0:10:0
 
 # Request 1 gigabyte of RAM for each core/thread 
 # (must be an integer followed by M, G, or T)
-#$ -l mem=1G
+#SBATCH -l mem=1G
 
 # Request 15 gigabyte of TMPDIR space (default is 10 GB - remove if cluster is diskless)
-#$ -l tmpfs=15G
+#SBATCH -l tmpfs=15G
 
 # Set the name of the job.
-#$ -N Multi-threaded_Job
+#SBATCH -N Multi-threaded_Job
 
 # Request 16 cores.
-#$ -pe smp 16
+#SBATCH -pe smp 16
 
 # Set the working directory to somewhere in your scratch space.
 # Replace "<your_UCL_id>" with your UCL user ID
-#$ -wd /home/<your_UCL_id>/Scratch/output
+#SBATCH -wd /home/<your_UCL_id>/Scratch/output
 
 # 8. Run the application.
 $HOME/my_program/example
@@ -152,24 +152,24 @@ modules are loaded, either in your jobscript or in your shell start-up files (e.
 # Batch script to run an MPI parallel job under SGE with Intel MPI.
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
-#$ -l h_rt=0:10:0
+#SBATCH -l h_rt=0:10:0
 
 # Request 1 gigabyte of RAM per process (must be an integer followed by M, G, or T)
-#$ -l mem=1G
+#SBATCH -l mem=1G
 
 # Request 15 gigabyte of TMPDIR space per node 
 # (default is 10 GB - remove if cluster is diskless)
 #$ -l tmpfs=15G
 
 # Set the name of the job.
-#$ -N MadScience_1_16
+#SBATCH -N MadScience_1_16
 
 # Select the MPI parallel environment and 16 processes.
-#$ -pe mpi 16
+#SBATCH -pe mpi 16
 
 # Set the working directory to somewhere in your scratch space.
 # Replace "<your_UCL_id>" with your UCL user ID :
-#$ -wd /home/<your_UCL_id>/Scratch/output
+#SBATCH -wd /home/<your_UCL_id>/Scratch/output
 
 # Run our MPI job.  GERun is a wrapper that launches MPI jobs on our clusters.
 gerun $HOME/src/science/simulate
@@ -180,9 +180,9 @@ gerun $HOME/src/science/simulate
 
 If you want to submit a large number of similar serial jobs then it may be
 easier to submit them as an array job. Array jobs are similar to serial jobs
-except we use the `-t` option to get Sun Grid Engine to run 10,000 copies of
+except we use the `--array=` option to get Sun Grid Engine to run 10,000 copies of
 this job numbered 1 to 10,000. Each job in this array will have the same job ID
-but a different task ID. The task ID is stored in the `$SGE_TASK_ID` environment
+but a different task ID. The task ID is stored in the `$SLURM_ARRAY_TASK_ID` environment
 variable in each task. All the usual SGE output files have the task ID
 appended. MPI jobs and parallel shared memory jobs can also be submitted as
 arrays.

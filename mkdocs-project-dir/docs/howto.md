@@ -396,45 +396,74 @@ from there to Myriad.
 
 ## How do I submit a job to the scheduler?
 
-To submit a job to the scheduler you need to write a jobscript that contains the resources the job is asking for and the actual commands you want to run. This jobscript is then submitted using the `qsub` command.
+We have migrated from SGE to Slurm scheduler. While both are job schedulers for HPC clusters, they differ in their architecture, commands, and features. For our old users, here is a comparative table of the main SGE commands and their equivalent in Slurm:
+
+
+<figure id="est">
+<div class="center">
+<img src="img/Rosetta_Slurm-SGE.png" style="width:150mm" />
+</div>
+<figcaption><em> <span id="est" label="est"></span></em></figcaption>
+</figure>
+
+
+**Slurm** provides two approaches to submit jobs: 
+
+ 1)  Using a bash script that includes directives to the Slurm scheduler.
+ 2)  Using command-line arguments to provide directives to Slurm.
+
+### Using bash script
+
+For the first approach, to submit a job to the scheduler you need to write a jobscript that contains the resources the job is asking for and the actual commands/programs you want to run.  This jobscript is then submitted using the `sbatch` command. The `#SBATCH` lines in your jobscript are options to `sbatch`. It will take each line which has `#SBATCH` as the first characters and use the contents beyond that as an option. It will be put in to the queue and will begin running on the compute nodes at some point later when it has been allocated resources.  
 
 ```
-qsub myjobscript
+batch myjobscript
 ```
 
-It will be put in to the queue and will begin running on the compute nodes at some point later when it has been allocated resources.
+ You can also launch parallel tasks by using `srun` inside the jobscript you are running with `sbatch`. 
 
-### Passing in qsub options on the command line
+```
+srun mytask
+```
 
-The `#$` lines in your jobscript are options to qsub. It will take each line which has `#$` as the first two characters and use the contents beyond that as an option. 
+Practical examples of how to run parallel tasks can be found in [`Example Jobscripts`](Example_Jobscripts.md) 
 
-You can also pass options directly to the qsub command and this will override the settings in your script. This can be useful if you are scripting your job submissions in more complicated ways.
+### Passing in command-line arguments
+
+You can also pass options directly to the `sbatch` command and this will override the settings in your script. This can be useful if you are scripting your job submissions in more complicated ways. 
 
 For example, if you want to change the name of the job for this one instance of the job you can submit your script with:
 ```
-qsub -N NewName myscript.sh
+sbatch --job-name=NewName myscript.sh
 ```
 
 Or if you want to increase the wall-clock time to 24 hours:
-```
-qsub -l h_rt=24:0:0 myscript.sh
-```
-
-You can submit jobs with dependencies by using the `-hold_jid` option. For example, the command below submits a job that won't run until job 12345 has finished:
-```
-qsub -hold_jid 12345 myscript.sh
-```
-
-You may specify node type with the `-ac allow=` flags as below: 
 
 ```
-qsub -ac allow=L myscript.sh
+sbatch -t 0-24:00:00 myscript.sh
+```
+
+You can also use `srun` to submit your jobscript. `srun` only accepts command-line arguments.
+
+```
+srun myjobscript
+```
+
+You can submit jobs with dependencies by using the `--depend` option. For example, the command below submits a job that won't run until job 12345 has finished:
+```
+srun --depend=12345 myscript.sh
+```
+
+You may specify node type with the ` ` flags as below: (Check THIS!)
+
+```
+srun - =L myscript.sh (Check THIS!)
 ```
 
 This command tells this GPU job to only run the type L nodes which have Nvidia A100s
 
 ```
-qsub -ac allow=EF myscript.sh
+qsub -ac allow=EF myscript.sh  (Check THIS!)
 ```
 
 This tells this GPU job to only run on the type E and F nodes which have Nvidia V100s.
@@ -453,9 +482,9 @@ As mentioned above, this will not show any command line options you passed in.
 
 ## How do I monitor a job?
 
-### qstat
+### squeue
 
-The `qstat` command shows the status of your jobs. By default, if you run it with no options, it shows only your jobs (and no-one else’s). This makes it easier to keep track of your jobs. 
+The `squeue` command shows the status of your jobs. By default, if you run it with no options, it shows only your jobs (and no-one else’s). This makes it easier to keep track of your jobs. 
 
 The output will look something like this:
 ```
@@ -472,7 +501,7 @@ The queue name (`Yorick` here) is generally not useful. The head node name (`nod
 
 If you want to get more information on a particular job, note its job ID and then use the -f and -j flags to get full output about that job. Most of this information is not very useful.
 ```
-qstat -f -j 12345
+squeue -f -j 12345
 ```
 
 #### Job states
@@ -491,32 +520,32 @@ Many jobs cycling between `Rq` and `Rr` generally means there is a dodgy compute
 
 If a job stays in `t` or `dr` state for a long time, the node it was on is likely to be unresponsive - again let us know and we'll investigate.
 
-A job in `Eqw` will remain in that state until you delete it - you should first have a look at what the error was with `qexplain`.
+A job in `Eqw` will remain in that state until you delete it - you should first have a look at what the error was with `scontrol show job `.
 
-### qexplain
+### scontrol
 
-This is a utility to show you the non-truncated error reported by your job. `qstat -j` will show you a truncated version near the bottom of the output.
-
-```
-qexplain 123454
-```
-
-### qdel
-
-You use `qdel` to delete a job from the queue.
+This is a utility to display detailed information about the specified job.
 
 ```
-qdel 123454
+scontrol show job 123454
+```
+
+### scancel
+
+You use `scancel` to delete a job from the queue.
+
+```
+scancel 123454
 ```
 
 You can delete all your jobs at once:
 ```
-qdel '*'
+scancel '*'
 ```
 
 ### More scheduler commands
 
-Have a look at `man qstat` and note the commands shown in the `SEE ALSO` section of the manual page. Exit the manual page and then look at the `man` pages for those. (You will not be able to run all commands).
+Have a look at `man squeue` and note the commands shown in the `SEE ALSO` section of the manual page. Exit the manual page and then look at the `man` pages for those. (You will not be able to run all commands).
 
 ### nodesforjob
 
@@ -544,8 +573,8 @@ flat out, and two are mostly doing nothing. Memory use is low. Swap use is essen
 
 ### jobhist
 
-Once a job ends, it no longer shows up in `qstat`. To see information about your finished jobs - 
-when they started, when they ended, what node they ran on - use the command `jobhist`, part of
+Once a job ends, it no longer shows up in `squeue`. To see information about your finished jobs - 
+when they started, when they ended, what node they ran on - use the command `sacct`, part of
 the [`userscripts`](Installed_Software_Lists/module-packages.md) module.
 
 ```
@@ -574,9 +603,11 @@ If a job only ran for seconds and didn't produce the expected output, there was 
 wrong in your script - check the `.o` and `.e` files in the directory you submitted the job from 
 for errors.
 
+You can also get information of a job with `sacct` command. (CHECK THIS!)
+
 ## How do I run interactive jobs?
 
-Sometimes you need to run interactive programs, sometimes with a GUI. This can be achieved through `qrsh`.  We have a detailed guide to running [interactive jobs](Interactive_Jobs.md).
+Sometimes you need to run interactive programs, sometimes with a GUI. This can be achieved through `srun` and `salloc`.   The `salloc` command is used to create a resource allocation and typically start a shell within that allocation. One or more job steps would typically be executed within that allocation using the `srun` command to launch the tasks. We have a detailed guide to running [interactive jobs](Interactive_Jobs.md).
 
 ## How do I estimate what resources to request in my jobscript?
 
