@@ -454,16 +454,16 @@ You can submit jobs with dependencies by using the `--depend` option. For exampl
 srun --depend=12345 myscript.sh
 ```
 
-You may specify node type with the ` ` flags as below: 
+You may specify node type with the ` ` flags as below: (Check THIS!)
 
 ```
-srun - =L myscript.sh
+srun - =L myscript.sh (Check THIS!)
 ```
 
 This command tells this GPU job to only run the type L nodes which have Nvidia A100s
 
 ```
-qsub -ac allow=EF myscript.sh
+qsub -ac allow=EF myscript.sh  (Check THIS!)
 ```
 
 This tells this GPU job to only run on the type E and F nodes which have Nvidia V100s.
@@ -571,7 +571,7 @@ running on four nodes, and node-r99a-238 is the head node (the one that launched
 shows up in both Primary and Secondaries. The load is very unbalanced - it is using two nodes 
 flat out, and two are mostly doing nothing. Memory use is low. Swap use is essentially zero.
 
-### sacct
+### jobhist
 
 Once a job ends, it no longer shows up in `squeue`. To see information about your finished jobs - 
 when they started, when they ended, what node they ran on - use the command `sacct`, part of
@@ -593,7 +593,7 @@ the [`userscripts`](Installed_Software_Lists/module-packages.md) module.
 
 This shows jobs that finished in the last 24 hours by default. You can search for longer as well:
 ```
-sacct --hours=200
+jobhist --hours=200
 ```
 
 If a job ended and didn't create the files you expect, check the start and end times to see whether 
@@ -602,6 +602,8 @@ it ran out of wallclock time.
 If a job only ran for seconds and didn't produce the expected output, there was probably something 
 wrong in your script - check the `.o` and `.e` files in the directory you submitted the job from 
 for errors.
+
+You can also get information of a job with `sacct` command. (CHECK THIS!)
 
 ## How do I run interactive jobs?
 
