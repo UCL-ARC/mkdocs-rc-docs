@@ -271,8 +271,8 @@ would then be responsible for managing and maintaining these installs.
 ### Licensed software
 
 Reserved application groups exist for software that requires them. The
-group name will begin with `leg` or `lg`. After we add you to one of
-these groups, the central group change will happen overnight. You can
+group name will begin with `ag-archpc-`. After we add you to one of
+these groups, the group change will happen within the next hour or so. You can
 check your groups with the `groups` command.
 
 Please let us know your username when you ask to be added to a group.
@@ -281,17 +281,17 @@ Please let us know your username when you ask to be added to a group.
     [signed up for a CASTEP license](https://www.castep.org/get_castep).
     Send us an acceptance email, or we can ask them to verify you have a
     license. You will then be added to the reserved application group
-    `lgcastep`. If you are a member of UKCP you are already covered by a
+    `ag-archpc-castep`. If you are a member of UKCP you are already covered by a
     license and just need to tell us when you request access.
   - **CRYSTAL**: You/your group leader need to have signed up for an
     Academic license. Crystal Solutions will send an email saying an
     account has been upgraded to "Academic UK" - forward that to us
     along with confirmation from the group leader that you should be in
-    their group. You will be added to the `legcryst` group.
+    their group. You will be added to the `ag-archpc-crystal` group.
   - **DL\_POLY**: has individual licenses for specific versions.
     [Sign up at DL\_POLY's website](https://www.ccp5.ac.uk/dl_poly/)
     and send us the acceptance email they give you. We will add you to
-    the appropriate version's reserved application group, eg `lgdlp408`.
+    the appropriate version's reserved application group, eg `ag-archpc-dlpoly408`.
   - **Gaussian**: not currently accessible for non-UCL institutions. UCL
     having a site license and another institute having a site license
     does not allow users from the other institute to run Gaussian on
@@ -300,7 +300,7 @@ Please let us know your username when you ask to be added to a group.
     address you are named on a VASP license using. You can also send 
     name and email of the main VASP license holder along with the license 
     number if you wish. We will then check in the VASP portal if we can 
-    add you. We will add you to the `legvasp5` or `legvasp6` reserved 
+    add you. We will add you to the `ag-archpc-vasp5` or `ag-archpc-vasp6` reserved 
     application groups depending on which versions you are licensed for. 
     You may also install your own copy in your home, and we provide a simple
     [build script on Github](https://github.com/UCL-ARC/rcps-buildscripts/blob/master/vasp_individual_install)
@@ -308,7 +308,7 @@ Please let us know your username when you ask to be added to a group.
     source code and then you can run the script following the
     instructions at the top.
   - **Molpro**: Only UCL users are licensed to use our central copy and 
-    can request to be added to the `lgmolpro` reserved application group.
+    can request to be added to the `ag-archpc-molpro` reserved application group.
 
 ## Suggested job sizes
 
