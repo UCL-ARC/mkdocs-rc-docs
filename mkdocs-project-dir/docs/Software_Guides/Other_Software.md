@@ -1290,6 +1290,10 @@ If you want to run ORCA in parallel using MPI, the jobscript will be the same bu
 need to add the `!PAL` keyword to your input file to tell it how many processes to use. (You
 do not use `mpirun` or `gerun` with ORCA).
 
+ORCA is available on the clusters under an academic license. To use ORCA, join the [ORCA forum](https://orcaforum.kofo.mpg.de/app.php/portal)
+and accept the end user license agreement. Then email us and we will add your account to the
+`ag-archpc-orca` license group.
+
 
 ### Picard
 
