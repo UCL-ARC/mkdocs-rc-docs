@@ -16,6 +16,7 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
+7 April 2025 | Myriad | Planned | Outage for switchover to new filesystem. No login access from 9am. Once access is restored later that day or the next day, you will have an empty new home and Scratch with symbolic links to `oldhome` and `oldscratch`. All jobs will be held. You will need to copy your data to the new filesystem or archive it. Once done, you can release the hold on your jobs using `qrls $JOB_ID` or `qrls all`.
 
 ## Previous Outages
 
