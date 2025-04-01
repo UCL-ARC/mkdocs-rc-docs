@@ -714,7 +714,10 @@ This page outlines that status of each of the machines managed by the Research C
 
     If you have a Myriad quota increase, it will have an expiry date, maximum of one year after application. You will be sent a reminder one month before your quota expires, and then reminders at two weeks, one week, expiry day, two weeks after, one month after. One month after a quota has expired, if you have not contacted us, we will move all the contents of your Myriad home and Scratch into another location. We will keep your data there for two months further to give you longer to contact us to reapply for quota or retrieve the data and will then delete all of it. Please consider this at the time of applying for your quota increase, especially if you expect to be away from UCL for a period of time.
 
-    This is to prevent Myriad's filesystem from filling up from large quota increases that expire and are not removed. If you are in contact with us and reapplying for your quota increases, this should allow us to keep granting them to you. 
+    This is to prevent Myriad's filesystem from filling up from large quota increases that expire and are not removed. 
+    If you are in contact with us and reapplying for your quota increases, this should allow us to keep granting them 
+    to you. 
+
     **What you need to do**
 
     **Step 1: Move your data**
@@ -1016,7 +1019,7 @@ This page outlines that status of each of the machines managed by the Research C
 ```
 module load beta-modules
 module load test-stack/2025-02
-````
+```
 
     After that, when you type `module avail` there will be several sections of additional modules at 
     the top of the output.
@@ -1025,11 +1028,11 @@ module load test-stack/2025-02
     we expect people to use directly visible and lots of their dependencies are hidden. These will 
     show up if you search for that package specifically, for example:
 
-````
+```
 module avail libpng
 -------------------------- /shared/ucl/apps/spack/0.23/deploy/2025-02/modules/applications/linux-rhel7-cascadelake --------------------------
 libpng/1.6.39/gcc-12.3.0-iopfrab
-````
+```
 
     This module does not show up in the full list but is still installed. It has a hash at the end 
     of its name `-iopfrab` and this will change over time with different builds.
