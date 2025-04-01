@@ -729,9 +729,9 @@ This page outlines that status of each of the machines managed by the Research C
     Commands you may wish to use for copying:
 
     - Copy your old .ssh directory into your new home (~) recursively and preserve permissions:
-      - `cp -rp ~/oldhome/.ssh ~`  
+        - `cp -rp ~/oldhome/.ssh ~`  
     - Use rsync archive mode (recursively copy directories, copy symlinks without resolving, and preserve permissions, ownership and modification times) to copy your old .ssh directory into your new home:
-      - `rsync -r -a ~/oldhome/.ssh ~` 
+        - `rsync -r -a ~/oldhome/.ssh ~` 
 
     Copy only works locally, so you can use it for any filesystems that are directly mounted on Myriad (old_lustre, ACFS, RDSS, new filesystem). Rsync can be used locally or between remote systems as well. It can also resume incomplete copies by running again and doesn't re-copy data that you have already copied if your transfer gets interrupted for any reason.
 
@@ -758,6 +758,11 @@ This page outlines that status of each of the machines managed by the Research C
     It begins with a dot and is a hidden file so will only show up with `ls -a` rather than `ls`. You can copy this across into your current home again. You may have put module load and unload commands in it, so are now getting module conflicts when your jobs run since otherwise the modules are still the default ones.
 
     This also applies to other hidden files or directories you may have, like `.condarc` and `.python3local` where you may have environments defined or packages installed.
+
+    _After I move my files, will they still be read-only?_
+
+    No, it is the old filesystem itself that was set to be read-only. After you copy your files to the new filesystem, 
+    you will be able to edit them in the same way as before.
 
     **Project/shared spaces/hosted datasets**
 
