@@ -2530,10 +2530,14 @@ password, as any ssh keys you might have set up will not be there on the new fil
 <code>.ssh</code> directory from <code>/old_lustre/home/username</code> to your new home.</p>
 <p>Commands you may wish to use for copying:</p>
 <ul>
-<li>Copy your old .ssh directory into your new home (~) recursively and preserve permissions:</li>
+<li>Copy your old .ssh directory into your new home (~) recursively and preserve permissions:<ul>
 <li><code>cp -rp ~/oldhome/.ssh ~</code>  </li>
-<li>Use rsync archive mode (recursively copy directories, copy symlinks without resolving, and preserve permissions, ownership and modification times) to copy your old .ssh directory into your new home:</li>
+</ul>
+</li>
+<li>Use rsync archive mode (recursively copy directories, copy symlinks without resolving, and preserve permissions, ownership and modification times) to copy your old .ssh directory into your new home:<ul>
 <li><code>rsync -r -a ~/oldhome/.ssh ~</code> </li>
+</ul>
+</li>
 </ul>
 <p>Copy only works locally, so you can use it for any filesystems that are directly mounted on Myriad (old_lustre, ACFS, RDSS, new filesystem). Rsync can be used locally or between remote systems as well. It can also resume incomplete copies by running again and doesn't re-copy data that you have already copied if your transfer gets interrupted for any reason.</p>
 <p>You will need to copy your data off old_lustre onto the new filesystem, or the ACFS, or the RDSS if you have a project, or onto other external systems if you want to keep it for future reference.</p>
@@ -2552,6 +2556,9 @@ password, as any ssh keys you might have set up will not be there on the new fil
 <p>Your <code>.bashrc</code> is in <code>/old_lustre/home/username/.bashrc</code></p>
 <p>It begins with a dot and is a hidden file so will only show up with <code>ls -a</code> rather than <code>ls</code>. You can copy this across into your current home again. You may have put module load and unload commands in it, so are now getting module conflicts when your jobs run since otherwise the modules are still the default ones.</p>
 <p>This also applies to other hidden files or directories you may have, like <code>.condarc</code> and <code>.python3local</code> where you may have environments defined or packages installed.</p>
+<p><em>After I move my files, will they still be read-only?</em></p>
+<p>No, it is the old filesystem itself that was set to be read-only. After you copy your files to the new filesystem, 
+you will be able to edit them in the same way as before.</p>
 <p><strong>Project/shared spaces/hosted datasets</strong></p>
 <p>If you have an existing project or shared space or hosted dataset (in <code>/lustre/projects</code> aka <code>/shared/ucl/depts</code>) you will need to reapply for this space and we will need to recreate it on the new filesystem. We'll be sending another email separately to people we have listed as the owners of spaces.</p>
 <p>The same terms for quota increases and data deletion set out above will apply to project spaces so the data will 
