@@ -19,9 +19,6 @@ You can see all the available CUDA modules by typing
 module avail cuda
 ```
 
-The ones that become visible once you load `beta-modules` have been built with newer
-compilers.
-
 ## Sample CUDA code
 
 There are samples in some CUDA install locations, e.g. 
