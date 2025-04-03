@@ -1775,10 +1775,9 @@ the same node as you, add this to your jobscript:</p>
 and want to rule out anything else running on the rest of the node as possibly
 affecting your timings.</p>
 <h2 id="cuda-versions">CUDA versions<a class="headerlink" href="#cuda-versions" title="Permanent link">§</a></h2>
-<p>The newer CUDA installs we have are made visible by first loading <code>beta-modules</code>
-but can then be used alongside any other compiler.</p>
-<div class="codehilite"><pre><span></span><code>module load beta-modules
-module avail cuda
+<p>The newer CUDA installs are visible in <code>module avail</code> with a reference to a newer
+gnu compiler in their names but can be used alongside any other compiler.</p>
+<div class="codehilite"><pre><span></span><code>module avail cuda
 
 # pick one of the 11.x CUDA installs
 module load cuda/11.3.1/gnu-10.2.0
