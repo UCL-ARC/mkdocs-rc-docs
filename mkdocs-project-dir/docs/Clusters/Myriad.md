@@ -182,8 +182,7 @@ module load tensorflow/2.0.0/gpu-py37
 Modules to load the most recent version we have installed with GPU support (2.11.0):
 
 ```
-module -f unload compilers mpi gcc-libs
-module load beta-modules
+module unload compilers mpi gcc-libs
 module load gcc-libs/10.2.0
 module load python/3.9.6-gnu-10.2.0
 module load cuda/11.2.0/gnu-10.2.0
@@ -200,8 +199,7 @@ Modules to load the most recent release we have installed (May 2022)
 are:
 
 ```
-module -f unload compilers mpi gcc-libs
-module load beta-modules
+module unload compilers mpi gcc-libs
 module load gcc-libs/10.2.0
 module load python3/3.9-gnu-10.2.0
 module load cuda/11.3.1/gnu-10.2.0
@@ -212,8 +210,7 @@ module load pytorch/1.11.0/gpu
 If you want the CPU only version then use:
 
 ```
-module -f unload compilers mpi gcc-libs
-module load beta-modules
+module unload compilers mpi gcc-libs
 module load gcc-libs/10.2.0
 module load python3/3.9-gnu-10.2.0
 module load pytorch/1.11.0/cpu

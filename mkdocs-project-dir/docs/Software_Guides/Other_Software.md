@@ -30,11 +30,10 @@ module help <module>    # Shows a longer text description for the software
 
 Generically, the way you find out if a piece of software is installed is to run
 ```
-module load beta-modules
 module avail packagename
 ```
 
-By loading `beta-modules` you will also be able to see newer versions of GCC and the software that
+The output will also contain newer versions of GCC and the software that
 has been built using them.
 
 Then `module avail` gives you a list of all the modules we have that match the name you searched 
@@ -248,15 +247,13 @@ CP2K performs atomistic and molecular simulations.
 To see all available versions type
 
 ```
-module load beta-modules
 module avail cp2k
 ```
 
 To load CP2K 8.2:
 
 ```
-module unload -f compilers mpi gcc-libs
-module load beta-modules
+module unload compilers mpi gcc-libs
 module load gcc-libs/10.2.0
 module load compilers/gnu/10.2.0
 
@@ -616,8 +613,7 @@ that version is installed in.
 
 ```
 # Example for GPU gromacs/2021.5/cuda-11.3
-module load beta-modules
-module unload -f compilers mpi gcc-libs
+module unload compilers mpi gcc-libs
 module load gcc-libs/10.2.0
 module load compilers/gnu/10.2.0
 module load python3/3.9-gnu-10.2.0 
@@ -631,8 +627,7 @@ module load gromacs/2021.5/cuda-11.3
 
 ```
 # Example for gromacs/2021.2/gnu-7.3.0
-module load beta-modules
-module unload -f compilers mpi gcc-libs
+module unload compilers mpi gcc-libs
 module load gcc-libs/7.3.0
 module load compilers/gnu/7.3.0
 module load mpi/openmpi/3.1.4/gnu-7.3.0
@@ -843,8 +838,7 @@ gerun $(which lmp_default) -in inputfile
 For the latest version of LAMMPS we have installed which is 29th September 2021 Update 2 where the binaries are called `lmp_mpi` for the MPI version and `lmp_gpu` for the GPU version:
 
 ```
-module -f unload compilers mpi gcc-libs
-module load beta-modules
+module unload compilers mpi gcc-libs
 module load gcc-libs/10.2.0
 module load compilers/gnu/10.2.0
 module load mpi/openmpi/4.0.5/gnu-10.2.0
@@ -855,8 +849,7 @@ gerun lmp_mpi -in inputfile
 ```
 for the basic MPI version and:
 ```
-module -f unload compilers mpi gcc-libs
-module load beta-modules
+module unload compilers mpi gcc-libs
 module load gcc-libs/10.2.0
 module load compilers/gnu/10.2.0
 
@@ -893,8 +886,7 @@ gerun lmp_mpi -in inputfile
 
 ```
 # LAMMPS 29 Sep 2021 Update 2 for GPU with Intel compilers
-module unload -f compilers mpi
-module load beta-modules
+module unload compilers mpi
 module load compilers/intel/2020/release
 module load mpi/intel/2019/update6/intel
 module load python/3.9.10
@@ -1144,8 +1136,7 @@ with OmniPath interconnects as well as GPUs (not Myriad). It can run across mult
 #$ -pe smp 24
 #$ -l gpu=2
 
-module unload -f compilers mpi gcc-libs
-module load beta-modules
+module unload compilers mpi gcc-libs
 module load gcc-libs/7.3.0
 module load compilers/intel/2019/update5
 module load mpi/intel/2019/update5/intel

@@ -54,11 +54,10 @@ affecting your timings.
 
 ## CUDA versions
 
-The newer CUDA installs we have are made visible by first loading `beta-modules`
-but can then be used alongside any other compiler.
+The newer CUDA installs are visible in `module avail` with a reference to a newer
+gnu compiler in their names but can be used alongside any other compiler.
 
 ```
-module load beta-modules
 module avail cuda
 
 # pick one of the 11.x CUDA installs
