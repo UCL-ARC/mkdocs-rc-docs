@@ -1013,6 +1013,25 @@ want to keep into your Scratch.
 If you are running parallel multi-node jobs and the directories need to be readable by all 
 the nodes, then you need to write to Scratch.
 
+If you sometimes get an error like this:
+
+```
+terminate called after throwing an instance of 'std::runtime_error'
+ what():  Cannot open cache file tmpfilexNCOMM
+```
+
+This is because Molpro is opening and closing temporary files very close together and the file 
+handles do not get freed up immediately, and it has gone over the soft limit of open files of 1024.
+
+You can increase this to the hard limit of open files on the compute nodes by adding the below to
+your jobscript before the `molpro` command and it will let you have up to 4096 files open at once.
+Please be careful about the number of jobs you have running concurrently if you do this, as it could 
+have an impact on the filesystem.
+
+```
+ulimit -Sn 4096
+```
+
 
 ### MRtrix
 
