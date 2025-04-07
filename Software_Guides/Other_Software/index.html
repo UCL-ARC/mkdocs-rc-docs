@@ -3734,6 +3734,20 @@ accessed quickly and not slow down other jobs. At the end of the job, copy back 
 want to keep into your Scratch.</p>
 <p>If you are running parallel multi-node jobs and the directories need to be readable by all 
 the nodes, then you need to write to Scratch.</p>
+<p>If you sometimes get an error like this:</p>
+<div class="codehilite"><pre><span></span><code>terminate called after throwing an instance of &#39;std::runtime_error&#39;
+ what():  Cannot open cache file tmpfilexNCOMM
+</code></pre></div>
+
+<p>This is because Molpro is opening and closing temporary files very close together and the file 
+handles do not get freed up immediately, and it has gone over the soft limit of open files of 1024.</p>
+<p>You can increase this to the hard limit of open files on the compute nodes by adding the below to
+your jobscript before the <code>molpro</code> command and it will let you have up to 4096 files open at once.
+Please be careful about the number of jobs you have running concurrently if you do this, as it could 
+have an impact on the filesystem.</p>
+<div class="codehilite"><pre><span></span><code>ulimit -Sn 4096
+</code></pre></div>
+
 <h3 id="mrtrix">MRtrix<a class="headerlink" href="#mrtrix" title="Permanent link">§</a></h3>
 <p>MRtrix provides a set of tools to perform diffusion-weighted MRI white matter tractography in the presence of crossing fibres. </p>
 <div class="codehilite"><pre><span></span><code>module load python3/recommended
