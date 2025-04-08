@@ -372,9 +372,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#request-hosting-of-shared-datasets" class="md-nav__link">
+  <a href="#request-hosting-of-shared-project-spaces-or-datasets" class="md-nav__link">
     <span class="md-ellipsis">
-      Request hosting of shared datasets
+      Request hosting of shared project spaces or datasets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deletion-policy-for-increased-quota-and-shared-spaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deletion policy for increased quota and shared spaces
     </span>
   </a>
   
@@ -1702,9 +1711,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#request-hosting-of-shared-datasets" class="md-nav__link">
+  <a href="#request-hosting-of-shared-project-spaces-or-datasets" class="md-nav__link">
     <span class="md-ellipsis">
-      Request hosting of shared datasets
+      Request hosting of shared project spaces or datasets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deletion-policy-for-increased-quota-and-shared-spaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deletion policy for increased quota and shared spaces
     </span>
   </a>
   
@@ -1757,7 +1775,9 @@ beyond this fair share:</p>
 <p>Users who wish to request additional resources or reserve resources
 beyond those provided can complete the additional resource request form
 in collaboration with your supervisor or the project's principal
-investigator. This includes requests for increased storage quotas.</p>
+investigator. This includes requests for increased storage quotas.
+Please read the <a href="#deletion-policy-for-increased-quota-and-shared-spaces">Deletion policy</a> 
+below as data will be deleted if these expire.</p>
 <p>The completed form should be sent to the Research Computing Platforms
 team at <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#114;&#99;&#45;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#117;&#99;&#108;&#46;&#97;&#99;&#46;&#117;&#107;">&#114;&#99;&#45;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#117;&#99;&#108;&#46;&#97;&#99;&#46;&#117;&#107;</a>, for technical review. If successful,
 your case will be presented to the
@@ -1773,18 +1793,12 @@ additional resources is only likely to be approved if the impact on
 other users is not deemed to be significant, or of long duration.</p>
 <ul>
 <li><a href="CRAG_additional_resources_request_form.rtf">Additional resource request form</a></li>
-<li><em>NB:</em> Myriad's filesystem is still very full (replacement due March 2025) and so
-    we need more detail for requests, plus your plan for removal of the data once your 
-    quota increase ends. We will be considering requests in batches and comparing to
-    space left. All granted requests will expire at the end of March 2025 or Myriad
-    refresh date, whichever is earliest, and will require reapplication for the new 
-    filesystem.</li>
 </ul>
 <h3 id="examples-of-requests">Examples of requests<a class="headerlink" href="#examples-of-requests" title="Permanent link">§</a></h3>
 <ul>
 <li>Increased Scratch quota - tell us how much, for what purpose and how long you'll need it. Also
    tell us in brief your plan for removal of the data once your quota increase ends.<ul>
-<li>Once implemented, <code>lquota</code> will show the new quota.</li>
+<li>Once implemented, <code>gquota</code> (Myriad) or <code>lquota</code> (Kathleen) will show the new quota.</li>
 </ul>
 </li>
 <li>Longer wallclock limit<ul>
@@ -1802,11 +1816,11 @@ other users is not deemed to be significant, or of long duration.</p>
 </ul>
 </li>
 </ul>
-<h2 id="request-hosting-of-shared-datasets">Request hosting of shared datasets<a class="headerlink" href="#request-hosting-of-shared-datasets" title="Permanent link">§</a></h2>
-<p>We have provision for hosting shared datasets for users on Myriad. These
-can be datasets that are freely accessible by all users, or ones limited
+<h2 id="request-hosting-of-shared-project-spaces-or-datasets">Request hosting of shared project spaces or datasets<a class="headerlink" href="#request-hosting-of-shared-project-spaces-or-datasets" title="Permanent link">§</a></h2>
+<p>We have provision for hosting project spaces/shared spaces/datasets for users on Myriad. 
+These can be spaces or datasets that are freely accessible by all users, or ones limited
 to groups.</p>
-<p>Hosted datasets:</p>
+<p>Shared project spaces/hosted datasets:</p>
 <ul>
 <li>Will not be backed up.</li>
 <li>Must have a named primary contact.</li>
@@ -1815,12 +1829,36 @@ to groups.</p>
 <li>Will have an associated quota.</li>
 <li>Will be removed when renewal lapses (notice will be given).</li>
 </ul>
-<p>They are likely to be managed by a role account - access to the role
-account will be by ssh key.</p>
 <p>To apply for a hosted dataset, please send this form to
 <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#114;&#99;&#45;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#117;&#99;&#108;&#46;&#97;&#99;&#46;&#117;&#107;">&#114;&#99;&#45;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#117;&#99;&#108;&#46;&#97;&#99;&#46;&#117;&#107;</a>.</p>
 <ul>
 <li><a href="Hosted_dataset_request_form.rtf">Hosted dataset request form</a></li>
+</ul>
+<h2 id="deletion-policy-for-increased-quota-and-shared-spaces">Deletion policy for increased quota and shared spaces<a class="headerlink" href="#deletion-policy-for-increased-quota-and-shared-spaces" title="Permanent link">§</a></h2>
+<p>When your quota or space is due to expire, we will send reminders via MyServices (so you should get an email notification but also have a notification viewable in there) on this schedule:</p>
+<ul>
+<li>1 month before expiry</li>
+<li>2 weeks before expiry </li>
+<li>1 week before expiry </li>
+<li>Day of expiry </li>
+<li>1 month after expiry</li>
+</ul>
+<p>(If you renew, you won't get the additional reminders).</p>
+<p>If it is a shared space with an associated group, notifications will also be sent to the members of the group, in case the person in charge of it left and ownership needs to change.</p>
+<p>On the day of expiry, if we have heard nothing from you and you are still using the space your quota will be set back to normal so new files cannot be created. If it was a personal quota we will also prevent you from submitting new jobs since they would fail. Your data will remain on Myriad at this point so you can still copy it off and delete it. </p>
+<p>One month after expiry if it was a personal quota and you are still over quota we will move all of your home and Scratch data onto another location. If it was a shared space and still contains data we will move all the contents of the space to another location.</p>
+<p>We will keep the data for two months more.</p>
+<p>If we still hear nothing from you during these two months, we will delete all the data (three months after the expiry date).</p>
+<p>Please do consider this if you are going to be away from UCL for some period of time - you can contact us in advance of the quota or space expiring.</p>
+<p>To summarise:</p>
+<ul>
+<li>Day of expiry: quota set back to normal; job submission prevented if a personal quota.</li>
+<li>One month after quota expiry:<ul>
+<li>If personal quota: all your home and Scratch data moved to a third location</li>
+<li>If shared space, shared data moved to a third location</li>
+</ul>
+</li>
+<li>Three months after quota expiry: all data deleted from the third location.</li>
 </ul>
 <h2 id="purchase-dedicated-compute-nodes-or-priority-cycles-on-myriad">Purchase dedicated compute nodes or priority cycles on Myriad<a class="headerlink" href="#purchase-dedicated-compute-nodes-or-priority-cycles-on-myriad" title="Permanent link">§</a></h2>
 <p>Researchers may purchase additional resources to be used as part of the <a href="../Clusters/Myriad/">Myriad</a> High Performance Computing cluster if the free service does not meet their needs. See Paid-for resources: <a href="../Paid-For_Resources/Purchasing_in_Myriad/">Purchasing in Myriad</a> for details.</p>
