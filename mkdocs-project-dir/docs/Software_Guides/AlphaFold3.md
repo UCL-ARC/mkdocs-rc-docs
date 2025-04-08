@@ -25,10 +25,10 @@ Having added the model weights, you will also need to create input and output di
 You should now have three locations which are unique to you. For ease of reference  in the job script I'm going to set environment variables to them so that the command-line is consistent and so you can change them without messing with the command line options.
 
 ```
-export AF3_INPUT=/scratch/scratch/uccaoke/af3_input # Replace with your input folder
+export AF3_INPUT=/home/${USER}/Scratch/af3_input # Replace with your input folder
 export AF3_INPUT_FILE=fold_input.json # Replace with a file in your input folder
-export AF3_OUTPUT=/scratch/scratch/uccaoke/af3_output # Replace with your output folder
-export AF3_WEIGHTS=/scratch/scratch/uccaoke/weights # Replace with the folder you put the weights in
+export AF3_OUTPUT=/home/${USER}/Scratch/af3_output # Replace with your output folder
+export AF3_WEIGHTS=/home/${USER}/Scratch/weights # Replace with the folder you put the weights in
 ```
 
 ## Running AlphaFold3
@@ -59,10 +59,10 @@ Write a job script that requests GPU nodes:
 # Set the working directory to the current working directory.
 #$ -cwd
 
-export AF3_INPUT=/scratch/scratch/uccaoke/af3_input # Replace with your input folder
+export AF3_INPUT=/home/${USER}/Scratch/af3_input # Replace with your input folder
 export AF3_INPUT_FILE=fold_input.json # Replace with a file in your input folder
-export AF3_OUTPUT=/scratch/scratch/uccaoke/af3_output # Replace with your output folder
-export AF3_WEIGHTS=/scratch/scratch/uccaoke/weights # Replace with the folder you put the weights in
+export AF3_OUTPUT=/home/${USER}/Scratch/af3_output # Replace with your output folder
+export AF3_WEIGHTS=/home/${USER}/Scratch/weights # Replace with the folder you put the weights in
 
 apptainer exec --nv --bind ${AF3_INPUT}:/root/af_input --bind ${AF3_OUTPUT}:/root/af_output --bind ${AF3_WEIGHTS}:/root/models --bind /shared/ucl/apps/AlphaFold3_db:/root/public_databases --no-home --no-mount bind-paths  /shared/ucl/apps/AlphaFold3/alphafold3.sif sh -c "XLA_FLAGS='--xla_disable_hlo_passes=custom-kernel-fusion-rewriter' python3 /app/alphafold/run_alphafold.py --json_path=/root/af_input/${AF3_INPUT_FILE} --model_dir=/root/models --db_dir=/root/public_databases --output_dir=/root/af_output --flash_attention_implementation=xla"
 ```
@@ -95,10 +95,10 @@ If you wish to queue for an A100, this job should work:
 # Set the working directory to the current working directory.
 #$ -cwd
 
-export AF3_INPUT=/scratch/scratch/uccaoke/af3_input # Replace with your input folder
+export AF3_INPUT=/home/${USER}/Scratch/af3_input # Replace with your input folder
 export AF3_INPUT_FILE=fold_input.json # Replace with a file in your input folder
-export AF3_OUTPUT=/scratch/scratch/uccaoke/af3_output # Replace with your output folder
-export AF3_WEIGHTS=/scratch/scratch/uccaoke/weights # Replace with the folder you put the weights in
+export AF3_OUTPUT=/home/${USER}/Scratch/af3_output # Replace with your output folder
+export AF3_WEIGHTS=/home/${USER}/Scratch/weights # Replace with the folder you put the weights in
 
 apptainer exec --nv --bind ${AF3_INPUT}:/root/af_input --bind ${AF3_OUTPUT}:/root/af_output --bind ${AF3_WEIGHTS}:/root/models --bind /shared/ucl/apps/AlphaFold3_db:/root/public_databases --no-home --no-mount bind-paths  /shared/ucl/apps/AlphaFold3/alphafold3.sif sh -c "python3 /app/alphafold/run_alphafold.py --json_path=/root/af_input/${AF3_INPUT_FILE} --model_dir=/root/models --db_dir=/root/public_databases --output_dir=/root/af_output"
 ```
