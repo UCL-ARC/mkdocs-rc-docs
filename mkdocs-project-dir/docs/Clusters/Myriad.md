@@ -49,25 +49,25 @@ Please refer to the page on [How do I transfer data onto the system?](../howto.m
 
 ## Quotas
 
-The default quotas on Myriad are 150GB for home and 1TB for Scratch.
+The default quota on Myriad is 1TB for home (which is also considered scratch).
 
-These are hard quotas: once you reach them, you will no longer be able
-to write more data. Keep an eye on them, as this will cause jobs to fail
+The "hard limit" number means that once you reach it, you will no longer be able
+to write more data. Keep an eye on your quota, as this will cause jobs to fail
 if they cannot create their .o or .e files at the start, or their output
 files partway through.
 
-You can check both quotas on Myriad by running: 
+You can check your quota on Myriad by running: 
 
 ```
-lquota
+gquota
 ``` 
 
 which will give you output similar to this:
 
 ```
-     Storage        Used        Quota   % Used   Path
-        home  721.68 MiB   150.00 GiB       0%   /home/uccaxxx
-     scratch   52.09 MiB     1.00 TiB       0%   /scratch/scratch/uccaxxx
+Current Usage: 108.7GiB
+Soft Limit: 1024GiB
+Hard Limit: 1024GiB
 ```
 
 You can apply for quota increases using the form at [Additional Resource Requests](../Additional_Resource_Requests.md).
