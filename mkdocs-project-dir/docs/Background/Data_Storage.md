@@ -28,13 +28,15 @@ Many programs will write hidden config files in here, with names beginning with 
 
 ### Scratch
 
-Every user also has a Scratch directory. It is intended that this is a larger space to keep your working
-files as you do your research, but should not be relied on for secure long-term permanent storage.
+Every user also has a Scratch directory. On Myriad and Kathleen this exists for backwards 
+compatibility and all of your home space should be considered scratch.
+
+It is intended that this is a larger space to keep your working files as you do your 
+research. It should not be relied on for secure long-term permanent storage.
 
 Important data should be regularly backed up to another location.
 
-- Location: `/scratch/scratch/<username>`
-- Also at: `/home/<username>/Scratch` (a shortcut or symbolic link to the first location).
+- Location: `/home/<username>/Scratch` (either a directory or a shortcut or symbolic link to a different location).
 
 ### Temporary storage for jobs (TMPDIR)
 
@@ -62,8 +64,7 @@ The ACFS is available read-write on the login nodes but read-only on the compute
 that your jobs can read from it, but not write to it, and it is intended that you copy data onto
 it after deciding which outputs from your jobs are important to keep.
 
-Initially rolled out on Kathleen, you will later be able to access it from Myriad too and see
-the same files from both clusters.
+Available on Myriad and Kathleen, you will be able to see the same files from both clusters.
 
 - Location: `/acfs/users/<username>`
 - Also at: `/home/<username>/ACFS` (a shortcut or symbolic link to the first location).
