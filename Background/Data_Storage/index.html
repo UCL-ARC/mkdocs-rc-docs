@@ -1764,12 +1764,13 @@ compute, connected to it with a fast network.</p>
 <p>Many programs will write hidden config files in here, with names beginning with <code>.</code> (eg <code>.config</code>,
 <code>.cache</code>). You can see these with <code>ls -al</code>.</p>
 <h3 id="scratch">Scratch<a class="headerlink" href="#scratch" title="Permanent link">§</a></h3>
-<p>Every user also has a Scratch directory. It is intended that this is a larger space to keep your working
-files as you do your research, but should not be relied on for secure long-term permanent storage.</p>
+<p>Every user also has a Scratch directory. On Myriad and Kathleen this exists for backwards 
+compatibility and all of your home space should be considered scratch.</p>
+<p>It is intended that this is a larger space to keep your working files as you do your 
+research. It should not be relied on for secure long-term permanent storage.</p>
 <p>Important data should be regularly backed up to another location.</p>
 <ul>
-<li>Location: <code>/scratch/scratch/&lt;username&gt;</code></li>
-<li>Also at: <code>/home/&lt;username&gt;/Scratch</code> (a shortcut or symbolic link to the first location).</li>
+<li>Location: <code>/home/&lt;username&gt;/Scratch</code> (either a directory or a shortcut or symbolic link to a different location).</li>
 </ul>
 <h3 id="temporary-storage-for-jobs-tmpdir">Temporary storage for jobs (TMPDIR)<a class="headerlink" href="#temporary-storage-for-jobs-tmpdir" title="Permanent link">§</a></h3>
 <p>If the cluster you are on is not described in its about page as being diskless, the compute nodes
@@ -1789,8 +1790,7 @@ multiple ARC systems.</p>
 <p>The ACFS is available read-write on the login nodes but read-only on the compute nodes. This means
 that your jobs can read from it, but not write to it, and it is intended that you copy data onto
 it after deciding which outputs from your jobs are important to keep.</p>
-<p>Initially rolled out on Kathleen, you will later be able to access it from Myriad too and see
-the same files from both clusters.</p>
+<p>Available on Myriad and Kathleen, you will be able to see the same files from both clusters.</p>
 <ul>
 <li>Location: <code>/acfs/users/&lt;username&gt;</code></li>
 <li>Also at: <code>/home/&lt;username&gt;/ACFS</code> (a shortcut or symbolic link to the first location).</li>

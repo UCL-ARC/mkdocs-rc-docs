@@ -1916,19 +1916,19 @@ ssh uccaxxx@login13.myriad.rc.ucl.ac.uk
 <p>You will need to use an SCP or SFTP client to copy data onto Myriad.
 Please refer to the page on <a href="../../howto/#how-do-i-transfer-data-onto-the-system">How do I transfer data onto the system?</a></p>
 <h2 id="quotas">Quotas<a class="headerlink" href="#quotas" title="Permanent link">§</a></h2>
-<p>The default quotas on Myriad are 150GB for home and 1TB for Scratch.</p>
-<p>These are hard quotas: once you reach them, you will no longer be able
-to write more data. Keep an eye on them, as this will cause jobs to fail
+<p>The default quota on Myriad is 1TB for home (which is also considered scratch).</p>
+<p>The "hard limit" number means that once you reach it, you will no longer be able
+to write more data. Keep an eye on your quota, as this will cause jobs to fail
 if they cannot create their .o or .e files at the start, or their output
 files partway through.</p>
-<p>You can check both quotas on Myriad by running: </p>
-<div class="codehilite"><pre><span></span><code>lquota
+<p>You can check your quota on Myriad by running: </p>
+<div class="codehilite"><pre><span></span><code>gquota
 </code></pre></div>
 
 <p>which will give you output similar to this:</p>
-<div class="codehilite"><pre><span></span><code>     Storage        Used        Quota   % Used   Path
-        home  721.68 MiB   150.00 GiB       0%   /home/uccaxxx
-     scratch   52.09 MiB     1.00 TiB       0%   /scratch/scratch/uccaxxx
+<div class="codehilite"><pre><span></span><code>Current Usage: 108.7GiB
+Soft Limit: 1024GiB
+Hard Limit: 1024GiB
 </code></pre></div>
 
 <p>You can apply for quota increases using the form at <a href="../../Additional_Resource_Requests/">Additional Resource Requests</a>.</p>

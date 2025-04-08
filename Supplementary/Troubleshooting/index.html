@@ -1695,18 +1695,21 @@ a Unix one - the line break characters are different. Type <code>dos2unix
 <p>Sometimes the offending characters will be visible in the error. You can
 see here it's trying to parse <code>^M</code> as an option.</p>
 <h3 id="i-think-i-deleted-my-scratch-space-how-do-i-restore-it">I think I deleted my Scratch space, how do I restore it?<a class="headerlink" href="#i-think-i-deleted-my-scratch-space-how-do-i-restore-it" title="Permanent link">§</a></h3>
-<p>You may have accidentally deleted or replaced the link to your Scratch
-space. Do an <code>ls -al</code> in your home - if set up correctly, it should look
-like this:</p>
+<p>If you are on a cluster (not Myriad) where Scratch is a symbolic link (shortcut) you may have 
+accidentally deleted or replaced the link to your Scratch space but not removed its contents. 
+Do an <code>ls -al</code> in your home - if set up correctly, it should look like this:</p>
 <div class="codehilite"><pre><span></span><code>lrwxrwxrwx   1 username group       24 Apr 14  2022 Scratch -&gt; /scratch/scratch/username
 </code></pre></div>
 
 <p>where <code>username</code> is your UCL user ID and <code>group</code> is your primary group. </p>
-<p>If this link is not present, you can recreate it with</p>
+<p>If this link is not present, it will be automatically recreated when you log back in, or you 
+can recreate it with</p>
 <div class="codehilite"><pre><span></span><code>ln -s /scratch/scratch/$(whoami) Scratch
 </code></pre></div>
 
-<p>If you have actually deleted the files stored in your Scratch space, there is unfortunately no way to restore them.</p>
+<p>If you are on a cluster like Myriad where Scratch is a normal directory in your home or you 
+have actually deleted the files stored in your Scratch space, there is unfortunately no way 
+to restore them.</p>
 <h3 id="which-mkl-library-files-should-i-use-to-build-my-application">Which MKL library files should I use to build my application?<a class="headerlink" href="#which-mkl-library-files-should-i-use-to-build-my-application" title="Permanent link">§</a></h3>
 <p>Depending on which whether you wish to use BLAS/LAPACK/ScaLAPACK/etc...
 there is a specific set of libraries that you need to pass to your

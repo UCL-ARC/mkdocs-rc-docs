@@ -1692,10 +1692,10 @@
 <p>Most of the GPUs on Myriad are V100s, which need to have additional parameters passed to the container, namely setting an environment variable in the contaner (<code>XLA_FLAGS='--xla_disable_hlo_passes=custom-kernel-fusion-rewriter</code>) and passing a command line option to AlphaFold3 itself (<code>--flash_attention_implementation=xla</code>) in order to produce good structures. You can find more details on this on <a href="https://github.com/google-deepmind/alphafold3/issues/59">this Github issue</a>.</p>
 <p>Having added the model weights, you will also need to create input and output directories.</p>
 <p>You should now have three locations which are unique to you. For ease of reference  in the job script I'm going to set environment variables to them so that the command-line is consistent and so you can change them without messing with the command line options.</p>
-<div class="codehilite"><pre><span></span><code>export AF3_INPUT=/scratch/scratch/uccaoke/af3_input # Replace with your input folder
+<div class="codehilite"><pre><span></span><code>export AF3_INPUT=/home/${USER}/Scratch/af3_input # Replace with your input folder
 export AF3_INPUT_FILE=fold_input.json # Replace with a file in your input folder
-export AF3_OUTPUT=/scratch/scratch/uccaoke/af3_output # Replace with your output folder
-export AF3_WEIGHTS=/scratch/scratch/uccaoke/weights # Replace with the folder you put the weights in
+export AF3_OUTPUT=/home/${USER}/Scratch/af3_output # Replace with your output folder
+export AF3_WEIGHTS=/home/${USER}/Scratch/weights # Replace with the folder you put the weights in
 </code></pre></div>
 
 <h2 id="running-alphafold3">Running AlphaFold3<a class="headerlink" href="#running-alphafold3" title="Permanent link">§</a></h2>
@@ -1723,10 +1723,10 @@ export AF3_WEIGHTS=/scratch/scratch/uccaoke/weights # Replace with the folder yo
 # Set the working directory to the current working directory.
 #$ -cwd
 
-export AF3_INPUT=/scratch/scratch/uccaoke/af3_input # Replace with your input folder
+export AF3_INPUT=/home/${USER}/Scratch/af3_input # Replace with your input folder
 export AF3_INPUT_FILE=fold_input.json # Replace with a file in your input folder
-export AF3_OUTPUT=/scratch/scratch/uccaoke/af3_output # Replace with your output folder
-export AF3_WEIGHTS=/scratch/scratch/uccaoke/weights # Replace with the folder you put the weights in
+export AF3_OUTPUT=/home/${USER}/Scratch/af3_output # Replace with your output folder
+export AF3_WEIGHTS=/home/${USER}/Scratch/weights # Replace with the folder you put the weights in
 
 apptainer exec --nv --bind ${AF3_INPUT}:/root/af_input --bind ${AF3_OUTPUT}:/root/af_output --bind ${AF3_WEIGHTS}:/root/models --bind /shared/ucl/apps/AlphaFold3_db:/root/public_databases --no-home --no-mount bind-paths  /shared/ucl/apps/AlphaFold3/alphafold3.sif sh -c &quot;XLA_FLAGS=&#39;--xla_disable_hlo_passes=custom-kernel-fusion-rewriter&#39; python3 /app/alphafold/run_alphafold.py --json_path=/root/af_input/${AF3_INPUT_FILE} --model_dir=/root/models --db_dir=/root/public_databases --output_dir=/root/af_output --flash_attention_implementation=xla&quot;
 </code></pre></div>
@@ -1756,10 +1756,10 @@ apptainer exec --nv --bind ${AF3_INPUT}:/root/af_input --bind ${AF3_OUTPUT}:/roo
 # Set the working directory to the current working directory.
 #$ -cwd
 
-export AF3_INPUT=/scratch/scratch/uccaoke/af3_input # Replace with your input folder
+export AF3_INPUT=/home/${USER}/Scratch/af3_input # Replace with your input folder
 export AF3_INPUT_FILE=fold_input.json # Replace with a file in your input folder
-export AF3_OUTPUT=/scratch/scratch/uccaoke/af3_output # Replace with your output folder
-export AF3_WEIGHTS=/scratch/scratch/uccaoke/weights # Replace with the folder you put the weights in
+export AF3_OUTPUT=/home/${USER}/Scratch/af3_output # Replace with your output folder
+export AF3_WEIGHTS=/home/${USER}/Scratch/weights # Replace with the folder you put the weights in
 
 apptainer exec --nv --bind ${AF3_INPUT}:/root/af_input --bind ${AF3_OUTPUT}:/root/af_output --bind ${AF3_WEIGHTS}:/root/models --bind /shared/ucl/apps/AlphaFold3_db:/root/public_databases --no-home --no-mount bind-paths  /shared/ucl/apps/AlphaFold3/alphafold3.sif sh -c &quot;python3 /app/alphafold/run_alphafold.py --json_path=/root/af_input/${AF3_INPUT_FILE} --model_dir=/root/models --db_dir=/root/public_databases --output_dir=/root/af_output&quot;
 </code></pre></div>
