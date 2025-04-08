@@ -19,7 +19,8 @@ Users who wish to request additional resources or reserve resources
 beyond those provided can complete the additional resource request form
 in collaboration with your supervisor or the project's principal
 investigator. This includes requests for increased storage quotas.
-Please read the [Deletion policy](#deletion-policy-for-increased-quota-and-shared-spaces) below.
+Please read the [Deletion policy](#deletion-policy-for-increased-quota-and-shared-spaces) 
+below as data will be deleted if these expire.
 
 The completed form should be sent to the Research Computing Platforms
 team at <mailto:rc-support@ucl.ac.uk>, for technical review. If successful,
