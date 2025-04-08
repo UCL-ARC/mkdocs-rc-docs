@@ -49,9 +49,9 @@ see here it's trying to parse `^M` as an option.
 
 ### I think I deleted my Scratch space, how do I restore it?
 
-You may have accidentally deleted or replaced the link to your Scratch
-space. Do an `ls -al` in your home - if set up correctly, it should look
-like this:
+If you are on a cluster (not Myriad) where Scratch is a symbolic link (shortcut) you may have 
+accidentally deleted or replaced the link to your Scratch space but not removed its contents. 
+Do an `ls -al` in your home - if set up correctly, it should look like this:
 
 ```
 lrwxrwxrwx   1 username group       24 Apr 14  2022 Scratch -> /scratch/scratch/username
@@ -59,13 +59,16 @@ lrwxrwxrwx   1 username group       24 Apr 14  2022 Scratch ->
 
 where `username` is your UCL user ID and `group` is your primary group. 
 
-If this link is not present, you can recreate it with
+If this link is not present, it will be automatically recreated when you log back in, or you 
+can recreate it with
 
 ```
 ln -s /scratch/scratch/$(whoami) Scratch
 ```
 
-If you have actually deleted the files stored in your Scratch space, there is unfortunately no way to restore them.
+If you are on a cluster like Myriad where Scratch is a normal directory in your home or you 
+have actually deleted the files stored in your Scratch space, there is unfortunately no way 
+to restore them.
 
 ### Which MKL library files should I use to build my application?
 
