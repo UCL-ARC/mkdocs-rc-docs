@@ -27,7 +27,7 @@ They do *not* apply to other ARC services, including:
 
 These services have their own terms and conditions for use.
 
-## Your account
+## Your Account
 
 You may only have one active account on a service except with prior agreement.
 
