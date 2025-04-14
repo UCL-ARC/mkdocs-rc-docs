@@ -8,7 +8,7 @@ layout: docs
 # Terms and Conditions
 
 !!! info
-    The Terms and Conditions were changed on 10 September 2024. [The previous Terms and Conditions are still available for reference](Supplementary/Previous_Terms_and_Conditions.md).
+    The Terms and Conditions were updated on 14 April 2024. [The previous Terms and Conditions are still available for reference](Supplementary/Previous_Terms_and_Conditions.md).
 
 All use of Research Computing Platforms is subject to the general [UCL Computing Regulations](https://www.ucl.ac.uk/information-security/sites/information_security/files/regulations.pdf).
 
@@ -26,6 +26,10 @@ They do *not* apply to other ARC services, including:
  - Research Data Storage Service
 
 These services have their own terms and conditions for use.
+
+## Your account
+
+You may only have one active account on a service except with prior agreement.
 
 ## Commercial Services
 
@@ -80,9 +84,13 @@ Occasionally support requests can involve more involved work, including running 
 
 #### Data Retention on Leaving UCL
 
-We intend to retain user data for 180 days after a user has either left UCL, requested that their account be removed, had their institution request that their account be removed, or become ineligible for an account in some other way.
+We intend to retain user data for 180 days after a user has either left UCL, had their institution request that their account be removed, or become ineligible for an account in some other way.
 
 This process is not currently automated, so data may still be retained after this time. Please contact us if you need to ensure your data has been erased.
+
+#### Deletion of Data on Request
+
+If you request that your account and data on the clusters be removed, this will be carried out within one month, and generally within five UCL working days if possible.
 
 #### Backup Retention
 
