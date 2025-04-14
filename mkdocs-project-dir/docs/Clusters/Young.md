@@ -18,7 +18,7 @@ In particular the "Software Training" section:
    details of hardware, how to submit jobs and an overview of types of parallelism
  - [A quick 4 minute overview of how to choose memory](https://www.youtube.com/watch?v=pYspFuxbWjs)
  - [Longer videos on memory allocation for new users](https://www.youtube.com/watch?v=D3iF_N0cwv4)
-   - [A hands-on memory allocation example](https://www.youtube.com/watch?v=QlMaN_ECIwg) 
+    - [A hands-on memory allocation example](https://www.youtube.com/watch?v=QlMaN_ECIwg) 
 
 ### MMM Hub: HPE / NVIDIA GPU Training Day
 
@@ -171,8 +171,8 @@ help you find information about your jobs after they have run.
     given job.
 
 These utilities live in GitHub at
-<https://github.com/UCL-RITS/go-clustertools> and
-<https://github.com/UCL-RITS/rcps-cluster-scripts>
+<https://github.com/UCL-ARC/go-clustertools> and
+<https://github.com/UCL-ARC/rcps-cluster-scripts>
 
 
 ### Known problems
@@ -249,8 +249,8 @@ Unloading mpi/intel/2018/update3/intel
 
 ### Requesting software installs
 
-To request software installs, email us at the [support address below](#Support) or open an issue on our
-[GitHub](https://github.com/UCL-RITS/rcps-buildscripts/issues). You can
+To request software installs, email us at the [support address below](#support) or open an issue on our
+[GitHub](https://github.com/UCL-ARC/rcps-buildscripts/issues). You can
 see what software has already been requested in the Github issues and
 can add a comment if you're also interested in something already
 requested.
@@ -278,7 +278,7 @@ check your groups with the `groups` command.
 Please let us know your username when you ask to be added to a group.
 
   - **CASTEP**: You/your group leader need to have 
-    [signed up for a CASTEP license](http://www.castep.org/CASTEP/GettingCASTEP).
+    [signed up for a CASTEP license](https://www.castep.org/get_castep).
     Send us an acceptance email, or we can ask them to verify you have a
     license. You will then be added to the reserved application group
     `lgcastep`. If you are a member of UKCP you are already covered by a
@@ -289,7 +289,7 @@ Please let us know your username when you ask to be added to a group.
     along with confirmation from the group leader that you should be in
     their group. You will be added to the `legcryst` group.
   - **DL\_POLY**: has individual licenses for specific versions.
-    [Sign up at DL\_POLY's website](http://www.scd.stfc.ac.uk//research/app/ccg/software/DL_POLY/40526.aspx)
+    [Sign up at DL\_POLY's website](https://www.ccp5.ac.uk/dl_poly/)
     and send us the acceptance email they give you. We will add you to
     the appropriate version's reserved application group, eg `lgdlp408`.
   - **Gaussian**: not currently accessible for non-UCL institutions. UCL
@@ -303,7 +303,7 @@ Please let us know your username when you ask to be added to a group.
     add you. We will add you to the `legvasp5` or `legvasp6` reserved 
     application groups depending on which versions you are licensed for. 
     You may also install your own copy in your home, and we provide a simple
-    [build script on Github](https://github.com/UCL-RITS/rcps-buildscripts/blob/master/vasp_individual_install)
+    [build script on Github](https://github.com/UCL-ARC/rcps-buildscripts/blob/master/vasp_individual_install)
     (tested with VASP 5.4.4, no patches). You need to download the VASP
     source code and then you can run the script following the
     instructions at the top.
@@ -325,9 +325,10 @@ facilities.
 | Free CPU job, any         | 5120  | 0    | 24hrs         |
 | Free GPU job, any         | 320   | 40   | 48hrs         |
 | Free GPU fast interactive | 64    | 8    | 6hrs          |
+| HBM CPU job, any          | 2048  | 0    | 48hrs         |
 
-CPU jobs or [GPU jobs](#GPU_nodes) can be run on Young, and there are 
-different [nodes](#Node_types) dedicated for each.
+CPU jobs or [GPU jobs](#gpu-nodes) can be run on Young, and there are 
+different [nodes](#node-types) dedicated for each.
 
 These are numbers of physical cores: multiply by two for virtual cores 
 with [hyperthreads](#hyperthreading) on the CPU nodes.
@@ -358,19 +359,20 @@ long waits if every CU is half full.
 
 If your job must run within a single CU, you can request the parallel environment as `-pe wss` instead of `-pe mpi` (`wss` standing for 'wants single switch'). This will increase your queue times. It is suggested you only do this for benchmarking or if performance is being greatly affected by running in the superqueue.
 
-[ back to top](#top "wikilink")
 
 ## Node types
 
-Young has four types of node: standard nodes, big memory nodes, really big memory nodes 
-and GPU nodes. Note those last two have different processors and number of CPU cores per node.
+Young has five types of node: standard nodes, big memory nodes, really big memory nodes, 
+GPU nodes and HBM nodes. Note those last three have different processors and number of 
+CPU cores per node.
 
 | Type  | Cores per node | RAM per node | tmpfs | Nodes | Memory request necessary | GPU |
 | ----- | -------------- | ------------ | ----- | ----- | ------------------------ | --- |
-| C     | 40             | 192G         | None  | 576   | Any | None |
+| C     | 40             | 192G (188G usable) | None  | 576   | Any | None |
 | Y     | 40             | 1.5T         | None  | 3     | mpi: mem >=19G, smp: >186G total | None |
 | Z     | 36             | 3.0T         | None  | 3     | mpi: mem >=42G, smp: >1530G total | None |
 | X     | 64             | 1T           | 200G  | 6     | Any | 8 x Nvidia 40G A100 |
+| W     | 64             | 503G usable | 3.5T  | 32    | Any | None |
 
 These are numbers of physical cores: multiply by two for virtual cores with
 hyperthreading. 
@@ -386,6 +388,7 @@ Here are the processors each node type has:
   - Y: Intel(R) Xeon(R) Gold 6248 CPU @ 2.50GHz
   - Z: Intel(R) Xeon(R) Gold 6240M CPU @ 2.60GHz
   - X: dual AMD EPYC 7543 32-Core Processor
+  - W: Intel (R) Xeon(R) CPU Max 9462
 
 (If you ever need to check this, you can include `cat /proc/cpuinfo` in your jobscript so 
 you get it in your job's .o file for the exact node your job ran on. You will get an entry
@@ -398,7 +401,37 @@ future.
 
 [How to use the GPU nodes](../Supplementary/Young_GPU_Nodes.md).
 
-### Restricting to one node type
+
+## High Bandwidth Memory nodes
+
+The HBM nodes have 64GB of integrated High Bandwidth Memory per socket and two sockets per node.
+
+HBM nodes can be set on the system level in two modes. 
+
+* HBM cache mode: In cache mode, HBM functions as a memory-side cache for contents of DDR memory. 
+  In this mode, HBM is transparent to all software because the HBM cache is managed by hardware 
+  memory controllers. No code changes are required.
+
+* HBM flat mode: In flat mode, both DDR and the HBM address spaces are visible to software. 
+  Applications may need to be modified or tuned to be aware of the additional memory hierarchy.
+
+At present, we have the nodes set in cache mode. We will be re-evaluating this after the 
+operating system is upgraded and will have full support for flat mode - at this point we 
+may have some nodes in each mode to allow you to experiment.
+
+There are more details about HBM and the modes at [Enabling High Bandwidth Memory for HPC and AI Applications for Next Gen Intel Xeon Processors](https://community.intel.com/t5/Blogs/Products-and-Solutions/HPC/Enabling-High-Bandwidth-Memory-for-HPC-and-AI-Applications-for/post/1335100)
+
+### Requesting HBM nodes
+
+You need to request these nodes explicitly in your job.
+
+```
+# Request HBM nodes
+#$ -ac allow=W
+```
+
+
+## Restricting to one node type
 
 The scheduler will schedule your job on the relevant nodetype 
 based on the resources you request, but if you really need to specify 
@@ -467,26 +500,29 @@ process per node which would create 80 threads on the node (on Hyperthreads).
 
 ## Diskless nodes
 
-Young CPU nodes are diskless (have no local hard drives) - there is no `$TMPDIR` 
-available, so you should not request `-l tmpfs=10G` in your 
+Young standard and big memory CPU nodes are diskless (have no local hard drives) - 
+there is no `$TMPDIR` available, so you should not request `-l tmpfs=10G` in your 
 jobscripts or your job will be rejected at submit time.
 
 If you need temporary space, you should use somewhere in your Scratch.
 
+The GPU nodes and HBM nodes do have disks and so `tmpfs` can be requested there.
 
 ## Disk quotas
 
-You have one per-user quota, with a default amount of 250GB - this is the total across home and Scratch.
+You have per-user quotas for home and Scratch.
 
-  - `lquota` shows you your quota and total usage (twice).
-  - `request_quota` is how you request a quota increase.
+  - home: 100G quota, backed up, no increases available
+  - Scratch: 250G quota by default, not backed up, increases possible
+
+  - `lquota` shows you your quota and total usage.
+  - `request_quota` is how you request a Scratch quota increase.
 
 If you go over quota, you will no longer be able to create new files and your jobs will fail as they cannot write.
 
 Quota increases may be granted without further approval, depending on size and how full the 
 filesystem is. Otherwise they may need to go to the MMM Hub User Group for approval.
 
-[ back to top](#top "wikilink")
 
 
 ## Budgets and allocations

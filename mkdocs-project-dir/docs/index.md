@@ -33,7 +33,7 @@ whatever your skill level or requirements.
 
 ## How to...
 
-- [Connect to the Research Data Storage service](https://www.ucl.ac.uk/isd/how-to/rdss-myriad-data-storage-transfer-service)
+- [Connect to the Research Data Storage service](https://www.ucl.ac.uk/advanced-research-computing/platforms-services/research-data-storage-service/live-storage-access-guide)
 - [Access services from outside UCL](howto.md#logging-in-from-outside-the-ucl-firewall)
 - [Apply for access to national GPU clusters](Supplementary/GPU_Clusters.md)
 - [Get more resources](Additional_Resource_Requests.md) (more storage, more
@@ -54,5 +54,5 @@ We run some instances of these courses between specified dates with scheduled
 online tutorial sessions or they can be done self-service at any time.
 
 Please see our
-[Research IT Training page](https://www.ucl.ac.uk/advanced-research-computing/education/training)
+[ARC Training page](https://www.ucl.ac.uk/advanced-research-computing/education/training)
 for details of when the taught versions of these courses are run.

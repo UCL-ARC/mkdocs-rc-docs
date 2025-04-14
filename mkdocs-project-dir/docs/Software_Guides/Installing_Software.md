@@ -18,7 +18,7 @@ in your ecosystem.
 your home space? We can provide some assistance here if you tell us what problems you are
 encountering.
 
-The requests will be added to the issues in our [buildscripts repository](https://github.com/UCL-RITS/rcps-buildscripts). The buildscripts themselves are there too, so you can see how we 
+The requests will be added to the issues in our [buildscripts repository](https://github.com/UCL-ARC/rcps-buildscripts). The buildscripts themselves are there too, so you can see how we 
 built and installed our central software stack.
 
 You can install software yourself in your space on the cluster. Below are some tips for 
@@ -86,13 +86,12 @@ Useful resources:
 ### Newer versions of GCC and GLIBCXX
 
 The software you want to run may require newer compilers or a precompiled binary may say 
-that it needs a newer GLIBCXX to be able to run. You can access these as follows:
+that it needs a newer GLIBCXX to be able to run. `module avail compilers` will show you all
+the available compilers and you can then use them as follows:
 
 ```
-# make all the newer versions visible
-module load beta-modules
 # unload current compiler, mpi and gcc-libs modules
-module unload -f compilers mpi gcc-libs
+module unload compilers mpi gcc-libs
 # load GCC 10.2.0
 module load gcc-libs/10.2.0
 module load compilers/gnu/10.2.0
@@ -101,6 +100,8 @@ module load compilers/gnu/10.2.0
 The `gcc-libs` module contains the actual compiler and libraries, while the `compilers/gnu` 
 module sets environment variables that are likely to be picked up by build systems, telling them
 what the C, C++ and Fortran compilers are called.
+
+The `compilers/intel` modules will also depend on a certain version of `gcc-libs`.
 
 ### GLIBC version error
 

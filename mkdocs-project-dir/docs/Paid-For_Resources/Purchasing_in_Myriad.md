@@ -6,12 +6,12 @@ categories:
 
 # Purchasing in Myriad
 
-!!! important "Sept 2023: We cannot buy any nodes or add paid time in Myriad for the time being."
-    This is because we have no more space in the datacentre to add new hardware, which is needed 
-    for priority access/Gold as well as dedicated node purchases.
+!!! important "4 Nov 2024: The Myriad refresh is confirmed."
+    The filesystem will be replaced first and then new nodes will be added.
+    We will be able to bring new paid nodes online in March 2025 and also allow planning for 
+    future purchases. The nodes we will have available are below. 
 
-    Please raise your requests with rc-support@ucl.ac.uk but be aware that we cannot confirm
-    our ability to fulfill them until we know what future space we will have available. 
+    Please contact rc-support@ucl.ac.uk for prices and let us know your timescales. 
 
 Researchers may purchase additional resources to be used as part of the [Myriad](../Clusters/Myriad.md) High Performance Computing cluster if the free service does not meet their needs. These resources can be made available in one of two ways:
 
@@ -22,7 +22,95 @@ Costs will include backend infrastructure – racks, switches, cables etc – ne
 
 ## Deadline
 
-The deadline for making requests to purchase Myriad nodes is the end of April.  Before this date, researchers wishing to buy compute nodes must approve an agreed Statement of Work and transfer the funds to ARC.  We can't place orders after this date because the hardware might not arrive before the end of UCL's financial year. 
+We will be able to bring new hardware online in March 2025, no hardware can be added to Myriad before then. 
+If you need your purchase to be receipted before this date, let us know and we may be able to accommodate 
+this. However, holding the hardware ahead of March will require additional work for us to store it and 
+would be a last resort. We will not be able to do this for large numbers of nodes.
+
+We expect to be able to run regular quarterly rounds again after this.
+
+Next round (currently unconfirmed): **mid-June 2025**. Let us know if you intend to take part in this one.
+
+
+## Node types
+
+We have one standard compute nodes, and several variants of NVIDIA and AMD GPU nodes.
+
+### Standard compute node
+
+#### [CPU node] 
+Lenovo ThinkSystem SD535 V3
+
+- 1 x AMD EPYC 9554P 64C 360W 3.1GHz (64 cores)
+- 768G RAM
+- 2x 480GB M.2 7450 PRO NVMe SSD (960G)
+
+### NVIDIA GPU nodes
+
+#### [GPU node 2U 01] 
+Lenovo ThinkSystem SR655 V3 with 2x NVIDIA L40S GPUs
+
+- 1x AMD EPYC 9354P 32C 280W 3.25GHz 
+- 768G RAM, 2x 960GB M.2 NVMe (1920GB)
+- 2x NVIDIA L40S 48GB
+
+#### [GPU node 2U 02] 
+Lenovo ThinkSystem SR655 V3 with 2x NVIDIA H100
+
+- 1x AMD EPYC 9354P 32C 280W 3.25GHz
+- 768G RAM, 2x 960GB M.2 NVMe (1920GB)
+- 2x NVIDIA H100 94GB
+
+#### [GPU node 2U 03] 
+Lenovo ThinkSystem SR655 V3 with 4x NVIDIA L4
+
+- 1x AMD EPYC 9354P 32C 280W 3.25GHz
+- 768G RAM, 2x 960GB M.2 NVMe (1920GB)
+- 4x NVIDIA L4 24GB
+
+#### [GPU node 3U 01] 
+Lenovo ThinkSystem SR675 V3 with 4x NVIDIA L40S GPUs
+
+- 2x AMD EPYC 9354 32C 280W 3.25GHz (64 cores total)
+- 1536G RAM, 2x 960GB NVMe (1920GB)
+- 4x NVIDIA L40S 48GB
+
+#### [GPU node 3U 02] 
+Lenovo ThinkSystem SR675 V3 with 4x NVIDIA H100 GPUs
+
+- 2x AMD EPYC 9354 32C 280W 3.25GHz (64 cores total)
+- 1536G RAM, 2x 960GB NVMe (1920GB)
+- 4x NVIDIA H100 94GB
+
+#### [GPU node 3U 03] 
+Lenovo ThinkSystem SR675 V3 with 8x NVIDIA L40S GPUs
+
+- 2x AMD EPYC 9354 32C 280W 3.25GHz (64 cores total)
+- 1536G RAM, 2x E1.S 5.9mm 7450 PRO 3.84TB NVMe
+- 8x NVIDIA L40S 48GB
+
+#### [GPU node 3U 04] 
+Lenovo ThinkSystem SR675 V3 with 8x NVIDIA H100 GPUs
+
+- 2x AMD EPYC 9354 32C 280W 3.25GHz (64 cores total)
+- 1536G RAM, 2x E1.S 5.9mm 7450 PRO 3.84TB NVMe
+- 8x NVIDIA H100 94GB
+
+### AMD GPU nodes
+
+#### [GPU node 3U AMD 01]
+Lenovo SR675 V3 with 4x AMD Instinct MI210
+
+- 2x AMD EPYC 9354P 32C 280W 3.25GHz (64 cores total)
+- 1536GB RAM,  2x 960GB NVMe (1920GB)
+- 4x AMD Instinct MI210
+
+#### [GPU node 3U AMD 02]
+Lenovo SR675 V3 with 8x AMD Instinct MI210
+
+- 2x AMD EPYC 9354P 32C 280W 3.25GHz 
+- 1536GB RAM, 2x E1.S 5.9mm 7450 PRO 3.84TB NVMe
+- 8x AMD Instinct MI210
 
 ## FAQs
 
@@ -35,11 +123,8 @@ If you are putting together a grant application and think that you may need to a
 Yes, we’d be happy to discuss this with you. Please contact [rc-support@ucl.ac.uk](mailto:rc-support@ucl.ac.uk).
 
 #### What type of nodes can we purchase?
-We currently have three types of node in Myriad, which are well tested and work reliably. These are:
 
- - Standard compute nodes: 36 Cascade Lake Xeon cores, 192GB RAM
- - GPU nodes: 36 Cascade Lake Xeon cores, 192GB RAM, 4x nVidia A100
- - High memory: 36 Cascade Lake Xeon cores, 1.5TB RAM
+[Current node types](#node-types).
 
 If you require an alternative/custom specification, we can’t guarantee that we will be able to accommodate this on the cluster, but we’re happy to look into it.
 
@@ -49,7 +134,9 @@ No. We have a framework agreement with the vendor which covers all hardware purc
 
 #### I know what hardware I need. Can you send me a quote?
 
-Even if you know what hardware you need, before we can send you a quote, we will need to agree on a detailed specification. Please email [rc-support@ucl.ac.uk](mailto:rc-support@ucl.ac.uk) with the following information:
+We can send ballpark quotes initially.
+
+Before we can send you a final quote, we will need to agree on a detailed specification. Please email [rc-support@ucl.ac.uk](mailto:rc-support@ucl.ac.uk) with the following information:
 
  - Budget holder: name and contact details
  - Type and number of nodes you’d like to purchase
@@ -58,11 +145,13 @@ We will then either send you a specification to approve, or ask to meet to discu
 
 #### How do I manage who has permission to use our nodes/priority queue?
 
-When you purchase nodes or priority cycles, we will ask you for a list of usernames of people who have permission to use the resource — access is managed using access control lists on Myriad.  If your list of users is an entire department, we can automatically generate this list nightly. Resource owners or designated resource administrators can request a change of membership of these groups by submitting a ticket in Remedy Force or emailing [rc-support@ucl.ac.uk](mailto:rc-support@ucl.ac.uk). 
+When you purchase nodes or priority cycles, we will ask you for a list of usernames of people who have permission to use the resource — access is managed using access control lists on Myriad.  If your list of users is an entire department, we can automatically generate this list nightly. Resource owners or designated resource administrators can request a change of membership of these groups by submitting a request in [MyServices](https://myservices.ucl.ac.uk) or emailing [rc-support@ucl.ac.uk](mailto:rc-support@ucl.ac.uk). 
 
 #### What is the difference between paying for priority cycles and purchasing dedicated nodes?
 
 Priority cycles is the better option for most people as it provides greater flexibility: priority cycles can be used across many nodes at once, and there is an entire allocation period to use them. Dedicated hardware however would need to be in use 24/7 in order to get the most out of it. Researchers might want dedicated nodes if they have particular requirements which mean they can only run their work on their own nodes; e.g., they have purchased non-standard nodes, or the software they are using requires a static licence tied to a particular node.
+
+Please see [Paid-For Resources: How to Use](How_to_Use.md) for more information.
 
 #### Will my 3-month priority cycle allocation roll over to the next quarter if I don’t use it?
 
@@ -74,5 +163,7 @@ Even if you require an invoice for specific hardware, you can still convert the 
 
 #### What happens to nodes I have purchased once they’ve reached the end of warranty?  
 
-The hardware is run for the life-time of the service, however if you buy dedicated nodes and they run out of warranty, they will not be replaced.
+Node purchases have a three-year warranty as standard. After the warranty period ends, if the nodes still function 
+they will be returned to the general use pool (if they were dedicated nodes) and continue running jobs until they 
+fail, or until they are retired.
 

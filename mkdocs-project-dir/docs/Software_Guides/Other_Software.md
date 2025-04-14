@@ -30,11 +30,10 @@ module help <module>    # Shows a longer text description for the software
 
 Generically, the way you find out if a piece of software is installed is to run
 ```
-module load beta-modules
 module avail packagename
 ```
 
-By loading `beta-modules` you will also be able to see newer versions of GCC and the software that
+The output will also contain newer versions of GCC and the software that
 has been built using them.
 
 Then `module avail` gives you a list of all the modules we have that match the name you searched 
@@ -169,11 +168,8 @@ module load castep/19.1.1/intel-2019
 gerun castep.mpi input
 ```
 
-If you have access to the source code and wish to build your own copy, it has been suggested that compiling with these options (on Grace) gave a build that ran about 10% faster than the default compilation options:
-```
-make COMMS_ARCH=mpi SUBARCH=mpi FFT=mkl MATHLIBS=mkl10 BUILD=fast
-```
-Do check for numerical accuracy with any optimisations you carry out.
+If building your own CASTEP, for version 23 onwards module load the newest `cmake` module we have and use the 
+newer cmake build system rather than make.
 
 
 ### Cctools
@@ -251,15 +247,13 @@ CP2K performs atomistic and molecular simulations.
 To see all available versions type
 
 ```
-module load beta-modules
 module avail cp2k
 ```
 
 To load CP2K 8.2:
 
 ```
-module unload -f compilers mpi gcc-libs
-module load beta-modules
+module unload compilers mpi gcc-libs
 module load gcc-libs/10.2.0
 module load compilers/gnu/10.2.0
 
@@ -361,13 +355,13 @@ export GAMESS_USERSCR=$TMPDIR
 
 # removes any of the user’s semaphore arrays that were left from previous
 # jobs on this node. Use if you are using a whole number of nodes.
-ipcrm -a sem
+ipcrm --all=sem
 
 rungms exam01.inp 00 $NSLOTS $(ppn)
 
 # removes all of the user’s semaphore arrays. 
 # Use if you are using a whole number of nodes.
-ipcrm -a sem
+ipcrm --all=sem
 ```
 
 #### Semaphores
@@ -388,7 +382,7 @@ node that you are on:
 ```
 # removes all of the user’s semaphore arrays.
 # Use if you are using a whole number of nodes.
-ipcrm -a sem
+ipcrm --all=sem
 ```
 
 Putting this before and after your GAMESS run ought to make sure that no semaphores from you are
@@ -619,8 +613,7 @@ that version is installed in.
 
 ```
 # Example for GPU gromacs/2021.5/cuda-11.3
-module load beta-modules
-module unload -f compilers mpi gcc-libs
+module unload compilers mpi gcc-libs
 module load gcc-libs/10.2.0
 module load compilers/gnu/10.2.0
 module load python3/3.9-gnu-10.2.0 
@@ -634,8 +627,7 @@ module load gromacs/2021.5/cuda-11.3
 
 ```
 # Example for gromacs/2021.2/gnu-7.3.0
-module load beta-modules
-module unload -f compilers mpi gcc-libs
+module unload compilers mpi gcc-libs
 module load gcc-libs/7.3.0
 module load compilers/gnu/7.3.0
 module load mpi/openmpi/3.1.4/gnu-7.3.0
@@ -846,8 +838,7 @@ gerun $(which lmp_default) -in inputfile
 For the latest version of LAMMPS we have installed which is 29th September 2021 Update 2 where the binaries are called `lmp_mpi` for the MPI version and `lmp_gpu` for the GPU version:
 
 ```
-module -f unload compilers mpi gcc-libs
-module load beta-modules
+module unload compilers mpi gcc-libs
 module load gcc-libs/10.2.0
 module load compilers/gnu/10.2.0
 module load mpi/openmpi/4.0.5/gnu-10.2.0
@@ -858,8 +849,7 @@ gerun lmp_mpi -in inputfile
 ```
 for the basic MPI version and:
 ```
-module -f unload compilers mpi gcc-libs
-module load beta-modules
+module unload compilers mpi gcc-libs
 module load gcc-libs/10.2.0
 module load compilers/gnu/10.2.0
 
@@ -896,8 +886,7 @@ gerun lmp_mpi -in inputfile
 
 ```
 # LAMMPS 29 Sep 2021 Update 2 for GPU with Intel compilers
-module unload -f compilers mpi
-module load beta-modules
+module unload compilers mpi
 module load compilers/intel/2020/release
 module load mpi/intel/2019/update6/intel
 module load python/3.9.10
@@ -906,6 +895,24 @@ module load lammps/29sep21up2/gpu/intel-2020
 
 gerun lmp_gpu -sf gpu -pk gpu 1 -in inputfile
 ```
+
+### Mathematica
+
+Wolfram Mathematica: mathematical computation program for areas of technical computing such 
+as machine learning, statistics, symbolic computation, data manipulation, network analysis, 
+time series analysis, NLP, optimization, and plotting functions and various types of data.
+
+```
+module load xorg-utils/X11R7.7
+module load mathematica/13.1.0
+
+wolfram -script input.wl
+# or
+math -script input.m
+# to redirect output to a different file
+wolfram -script input.wl > output.out
+```
+
 
 ### MEME Suite
 
@@ -1005,6 +1012,25 @@ want to keep into your Scratch.
 
 If you are running parallel multi-node jobs and the directories need to be readable by all 
 the nodes, then you need to write to Scratch.
+
+If you sometimes get an error like this:
+
+```
+terminate called after throwing an instance of 'std::runtime_error'
+ what():  Cannot open cache file tmpfilexNCOMM
+```
+
+This is because Molpro is opening and closing temporary files very close together and the file 
+handles do not get freed up immediately, and it has gone over the soft limit of open files of 1024.
+
+You can increase this to the hard limit of open files on the compute nodes by adding the below to
+your jobscript before the `molpro` command and it will let you have up to 4096 files open at once.
+Please be careful about the number of jobs you have running concurrently if you do this, as it could 
+have an impact on the filesystem.
+
+```
+ulimit -Sn 4096
+```
 
 
 ### MRtrix
@@ -1129,8 +1155,7 @@ with OmniPath interconnects as well as GPUs (not Myriad). It can run across mult
 #$ -pe smp 24
 #$ -l gpu=2
 
-module unload -f compilers mpi gcc-libs
-module load beta-modules
+module unload compilers mpi gcc-libs
 module load gcc-libs/7.3.0
 module load compilers/intel/2019/update5
 module load mpi/intel/2019/update5/intel
@@ -1584,7 +1609,7 @@ gerun vasp_std > vasp_output.$JOB_ID
 
 Note: although you can run VASP using the default Intel 2018 compiler this can lead to numerical errors in some types of simulation. In those cases we recommend switching to the specific compiler and MPI version used to build that install (mentioned at the end of the module name). We do this in the example above.
 
-Building your own VASP: You may also install your own copy of VASP in your home if you have access to the source, and we provide a [simple VASP individual install script](https://github.com/UCL-RITS/rcps-buildscripts/blob/master/vasp_individual_install) (tested with VASP 5.4.4, no patches). You need to download the VASP source code into your home directory and then you can run the script following the instructions at the top.
+Building your own VASP: You may also install your own copy of VASP in your home if you have access to the source, and we provide a [simple VASP individual install script](https://github.com/UCL-ARC/rcps-buildscripts/blob/master/vasp_individual_install) (tested with VASP 5.4.4, no patches). You need to download the VASP source code into your home directory and then you can run the script following the instructions at the top.
 
 #### VASP 6
 

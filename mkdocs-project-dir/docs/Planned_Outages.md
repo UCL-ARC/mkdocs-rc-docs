@@ -4,7 +4,7 @@ layout: docs
 
 # Planned Outages
 
-The second Tuesday of every month is a maintenance day, when the following clusters should be considered at risk from 8:00AM: Myriad, Kathleen, Thomas, Young, Michael, Aristotle and the Data Science Platform. We won’t necessarily perform maintenance every month, and notice by email will not always be given about maintenance day work that only puts services at risk.
+The second Tuesday of every month is a maintenance day, when the following clusters should be considered at risk from 8:00AM: Myriad, Kathleen, Young, Michael, Aristotle and the Data Science Platform. We won’t necessarily perform maintenance every month, and notice by email will not always be given about maintenance day work that only puts services at risk.
 
 Full details of outages are emailed to the cluster-specific user lists. 
 
@@ -16,12 +16,22 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-11 June 2024 | Young | Planned | Drain of one rack for 8am to physically install new hardware. The rest of the cluster will be operating as usual. The new hardware won't be available for use for some time - will still need testing and configuring.
+7 April 2025 | Myriad | Planned | Outage for switchover to new filesystem. No login access from 9am. Once access is restored later that day or the next day, you will have an empty new home and Scratch with symbolic links to `oldhome` and `oldscratch`. All jobs will be held. You will need to copy your data to the new filesystem or archive it. Once done, you can release the hold on your jobs using `qrls $JOB_ID` or `qrls all`.
 
 ## Previous Outages
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
+18 March 2025 | Myriad, Kathleen | Completed | ACFS will be unavailable and all jobs on Myriad and Kathleen will be drained for 8am. This is to do some work on the ACFS that will allow archiving in future. Had to schedule for 18th not 11th based on vendor availability. Jobs that will not be able to complete before the outage will stay in the queue and will not start until after the outage. The ACFS is at risk all day. We'll let you know if the work is completed earlier.
+11 February 2025 | Myriad | Completed | Maintenance day: nodes being drained for a system config change. Also a reboot of ACFS switches will cause the ACFS mount on Myriad to hang for a period during the day.
+28 January 2025 | Young, Michael | Completed | /old_lustre will be unmounted. If you still have files in your old home and scratch directories, they will no longer be accessible after this time.
+16 December 2024 | Kathleen | Completed | /old_lustre will be unmounted at or shortly after 9am. (Moved from 11 Dec). If you still have files in your old home and scratch directories, they will no longer be accessible after this time.
+4-8 November 2024 | Myriad, Young | Completed | New drivers being deployed on the GPU nodes in a rolling fashion. No outage of all nodes at once.
+8 October 2024 | Kathleen | Completed | There will be a brief ACFS outage while we switch the network gateway from one util node to another. If all goes well it will recover quickly, but reading and writing to the ACFS will hang while it is in progress. We will do this on 8 Oct maintenance day.
+7 October 2024 | Young, Michael | Completed | Migration to new filesystem. Jobs will be drained and logins prevented for 9am. Expected to be back up the following day. Once back up, all jobs will be in `hqw` status and users will need to migrate their data from `/old_lustre/home/username` and `/old_lustre/scratch/username` which will be read-only. Users with accounts on both systems will need to log into each to see their old data, but will be copying it to the same shared home and Scratch. SSH keys will be copied to the new filesystem so login is possible. The two `/old_lustre` will remain for three months + 7 days and be removed on Tues 14 Jan 2025. [Logins enabled 8 Oct 13:30]
+2-4 October 2024 | Young, Michael | Completed | Young login02 and Michael login11 will each be out of service for a day during this period for testing updates before filesystem migration. No interruption to jobs or logins to the general addresses `young.rc.ucl.ac.uk` and `michael.rc.ucl.ac.uk`.
+10 September 2024 | Kathleen | Completed | Migration to new Lustre filesystem and mounting of ACFS (ARC Cluster File System) as the new backed-up location. Jobs will be drained for 8am and logins will be prevented from 9am. Expected to be back up the following day. Once back up, all jobs will be in `hqw` status and users will need to migrate their data from `/old_lustre/home/username` and `/old_lustre/scratch/username` which will be read-only. Home will no longer be backed up. `/old_lustre` will remain for three months and be removed on 11 Dec 2024.
+11 June 2024 | Young | Completed | Drain of one rack for 8am to physically install new hardware. The rest of the cluster will be operating as usual. The new hardware won't be available for use for some time - will still need testing and configuring.
 10 June 2024 | Michael | Completed | Full shutdown of Michael for network config alterations in preparation for new filesystem. Jobs will be drained for 8am. No logins and file access during outage. Expected to be back up later that day.
 05 April -> 10 May 2024 | Young | Completed | The cabinets in Young are being re-cabled in turn. We plan for an eighth of Young to be out of service at a time, so queues may be longer due to fewer available nodes. This maintenance is essential for the longevity of Young. The rest of Young will be running jobs as usual.
 9 April 2024 | Myriad | Completed | Update of module version. Jobs to be drained for 8am, modules update to be done and then jobs begun again later in the day.
@@ -54,7 +64,7 @@ Date                | Service | Status | Reason
 22 May 2021 -> 24 May 2021 | Michael | Completed | Datacentre network outage. Queues to be drained. Full outage, no access.
 22 May 2021 -> 24 May 2021 | Young | Completed | Gold and job submission expected to be unavailable while database uncontactable due to datacentre network outage.
 22 May 2021 -> 24 May 2021 | Myriad and Kathleen | Completed | Gold (i.e. high priority) job submission expected to be unavailable while database uncontactable due to datacentre network outage.
-29 Mar 2021 -> 30 Mar 2021 | Myriad | Completed | A number of GPU nodes will be reserved for the [NVidia AI Bootcamp](https://t.co/Moqa1evelh) on the 29th and 30th March. Some users may experience longer than usual waiting times for GPUs, from Monday the 22nd until after the event, especially for long jobs.  We apologise for any inconvenience this may cause.
+29 Mar 2021 -> 30 Mar 2021 | Myriad | Completed | A number of GPU nodes will be reserved for the NVidia AI Bootcamp on the 29th and 30th March. Some users may experience longer than usual waiting times for GPUs, from Monday the 22nd until after the event, especially for long jobs. We apologise for any inconvenience this may cause.
 30 Mar 2021 | Kathleen | Completed | Essential Lustre filesystem maintenance. Queue draining starts 26th March, SSH access to login nodes disabled on the 30th. Full outage, no access.
 23 Feb 2021 8-9:30am | Young | Completed | Gold and job submission expected to be unavailable for two 10-min periods while network switches upgraded.
 09 Feb 2021 8-1pm   | Young   | Completed | Gold and job submission outage while we migrate our database server.
