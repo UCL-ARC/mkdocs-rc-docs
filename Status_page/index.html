@@ -2569,11 +2569,52 @@ the original owner of the space has left.</p>
 transferring this to a new access group named <code>ag-archpc-groupname</code>. These groups can be updated within half 
 an hour rather than only overnight.</p>
 <p><strong>Removal of old filesystem</strong></p>
-<p><code>/old_lustre</code> will be available for three months, until 9am on Monday 7 July. It will then be unmounted and you will not be able to access it any longer.</p>
+<p><code>/old_lustre</code> will be available for three months, until 9am on Monday 7 July. It will then be
+unmounted and you will not be able to access it any longer.</p>
 <p><strong>Myriad at risk for first week</strong></p>
-<p>Myriad should be considered exposed to potential issues for the first week of running a full workload with the new filesystem, and so there might be interruptions to service if anything goes wrong or needs tuning differently.</p>
+<p>Myriad should be considered exposed to potential issues for the first week of running a full
+workload with the new filesystem, and so there might be interruptions to service if anything goes
+wrong or needs tuning differently.</p>
 <p>The new filesystem is GPFS (IBM Storage Scale) and not Lustre, for those who are interested.</p>
-<p>Additional FAQs will be added here based on questions we receive. </p>
+<p>Additional FAQs will be added here based on questions we receive.</p>
+</li>
+<li>
+<p>2025-04-14 - <strong>Myriad filesystem update and issues with symlinks</strong></p>
+<p>This is a quick rundown of what else happened on Myriad last week and then some tips for problems
+people have been having.</p>
+<p>After the new filesystem went live, we had a few issues on Wednesday and Thursday where some jobs
+were causing nodes to crash which was in turn causing the gpfs client to hang - which you will have
+seen as timeouts or very slow access on the login nodes. The hangs also meant that a few people had
+their new home directories only half-created, so didn't have a home directory that belonged to them
+when they logged in. We changed some configuration on the compute nodes to fix the issue (the jobs
+causing the problem were running out of virtual memory). People who had the home directory issue
+should have been sorted out on Thursday and Friday - let us know if anyone else still gets an error
+about their home directory not existing.</p>
+<p>We were running more smoothly by Friday. Issues like these are why we said the rest of that week was
+at risk, as there was likely to be something that needed adjusting once real jobs started.</p>
+<p><strong>Symbolic links and Scratch</strong></p>
+<p>You start out with an empty normal directory called Scratch in your home. What I had not considered
+is if you rsync the whole of your oldhome back in, then it will rsync the old Scratch symlink
+(shortcut) from oldhome and replace the empty Scratch directory with it. This only happens because
+that directory is empty.</p>
+<p>We have had tickets from some of you about finding that files are read-only that you think you have
+copied - it is because they are still really on the old filesystem.</p>
+<p>If you do an ls -al in your home you will be able to see if you have ended up with something similar
+to this:</p>
+<p><code>lrwxrwxrwx   1 cceahke staff          24 Sep 10  2024 Scratch -&gt; /lustre/scratch/scratch/cceahke</code></p>
+<p>That shows you that Scratch is a symlink and is pointing to a location on the old filesystem.</p>
+<p>To fix, delete the symlink and recreate Scratch as a directory:</p>
+<p><code>rm Scratch
+mkdir Scratch</code></p>
+<p>You can then go ahead and rsync the contents of oldscratch into Scratch so they are copied onto the 
+new filesystem correctly. You cannot accidentally delete the contents of oldscratch since it is 
+read-only.</p>
+<p>If you have not rsynced your home yet, you could add the <code>--safe-links</code> option to rsync, which tells 
+it to ignore any symbolic links that point outside the copied tree and any symlinks that are 
+absolute paths. So when copying home, the symlink to <code>/lustre/scratch/scratch</code> should then be 
+ignored: </p>
+<p><code>rsync --safe-links -r -a ~/oldhome ~</code></p>
+<p>We are catching up on the quota and shared space requests we have received. </p>
 </li>
 </ul>
 <h3 id="kathleen">Kathleen<a class="headerlink" href="#kathleen" title="Permanent link">§</a></h3>
@@ -2776,37 +2817,25 @@ time, so please do not rely on it for production work. Instead, please test whet
 applications you intend to use work the way you would expect.</p>
 <p>This stack is built using <a href="https://spack.readthedocs.io/en/latest/">Spack</a>.</p>
 <p>To use:</p>
+<p><code>module load beta-modules
+module load test-stack/2025-02</code></p>
+<p>After that, when you type <code>module avail</code> there will be several sections of additional modules at 
+the top of the output.</p>
+<p>Not everything contained in the stack is visible by default - we have made the applications that 
+we expect people to use directly visible and lots of their dependencies are hidden. These will 
+show up if you search for that package specifically, for example:</p>
+<p><code>module avail libpng
+-------------------------- /shared/ucl/apps/spack/0.23/deploy/2025-02/modules/applications/linux-rhel7-cascadelake --------------------------
+libpng/1.6.39/gcc-12.3.0-iopfrab</code></p>
+<p>This module does not show up in the full list but is still installed. It has a hash at the end 
+of its name <code>-iopfrab</code> and this will change over time with different builds.</p>
+<p>If you find you are needing one of these modules often, let us know and we'll make it one that 
+is not hidden in the next release of this stack.</p>
+<p>The stack will be rebuilt for the operating system upgrade and moved out from beta-modules.</p>
+<p>This information is available at 
+<a href="https://www.rc.ucl.ac.uk/docs/Clusters/Kathleen/#test-software-stack">Kathleen test software stack</a></p>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><code>module load beta-modules
-module load test-stack/2025-02
-</code></pre></div>
-
-<div class="codehilite"><pre><span></span><code>After that, when you type `module avail` there will be several sections of additional modules at 
-the top of the output.
-
-Not everything contained in the stack is visible by default - we have made the applications that 
-we expect people to use directly visible and lots of their dependencies are hidden. These will 
-show up if you search for that package specifically, for example:
-</code></pre></div>
-
-<div class="codehilite"><pre><span></span><code>module avail libpng
--------------------------- /shared/ucl/apps/spack/0.23/deploy/2025-02/modules/applications/linux-rhel7-cascadelake --------------------------
-libpng/1.6.39/gcc-12.3.0-iopfrab
-</code></pre></div>
-
-<div class="codehilite"><pre><span></span><code>This module does not show up in the full list but is still installed. It has a hash at the end 
-of its name `-iopfrab` and this will change over time with different builds.
-
-If you find you are needing one of these modules often, let us know and we&#39;ll make it one that 
-is not hidden in the next release of this stack.
-
-The stack will be rebuilt for the operating system upgrade and moved out from beta-modules.
-
-This information is available at 
-[Kathleen test software stack](https://www.rc.ucl.ac.uk/docs/Clusters/Kathleen/#test-software-stack)
-</code></pre></div>
-
 <h3 id="young">Young<a class="headerlink" href="#young" title="Permanent link">§</a></h3>
 <ul>
 <li>
