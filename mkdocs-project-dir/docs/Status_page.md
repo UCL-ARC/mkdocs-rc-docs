@@ -779,15 +779,76 @@ This page outlines that status of each of the machines managed by the Research C
 
     **Removal of old filesystem**
 
-    `/old_lustre` will be available for three months, until 9am on Monday 7 July. It will then be unmounted and you will not be able to access it any longer.
+    `/old_lustre` will be available for three months, until 9am on Monday 7 July. It will then be
+    unmounted and you will not be able to access it any longer.
 
     **Myriad at risk for first week**
 
-    Myriad should be considered exposed to potential issues for the first week of running a full workload with the new filesystem, and so there might be interruptions to service if anything goes wrong or needs tuning differently.
+    Myriad should be considered exposed to potential issues for the first week of running a full
+    workload with the new filesystem, and so there might be interruptions to service if anything goes
+    wrong or needs tuning differently.
 
     The new filesystem is GPFS (IBM Storage Scale) and not Lustre, for those who are interested.
 
-    Additional FAQs will be added here based on questions we receive. 
+    Additional FAQs will be added here based on questions we receive.
+
+  - 2025-04-14 - **Myriad filesystem update and issues with symlinks**
+
+    This is a quick rundown of what else happened on Myriad last week and then some tips for problems
+    people have been having.
+
+    After the new filesystem went live, we had a few issues on Wednesday and Thursday where some jobs
+    were causing nodes to crash which was in turn causing the gpfs client to hang - which you will have
+    seen as timeouts or very slow access on the login nodes. The hangs also meant that a few people had
+    their new home directories only half-created, so didn't have a home directory that belonged to them
+    when they logged in. We changed some configuration on the compute nodes to fix the issue (the jobs
+    causing the problem were running out of virtual memory). People who had the home directory issue
+    should have been sorted out on Thursday and Friday - let us know if anyone else still gets an error
+    about their home directory not existing.
+
+    We were running more smoothly by Friday. Issues like these are why we said the rest of that week was
+    at risk, as there was likely to be something that needed adjusting once real jobs started.
+
+    **Symbolic links and Scratch**
+
+    You start out with an empty normal directory called Scratch in your home. What I had not considered
+    is if you rsync the whole of your oldhome back in, then it will rsync the old Scratch symlink
+    (shortcut) from oldhome and replace the empty Scratch directory with it. This only happens because
+    that directory is empty.
+
+    We have had tickets from some of you about finding that files are read-only that you think you have
+    copied - it is because they are still really on the old filesystem.
+
+    If you do an ls -al in your home you will be able to see if you have ended up with something similar
+    to this:
+
+    ```
+    lrwxrwxrwx   1 cceahke staff          24 Sep 10  2024 Scratch -> /lustre/scratch/scratch/cceahke
+    ```
+
+    That shows you that Scratch is a symlink and is pointing to a location on the old filesystem.
+
+    To fix, delete the symlink and recreate Scratch as a directory:
+    
+    ```    
+    rm Scratch
+    mkdir Scratch
+    ```
+
+    You can then go ahead and rsync the contents of oldscratch into Scratch so they are copied onto the 
+    new filesystem correctly. You cannot accidentally delete the contents of oldscratch since it is 
+    read-only.
+
+    If you have not rsynced your home yet, you could add the `--safe-links` option to rsync, which tells 
+    it to ignore any symbolic links that point outside the copied tree and any symlinks that are 
+    absolute paths. So when copying home, the symlink to `/lustre/scratch/scratch` should then be 
+    ignored: 
+
+    ```
+    rsync --safe-links -r -a ~/oldhome ~
+    ```
+
+    We are catching up on the quota and shared space requests we have received. 
 
 
 ### Kathleen
@@ -1021,10 +1082,10 @@ This page outlines that status of each of the machines managed by the Research C
 
     To use:
 
-```
-module load beta-modules
-module load test-stack/2025-02
-```
+    ```
+    module load beta-modules
+    module load test-stack/2025-02
+    ```
 
     After that, when you type `module avail` there will be several sections of additional modules at 
     the top of the output.
@@ -1033,11 +1094,11 @@ module load test-stack/2025-02
     we expect people to use directly visible and lots of their dependencies are hidden. These will 
     show up if you search for that package specifically, for example:
 
-```
-module avail libpng
+    ```
+    module avail libpng
 -------------------------- /shared/ucl/apps/spack/0.23/deploy/2025-02/modules/applications/linux-rhel7-cascadelake --------------------------
-libpng/1.6.39/gcc-12.3.0-iopfrab
-```
+    libpng/1.6.39/gcc-12.3.0-iopfrab
+    ```
 
     This module does not show up in the full list but is still installed. It has a hash at the end 
     of its name `-iopfrab` and this will change over time with different builds.
