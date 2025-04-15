@@ -5,8 +5,8 @@ layout: docs
 
 # Using Apptainer (Singularity) on our clusters
 
-Myriad has Apptainer installed, which will be rolled out to our other clusters at a later date. 
-The other clusters still have Singularity. You can use containers you have downloaded in your space.
+The clusters all have Apptainer installed. 
+You can use containers you have downloaded in your space.
 
 
 
@@ -39,12 +39,22 @@ export APPTAINER_CACHEDIR=$HOME/Scratch/.apptainer
 
 ```
 
-You probably want to add those `export` statements to your `.bashrc` under `# User specific aliases and functions` so those environment variables are always set when you log in.
+You may want to add those `export` statements to your `.bashrc` under `# User specific aliases and functions` so those environment variables are always set when you log in.
 
 ### Bind locations
 
-Your $HOME and Scratch directories are bound automatically so they are available
-from inside your containers.
+Your $HOME directory is bound automatically so it is available from inside your containers.
+On clusters other than Myriad, your Scratch directory is also bound. You can pass in other
+bind paths.
+
+If you want to have no automatically-bound locations you can use the `--no-mount bind-paths` 
+option, for example:
+```
+apptainer run --no-mount bind-paths mycontainer.sif
+```
+
+This can be useful if you want to isolate the container from the contents of your home directory, 
+for example conflicting software packages you might have installed there.
 
 For more information on these options, have a look at the Apptainer documentation:
 
