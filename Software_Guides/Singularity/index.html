@@ -1924,8 +1924,8 @@
 
 
 <h1 id="using-apptainer-singularity-on-our-clusters">Using Apptainer (Singularity) on our clusters<a class="headerlink" href="#using-apptainer-singularity-on-our-clusters" title="Permanent link">§</a></h1>
-<p>Myriad has Apptainer installed, which will be rolled out to our other clusters at a later date. 
-The other clusters still have Singularity. You can use containers you have downloaded in your space.</p>
+<p>The clusters all have Apptainer installed. 
+You can use containers you have downloaded in your space.</p>
 <h2 id="apptainer">Apptainer<a class="headerlink" href="#apptainer" title="Permanent link">§</a></h2>
 <p>Run <code>apptainer --version</code> to see which version we currently have installed.</p>
 <h3 id="set-up-cache-locations">Set up cache locations<a class="headerlink" href="#set-up-cache-locations" title="Permanent link">§</a></h3>
@@ -1947,10 +1947,18 @@ mkdir $HOME/Scratch/.apptainer
 export APPTAINER_CACHEDIR=$HOME/Scratch/.apptainer
 </code></pre></div>
 
-<p>You probably want to add those <code>export</code> statements to your <code>.bashrc</code> under <code># User specific aliases and functions</code> so those environment variables are always set when you log in.</p>
+<p>You may want to add those <code>export</code> statements to your <code>.bashrc</code> under <code># User specific aliases and functions</code> so those environment variables are always set when you log in.</p>
 <h3 id="bind-locations">Bind locations<a class="headerlink" href="#bind-locations" title="Permanent link">§</a></h3>
-<p>Your $HOME and Scratch directories are bound automatically so they are available
-from inside your containers.</p>
+<p>Your $HOME directory is bound automatically so it is available from inside your containers.
+On clusters other than Myriad, your Scratch directory is also bound. You can pass in other
+bind paths.</p>
+<p>If you want to have no automatically-bound locations you can use the <code>--no-mount bind-paths</code> 
+option, for example:</p>
+<div class="codehilite"><pre><span></span><code>apptainer run --no-mount bind-paths mycontainer.sif
+</code></pre></div>
+
+<p>This can be useful if you want to isolate the container from the contents of your home directory, 
+for example conflicting software packages you might have installed there.</p>
 <p>For more information on these options, have a look at the Apptainer documentation:</p>
 <ul>
 <li><a href="https://apptainer.org/docs/user/main/index.html">Apptainer user guide</a></li>
