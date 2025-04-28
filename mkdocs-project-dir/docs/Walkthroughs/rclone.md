@@ -47,8 +47,8 @@ computer before connecting to ssh. The application is always working on the back
 click on it.
 
 Then, to connect via SSH we suggest using **Putty** unless you know how to allow X-forwarding with another method. To
-configure **Putty** to use X-Forwarding, you must look at the left side panel and go to ++SSH++ category. Then select ++X11++
-and ensure the checkbox for ++Enable X11 forwarding++ is checked/filled.  Then enter the details to connect to the cluster in
+configure **Putty** to use X-Forwarding, you must look at the left side panel and go to ++"SSH"++ category. Then select ++"X11"++
+and ensure the checkbox for ++"Enable X11 forwarding"++ is checked/filled.  Then enter the details to connect to the cluster in
 the main window and that's all! If you are loading a previous saved session, then load the session first and then enable the 
 X-Forwarding. 
 
@@ -73,14 +73,14 @@ s) Set configuration password
 q) Quit config
 n/s/q>
 ```
-Select `n` and press the ++Enter++ key.
+Select `n` and press the ++"Enter"++ key.
 
 2.
 ```
 Enter name for new remote.
 name>
 ```
-Enter a simple text label for your remote connection and press the ++Enter++ key. We've used `UCLDrive` here, and it is easier to correctly use on the command-line if it does not contain spaces.
+Enter a simple text label for your remote connection and press the ++"Enter"++ key. We've used `UCLDrive` here, and it is easier to correctly use on the command-line if it does not contain spaces.
 
 3. Something similar to this will be displayed. Please check what number corresponds to **Microsoft OneDrive**
    option and enter that one. 
@@ -152,7 +152,7 @@ Choose a number from below, or type in your own value.
 61 / seafile   \ (seafile)
 Storage> 
 ```
-In this case,**Microsoft OneDrive** corresponds to option 36, so enter `36` and press the ++Enter++ key.
+In this case,**Microsoft OneDrive** corresponds to option 36, so enter `36` and press the ++"Enter"++ key.
 
 4.
 ```
@@ -161,7 +161,7 @@ Leave blank normally.
 Enter a value. Press Enter to leave empty.
 client_id> 
 ```
-Press ++Enter++ to leave empty.
+Press ++"Enter"++ to leave empty.
 
 5.
 ```
@@ -170,7 +170,7 @@ Leave blank normally.
 Enter a value. Press Enter to leave empty.
 client_secret> 
 ```
-Press ++Enter++ to leave empty.
+Press ++"Enter"++ to leave empty.
 
 6.
 ```
@@ -184,7 +184,7 @@ Press Enter for the default (global).
 4 / Azure and Office 365 operated by Vnet Group in China   \ (cn)
 region>
 ```
-Select `1` and press the ++Enter++ Key.
+Select `1` and press the ++"Enter"++ Key.
 
 ```
 Option tenant.ID of the service principal's tenant. Also called its directory ID.
@@ -192,7 +192,7 @@ Set this if using- Client Credential flowEnter a value.
 Press Enter to leave empty.
 tenant> 
 ```
-Press ++Enter++ to leave empty.
+Press ++"Enter"++ to leave empty.
 
 8.
 ```
@@ -201,7 +201,7 @@ y) Yes
 n) No (default)
 y/n>
 ```
-Select `n` and press the ++Enter++ key.
+Select `n` and press the ++"Enter"++ key.
 
 9.
 ```
@@ -213,7 +213,7 @@ y) Yes (default)
 n) No
 y/n>
 ```
-Select `y` and press the ++Enter+ key.
+Select `y` and press the ++"Enter"++ key.
 
 **If you have installed Xming and habilitated correctly X-Forwarding in Putty or your preferred method, 
 then a browser window will open on your personal machine. There, you must log in, in this case into Microsoft 365 using 
@@ -233,7 +233,7 @@ Press Enter for the default (onedrive).
 7 | E.g. /teams/hr   \ (path
 config_type> 
 ```
-Select `1` and press the ++Enter++ key.
+Select `1` and press the ++"Enter"++ key.
 
 11.
 ```
@@ -244,7 +244,7 @@ Press Enter for the default (b!ra4Fi4CqS0GYT_qied18V9A2pTgX9JxHhfZTS2MwNK-0r_cRH
 2 / PersonalCacheLibrary (business)   \ (b!ra4Fi4CqS0GYT_qied1OP9A2pTgX9JxHhfZTS2MwNK9-7X_uAf71Qavjc1vd7Xis)
 config_driveid> 
 ```
-Select `1` and press the ++Enter++ key.
+Select `1` and press the ++"Enter"++ key.
 
 12.
 ```
@@ -254,7 +254,7 @@ y) Yes (default)
 n) No
 y/n>
 ```
-If the URL is ok, then select `y` and press the ++Enter++ key.
+If the URL is ok, then select `y` and press the ++"Enter"++ key.
 
 13.
 ```
@@ -285,7 +285,7 @@ e) Edit this remote
 d) Delete this remote
 y/e/d> 
 ```
-If everything is ok., then select `y` and press the ++Enter++ key.
+If everything is ok., then select `y` and press the ++"Enter"++ key.
 
 Now you are ready to use **Rclone**!
 
