@@ -1741,43 +1741,43 @@
 
 
 <h1 id="rclone">Rclone<a class="headerlink" href="#rclone" title="Permanent link">§</a></h1>
-<p><a href="https://rclone.org/">Rclone</a> is a command-line program to manage files on cloud storage. This is a walkthrough for 
+<p><a href="https://rclone.org/"><strong>Rclone</strong></a> is a command-line program to manage files on cloud storage. This is a walkthrough for 
  configuring <strong>Rclone</strong> to be used with Microsoft OneDrive but it also can be used with several other cloud systems like 
  Dropbox, Google Drive, etc.</p>
 <p>We have installed 2 versions of rclone in our clusters. <code>rclone/1.61.0</code> was used as reference for this walkthrough 
-but the process is similar with other versions.</p>
+but the process is similar with other versions. Generally, you should use the highest-numbered version.</p>
 <p>After loading the module with the command:</p>
-<div class="codehilite"><pre><span></span><code>module load rclone/1.61.0 , 
+<div class="codehilite"><pre><span></span><code>module load rclone/1.61.0
 </code></pre></div>
 
-<p>the next step is to configure <strong>RClone</strong>. As the cloud systems usually have quite complicated authentication methods,
+<p>the next step is to configure <strong>Rclone</strong>. As the cloud systems usually have quite complicated authentication methods,
 these are kept in a config file. For example, the configuration file for <strong>OneDrive</strong> and <strong>Dropbox</strong> involve getting 
 a <strong>token</strong> from <strong>Microsoft</strong> and <strong>Dropbox</strong> respectively, to link your account in the cloud system with <strong>Rclone</strong>. 
 There are several ways to get this token and here is presented the easiest. If this method does not work for you, please 
-contact our support: [rc-support@ucl.ac.uk]</p>
-<p>The method that allows an automatic way to get and add the token to the configuration file requires to uses
-<a href="https://www.rc.ucl.ac.uk/docs/Supplementary/X-Forwarding/">X-Forwarding</a>
-in your ssh connection. This will allow to the cluster to push an interactive window to your local computer over a network. 
+contact our support: <a href="mailto:rc-support@ucl.ac.uk">rc-support@ucl.ac.uk</a></p>
+<p>The method that allows an automatic way to get and add the token to the configuration file requires using
+<a href="../../Supplementary/X-Forwarding/">X-Forwarding</a>
+in your SSH connection. This will allow the cluster to push an interactive browser window to your local computer over a network. 
 In this window you will enter your credentials and connect to the account you want to link with <strong>Rclone</strong> (e.g. Microsoft
 One Drive or Dropbox). If you have activated MFA in your account, it will ask you for the respective code. Note that the 
 connection to internet could not the best and it might take a while to load the page.</p>
 <h3 id="x-forwarding-in-linux">X-Forwarding in Linux<a class="headerlink" href="#x-forwarding-in-linux" title="Permanent link">§</a></h3>
-<p>If you are using linux, the X-Forwarding is very easy. Just add <code>-X</code> option to your ssh command like this: </p>
+<p>If you are using Linux, the X-Forwarding is very easy. Just add <code>-X</code> option to your SSH command like this: </p>
 <div class="codehilite"><pre><span></span><code>ssh -X USER@CLUSTER.rc.ucl.ac.uk
 </code></pre></div>
 
 <h3 id="x-forwarding-in-mac">X-Forwarding in Mac<a class="headerlink" href="#x-forwarding-in-mac" title="Permanent link">§</a></h3>
 <p>If you are using Mac, there is an app called <strong>*XQuartz</strong> you must donwload first and then use the <code>-Y</code> option with the
-ssh command to allow X-forwarding. </p>
+<code>ssh</code> command to allow X-forwarding. </p>
 <h3 id="x-forwarding-in-windows">X-Forwarding in Windows<a class="headerlink" href="#x-forwarding-in-windows" title="Permanent link">§</a></h3>
-<p>If you are using Windows, you need to install an <code>X</code> server separately. The use <strong>Xming</strong> with <strong><em>Putty</em>* is suggested 
+<p>If you are using Windows, you need to install an X server separately. The use of <strong>Xming</strong> with <strong><em>Putty</em>* is suggested 
 to configure </strong>Rclone<strong>, although you can use your preferred method. You can download </strong>Xming-fonts<strong> free from 
 <a href="https://sourceforge.net/projects/xming/files/">here</a>. Once you download it and install it, you must open </strong>Xming** in your
-computer before connecting to ssh. The application is always working on the background so you will see anything opening after
+computer before connecting to ssh. The application is always working on the background so you may not see anything opening after
 click on it.</p>
-<p>Then, to connect to ssh we suggest to use <strong>Putty</strong> unless you know how to allow the X-forwarding with another method. To
-configure <strong>Putty</strong> to use x-Forwarding, you must look at the left side panel and go to <code>SSH</code> category. Then select <code>X11</code>
-and in there tick on <code>Enable X11 forwarding</code> (the box must be blue).  Then enter the details to connect to the cluster in
+<p>Then, to connect via SSH we suggest using <strong>Putty</strong> unless you know how to allow X-forwarding with another method. To
+configure <strong>Putty</strong> to use X-Forwarding, you must look at the left side panel and go to ++SSH++ category. Then select ++X11++
+and ensure the checkbox for ++Enable X11 forwarding++ is checked/filled.  Then enter the details to connect to the cluster in
 the main window and that's all! If you are loading a previous saved session, then load the session first and then enable the 
 X-Forwarding. </p>
 <p>After you have allowed X-Forwarding, you are ready to configure <strong>Rclone</strong>. </p>
@@ -1796,13 +1796,13 @@ q) Quit config
 n/s/q&gt;
 </code></pre></div>
 
-<p>Select <strong>n</strong> and press <strong>Enter</strong> Key</p>
+<p>Select <code>n</code> and press the ++Enter++ key.</p>
 <p>2.</p>
 <div class="codehilite"><pre><span></span><code>Enter name for new remote.
 name&gt;
 </code></pre></div>
 
-<p>Enter the <strong>name of your own choose for your remote</strong> connection and press <strong>Enter</strong> key.</p>
+<p>Enter a simple text label for your remote connection and press the ++Enter++ key. We've used <code>UCLDrive</code> here, and it is easier to correctly use on the command-line if it does not contain spaces.</p>
 <ol start="3">
 <li>Something similar to this will be displayed. Please check what number corresponds to <strong>Microsoft OneDrive</strong>
    option and enter that one. </li>
@@ -1875,7 +1875,7 @@ Choose a number from below, or type in your own value.
 Storage&gt; 
 </code></pre></div>
 
-<p>In this case,<strong>Microsoft OneDrive</strong> corresponds to the option <strong>36</strong>, so enter <strong>36</strong> and press <strong>Enter</strong> key.</p>
+<p>In this case,<strong>Microsoft OneDrive</strong> corresponds to option 36, so enter <code>36</code> and press the ++Enter++ key.</p>
 <p>4.</p>
 <div class="codehilite"><pre><span></span><code>Option client_id. OAuth Client Id.
 Leave blank normally.
@@ -1883,7 +1883,7 @@ Enter a value. Press Enter to leave empty.
 client_id&gt; 
 </code></pre></div>
 
-<p>Press <strong>Enter</strong> key to leave empty.</p>
+<p>Press ++Enter++ to leave empty.</p>
 <p>5.</p>
 <div class="codehilite"><pre><span></span><code>Option client_secret. OAuth Client Secret.
 Leave blank normally.
@@ -1891,7 +1891,7 @@ Enter a value. Press Enter to leave empty.
 client_secret&gt; 
 </code></pre></div>
 
-<p>Press <strong>Enter</strong> key to leave empty.</p>
+<p>Press ++Enter++ to leave empty.</p>
 <p>6.</p>
 <div class="codehilite"><pre><span></span><code>Option region. Choose national cloud region for OneDrive.
 Choose a number from below, or type in your own value of
@@ -1904,14 +1904,14 @@ Press Enter for the default (global).
 region&gt;
 </code></pre></div>
 
-<p>Select <strong>1</strong> and press <strong>Enter</strong> Key</p>
+<p>Select <code>1</code> and press the ++Enter++ Key.</p>
 <div class="codehilite"><pre><span></span><code>Option tenant.ID of the service principal&#39;s tenant. Also called its directory ID.
 Set this if using- Client Credential flowEnter a value.
 Press Enter to leave empty.
 tenant&gt; 
 </code></pre></div>
 
-<p>Press <strong>Enter</strong> to leave empty</p>
+<p>Press ++Enter++ to leave empty.</p>
 <p>8.</p>
 <div class="codehilite"><pre><span></span><code>Edit advanced config?
 y) Yes
@@ -1919,7 +1919,7 @@ n) No (default)
 y/n&gt;
 </code></pre></div>
 
-<p>Select <strong>n</strong> and press <strong>Enter</strong> key.</p>
+<p>Select <code>n</code> and press the ++Enter++ key.</p>
 <p>9.</p>
 <div class="codehilite"><pre><span></span><code>Use web browser to automatically authenticate rclone with remote?
 * Say Y if the machine running rclone has a web browser you can use
@@ -1930,9 +1930,9 @@ n) No
 y/n&gt;
 </code></pre></div>
 
-<p>Select <strong>y</strong> and press <strong>Enter</strong> key.</p>
+<p>Select <code>y</code> and press the ++Enter+ key.</p>
 <p><strong>If you have installed Xming and habilitated correctly X-Forwarding in Putty or your preferred method, 
-then a window will open in your perosnal machine. There, you must log in, in this case into Microsoft using 
+then a browser window will open on your personal machine. There, you must log in, in this case into Microsoft 365 using 
 your UCL account (internal).</strong></p>
 <p>10.</p>
 <div class="codehilite"><pre><span></span><code>Option config_type.Type of connectionChoose a number from below,
@@ -1948,17 +1948,17 @@ Press Enter for the default (onedrive).
 config_type&gt; 
 </code></pre></div>
 
-<p>Select <strong>1</strong> and press <strong>Enter</strong> key.</p>
+<p>Select <code>1</code> and press the ++Enter++ key.</p>
 <p>11.</p>
 <div class="codehilite"><pre><span></span><code>Option config_driveid. Select drive you want to use
 Choose a number from below, or type in your own string value.
-Press Enter for the default (b!ra4Fi4CqS0GYT_qied1OV9A2pTgX9JxHhfZTS2MwNK-0r_cRHFddS7D8Yt0CozO-).
-1 / OneDrive (business)   \ (b!ra4Fi4CqS0GYT_qied1OV9A2pTgX9JxHhfZTS2MwNK-0r_cRHFddS7D8Yt0CozO-)
-2 / PersonalCacheLibrary (business)   \ (b!ra4Fi4CqS0GYT_qied1OV9A2pTgX9JxHhfZTS2MwNK9-7X_uAf71Qavjc1vd7Xis)
+Press Enter for the default (b!ra4Fi4CqS0GYT_qied18V9A2pTgX9JxHhfZTS2MwNK-0r_cRHFddS7D8Yt0CozO-).
+1 / OneDrive (business)   \ (b!ra4Fi4CqS0GYT_qied18V9A2pTgX9JxHhfZTS2MwNK-0r_cRHFddS7D8Yt0CozO-)
+2 / PersonalCacheLibrary (business)   \ (b!ra4Fi4CqS0GYT_qied1OP9A2pTgX9JxHhfZTS2MwNK9-7X_uAf71Qavjc1vd7Xis)
 config_driveid&gt; 
 </code></pre></div>
 
-<p>Select <strong>1</strong> and press <strong>Enter</strong> key.</p>
+<p>Select <code>1</code> and press the ++Enter++ key.</p>
 <p>12.</p>
 <div class="codehilite"><pre><span></span><code>Drive OK Found drive &quot;root&quot; of type &quot;business&quot;
 URL: https://liveuclac-my.sharepoint.com/personal/&lt;YOUR_UCL_ID&gt;_ucl_ac_uk/Documents
@@ -1967,7 +1967,7 @@ n) No
 y/n&gt;
 </code></pre></div>
 
-<p>If the ULR is ok, then select <strong>y</strong> and press <strong>Enter</strong> key.</p>
+<p>If the URL is ok, then select <code>y</code> and press the ++Enter++ key.</p>
 <p>13.</p>
 <div class="codehilite"><pre><span></span><code>Configuration complete.
 </code></pre></div>
@@ -1979,7 +1979,13 @@ y/n&gt;
 - region: global
 - token:{&quot;access_token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJub25jZSI6IkxmaXR6d2hKWkVaOGstRlZqZEh
 iOHFCUHZGMnFZSE8tQmpORV80d1lQWTQiLCJhbGciOiJSUzI1NiIsIng1dCI6IkNOdjBPSTNSd3FsSEZ
-FVm5hb01Bc2hDSDJYRSIsImtpZCI6IkNOdjBPSTNSd3FsSEZFVm5hb01Bc2hDSDJYRSJ9.eyJhdWQiOs                                                       iIwMDAwMDAwMy0wMDAwLTAwMDAtYzAwMC0wMDAwMDAwMDAwMDAiLCJpc3MiOiJodHRwczovL3N0cy53a                                                       W5kb3dzLm5ldC8xZmFmODhmZS1hOTk4LTRjNWItOTNjOS0yMTBhMTFkOWE1YzIvIiwiaWF0IjoxNzQ1N                                                       DIxNzE4LCJuYmYiOjE3NDU0MjE3MTgsImV4cCI6MTc0NTQyNTc4OCwiYWNjdCI6MCwiYWNyIjoiMSIsI                                                       mFjcnMiOlsicDEiLCJ1cm46dXNlcjpyZWdpc3RlcnNlY3VyaXR5aW5mbyJdLCJhaW8iOiJBWFFBaS84W                                                       kFBQUF1NjJxSG1Cc1YzRk5MaElFWmxwZ3lobjB6WGJzY0hlSGZWajJHdnFEcXhockI1WTl1bXF4Z3hGS                                                       UVsZ1k2Q1psRlBqSDd1V0NKbkR0cmNaME9FQjdQcmZtcE1oQjF4L3BENEJGY1RCOVUveEZ4TXlhWFVLZ                                                       Wt0VHplcURtUkxYNi9qM1l0em5JazQvaHpzUEpXdjRoY2c9PSIsImFtciI6WyJwd2QiLCJ3aWEiLCJtZ                                                       mEiXSwiYXBwX2Rpc3BsYXluYW1lIjoicmNsb25lIiwiYXBwaWQiOiJiMTU2NjVkOS1lZGE2LTQwOTItO                                                       DUzOS0wZWVjMzc2YWZkNTkiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkxhYnJhIEF2aWxhI                                                       iwiZ2l2ZW5fbmFtZSI6Ik5pY29sZSIsImlkdHlwIjoidXNlciIsImlwYWRkciI6IjE5My42MC4yMzguM                                                       TEwIiwibmFtZSI6IkxhYnJhIEF2aWxhLCBOaWNvbGUiLCJvaWQiOiJmOWU4OTBlMS1iZDBhLTQzZjctY                                                       jRmNi03NWUyZTY4ODg3OWMiLCJvbnByZW1fc2lkIjoiUy0xLTUtMjEtMjkwMjI2NTYyMS0xMDYzMDI4N                                                       jIxLTIzODE1NjE0ODAtOTcwNjUxIiwicGxhdGYiOiI4IiwicHVpZCI6IjEwMDMyMDAxQzNBQjg4MjkiL                                                       CJyaCI6IjEuQVFVQV9vaXZINWlwVzB5VHlTRUtFZG1sd2dNQUFBQUFBQUFBd0FBQUFBQUFBQUFGQUY0R                                                       kFBLiIsInNjcCI6IkZpbGVzLlJlYWQgRmlsZXMuUmVhZC5BbGwgRmlsZXMuUmVhZFdyaXRlIEZpbGVzL                                                       lJlYWRXcml0ZS5BbGwgU2l0ZXMuUmVhZC5BbGwgcHJvZmlsZSBvcGVuaWQgZW1haWwiLCJzaWQiOiIwM                                                       DQwOTM1OS03OTQ2LTg5MjItNWU5MC1hMTljZGIyNmRiODgiLCJzdWIiOiJGakhnU21hNjBTSTFZWGk4M                                                       k1qMnEtR2RhQi1mS2ZYNTJpSEE3SGJsMUljIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkVVIiwidGlkI                                                       joiMWZhZjg4ZmUtYTk5OC00YzViLTkzYzktMjEwYTExZDlhNWMyIiwidW5pcXVlX25hbWUiOiJza2d0b                                                       mwxQHVjbC5hYy51ayIsInVwbiI6InNrZ3RubDFAdWNsLmFjLnVrIiwidXRpIjoiWE9OQ3hPYW5sazJXV                                                       0tRVnVONHJBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiM                                                       Tk0ZTg1NTA5Il0sInhtc19mdGQiOiJOal9Zd1hsRG9pY0tyWnpUaS1wQWZPYjloR1RReEVFbW5ybXRHU                                                       kt6ekI0IiwieG1zX2lkcmVsIjoiMSAzMCIsInhtc19zdCI6eyJzdWIiOiJJOTdqOF9WWXljNnNhVkxWQ                                                       1UtN3hIcEI3TVdzYWJ4cW9oNnZnbWttMl9nIn0sInhtc190Y2R0IjoxMzYwODcxMzQ1fQ.F-Ma2iOnL&quot;} 
+FVm5hb01Bc2hDSDJYRSIsImtpZCI6IkNOdjBPSTNSd3FsSEZFVm5hb01Bc2hDSDJYRSJ9.eyJhdWQiOs
+iIwMDAwMDAwMy0wMDAwLTAwMDAtYzAwMC0wMDAwMDAwMDAwMDAiLCJpc3MiOiJodHRwczovL3N0cy53a
+mwxQHVjbC5hYy51ayIsInVwbiI6InNrZ3RubDFAdWNsLmFjLnVrIiwidXRpIjoiWE9OQ3hPYW5sazJXV
+0tRVnVONHJBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiM
+Tk0ZTg1NTA5Il0sInhtc19mdGQiOiJOal9Zd1hsRG9pY0tyWnpUaS1wQWZPYjloR1RReEVFbW5ybXRHU
+kt6ekI0IiwieG1zX2lkcmVsIjoiMSAzMCIsInhtc19zdCI6eyJzdWIiOiJJOTdqOF9WWXljNnNhVkxWQ
+1UtN3hIcEI3TVdzYWJ4cW9oNnZnbWttMl9nIn0sInhtc190Y2R0IjoxMzYwODcxMzQ1fQ.F-Ma2iOnL&quot;} 
 - drive_id: b!ra4Fi4CqS0GYT_qied1OV9A2pTgX9JxHhfZTS2MwNK-0r_cRHFddS7D8Yt0CozO-
 - drive_type: business
 Keep this &quot;UCLDrive&quot; remote?
@@ -1989,9 +1995,9 @@ d) Delete this remote
 y/e/d&gt; 
 </code></pre></div>
 
-<p>If everything is ok., then select <strong>y</strong> and press <strong>Enter</strong> key.</p>
+<p>If everything is ok., then select <code>y</code> and press the ++Enter++ key.</p>
 <p>Now you are ready to use <strong>Rclone</strong>!</p>
-<p>If you are new using Rclone, please look <a href="https://rclone.org/docs/#basic-syntax">here</a> the basic syntax. </p>
+<p>If you are new using <strong>Rclone</strong>, please consult the <a href="https://rclone.org/docs/#basic-syntax">official basic syntax documentation</a>.</p>
 
 
 
