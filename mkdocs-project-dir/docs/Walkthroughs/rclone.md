@@ -40,7 +40,7 @@ If you are using Mac, there is an app called ***XQuartz** you must donwload firs
 
 ### X-Forwarding in Windows
 
-If you are using Windows, you need to install an X server separately. The use of **Xming** with ***Putty** is suggested 
+If you are using Windows, you need to install an X server separately. The use of **Xming** with **Putty** is suggested 
 to configure **Rclone**, although you can use your preferred method. You can download **Xming-fonts** free from 
 [here](https://sourceforge.net/projects/xming/files/). Once you download it and install it, you must open **Xming** in your
 computer before connecting to ssh. The application is always working on the background so you may not see anything opening after
