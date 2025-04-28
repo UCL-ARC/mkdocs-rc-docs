@@ -1,57 +1,56 @@
 # Rclone
 
- [Rclone](https://rclone.org/) is a command-line program to manage files on cloud storage. This is a walkthrough for 
+ [**Rclone**](https://rclone.org/) is a command-line program to manage files on cloud storage. This is a walkthrough for 
  configuring **Rclone** to be used with Microsoft OneDrive but it also can be used with several other cloud systems like 
  Dropbox, Google Drive, etc.
 
 We have installed 2 versions of rclone in our clusters. ```rclone/1.61.0``` was used as reference for this walkthrough 
-but the process is similar with other versions.
+but the process is similar with other versions. Generally, you should use the highest-numbered version.
 
 After loading the module with the command:
 
 ```
-module load rclone/1.61.0 , 
+module load rclone/1.61.0
 ```
 
-the next step is to configure **RClone**. As the cloud systems usually have quite complicated authentication methods,
+the next step is to configure **Rclone**. As the cloud systems usually have quite complicated authentication methods,
 these are kept in a config file. For example, the configuration file for **OneDrive** and **Dropbox** involve getting 
 a **token** from **Microsoft** and **Dropbox** respectively, to link your account in the cloud system with **Rclone**. 
 There are several ways to get this token and here is presented the easiest. If this method does not work for you, please 
-contact our support: [rc-support@ucl.ac.uk]
+contact our support: [rc-support@ucl.ac.uk](mailto:rc-support@ucl.ac.uk)
 
-The method that allows an automatic way to get and add the token to the configuration file requires to uses
-[X-Forwarding](https://www.rc.ucl.ac.uk/docs/Supplementary/X-Forwarding/ )
-in your ssh connection. This will allow to the cluster to push an interactive window to your local computer over a network. 
+The method that allows an automatic way to get and add the token to the configuration file requires using
+[X-Forwarding](../Supplementary/X-Forwarding.md)
+in your SSH connection. This will allow the cluster to push an interactive browser window to your local computer over a network. 
 In this window you will enter your credentials and connect to the account you want to link with **Rclone** (e.g. Microsoft
 One Drive or Dropbox). If you have activated MFA in your account, it will ask you for the respective code. Note that the 
 connection to internet could not the best and it might take a while to load the page.
 
 ### X-Forwarding in Linux
 
-If you are using linux, the X-Forwarding is very easy. Just add ```-X``` option to your ssh command like this: 
+If you are using Linux, the X-Forwarding is very easy. Just add `-X` option to your SSH command like this: 
 
 ```
 ssh -X USER@CLUSTER.rc.ucl.ac.uk
 ```
 ### X-Forwarding in Mac
 
-If you are using Mac, there is an app called ***XQuartz** you must donwload first and then use the ```-Y``` option with the
-ssh command to allow X-forwarding. 
+If you are using Mac, there is an app called ***XQuartz** you must donwload first and then use the `-Y` option with the
+`ssh` command to allow X-forwarding. 
 
 ### X-Forwarding in Windows
 
-If you are using Windows, you need to install an ```X``` server separately. The use **Xming** with ***Putty** is suggested 
+If you are using Windows, you need to install an X server separately. The use of **Xming** with ***Putty** is suggested 
 to configure **Rclone**, although you can use your preferred method. You can download **Xming-fonts** free from 
 [here](https://sourceforge.net/projects/xming/files/). Once you download it and install it, you must open **Xming** in your
-computer before connecting to ssh. The application is always working on the background so you will see anything opening after
+computer before connecting to ssh. The application is always working on the background so you may not see anything opening after
 click on it.
 
-Then, to connect to ssh we suggest to use **Putty** unless you know how to allow the X-forwarding with another method. To
-configure **Putty** to use x-Forwarding, you must look at the left side panel and go to ```SSH``` category. Then select ```X11```
-and in there tick on ```Enable X11 forwarding``` (the box must be blue).  Then enter the details to connect to the cluster in
+Then, to connect via SSH we suggest using **Putty** unless you know how to allow X-forwarding with another method. To
+configure **Putty** to use X-Forwarding, you must look at the left side panel and go to ++SSH++ category. Then select ++X11++
+and ensure the checkbox for ++Enable X11 forwarding++ is checked/filled.  Then enter the details to connect to the cluster in
 the main window and that's all! If you are loading a previous saved session, then load the session first and then enable the 
 X-Forwarding. 
-
 
 After you have allowed X-Forwarding, you are ready to configure **Rclone**. 
 
@@ -74,14 +73,14 @@ s) Set configuration password
 q) Quit config
 n/s/q>
 ```
-Select **n** and press **Enter** Key
+Select `n` and press the ++Enter++ key.
 
 2.
 ```
 Enter name for new remote.
 name>
 ```
-Enter the **name of your own choose for your remote** connection and press **Enter** key.
+Enter a simple text label for your remote connection and press the ++Enter++ key. We've used `UCLDrive` here, and it is easier to correctly use on the command-line if it does not contain spaces.
 
 3. Something similar to this will be displayed. Please check what number corresponds to **Microsoft OneDrive**
    option and enter that one. 
@@ -153,7 +152,7 @@ Choose a number from below, or type in your own value.
 61 / seafile   \ (seafile)
 Storage> 
 ```
-In this case,**Microsoft OneDrive** corresponds to the option **36**, so enter **36** and press **Enter** key.
+In this case,**Microsoft OneDrive** corresponds to option 36, so enter `36` and press the ++Enter++ key.
 
 4.
 ```
@@ -162,7 +161,7 @@ Leave blank normally.
 Enter a value. Press Enter to leave empty.
 client_id> 
 ```
-Press **Enter** key to leave empty.
+Press ++Enter++ to leave empty.
 
 5.
 ```
@@ -171,7 +170,7 @@ Leave blank normally.
 Enter a value. Press Enter to leave empty.
 client_secret> 
 ```
-Press **Enter** key to leave empty.
+Press ++Enter++ to leave empty.
 
 6.
 ```
@@ -185,7 +184,7 @@ Press Enter for the default (global).
 4 / Azure and Office 365 operated by Vnet Group in China   \ (cn)
 region>
 ```
-Select **1** and press **Enter** Key
+Select `1` and press the ++Enter++ Key.
 
 ```
 Option tenant.ID of the service principal's tenant. Also called its directory ID.
@@ -193,7 +192,7 @@ Set this if using- Client Credential flowEnter a value.
 Press Enter to leave empty.
 tenant> 
 ```
-Press **Enter** to leave empty
+Press ++Enter++ to leave empty.
 
 8.
 ```
@@ -202,7 +201,7 @@ y) Yes
 n) No (default)
 y/n>
 ```
-Select **n** and press **Enter** key.
+Select `n` and press the ++Enter++ key.
 
 9.
 ```
@@ -214,10 +213,10 @@ y) Yes (default)
 n) No
 y/n>
 ```
-Select **y** and press **Enter** key.
+Select `y` and press the ++Enter+ key.
 
 **If you have installed Xming and habilitated correctly X-Forwarding in Putty or your preferred method, 
-then a window will open in your perosnal machine. There, you must log in, in this case into Microsoft using 
+then a browser window will open on your personal machine. There, you must log in, in this case into Microsoft 365 using 
 your UCL account (internal).**
 
 10.
@@ -234,18 +233,18 @@ Press Enter for the default (onedrive).
 7 | E.g. /teams/hr   \ (path
 config_type> 
 ```
-Select **1** and press **Enter** key.
+Select `1` and press the ++Enter++ key.
 
 11.
 ```
 Option config_driveid. Select drive you want to use
 Choose a number from below, or type in your own string value.
-Press Enter for the default (b!ra4Fi4CqS0GYT_qied1OV9A2pTgX9JxHhfZTS2MwNK-0r_cRHFddS7D8Yt0CozO-).
-1 / OneDrive (business)   \ (b!ra4Fi4CqS0GYT_qied1OV9A2pTgX9JxHhfZTS2MwNK-0r_cRHFddS7D8Yt0CozO-)
-2 / PersonalCacheLibrary (business)   \ (b!ra4Fi4CqS0GYT_qied1OV9A2pTgX9JxHhfZTS2MwNK9-7X_uAf71Qavjc1vd7Xis)
+Press Enter for the default (b!ra4Fi4CqS0GYT_qied18V9A2pTgX9JxHhfZTS2MwNK-0r_cRHFddS7D8Yt0CozO-).
+1 / OneDrive (business)   \ (b!ra4Fi4CqS0GYT_qied18V9A2pTgX9JxHhfZTS2MwNK-0r_cRHFddS7D8Yt0CozO-)
+2 / PersonalCacheLibrary (business)   \ (b!ra4Fi4CqS0GYT_qied1OP9A2pTgX9JxHhfZTS2MwNK9-7X_uAf71Qavjc1vd7Xis)
 config_driveid> 
 ```
-Select **1** and press **Enter** key.
+Select `1` and press the ++Enter++ key.
 
 12.
 ```
@@ -255,7 +254,7 @@ y) Yes (default)
 n) No
 y/n>
 ```
-If the ULR is ok, then select **y** and press **Enter** key.
+If the URL is ok, then select `y` and press the ++Enter++ key.
 
 13.
 ```
@@ -271,7 +270,13 @@ Options:
 - region: global
 - token:{"access_token":"eyJ0eXAiOiJKV1QiLCJub25jZSI6IkxmaXR6d2hKWkVaOGstRlZqZEh
 iOHFCUHZGMnFZSE8tQmpORV80d1lQWTQiLCJhbGciOiJSUzI1NiIsIng1dCI6IkNOdjBPSTNSd3FsSEZ
-FVm5hb01Bc2hDSDJYRSIsImtpZCI6IkNOdjBPSTNSd3FsSEZFVm5hb01Bc2hDSDJYRSJ9.eyJhdWQiOs                                                       iIwMDAwMDAwMy0wMDAwLTAwMDAtYzAwMC0wMDAwMDAwMDAwMDAiLCJpc3MiOiJodHRwczovL3N0cy53a                                                       W5kb3dzLm5ldC8xZmFmODhmZS1hOTk4LTRjNWItOTNjOS0yMTBhMTFkOWE1YzIvIiwiaWF0IjoxNzQ1N                                                       DIxNzE4LCJuYmYiOjE3NDU0MjE3MTgsImV4cCI6MTc0NTQyNTc4OCwiYWNjdCI6MCwiYWNyIjoiMSIsI                                                       mFjcnMiOlsicDEiLCJ1cm46dXNlcjpyZWdpc3RlcnNlY3VyaXR5aW5mbyJdLCJhaW8iOiJBWFFBaS84W                                                       kFBQUF1NjJxSG1Cc1YzRk5MaElFWmxwZ3lobjB6WGJzY0hlSGZWajJHdnFEcXhockI1WTl1bXF4Z3hGS                                                       UVsZ1k2Q1psRlBqSDd1V0NKbkR0cmNaME9FQjdQcmZtcE1oQjF4L3BENEJGY1RCOVUveEZ4TXlhWFVLZ                                                       Wt0VHplcURtUkxYNi9qM1l0em5JazQvaHpzUEpXdjRoY2c9PSIsImFtciI6WyJwd2QiLCJ3aWEiLCJtZ                                                       mEiXSwiYXBwX2Rpc3BsYXluYW1lIjoicmNsb25lIiwiYXBwaWQiOiJiMTU2NjVkOS1lZGE2LTQwOTItO                                                       DUzOS0wZWVjMzc2YWZkNTkiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkxhYnJhIEF2aWxhI                                                       iwiZ2l2ZW5fbmFtZSI6Ik5pY29sZSIsImlkdHlwIjoidXNlciIsImlwYWRkciI6IjE5My42MC4yMzguM                                                       TEwIiwibmFtZSI6IkxhYnJhIEF2aWxhLCBOaWNvbGUiLCJvaWQiOiJmOWU4OTBlMS1iZDBhLTQzZjctY                                                       jRmNi03NWUyZTY4ODg3OWMiLCJvbnByZW1fc2lkIjoiUy0xLTUtMjEtMjkwMjI2NTYyMS0xMDYzMDI4N                                                       jIxLTIzODE1NjE0ODAtOTcwNjUxIiwicGxhdGYiOiI4IiwicHVpZCI6IjEwMDMyMDAxQzNBQjg4MjkiL                                                       CJyaCI6IjEuQVFVQV9vaXZINWlwVzB5VHlTRUtFZG1sd2dNQUFBQUFBQUFBd0FBQUFBQUFBQUFGQUY0R                                                       kFBLiIsInNjcCI6IkZpbGVzLlJlYWQgRmlsZXMuUmVhZC5BbGwgRmlsZXMuUmVhZFdyaXRlIEZpbGVzL                                                       lJlYWRXcml0ZS5BbGwgU2l0ZXMuUmVhZC5BbGwgcHJvZmlsZSBvcGVuaWQgZW1haWwiLCJzaWQiOiIwM                                                       DQwOTM1OS03OTQ2LTg5MjItNWU5MC1hMTljZGIyNmRiODgiLCJzdWIiOiJGakhnU21hNjBTSTFZWGk4M                                                       k1qMnEtR2RhQi1mS2ZYNTJpSEE3SGJsMUljIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkVVIiwidGlkI                                                       joiMWZhZjg4ZmUtYTk5OC00YzViLTkzYzktMjEwYTExZDlhNWMyIiwidW5pcXVlX25hbWUiOiJza2d0b                                                       mwxQHVjbC5hYy51ayIsInVwbiI6InNrZ3RubDFAdWNsLmFjLnVrIiwidXRpIjoiWE9OQ3hPYW5sazJXV                                                       0tRVnVONHJBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiM                                                       Tk0ZTg1NTA5Il0sInhtc19mdGQiOiJOal9Zd1hsRG9pY0tyWnpUaS1wQWZPYjloR1RReEVFbW5ybXRHU                                                       kt6ekI0IiwieG1zX2lkcmVsIjoiMSAzMCIsInhtc19zdCI6eyJzdWIiOiJJOTdqOF9WWXljNnNhVkxWQ                                                       1UtN3hIcEI3TVdzYWJ4cW9oNnZnbWttMl9nIn0sInhtc190Y2R0IjoxMzYwODcxMzQ1fQ.F-Ma2iOnL"} 
+FVm5hb01Bc2hDSDJYRSIsImtpZCI6IkNOdjBPSTNSd3FsSEZFVm5hb01Bc2hDSDJYRSJ9.eyJhdWQiOs
+iIwMDAwMDAwMy0wMDAwLTAwMDAtYzAwMC0wMDAwMDAwMDAwMDAiLCJpc3MiOiJodHRwczovL3N0cy53a
+mwxQHVjbC5hYy51ayIsInVwbiI6InNrZ3RubDFAdWNsLmFjLnVrIiwidXRpIjoiWE9OQ3hPYW5sazJXV
+0tRVnVONHJBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiM
+Tk0ZTg1NTA5Il0sInhtc19mdGQiOiJOal9Zd1hsRG9pY0tyWnpUaS1wQWZPYjloR1RReEVFbW5ybXRHU
+kt6ekI0IiwieG1zX2lkcmVsIjoiMSAzMCIsInhtc19zdCI6eyJzdWIiOiJJOTdqOF9WWXljNnNhVkxWQ
+1UtN3hIcEI3TVdzYWJ4cW9oNnZnbWttMl9nIn0sInhtc190Y2R0IjoxMzYwODcxMzQ1fQ.F-Ma2iOnL"} 
 - drive_id: b!ra4Fi4CqS0GYT_qied1OV9A2pTgX9JxHhfZTS2MwNK-0r_cRHFddS7D8Yt0CozO-
 - drive_type: business
 Keep this "UCLDrive" remote?
@@ -280,8 +285,8 @@ e) Edit this remote
 d) Delete this remote
 y/e/d> 
 ```
-If everything is ok., then select **y** and press **Enter** key.
+If everything is ok., then select `y` and press the ++Enter++ key.
 
 Now you are ready to use **Rclone**!
 
-If you are new using Rclone, please look [here](https://rclone.org/docs/#basic-syntax) the basic syntax. 
+If you are new using **Rclone**, please consult the [official basic syntax documentation](https://rclone.org/docs/#basic-syntax).
