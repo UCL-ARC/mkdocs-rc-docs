@@ -1767,19 +1767,22 @@ connection to internet could not the best and it might take a while to load the 
 </code></pre></div>
 
 <h3 id="x-forwarding-in-mac">X-Forwarding in Mac<a class="headerlink" href="#x-forwarding-in-mac" title="Permanent link">§</a></h3>
-<p>If you are using Mac, there is an app called <strong>*XQuartz</strong> you must donwload first and then use the <code>-Y</code> option with the
-<code>ssh</code> command to allow X-forwarding. </p>
+<p>If you are using Mac, there is an app called <strong>XQuartz</strong> you must donwload first and then use the <code>-Y</code> option with the
+<code>ssh</code> command to allow X-forwarding. Note that it might be necessary to restart your Mac after installing xQuartz to be 
+able to use it for first time.</p>
 <h3 id="x-forwarding-in-windows">X-Forwarding in Windows<a class="headerlink" href="#x-forwarding-in-windows" title="Permanent link">§</a></h3>
 <p>If you are using Windows, you need to install an X server separately. The use of <strong>Xming</strong> with <strong>Putty</strong> is suggested 
 to configure <strong>Rclone</strong>, although you can use your preferred method. You can download <strong>Xming-fonts</strong> free from 
 <a href="https://sourceforge.net/projects/xming/files/">here</a>. Once you download it and install it, you must open <strong>Xming</strong> in your
 computer before connecting to ssh. The application is always working on the background so you may not see anything opening after
-click on it.</p>
+clicking on it.</p>
 <p>Then, to connect via SSH we suggest using <strong>Putty</strong> unless you know how to allow X-forwarding with another method. To
-configure <strong>Putty</strong> to use X-Forwarding, you must look at the left side panel and go to <span class="keys"><kbd>SSH</kbd></span> category. Then select <span class="keys"><kbd>X11</kbd></span>
-and ensure the checkbox for <span class="keys"><kbd>Enable X11 forwarding</kbd></span> is checked/filled.  Then enter the details to connect to the cluster in
-the main window and that's all! If you are loading a previous saved session, then load the session first and then enable the 
-X-Forwarding. </p>
+configure <strong>Putty</strong> to use X-Forwarding, you must look at the left side panel and go to <span class="keys"><kbd>SSH</kbd></span> category. </p>
+<p><img alt="SSH" src="../img/rclone/SSH.jpeg" /></p>
+<p>Then select <span class="keys"><kbd>X11</kbd></span> and ensure the checkbox for <span class="keys"><kbd>Enable X11 forwarding</kbd></span> is checked/filled.  </p>
+<p><img alt="Enable X-Forwarding" src="../img/rclone/EnableX.jpeg" /></p>
+<p>Then enter the details to connect to the cluster in the main window and that's all! If you are loading a previous 
+saved session, then load the session first and then enable the X-Forwarding. </p>
 <p>After you have allowed X-Forwarding, you are ready to configure <strong>Rclone</strong>. </p>
 <h2 id="rclone-and-onedrive">Rclone and OneDrive<a class="headerlink" href="#rclone-and-onedrive" title="Permanent link">§</a></h2>
 <p>After loading the <strong>Rclone</strong> module, run in the command line:</p>
@@ -1846,7 +1849,7 @@ Choose a number from below, or type in your own value.
 33 / Mega   \ (mega)
 34 / Microsoft Azure Blob Storage   \ (azureblob)
 35 / Microsoft Azure Files   \ (azurefiles)
-/ Microsoft OneDrive   \ (onedrive)
+36 / Microsoft OneDrive   \ (onedrive)
 37 / OpenDrive   \ (opendrive)
 38 / OpenStack Swift (Rackspace Cloud Files, Blomp Cloud Storage, Memset Memstore, OVH)   \ (swift)
 39 / Oracle Cloud Infrastructure Object Storage   \ (oracleobjectstorage)
