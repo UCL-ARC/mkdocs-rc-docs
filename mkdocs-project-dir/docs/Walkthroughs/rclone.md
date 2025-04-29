@@ -50,11 +50,23 @@ clicking on it.
 Then, to connect via SSH we suggest using **Putty** unless you know how to allow X-forwarding with another method. To
 configure **Putty** to use X-Forwarding, you must look at the left side panel and go to ++"SSH"++ category. 
 
-![SSH](../img/SSH.jpeg)
+<figure id="est">
+<div class="center">
+<img src="../img/SSH.jpeg" style="width:100mm" />
+</div>
+</figure>
+
+&nbsp;
 
 Then select ++"X11"++ and ensure the checkbox for ++"Enable X11 forwarding"++ is checked/filled.  
 
-![Enable X-Forwarding](../img/EnableX.jpeg)
+<figure id="est">
+<div class="center">
+<img src="../img/EnableX.jpeg" style="width:100mm" />
+</div>
+</figure>
+
+&nbsp;
 
 Then enter the details to connect to the cluster in the main window and that's all! If you are loading a previous 
 saved session, then load the session first and then enable the X-Forwarding. 
