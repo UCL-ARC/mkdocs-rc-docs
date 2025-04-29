@@ -50,11 +50,11 @@ clicking on it.
 Then, to connect via SSH we suggest using **Putty** unless you know how to allow X-forwarding with another method. To
 configure **Putty** to use X-Forwarding, you must look at the left side panel and go to ++"SSH"++ category. 
 
-![SSH](../img/rclone/SSH.jpeg)
+![SSH](../img/SSH.jpeg)
 
 Then select ++"X11"++ and ensure the checkbox for ++"Enable X11 forwarding"++ is checked/filled.  
 
-![Enable X-Forwarding](../img/rclone/EnableX.jpeg)
+![Enable X-Forwarding](../img/EnableX.jpeg)
 
 Then enter the details to connect to the cluster in the main window and that's all! If you are loading a previous 
 saved session, then load the session first and then enable the X-Forwarding. 
@@ -296,4 +296,4 @@ If everything is ok., then select `y` and press the ++"Enter"++ key.
 
 Now you are ready to use **Rclone**!
 
-If you are new using **Rclone**, please consult the [official basic syntax documentation](https://rclone.org/docs/#basic-syntax).
+If you are new using **Rclone**, please look at the [official basic syntax documentation](https://rclone.org/docs/#basic-syntax).
