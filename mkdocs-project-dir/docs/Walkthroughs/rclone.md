@@ -35,8 +35,9 @@ ssh -X USER@CLUSTER.rc.ucl.ac.uk
 ```
 ### X-Forwarding in Mac
 
-If you are using Mac, there is an app called ***XQuartz** you must donwload first and then use the `-Y` option with the
-`ssh` command to allow X-forwarding. 
+If you are using Mac, there is an app called **XQuartz** you must donwload first and then use the `-Y` option with the
+`ssh` command to allow X-forwarding. Note that it might be necessary to restart your Mac after installing xQuartz to be 
+able to use it for first time.
 
 ### X-Forwarding in Windows
 
@@ -44,13 +45,19 @@ If you are using Windows, you need to install an X server separately. The use of
 to configure **Rclone**, although you can use your preferred method. You can download **Xming-fonts** free from 
 [here](https://sourceforge.net/projects/xming/files/). Once you download it and install it, you must open **Xming** in your
 computer before connecting to ssh. The application is always working on the background so you may not see anything opening after
-click on it.
+clicking on it.
 
 Then, to connect via SSH we suggest using **Putty** unless you know how to allow X-forwarding with another method. To
-configure **Putty** to use X-Forwarding, you must look at the left side panel and go to ++"SSH"++ category. Then select ++"X11"++
-and ensure the checkbox for ++"Enable X11 forwarding"++ is checked/filled.  Then enter the details to connect to the cluster in
-the main window and that's all! If you are loading a previous saved session, then load the session first and then enable the 
-X-Forwarding. 
+configure **Putty** to use X-Forwarding, you must look at the left side panel and go to ++"SSH"++ category. 
+
+![SSH](../img/rclone/SSH.jpeg)
+
+Then select ++"X11"++ and ensure the checkbox for ++"Enable X11 forwarding"++ is checked/filled.  
+
+![Enable X-Forwarding](../img/rclone/EnableX.jpeg)
+
+Then enter the details to connect to the cluster in the main window and that's all! If you are loading a previous 
+saved session, then load the session first and then enable the X-Forwarding. 
 
 After you have allowed X-Forwarding, you are ready to configure **Rclone**. 
 
@@ -124,7 +131,7 @@ Choose a number from below, or type in your own value.
 33 / Mega   \ (mega)
 34 / Microsoft Azure Blob Storage   \ (azureblob)
 35 / Microsoft Azure Files   \ (azurefiles)
-/ Microsoft OneDrive   \ (onedrive)
+36 / Microsoft OneDrive   \ (onedrive)
 37 / OpenDrive   \ (opendrive)
 38 / OpenStack Swift (Rackspace Cloud Files, Blomp Cloud Storage, Memset Memstore, OVH)   \ (swift)
 39 / Oracle Cloud Infrastructure Object Storage   \ (oracleobjectstorage)
