@@ -641,7 +641,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     (This did not happen, the certificate was renewed in time).
 
-#### Latest on Myriad
 
     2025-03-05 - **Myriad new filesystem update**
 
@@ -687,6 +686,169 @@ This page outlines that status of each of the machines managed by the Research C
 
     Further details on this to come. A similar process will take place when your Myriad user account 
     expires.
+
+#### Latest on Myriad
+
+  - 2025-03-31 - **Myriad new filesystem on Mon 7 April**
+
+    We are replacing Myriad's filesystem with the new one on Monday 7 April.
+
+    From 9am there will be a maintenance period when you will not be able to log in while we switch over to the new filesystem and do final checks. We expect to give you access again later during the 7 April, but if it takes longer you may not have access until Tues 8 April.
+
+    Only the data on ACFS will be backed up. Please note that the data on the new filesystem will not be backed up, 
+    not even data under `/home`.
+
+    **After the maintenance, you will have the following storage locations:**
+ 
+    - `/home/username`: your new home directory on the new filesystem; not backed up
+    - `/home/username/Scratch`: we are keeping this as a directory in your home for convenience. It is now part of the same space with the same rules and quota as the rest of your home directory, still not backed up.
+    - `/home/username/oldhome`: a symbolic link to `/old_lustre/home/username`, your old home directory on the old filesystem; read-only (no changes to data possible)
+    - `/home/username/oldscratch`: a symbolic link to `/old_lustre/scratch/username`, your old scratch directory on the old filesystem; read-only (no changes to data possible)
+    - `/home/username/ACFS`: a symbolic link to your ACFS space where you can put data you want to be backed up; unaffected by this change
+
+    **Quotas**
+
+    You will have one quota of 1T on Myriad for your home by default. If you applied for a quota increase or renewal after 15 Feb 2025 we will set this quota on the new filesystem for you (also if you already applied for the increase specifically for the new filesystem). If you had a quota increase from before 15 Feb, it will not be recreated on the new filesystem straight away and you will need to apply for it again.
+
+    **New terms for quota increases and when data is deleted**
+
+    If you have a Myriad quota increase, it will have an expiry date, maximum of one year after application. You will be sent a reminder one month before your quota expires, and then reminders at two weeks, one week, expiry day, two weeks after, one month after. One month after a quota has expired, if you have not contacted us, we will move all the contents of your Myriad home and Scratch into another location. We will keep your data there for two months further to give you longer to contact us to reapply for quota or retrieve the data and will then delete all of it. Please consider this at the time of applying for your quota increase, especially if you expect to be away from UCL for a period of time.
+
+    This is to prevent Myriad's filesystem from filling up from large quota increases that expire and are not removed. 
+    If you are in contact with us and reapplying for your quota increases, this should allow us to keep granting them 
+    to you. 
+
+    **What you need to do**
+
+    **Step 1: Move your data**
+
+    After we tell you the new filesystem is available and you can log in, you will need to log in using your UCL 
+    password, as any ssh keys you might have set up will not be there on the new filesystem. You can then copy your 
+    `.ssh` directory from `/old_lustre/home/username` to your new home.
+
+    Commands you may wish to use for copying:
+
+    - Copy your old .ssh directory into your new home (~) recursively and preserve permissions:
+        - `cp -rp ~/oldhome/.ssh ~`  
+    - Use rsync archive mode (recursively copy directories, copy symlinks without resolving, and preserve permissions, ownership and modification times) to copy your old .ssh directory into your new home:
+        - `rsync -r -a ~/oldhome/.ssh ~` 
+
+    Copy only works locally, so you can use it for any filesystems that are directly mounted on Myriad (old_lustre, ACFS, RDSS, new filesystem). Rsync can be used locally or between remote systems as well. It can also resume incomplete copies by running again and doesn't re-copy data that you have already copied if your transfer gets interrupted for any reason.
+
+    You will need to copy your data off old_lustre onto the new filesystem, or the ACFS, or the RDSS if you have a project, or onto other external systems if you want to keep it for future reference.
+
+    If you have large amounts of data (particularly many small files) that you are intending to archive elsewhere, consider creating tar archives straight away instead of copying data recursively first.
+
+    - `tar -czvf /home/username/Scratch/myarchive.tar.gz /old_lustre/home/username/data` will (c)reate a g(z)ipped archive (v)erbosely in the specified (f)ilename location on the new filesystem. The contents will be everything in this user's old "data" directory.
+
+    **Step 2: release your jobs**
+
+    All your jobs will be in held status (`hqw`) so that they do not fail while your data is not there. After you have copied the data that your jobs need to the new filesystem, you can release the hold on your queued jobs.
+
+    - `qrls $JOB_ID` will release a specific job ID, and `qrls all` will release all your jobs.
+
+    Released array jobs will have the first task in status qw and the rest in hqw - this is normal.
+
+    **FAQ: .bashrc and hidden files**
+
+    _Where is my old .bashrc? Why are my jobs failing with module errors now? Why are my python packages not there?_
+
+    Your `.bashrc` is in `/old_lustre/home/username/.bashrc`
+
+    It begins with a dot and is a hidden file so will only show up with `ls -a` rather than `ls`. You can copy this across into your current home again. You may have put module load and unload commands in it, so are now getting module conflicts when your jobs run since otherwise the modules are still the default ones.
+
+    This also applies to other hidden files or directories you may have, like `.condarc` and `.python3local` where you may have environments defined or packages installed.
+
+    _After I move my files, will they still be read-only?_
+
+    No, it is the old filesystem itself that was set to be read-only. After you copy your files to the new filesystem, 
+    you will be able to edit them in the same way as before.
+
+    **Project/shared spaces/hosted datasets**
+
+    If you have an existing project or shared space or hosted dataset (in `/lustre/projects` aka `/shared/ucl/depts`) you will need to reapply for this space and we will need to recreate it on the new filesystem. We'll be sending another email separately to people we have listed as the owners of spaces.
+
+    The same terms for quota increases and data deletion set out above will apply to project spaces so the data will 
+    be deleted if they expire and are not renewed, after reminders. Where an access group (eg `ag-archpc-groupname`, 
+    formerly `lgsh0xx`) has access to the space, we will contact all members of the group so they are still aware if 
+    the original owner of the space has left.
+
+    If you currently have an access group named like `lgsh0xx` for your space, as part of reapplying we will be 
+    transferring this to a new access group named `ag-archpc-groupname`. These groups can be updated within half 
+    an hour rather than only overnight.
+
+    **Removal of old filesystem**
+
+    `/old_lustre` will be available for three months, until 9am on Monday 7 July. It will then be
+    unmounted and you will not be able to access it any longer.
+
+    **Myriad at risk for first week**
+
+    Myriad should be considered exposed to potential issues for the first week of running a full
+    workload with the new filesystem, and so there might be interruptions to service if anything goes
+    wrong or needs tuning differently.
+
+    The new filesystem is GPFS (IBM Storage Scale) and not Lustre, for those who are interested.
+
+    Additional FAQs will be added here based on questions we receive.
+
+  - 2025-04-14 - **Myriad filesystem update and issues with symlinks**
+
+    This is a quick rundown of what else happened on Myriad last week and then some tips for problems
+    people have been having.
+
+    After the new filesystem went live, we had a few issues on Wednesday and Thursday where some jobs
+    were causing nodes to crash which was in turn causing the gpfs client to hang - which you will have
+    seen as timeouts or very slow access on the login nodes. The hangs also meant that a few people had
+    their new home directories only half-created, so didn't have a home directory that belonged to them
+    when they logged in. We changed some configuration on the compute nodes to fix the issue (the jobs
+    causing the problem were running out of virtual memory). People who had the home directory issue
+    should have been sorted out on Thursday and Friday - let us know if anyone else still gets an error
+    about their home directory not existing.
+
+    We were running more smoothly by Friday. Issues like these are why we said the rest of that week was
+    at risk, as there was likely to be something that needed adjusting once real jobs started.
+
+    **Symbolic links and Scratch**
+
+    You start out with an empty normal directory called Scratch in your home. What I had not considered
+    is if you rsync the whole of your oldhome back in, then it will rsync the old Scratch symlink
+    (shortcut) from oldhome and replace the empty Scratch directory with it. This only happens because
+    that directory is empty.
+
+    We have had tickets from some of you about finding that files are read-only that you think you have
+    copied - it is because they are still really on the old filesystem.
+
+    If you do an ls -al in your home you will be able to see if you have ended up with something similar
+    to this:
+
+    ```
+    lrwxrwxrwx   1 cceahke staff          24 Sep 10  2024 Scratch -> /lustre/scratch/scratch/cceahke
+    ```
+
+    That shows you that Scratch is a symlink and is pointing to a location on the old filesystem.
+
+    To fix, delete the symlink and recreate Scratch as a directory:
+    
+    ```    
+    rm Scratch
+    mkdir Scratch
+    ```
+
+    You can then go ahead and rsync the contents of oldscratch into Scratch so they are copied onto the 
+    new filesystem correctly. You cannot accidentally delete the contents of oldscratch since it is 
+    read-only.
+
+    If you have not rsynced your home yet, you could add the `--safe-links` option to rsync, which tells 
+    it to ignore any symbolic links that point outside the copied tree and any symlinks that are 
+    absolute paths. So when copying home, the symlink to `/lustre/scratch/scratch` should then be 
+    ignored: 
+
+    ```
+    rsync --safe-links -r -a ~/oldhome ~
+    ```
+
+    We are catching up on the quota and shared space requests we have received. 
 
 
 ### Kathleen
@@ -893,7 +1055,7 @@ This page outlines that status of each of the machines managed by the Research C
     some of the oldest installs and modules that are not being used in jobs. We then intend to prune
     this further over time and add newer versions into the Spack stack.
 
-   **Documentation links**
+    **Documentation links**
 
     The SSL certificate for www.rc.ucl.ac.uk is due to expire at midnight on 12 Feb. We're getting a
     new one but there might be a gap if it can't be renewed in time. If that happens your browser may
@@ -920,10 +1082,10 @@ This page outlines that status of each of the machines managed by the Research C
 
     To use:
 
-```
-module load beta-modules
-module load test-stack/2025-02
-````
+    ```
+    module load beta-modules
+    module load test-stack/2025-02
+    ```
 
     After that, when you type `module avail` there will be several sections of additional modules at 
     the top of the output.
@@ -932,11 +1094,11 @@ module load test-stack/2025-02
     we expect people to use directly visible and lots of their dependencies are hidden. These will 
     show up if you search for that package specifically, for example:
 
-````
-module avail libpng
+    ```
+    module avail libpng
 -------------------------- /shared/ucl/apps/spack/0.23/deploy/2025-02/modules/applications/linux-rhel7-cascadelake --------------------------
-libpng/1.6.39/gcc-12.3.0-iopfrab
-````
+    libpng/1.6.39/gcc-12.3.0-iopfrab
+    ```
 
     This module does not show up in the full list but is still installed. It has a hash at the end 
     of its name `-iopfrab` and this will change over time with different builds.

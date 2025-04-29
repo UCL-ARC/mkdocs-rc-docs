@@ -5,8 +5,8 @@ layout: docs
 
 # Using Apptainer (Singularity) on our clusters
 
-Myriad has Apptainer installed, which will be rolled out to our other clusters at a later date. 
-The other clusters still have Singularity. You can use containers you have downloaded in your space.
+The clusters all have Apptainer installed. 
+You can use containers you have downloaded in your space.
 
 
 
@@ -39,12 +39,22 @@ export APPTAINER_CACHEDIR=$HOME/Scratch/.apptainer
 
 ```
 
-You probably want to add those `export` statements to your `.bashrc` under `# User specific aliases and functions` so those environment variables are always set when you log in.
+You may want to add those `export` statements to your `.bashrc` under `# User specific aliases and functions` so those environment variables are always set when you log in.
 
 ### Bind locations
 
-Your $HOME and Scratch directories are bound automatically so they are available
-from inside your containers.
+Your $HOME directory is bound automatically so it is available from inside your containers.
+On clusters other than Myriad, your Scratch directory is also bound. You can pass in other
+bind paths.
+
+If you want to have no automatically-bound locations you can use the `--no-mount bind-paths` 
+option, for example:
+```
+apptainer run --no-mount bind-paths mycontainer.sif
+```
+
+This can be useful if you want to isolate the container from the contents of your home directory, 
+for example conflicting software packages you might have installed there.
 
 For more information on these options, have a look at the Apptainer documentation:
 
@@ -78,76 +88,9 @@ as long as they use a local filesystem and not home or Scratch.
 Our default setup uses `$XDG_RUNTIME_DIR` on the local disk of the login nodes, or `$TMPDIR` on a 
 compute node (local disk on the node, on clusters that are not diskless).
 
-If you try to build a container on a parallel filesystem, it will fail with a number of
+If you try to build a container on a parallel filesystem, it may fail with a number of
 permissions errors.
 
-
-## Singularity
-
-Run `singularity --version` to see which version we currently have installed.
-
-
-!!! important "Singularity update to Apptainer"
-    On Myriad, we are updating to Singularity to Apptainer. This update will occur on 14th 
-    November during a [planned outage](../Planned_Outages.md)
-
-    This update may affect any containers that are currently downloaded, so users will have to test
-    them to check their workflow still functions correctly after the update. We expect most to work 
-    as before, but cannot confirm this.
-
-    A Singularity command that will no longer be available in Apptainer is 
-    `singularity build --remote`. If any of you have workflows that depend on this, 
-    please email rc-support@ucl.ac.uk. We are currently looking into how we would provide 
-    equivalent functionality.
-
-    Updates to the other clusters will follow, dates tbc.
-
-
-### Set up cache locations and bind directories
-
-The cache directories should be set to somewhere in your space so they don't fill up `/tmp` on 
-the login nodes.
-
-The bindpath mentioned below specifies what directories are made available inside the container - 
-only your home is bound by default so you need to add Scratch.
-
-You can either use the `singularity-env` environment module for this, or run the commands manually.
-
-```
-module load singularity-env
-```
-
-or:
-
-```
-# Create a .singularity directory in your Scratch
-mkdir $HOME/Scratch/.singularity
-
-# Create cache subdirectories we will use / export
-mkdir $HOME/Scratch/.singularity/tmp
-mkdir $HOME/Scratch/.singularity/localcache
-mkdir $HOME/Scratch/.singularity/pull
-
-# Set all the Singularity cache dirs to Scratch
-export SINGULARITY_CACHEDIR=$HOME/Scratch/.singularity
-export SINGULARITY_TMPDIR=$SINGULARITY_CACHEDIR/tmp
-export SINGULARITY_LOCALCACHEDIR=$SINGULARITY_CACHEDIR/localcache
-export SINGULARITY_PULLFOLDER=$SINGULARITY_CACHEDIR/pull
-
-# Bind your Scratch directory so it is accessible from inside the container
-#      and the temporary storage jobs are allocated
-export SINGULARITY_BINDPATH=/scratch/scratch/$USER,/tmpdir
-```
-
-Different subdirectories are being set for each cache so you can tell which files came from where.
-
-You probably want to add those `export` statements to your `.bashrc` under `# User specific aliases and functions` so those environment variables are always set when you log in.
-
-For more information on these options, have a look at the Singularity documentation:
-
-* [Singularity user guide](https://sylabs.io/guides/3.5/user-guide/index.html)
-* [Singularity Bind Paths and Mounts](https://sylabs.io/guides/3.5/user-guide/bind_paths_and_mounts.html)
-* [Singularity Build Environment](https://sylabs.io/guides/3.5/user-guide/build_env.html)
 
 ## Downloading and running a container
 

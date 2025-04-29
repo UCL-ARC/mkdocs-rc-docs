@@ -30,11 +30,10 @@ module help <module>    # Shows a longer text description for the software
 
 Generically, the way you find out if a piece of software is installed is to run
 ```
-module load beta-modules
 module avail packagename
 ```
 
-By loading `beta-modules` you will also be able to see newer versions of GCC and the software that
+The output will also contain newer versions of GCC and the software that
 has been built using them.
 
 Then `module avail` gives you a list of all the modules we have that match the name you searched 
@@ -203,7 +202,7 @@ export PARROT_CVMFS_ALIEN_CACHE=</path/to/cache>
 
 CFD-ACE+ is a commercial computational fluid dynamics solver developed by ESI Group. It solves the conservation equations of mass, momentum, energy, chemical species and other scalar transport equations using the finite volume method. These equations enable coupled simulations of fluid, thermal, chemical, biological, electrical and mechanical phenomena.
 
-The license is owned by the Department of Mechanical Engineering who must give permission for users to be added to the group `lgcfdace`.
+The license is owned by the Department of Mechanical Engineering who must give permission for users to be added to the group `ag-archpc-cfdace`.
 
 ```
 module load cfd-ace/2018.0
@@ -217,7 +216,7 @@ CFD-SOLVER -model 3Dstepchannel_060414.DTF -num $NSLOTS -wd `pwd` \
 
 COMSOL Multiphysics is a cross-platform finite element analysis, solver and multiphysics simulation software.
 
-Electrical Engineering have a group license for version 52 and must give permission for users to be added to the group `legcomsl`. Chemical Engineering have a Departmental License for version 53 and members of that department may be added to the group `lgcomsol`. 
+Electrical Engineering have a group license for version 52 and must give permission for users to be added to the group `ag-archpc-comsol-eee`. Chemical Engineering have a Departmental License for version 53 and members of that department may be added to the group `ag-archpc-comsol-chemeng`. 
 
 ```
 # Run a parallel COMSOL job
@@ -248,15 +247,13 @@ CP2K performs atomistic and molecular simulations.
 To see all available versions type
 
 ```
-module load beta-modules
 module avail cp2k
 ```
 
 To load CP2K 8.2:
 
 ```
-module unload -f compilers mpi gcc-libs
-module load beta-modules
+module unload compilers mpi gcc-libs
 module load gcc-libs/10.2.0
 module load compilers/gnu/10.2.0
 
@@ -616,8 +613,7 @@ that version is installed in.
 
 ```
 # Example for GPU gromacs/2021.5/cuda-11.3
-module load beta-modules
-module unload -f compilers mpi gcc-libs
+module unload compilers mpi gcc-libs
 module load gcc-libs/10.2.0
 module load compilers/gnu/10.2.0
 module load python3/3.9-gnu-10.2.0 
@@ -631,8 +627,7 @@ module load gromacs/2021.5/cuda-11.3
 
 ```
 # Example for gromacs/2021.2/gnu-7.3.0
-module load beta-modules
-module unload -f compilers mpi gcc-libs
+module unload compilers mpi gcc-libs
 module load gcc-libs/7.3.0
 module load compilers/gnu/7.3.0
 module load mpi/openmpi/3.1.4/gnu-7.3.0
@@ -843,8 +838,7 @@ gerun $(which lmp_default) -in inputfile
 For the latest version of LAMMPS we have installed which is 29th September 2021 Update 2 where the binaries are called `lmp_mpi` for the MPI version and `lmp_gpu` for the GPU version:
 
 ```
-module -f unload compilers mpi gcc-libs
-module load beta-modules
+module unload compilers mpi gcc-libs
 module load gcc-libs/10.2.0
 module load compilers/gnu/10.2.0
 module load mpi/openmpi/4.0.5/gnu-10.2.0
@@ -855,8 +849,7 @@ gerun lmp_mpi -in inputfile
 ```
 for the basic MPI version and:
 ```
-module -f unload compilers mpi gcc-libs
-module load beta-modules
+module unload compilers mpi gcc-libs
 module load gcc-libs/10.2.0
 module load compilers/gnu/10.2.0
 
@@ -893,8 +886,7 @@ gerun lmp_mpi -in inputfile
 
 ```
 # LAMMPS 29 Sep 2021 Update 2 for GPU with Intel compilers
-module unload -f compilers mpi
-module load beta-modules
+module unload compilers mpi
 module load compilers/intel/2020/release
 module load mpi/intel/2019/update6/intel
 module load python/3.9.10
@@ -1021,6 +1013,25 @@ want to keep into your Scratch.
 If you are running parallel multi-node jobs and the directories need to be readable by all 
 the nodes, then you need to write to Scratch.
 
+If you sometimes get an error like this:
+
+```
+terminate called after throwing an instance of 'std::runtime_error'
+ what():  Cannot open cache file tmpfilexNCOMM
+```
+
+This is because Molpro is opening and closing temporary files very close together and the file 
+handles do not get freed up immediately, and it has gone over the soft limit of open files of 1024.
+
+You can increase this to the hard limit of open files on the compute nodes by adding the below to
+your jobscript before the `molpro` command and it will let you have up to 4096 files open at once.
+Please be careful about the number of jobs you have running concurrently if you do this, as it could 
+have an impact on the filesystem.
+
+```
+ulimit -Sn 4096
+```
+
 
 ### MRtrix
 
@@ -1049,7 +1060,7 @@ The MRtrix GUI tools are unavailable: `mrview` and `shview` in MRtrix 3 cannot b
 
 MuTect is a tool developed at the Broad Institute for the reliable and accurate identification of somatic point mutations in next generation sequencing data of cancer genomes. It is built on top of the GenomeAnalysisToolkit (GATK), which is also developed at the Broad Institute, so it uses the same command-line conventions and (almost all) the same input and output file formats. 
 
-MuTect requires you to agree to the GATK license before we can add you to the `lgmutect` group which gives you access: you can do this by downloading MuTect from [The Broad Institute CGA page](https://software.broadinstitute.org/cancer/cga/mutect). You may need to create a gatkforums account before you can download.
+MuTect requires you to agree to the GATK license before we can add you to the `ag-archpc-mutect` group which gives you access: you can do this by downloading MuTect from [The Broad Institute CGA page](https://software.broadinstitute.org/cancer/cga/mutect). You may need to create a gatkforums account before you can download.
 
 MuTect is currently not compatible with Java 1.8, so you need to use the system Java 1.7. Set up your modules as follows: 
 ```
@@ -1144,8 +1155,7 @@ with OmniPath interconnects as well as GPUs (not Myriad). It can run across mult
 #$ -pe smp 24
 #$ -l gpu=2
 
-module unload -f compilers mpi gcc-libs
-module load beta-modules
+module unload compilers mpi gcc-libs
 module load gcc-libs/7.3.0
 module load compilers/intel/2019/update5
 module load mpi/intel/2019/update5/intel
@@ -1279,6 +1289,10 @@ orca input.inp > output.out
 If you want to run ORCA in parallel using MPI, the jobscript will be the same but you will
 need to add the `!PAL` keyword to your input file to tell it how many processes to use. (You
 do not use `mpirun` or `gerun` with ORCA).
+
+ORCA is available on the clusters under an academic license. To use ORCA, join the [ORCA forum](https://orcaforum.kofo.mpg.de/app.php/portal)
+and accept the end user license agreement. Then email us and we will add your account to the
+`ag-archpc-orca` license group.
 
 
 ### Picard
