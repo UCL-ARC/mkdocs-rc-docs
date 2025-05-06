@@ -414,13 +414,25 @@ We have migrated from SGE to Slurm scheduler. While both are job schedulers for 
 
 ### Using bash script
 
-For the first approach, to submit a job to the scheduler you need to write a jobscript that contains the resources the job is asking for and the actual commands/programs you want to run.  This jobscript is then submitted using the `sbatch` command. The `#SBATCH` lines in your jobscript are options to `sbatch`. It will take each line which has `#SBATCH` as the first characters and use the contents beyond that as an option. It will be put in to the queue and will begin running on the compute nodes at some point later when it has been allocated resources.  
+For the first approach, to submit a job to the scheduler you need to write a jobscript that contains the resources the job is asking for and the actual commands/programs you want to run. This jobscript is then submitted using the `sbatch` command:
 
 ```
-batch myjobscript
+sbatch myjobscript
 ```
 
- You can also launch parallel tasks by using `srun` inside the jobscript you are running with `sbatch`. 
+The jobscript must begin with the `#!/bin/bash -l` as usual. The `#SBATCH` lines in your jobscript are options to `sbatch`. Slurm will take each line which has `#SBATCH` as the first characters and use the contents beyond that as an instruction. It will be put in to the queue and will begin running on the compute nodes at some point later when it has been allocated resources.  
+
+```
+#!/bin/bash -l
+
+# Request one node:
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+#SBATCH --ntasks=6
+#SBATCH --time=00:10:00
+```
+
+You can also launch parallel tasks by using `srun` inside the jobscript you are running with `sbatch`. 
 
 ```
 srun mytask
