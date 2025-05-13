@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#between-myriad-and-rdss" class="md-skip">
+        <a href="#between-myriad-or-kathleen-and-rdss" class="md-skip">
           Skip to content
         </a>
       
@@ -1606,13 +1606,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#between-myriad-and-rdss" class="md-nav__link">
+  <a href="#between-myriad-or-kathleen-and-rdss" class="md-nav__link">
     <span class="md-ellipsis">
-      Between Myriad and RDSS
+      Between Myriad or Kathleen and RDSS
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Between Myriad and RDSS">
+    <nav class="md-nav" aria-label="Between Myriad or Kathleen and RDSS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1625,9 +1625,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#from-myriad-to-rdss" class="md-nav__link">
+  <a href="#from-myriad-or-kathleen-to-rdss" class="md-nav__link">
     <span class="md-ellipsis">
-      From Myriad to RDSS
+      From Myriad or Kathleen to RDSS
     </span>
   </a>
   
@@ -1666,10 +1666,10 @@ during and after a project. Several solutions for copying data between
 RDSS and the central UCL research computing platforms are presented below.
 Sections of the example code surrounded by angle brackets (\&lt;&gt;) should 
 be replaced by the information indicated (do not keep the angle brackets in).</p>
-<h2 id="between-myriad-and-rdss">Between Myriad and RDSS<a class="headerlink" href="#between-myriad-and-rdss" title="Permanent link">§</a></h2>
+<h2 id="between-myriad-or-kathleen-and-rdss">Between Myriad or Kathleen and RDSS<a class="headerlink" href="#between-myriad-or-kathleen-and-rdss" title="Permanent link">§</a></h2>
 <p>If you already have an account with the Research Data Storage Service, you can
-transfer data directly between Legion and Research Data Storage using
-the Secure Copy (<code>scp</code>) command.</p>
+transfer data directly between Myriad or Kathleen and Research Data Storage using
+the Secure Copy (<code>scp</code>) command, copy (<code>cp</code>) command or <code>rsync</code> command.</p>
 <h3 id="from-rds-to-myriad">From RDS to Myriad<a class="headerlink" href="#from-rds-to-myriad" title="Permanent link">§</a></h3>
 <p>If you are on an RDSS login node, you can transfer data to
 Myriad’s Scratch area at the highest rate currently possible by running
@@ -1682,12 +1682,35 @@ running jobs) running the command: </p>
 <div class="codehilite"><pre><span></span><code>scp ssh.rd.ucl.ac.uk:~/data_file.tgz ~/Scratch/
 </code></pre></div>
 
-<h3 id="from-myriad-to-rdss">From Myriad to RDSS<a class="headerlink" href="#from-myriad-to-rdss" title="Permanent link">§</a></h3>
-<p>From Myriad, send data to your project space on RDSS by running the
-command:</p>
+<h3 id="from-myriad-or-kathleen-to-rdss">From Myriad or Kathleen to RDSS<a class="headerlink" href="#from-myriad-or-kathleen-to-rdss" title="Permanent link">§</a></h3>
+<p>The RDSS is mounted on the Myriad and Kathleen login nodes at <code>/rdss</code>. There are 
+subdirectories <code>rd00</code>, <code>rd01</code> that contain projects with names beginning 
+<code>ritd-ag-project-rd00</code> or <code>ritd-ag-project-rd01</code> and so on. You can use <code>cp</code> or local
+<code>rsync</code> commands to copy data between your RDSS space and your Myriad space.</p>
+<p>Rsync is useful as rerunning it will not copy files that already exist in the 
+destination - so it can be used to synchronise data and to continue if a transfer was 
+interrupted partway through.</p>
+<div class="codehilite"><pre><span></span><code># Use rsync archive mode (recursively copy directories, copy symlinks without resolving,
+# and preserve permissions, ownership and modification times) to copy the data directory
+# and everything in it from RDSS to Scratch.
+# --safe-links ignores any symbolic links that point outside the copied tree and
+# any symlinks that are absolute paths
+rsync --safe-links -r -a /rdss/rd00/ritd-ag-project-rd001/ritd-ag-project-rd0001-test/data ~/Scratch
+</code></pre></div>
+
+<p>You can use the copy command. It has fewer options than rsync and is more suited for simpler
+and smaller copies.</p>
+<div class="codehilite"><pre><span></span><code># Copy the data directory from RDSS to Scratch recursively and preserve permissions.
+cp -rp /rdss/rd00/ritd-ag-project-rd001/ritd-ag-project-rd0001-test/data ~/Scratch
+</code></pre></div>
+
+<p>You can still use scp to do a remote copy to the RDSS ssh node and send data to your project 
+space on RDSS by running the command:</p>
 <div class="codehilite"><pre><span></span><code>scp data_file.tgz ccaaxyz@ssh.rd.ucl.ac.uk:&lt;path_to_project_space&gt;
 </code></pre></div>
 
+<p>Note that the old Myriad transfer node <code>transfer02</code> is no longer accessible now that the login nodes
+can be used instead.</p>
 <p>The RDSS support pages provide more
 information:</p>
 <p><a href="https://www.ucl.ac.uk/advanced-research-computing/rdss-myriad-data-storage-transfer-service">https://www.ucl.ac.uk/advanced-research-computing/rdss-myriad-data-storage-transfer-service</a></p>
@@ -1761,10 +1784,10 @@ information:</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["instant"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["instant"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>
