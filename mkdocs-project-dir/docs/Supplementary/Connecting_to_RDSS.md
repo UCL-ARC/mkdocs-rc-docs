@@ -70,6 +70,9 @@ space on RDSS by running the command:
 scp data_file.tgz ccaaxyz@ssh.rd.ucl.ac.uk:<path_to_project_space>
 ``` 
 
+Note that the old Myriad transfer node `transfer02` is no longer accessible now that the login nodes
+can be used instead.
+
 The RDSS support pages provide more
 information:
 
