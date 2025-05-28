@@ -150,7 +150,7 @@ To try this example, save this job script and the following R script (`doMPI_exa
 #$ -l tmpfs=15G
 
 # Set the name of the job.
-#$ -N doMPI-Ex1-12
+#$ -N R-doMPI-example
 
 # Select the MPI parallel environment with 12 processes, the maximum possible
 # on Myriad would be 36. On Kathleen, request at least 41 processes.
@@ -167,7 +167,7 @@ module load r/r-4.4.2_bc-3.20
 
 gerun Rscript doMPI_example.R
 ```
-The output is saved in `$HOME/doMPI-Ex1-12.o${JOB_ID}`.
+The output is saved in `$HOME/dR-doMPI-example.o${JOB_ID}`.
 
 If your jobscript is called `run-R-doMPI.sh` then your job submission command would be:
 ```
