@@ -143,7 +143,7 @@ To try this example, save this job script and the following R script (`doMPI_exa
 # Request 1 gigabyte of RAM per process.
 #$ -l mem=1G
 
-# Set tmpfs to 15 gigabyte of TMPDIR space (default is 10 GB)
+# Set tmpfs to 1 gigabyte of TMPDIR space (default is 10 GB)
 # Remove this for clusters without temporary filesystems, e.g. Kathleen
 #$ -l tmpfs=1G
 
