@@ -137,8 +137,6 @@ To try this example, save this job script and the following R script (`doMPI_exa
 # Batch script to run an MPI parallel R job using the doMPI package
 # with the upgraded software stack under SGE with OpenMPI.
 
-# R Version 4.4.2 with doMPI/Rmpi
-
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
 #$ -l h_rt=0:10:0
 
@@ -147,7 +145,7 @@ To try this example, save this job script and the following R script (`doMPI_exa
 
 # Set tmpfs to 15 gigabyte of TMPDIR space (default is 10 GB)
 # Remove this for clusters without temporary filesystems, e.g. Kathleen
-#$ -l tmpfs=15G
+#$ -l tmpfs=1G
 
 # Set the name of the job.
 #$ -N R-doMPI-example
@@ -156,9 +154,8 @@ To try this example, save this job script and the following R script (`doMPI_exa
 # on Myriad would be 36. On Kathleen, request at least 41 processes.
 #$ -pe mpi 12
 
-# Set the working directory. In this case, we use the home directory.
-# Replace "<your_UCL_id>" with your UCL user ID
-#$ -wd /home/<your_UCL_id>
+# Set the working directory to the current directory. In this case, we use the home directory.
+#$ -cwd
 
 module -f unload compilers mpi gcc-libs
 module load r/r-4.4.2_bc-3.20
@@ -167,7 +164,7 @@ module load r/r-4.4.2_bc-3.20
 
 gerun Rscript doMPI_example.R
 ```
-The output is saved in `$HOME/dR-doMPI-example.o${JOB_ID}`.
+The output is saved in `~/R-doMPI-example.o${JOB_ID}`.
 
 If your jobscript is called `run-R-doMPI.sh` then your job submission command would be:
 ```
@@ -288,4 +285,3 @@ If you want to keep some libraries separate, you can have multiple colon-separat
 If you are installing extra packages for BioConductor, check that you are using the same version that the R module you have loaded is using.
 
 Eg. you can find the [BioConductor 3.15 package downloads here](http://www.bioconductor.org/packages/3.15/BiocViews.html#___Software).
-
