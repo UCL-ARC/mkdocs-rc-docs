@@ -1069,8 +1069,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     (This did not happen, the certificate was renewed in time).
 
-#### Latest on Kathleen
-
   - 2025-02-17 - **New test software stack available**
 
     There is a test version of our next software stack available now on Kathleen. This has a small 
@@ -1096,7 +1094,7 @@ This page outlines that status of each of the machines managed by the Research C
 
     ```
     module avail libpng
--------------------------- /shared/ucl/apps/spack/0.23/deploy/2025-02/modules/applications/linux-rhel7-cascadelake --------------------------
+    -------------------------- /shared/ucl/apps/spack/0.23/deploy/2025-02/modules/applications/linux-rhel7-cascadelake --------------------------
     libpng/1.6.39/gcc-12.3.0-iopfrab
     ```
 
@@ -1110,6 +1108,26 @@ This page outlines that status of each of the machines managed by the Research C
 
     This information is available at 
     [Kathleen test software stack](https://www.rc.ucl.ac.uk/docs/Clusters/Kathleen/#test-software-stack)
+
+#### Latest on Kathleen
+
+  - 2025-06-06 12:10 - Kathleen operating system and scheduler upgrade
+
+    We are intending to upgrade half of Kathleen to the new operating system (RHEL9) and scheduler
+    (Slurm) and give you access on **Weds 18 June** if all goes well.
+
+    We are draining half of the compute nodes in preparation for this.
+
+    We intend to run old Kathleen and new Kathleen in parallel for a while to allow any problems to
+    be found, more software to be installed, and for you to gradually move over to the new environment
+    while still being able to use the old one so your work is not interrupted.
+
+    Maximum jobsize on old Kathleen will be 70 nodes during this time.
+
+    We will give you instructions on how to access new Kathleen login nodes and what the Slurm
+    jobscripts should look like nearer the time.
+
+    We will not have Apptainer available straight away - we intend to add it later.
 
 
 ### Young
