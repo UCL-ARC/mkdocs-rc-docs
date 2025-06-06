@@ -1094,7 +1094,7 @@ This page outlines that status of each of the machines managed by the Research C
 
     ```
     module avail libpng
--------------------------- /shared/ucl/apps/spack/0.23/deploy/2025-02/modules/applications/linux-rhel7-cascadelake --------------------------
+    -------------------------- /shared/ucl/apps/spack/0.23/deploy/2025-02/modules/applications/linux-rhel7-cascadelake --------------------------
     libpng/1.6.39/gcc-12.3.0-iopfrab
     ```
 
