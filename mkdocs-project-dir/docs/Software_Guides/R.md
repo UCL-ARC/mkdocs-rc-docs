@@ -125,7 +125,7 @@ If your jobscript is called `run-R.sh` then your job submission command would be
 qsub run-R.sh
 ``` 
 
-## Example multi-node parallel job using Rmpi and snow
+## Example multi-node parallel job using Rmpi and doMPI
 
 This script uses Rmpi and doMPI to allow it to run across multiple nodes using MPI.
 
@@ -171,7 +171,7 @@ If your jobscript is called `run-R-doMPI.sh` then your job submission command wo
 qsub run-R-doMPI.sh
 ```
 
-### Example R script using Rmpi and snow
+### Example R script using Rmpi and doMPI
 
 This R script has been written to use Rmpi and doMPI and can be used with the above jobscript. It is `doMPI_example.R` above.
 
