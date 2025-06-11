@@ -1404,19 +1404,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-multi-node-parallel-job-using-rmpi-and-snow" class="md-nav__link">
+  <a href="#example-multi-node-parallel-job-using-rmpi-and-dompi" class="md-nav__link">
     <span class="md-ellipsis">
-      Example multi-node parallel job using Rmpi and snow
+      Example multi-node parallel job using Rmpi and doMPI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Example multi-node parallel job using Rmpi and snow">
+    <nav class="md-nav" aria-label="Example multi-node parallel job using Rmpi and doMPI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-r-script-using-rmpi-and-snow" class="md-nav__link">
+  <a href="#example-r-script-using-rmpi-and-dompi" class="md-nav__link">
     <span class="md-ellipsis">
-      Example R script using Rmpi and snow
+      Example R script using Rmpi and doMPI
     </span>
   </a>
   
@@ -1766,19 +1766,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-multi-node-parallel-job-using-rmpi-and-snow" class="md-nav__link">
+  <a href="#example-multi-node-parallel-job-using-rmpi-and-dompi" class="md-nav__link">
     <span class="md-ellipsis">
-      Example multi-node parallel job using Rmpi and snow
+      Example multi-node parallel job using Rmpi and doMPI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Example multi-node parallel job using Rmpi and snow">
+    <nav class="md-nav" aria-label="Example multi-node parallel job using Rmpi and doMPI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-r-script-using-rmpi-and-snow" class="md-nav__link">
+  <a href="#example-r-script-using-rmpi-and-dompi" class="md-nav__link">
     <span class="md-ellipsis">
-      Example R script using Rmpi and snow
+      Example R script using Rmpi and doMPI
     </span>
   </a>
   
@@ -1955,7 +1955,7 @@ tar zcvf $HOME/Scratch/R_output/files_from_job_$JOB_ID.tgz $TMPDIR
 <div class="codehilite"><pre><span></span><code>qsub run-R.sh
 </code></pre></div>
 
-<h2 id="example-multi-node-parallel-job-using-rmpi-and-snow">Example multi-node parallel job using Rmpi and snow<a class="headerlink" href="#example-multi-node-parallel-job-using-rmpi-and-snow" title="Permanent link">§</a></h2>
+<h2 id="example-multi-node-parallel-job-using-rmpi-and-dompi">Example multi-node parallel job using Rmpi and doMPI<a class="headerlink" href="#example-multi-node-parallel-job-using-rmpi-and-dompi" title="Permanent link">§</a></h2>
 <p>This script uses Rmpi and doMPI to allow it to run across multiple nodes using MPI.</p>
 <p>To try this example, save this job script and the following R script (<code>doMPI_example.R</code>) in your home directory.</p>
 <div class="codehilite"><pre><span></span><code>#!/bin/bash -l
@@ -1996,7 +1996,7 @@ gerun Rscript doMPI_example.R
 <div class="codehilite"><pre><span></span><code>qsub run-R-doMPI.sh
 </code></pre></div>
 
-<h3 id="example-r-script-using-rmpi-and-snow">Example R script using Rmpi and snow<a class="headerlink" href="#example-r-script-using-rmpi-and-snow" title="Permanent link">§</a></h3>
+<h3 id="example-r-script-using-rmpi-and-dompi">Example R script using Rmpi and doMPI<a class="headerlink" href="#example-r-script-using-rmpi-and-dompi" title="Permanent link">§</a></h3>
 <p>This R script has been written to use Rmpi and doMPI and can be used with the above jobscript. It is <code>doMPI_example.R</code> above.</p>
 <div class="codehilite"><pre><span></span><code># This example uses one of the historic datasets from the HistData package
 # and is from Princeton University
