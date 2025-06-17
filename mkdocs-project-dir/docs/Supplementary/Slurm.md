@@ -6,7 +6,7 @@ Here is a comparative table of the main SGE commands and their equivalent in Slu
 
 <figure id="rosetta">
 <div class="center">
-<img src="img/Rosetta_Slurm-SGE.png" style="width:150mm" alt="SGE and Slurm command Rosetta stone" />
+<img src="../img/Rosetta_Slurm-SGE.png" style="width:150mm" alt="SGE and Slurm command Rosetta stone" />
 </div>
 <figcaption><em> <span id="rosetta" label="rosetta">SGE and Slurm command Rosetta stone</span></em></figcaption>
 </figure>
