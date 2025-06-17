@@ -118,13 +118,13 @@ This output can be long and contain multi-line shell functions.
 
 ### squeue
 
-The squeue command shows the status of your jobs. By default, if you run it with no options, it shows only your jobs (and no-one else’s). This makes it easier to keep track of your jobs.
+The `squeue` command shows the status of your jobs. By default, if you run it with no options, it shows only your jobs (and no-one else’s). This makes it easier to keep track of your jobs.
 
 The output will look something like this:
 
 ```
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-                22  kathleen lammps_b  ccxxxxx  R       0:04      2 node-c11b-[002-003]
+  JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+     22  kathleen lammps_b  ccxxxxx  R       0:04      2 node-c11b-[002-003]
 ```
 
 This shows you the job ID, the partition it is using, the first 8 characters from the name you have given the job, your username, the state the job is in, how long it has been waiting (or running, if it has begun), the number of nodes it requested, and what nodes it is running on.
@@ -133,8 +133,8 @@ You can get a little more information with the `-l` or `--long` option:
 
 ```
 Tue Jun 17 12:15:57 2025
-             JOBID PARTITION     NAME     USER    STATE       TIME TIME_LIMI  NODES NODELIST(REASON)
-                22  kathleen lammps_b  ccxxxxx  RUNNING       1:16   2:00:00      2 node-c11b-[002-003]
+  JOBID PARTITION     NAME     USER    STATE       TIME TIME_LIMI  NODES NODELIST(REASON)
+     22  kathleen lammps_b  ccxxxxx  RUNNING       1:16   2:00:00      2 node-c11b-[002-003]
 ```
 
 `squeue --help` will show how you can format the output differently.
