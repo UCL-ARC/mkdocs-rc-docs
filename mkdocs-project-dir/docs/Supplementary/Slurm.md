@@ -1,6 +1,6 @@
 # Slurm
 
-We have changed schedulers from SGE to Slurm. While both are job schedulers for HPC clusters, they differ in their architecture, commands, and features. 
+We have changed schedulers from SGE to Slurm. Both are job schedulers for HPC clusters - they have different architecture, commands, and features. 
 
 Here is a comparative table of the main SGE commands and their equivalent in Slurm. (Since we had a very custom SGE install, a few commands may be slightly different or may not have been available in our past setup).
 
