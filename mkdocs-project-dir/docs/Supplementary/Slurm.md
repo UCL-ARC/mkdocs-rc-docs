@@ -187,11 +187,11 @@ If a job only ran for seconds and didn't produce the expected output, there was 
 
 ### Array job
 
-A job array is a group of jobs with the same executable and resource requirements, but different input files. A job array can be submitted, controlled, and monitored as a single unit or as individual jobs or groups of jobs. Each job submitted from a job array shares the same job ID ` %A` as the job array and is uniquely referenced using an array index `%a`. 
+A job array is a group of jobs with the same executable and resource requirements, but different input files. A job array can be submitted, controlled, and monitored as a single unit. Each job submitted from a job array shares the same job ID ` %A` as the job array and is uniquely referenced using an array index `%a`. 
 
 Important note: The maximum job array size that Slurm is configured for is `MaxArraySize = 1000`. If a Job array of size is greater than 1000 is submitted, Slurm will reject the job submission with the following error message: “Job array index too large. Job not submitted.”
 
-Taking a simple R submission script as an example `myRarrayjob` to process 10 data files (csv):
+Taking a simple example e.g. `myarrayjob` to process 10 data files (csv):
 
 ```
 #!/bin/bash
@@ -199,17 +199,15 @@ Taking a simple R submission script as an example `myRarrayjob` to process 10 da
 #SBATCH --cpus-per-task=1
 #SBATCH --job-name=myRarray
 #SBATCH --time=00:30:00
-#SBATCH -o %A_%a.out
-#SBATCH -e %A_%a.err
 #SBATCH --array=1-10
 
-Rscript TestRFile.R datset${SLURM_ARRAY_TASK_ID}.csv
-```
-The array is created by Slurm directive `--array=1-10` by including elements numbered [1-10] to represent our 10 variations
-The error and output file have the array index `%a` included in the name and `%A` is the job ID.
-The environment variable `$SLURM_ARRAY_TASK_ID` in the Rscript command is expanded to give the job index
-When the job is submitted, Slurm will create 10 tasks under the single job ID. The job array script is submitted in the usual way:
+myprogram datset${SLURM_ARRAY_TASK_ID}.csv
 
 ```
-sbatch myRarrayjob
+The array is created by Slurm directive `--array=1-10` by including elements numbered [1-10] to represent our 10 input files.
+The environment variable `$SLURM_ARRAY_TASK_ID` in the the job script will be expanded at submission time to give the job index.
+When the array job is submitted, Slurm will create 10 jobs under the single job ID. The job array script is submitted in the usual way:
+
+```
+sbatch myarrayjob
 ```
