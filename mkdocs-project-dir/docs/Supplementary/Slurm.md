@@ -62,7 +62,7 @@ You can launch parallel tasks by using `srun` inside the jobscript you are runni
 srun myprog
 ```
 
-Practical examples of how to run parallel tasks can be found in Example Jobscripts.
+Practical examples of how to run parallel tasks can be found in [Slurm Example Jobscripts](Slurm_Example_Jobscripts.md).
 
 ### Passing in command-line arguments
 
