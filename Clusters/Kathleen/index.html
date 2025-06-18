@@ -833,6 +833,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#new-operating-system-and-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      New operating system and scheduler
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#accounts" class="md-nav__link">
     <span class="md-ellipsis">
       Accounts
@@ -1748,6 +1757,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#new-operating-system-and-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      New operating system and scheduler
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#accounts" class="md-nav__link">
     <span class="md-ellipsis">
       Accounts
@@ -1864,12 +1882,30 @@
 
 <h1 id="kathleen">Kathleen<a class="headerlink" href="#kathleen" title="Permanent link">§</a></h1>
 <p>Kathleen is a compute cluster designed for extensively parallel, multi-node batch-processing jobs, having high-bandwidth connections between each individual node. It is named after <a href="https://en.wikipedia.org/wiki/Kathleen_Lonsdale">Professor Dame Kathleen Lonsdale</a>, a pioneering chemist and activist, and was installed in December 2019. It went into service at the end of January 2020.</p>
+<h2 id="new-operating-system-and-scheduler">New operating system and scheduler<a class="headerlink" href="#new-operating-system-and-scheduler" title="Permanent link">§</a></h2>
+<p>Half of Kathleen is currently updated to our new operating system and new scheduler, Slurm.</p>
+<p>It can be accessed via <code>kathleen-ng.rc.ucl.ac.uk</code> which will log you in to updated login nodes.</p>
+<p>The new software stack is provided by a module called <code>ucl-stack/2025-05</code> which should be being loaded by default. If not (for example if you <code>module purge</code> in your .bashrc) you can load the new environment by:</p>
+<div class="codehilite"><pre><span></span><code>module load ucl-stack/2025-05
+module load default-modules/2025-05
+</code></pre></div>
+
+<p>The default compiler is now GCC and the default MPI is OpenMPI. We do also have Intel OneAPI modules.</p>
+<p>Your jobscripts will need to be rewritten as Slurm jobscripts, and there are different commands for submitting jobs and checking your job status.</p>
+<ul>
+<li><a href="Supplementary/Slurm.md">Usage of Slurm</a></li>
+<li><a href="Supplementary/Slurm_Example_Jobscripts.md">Slurm Example Jobscripts</a></li>
+</ul>
 <h2 id="accounts">Accounts<a class="headerlink" href="#accounts" title="Permanent link">§</a></h2>
 <p>Kathleen accounts can be applied for via the <a href="../../Account_Services/">Research Computing sign up process</a>.</p>
 <p>As Kathleen is intended for multi-node jobs, users who specify that they will need to use multi-node jobs (e.g. with <a href="../../Supplementary/Glossary/#mpi">MPI</a>) will be given access to Kathleen.</p>
 <h2 id="logging-in">Logging in<a class="headerlink" href="#logging-in" title="Permanent link">§</a></h2>
 <p>Please use your UCL username and password to connect to Kathleen with an SSH client.</p>
-<div class="codehilite"><pre><span></span><code>ssh uccaxxx@kathleen.rc.ucl.ac.uk
+<div class="codehilite"><pre><span></span><code># old Kathleen, RHEL7 and SGE
+ssh uccaxxx@kathleen.rc.ucl.ac.uk
+
+# new Kathleen, RHEL9 and Slurm
+ssh uccaxxx@kathleen-ng.rc.ucl.ac.uk
 </code></pre></div>
 
 <p>If using PuTTY, put <code>kathleen.rc.ucl.ac.uk</code> as the hostname and your
