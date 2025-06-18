@@ -26,8 +26,8 @@ The default compiler is now GCC and the default MPI is OpenMPI. We do also have 
 
 Your jobscripts will need to be rewritten as Slurm jobscripts, and there are different commands for submitting jobs and checking your job status.
 
-* [Usage of Slurm](Supplementary/Slurm.md)
-* [Slurm Example Jobscripts](Supplementary/Slurm_Example_Jobscripts.md)
+* [Usage of Slurm](../Supplementary/Slurm.md)
+* [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
 
 ## Accounts
 
