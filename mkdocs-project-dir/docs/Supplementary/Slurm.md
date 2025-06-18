@@ -118,7 +118,7 @@ This output can be long and contain multi-line shell functions.
 
 ### squeue
 
-The `squeue` command shows the status of your jobs. By default, if you run it with no options, it shows only your jobs (and no-one else’s). This makes it easier to keep track of your jobs.
+The `squeue --me` command shows the status of your jobs. By default, if you run it with no options, it shows all jobs. This makes it easier to keep track of your jobs.
 
 The output will look something like this:
 
@@ -141,7 +141,7 @@ Tue Jun 17 12:15:57 2025
 
 ### scontrol
 
-This is a utility to display detailed information about the specified job.
+This is a utility to display detailed information about the specified active job.
 
 ```
 scontrol show job 123454
