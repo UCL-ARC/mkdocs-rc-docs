@@ -184,3 +184,32 @@ JobID             User    JobName               Start                 End  Alloc
 If a job ended and didn't create the files you expect, check the start and end times to see whether it ran out of wallclock time.
 
 If a job only ran for seconds and didn't produce the expected output, there was probably something wrong in your script - check the .out.txt and .err.txt files in the directory you submitted the job from for errors.
+
+### Array job
+
+A job array is a group of jobs with the same executable and resource requirements, but different input files. A job array can be submitted, controlled, and monitored as a single unit or as individual jobs or groups of jobs. Each job submitted from a job array shares the same job ID ` %A` as the job array and is uniquely referenced using an array index `%a`. 
+
+Important note: The maximum job array size that Slurm is configured for is `MaxArraySize = 1000`. If a Job array of size is greater than 1000 is submitted, Slurm will reject the job submission with the following error message: “Job array index too large. Job not submitted.”
+
+Taking a simple R submission script as an example `myRarrayjob` to process 10 data files (csv):
+
+```
+#!/bin/bash
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --job-name=myRarray
+#SBATCH --time=00:30:00
+#SBATCH -o %A_%a.out
+#SBATCH -e %A_%a.err
+#SBATCH --array=1-10
+
+Rscript TestRFile.R datset${SLURM_ARRAY_TASK_ID}.csv
+```
+The array is created by Slurm directive `--array=1-10` by including elements numbered [1-10] to represent our 10 variations
+The error and output file have the array index `%a` included in the name and `%A` is the job ID.
+The environment variable `$SLURM_ARRAY_TASK_ID` in the Rscript command is expanded to give the job index
+When the job is submitted, Slurm will create 10 tasks under the single job ID. The job array script is submitted in the usual way:
+
+```
+sbatch myRarrayjob
+```
