@@ -189,7 +189,7 @@ If a job only ran for seconds and didn't produce the expected output, there was 
 
 A job array is a group of jobs with the same executable and resource requirements, but different input files. A job array can be submitted, controlled, and monitored as a single unit. Each job submitted from a job array shares the same job ID ` %A` as the job array and is uniquely referenced using an array index `%a`. 
 
-Important note: The maximum job array size that Slurm is configured for is `MaxArraySize = 1000`. If a Job array of size is greater than 1000 is submitted, Slurm will reject the job submission with the following error message: “Job array index too large. Job not submitted.”
+Important note: The maximum job array size that Slurm is configured for is `MaxArraySize = 1000`. Slurm will reject the job submission with the following error message: “Job array index too large. Job not submitted.” if the job array size is greated then the MaxArraySize limit.
 
 Taking a simple example e.g. `myarrayjob` to process 10 data files (csv):
 
