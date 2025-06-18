@@ -24,6 +24,32 @@ module load vasp/6.4.3-intel-oneapi-mpi/oneapi-2024.2.1
 srun vasp_std
 ```
 
+## Array job
+
+A job array is a group of jobs with the same executable and resource requirements, but different input files. A job array can be submitted, controlled, and monitored as a single unit. Each job submitted from a job array shares the same job ID as the job array and has its own `$SLURM_ARRAY_TASK_ID`. 
+
+At present, the maximum allowed size of a job array is 1000 tasks.
+
+```
+#!/bin/bash
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --job-name=myArray
+#SBATCH --time=00:30:00
+#SBATCH --array=1-10
+
+# Each task processes a different csv data file
+myprogram dataset${SLURM_ARRAY_TASK_ID}.csv
+```
+
+The array is created by Slurm directive `--array=1-10` by including elements numbered [1-10] to represent our 10 input files.
+
+When the array job is submitted, Slurm will create 10 jobs under the single job ID. The job array script is submitted in the usual way:
+
+```
+sbatch myarrayjob
+```
+
 ## Enabling Hyperthreads
 
 Hyperthreading lets you use two virtual cores instead of one physical core - some programs can take advantage of this.
