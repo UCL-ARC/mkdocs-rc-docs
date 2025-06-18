@@ -184,30 +184,3 @@ JobID             User    JobName               Start                 End  Alloc
 If a job ended and didn't create the files you expect, check the start and end times to see whether it ran out of wallclock time.
 
 If a job only ran for seconds and didn't produce the expected output, there was probably something wrong in your script - check the .out.txt and .err.txt files in the directory you submitted the job from for errors.
-
-### Array job
-
-A job array is a group of jobs with the same executable and resource requirements, but different input files. A job array can be submitted, controlled, and monitored as a single unit. Each job submitted from a job array shares the same job ID ` %A` as the job array and is uniquely referenced using an array index `%a`. 
-
-Important note: The maximum job array size that Slurm is configured for is `MaxArraySize = 1000`. Slurm will reject the job submission with the following error message: “Job array index too large. Job not submitted.” if the job array size is greated then the MaxArraySize limit.
-
-Taking a simple example e.g. `myarrayjob` to process 10 data files (csv):
-
-```
-#!/bin/bash
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1
-#SBATCH --job-name=myRarray
-#SBATCH --time=00:30:00
-#SBATCH --array=1-10
-
-myprogram datset${SLURM_ARRAY_TASK_ID}.csv
-
-```
-The array is created by Slurm directive `--array=1-10` by including elements numbered [1-10] to represent our 10 input files.
-The environment variable `$SLURM_ARRAY_TASK_ID` in the the job script will be expanded at submission time to give the job index.
-When the array job is submitted, Slurm will create 10 jobs under the single job ID. The job array script is submitted in the usual way:
-
-```
-sbatch myarrayjob
-```
