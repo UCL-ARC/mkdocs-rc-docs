@@ -55,3 +55,32 @@ and Email - long-term absence or staff have left". (Note, it is also applicable 
 Follow the guidance on that page for how to encrypt the form when sending it to them. The form needs 
 to be signed by the head of department/division and the UCL data protection officer 
 (data-protection@ucl.ac.uk).
+
+## Other Data Protection Concerns
+
+None of our filesystems are encrypted at rest or certified for the storage of special category
+data (as categorised by GDPR legislation). If you need to store or process this kind of data, our services
+are not suitable, and using them this way must be reported as an incident to
+[UCL's Data Protection Office](https://www.ucl.ac.uk/data-protection/).
+
+There are more secure services available for this kind of work: please see ARC and ISD's documentation on 
+[Sensitive Data and Trusted Research Environments](https://www.ucl.ac.uk/advanced-research-computing/sensitive-data-and-trusted-research-environments), 
+and the [assurance process for gaining access](https://www.ucl.ac.uk/isd/data-safe-haven-arc-trusted-research-environment-assurance).
+
+Special category data includes:
+ 
+> - personal data revealing racial or ethnic origin;
+> - personal data revealing political opinions;
+> - personal data revealing religious or philosophical beliefs;
+> - personal data revealing trade union membership;
+> - [personal] genetic data;
+> - biometric data (where used for identification purposes);
+> - data concerning health;
+> - data concerning a person’s sex life; and
+> - data concerning a person’s sexual orientation.
+
+(Source: [UK Information Commissioner's Office - What is Special Category Data?](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/lawful-basis/special-category-data/what-is-special-category-data/))
+
+[UCL's Data Protection Office](https://www.ucl.ac.uk/data-protection/) should also be able
+to provide more advice in this area.
+
