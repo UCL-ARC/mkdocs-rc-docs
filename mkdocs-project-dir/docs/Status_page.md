@@ -687,7 +687,7 @@ This page outlines that status of each of the machines managed by the Research C
     Further details on this to come. A similar process will take place when your Myriad user account 
     expires.
 
-#### Latest on Myriad
+#### Myriad new filesystem
 
   - 2025-03-31 - **Myriad new filesystem on Mon 7 April**
 
@@ -730,8 +730,8 @@ This page outlines that status of each of the machines managed by the Research C
 
     - Copy your old .ssh directory into your new home (~) recursively and preserve permissions:
         - `cp -rp ~/oldhome/.ssh ~`  
-    - Use rsync archive mode (recursively copy directories, copy symlinks without resolving, and preserve permissions, ownership and modification times) to copy your old .ssh directory into your new home:
-        - `rsync -r -a ~/oldhome/.ssh ~` 
+    - Use rsync archive mode (recursively copy directories, copy symlinks without resolving, and preserve permissions, ownership and modification times) to copy your old .ssh directory into your new home. The `--safe-links` option tells it to ignore any symbolic links that point outside the copied tree and any symlinks that are absolute paths:
+        - `rsync --safelinks -r -a ~/oldhome/.ssh ~` 
 
     Copy only works locally, so you can use it for any filesystems that are directly mounted on Myriad (old_lustre, ACFS, RDSS, new filesystem). Rsync can be used locally or between remote systems as well. It can also resume incomplete copies by running again and doesn't re-copy data that you have already copied if your transfer gets interrupted for any reason.
 
@@ -848,7 +848,53 @@ This page outlines that status of each of the machines managed by the Research C
     rsync --safe-links -r -a ~/oldhome ~
     ```
 
-    We are catching up on the quota and shared space requests we have received. 
+    We are catching up on the quota and shared space requests we have received.
+
+  - 2025-05-23 10:30 - Myriad filesystem issues last night and this morning
+
+    We needed to stop jobs running last night at around 22:30 after something happened with Myriad's filesystem
+    beginning around 17:00 and getting worse by 18:00 - if you've had error messages in your jobs about "stale
+    file handles" or issues using the cluster interactively this is why.
+
+    We're continuing to work out what happened and get everything running again. We will send more information
+    when we have it.
+
+  - 2025-05-23 18:20 - Re: Myriad filesystem issues last night and this morning
+
+    We let jobs run this afternoon on part of Myriad and are continuing to allow them on the rest of the compute
+    nodes in sections so that everything should be up and running over the bank holiday weekend.
+
+  - 2025-06-25 11:40 - Myriad old filesystem removal at 9am on Mon 7 July
+
+    This is a reminder that your `oldhome`, `oldscratch` and any shared spaces on `/lustre` are going to be
+    unmounted on 9am on Monday 7 July.
+
+    If you know that you cannot complete copying your data by then, please let us know asap. We can grant short
+    term emergency quota increases on the new filesystem in advance of July review by the CRAG to allow you to
+    copy your data off there before it is removed. (If you have already sent those in, we'll be looking at them
+    shortly).
+
+    Reminder: `gquota` shows your new filesystem quota. The `lquota` command will still show you the quota for
+    your old space.
+
+#### Latest on Myriad
+
+  - 2025-07-01 16:35 - **Full outage for Myriad during maintenance window on 8 July; 2 week extension for old
+    filesystem**
+
+    We will be using Myriad's next maintenance day on **Tues 8 July** to update some firmware and make some
+    filesystem adjustments, and there will be a full outage all day where you will not be able to log in or
+    access the filesystem. We are draining jobs for 8am that day to allow those tasks to be carried out.
+
+    A job drain means that if your job won't have time to finish before the outage, it will not start and will
+    remain in the queue until afterwards, when it will be scheduled as normal. You do not need to take any action.
+
+    **2 week extension for old filesystem**
+
+    We have also had several requests to extend the time period for access to oldhome and oldscratch on the old
+    filesystem, which was due to be removed at 9am on 7 July. We are extending this for two weeks until
+    **9am on Mon 21 July**. This is to give you time to finish copying your data onto the new filesystem.
+    Your access will be interrupted during the maintenance period above.
 
 
 ### Kathleen
