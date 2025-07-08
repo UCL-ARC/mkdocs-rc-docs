@@ -1155,8 +1155,6 @@ This page outlines that status of each of the machines managed by the Research C
     This information is available at 
     [Kathleen test software stack](https://www.rc.ucl.ac.uk/docs/Clusters/Kathleen/#test-software-stack)
 
-#### Latest on Kathleen
-
   - 2025-06-06 12:10 - Kathleen operating system and scheduler upgrade
 
     We are intending to upgrade half of Kathleen to the new operating system (RHEL9) and scheduler
@@ -1174,6 +1172,44 @@ This page outlines that status of each of the machines managed by the Research C
     jobscripts should look like nearer the time.
 
     We will not have Apptainer available straight away - we intend to add it later.
+
+#### Latest on Kathleen
+
+  - 2025-06-18 17:05 - Kathleen operating system and scheduler upgrade
+
+    The upgraded half of Kathleen is now available.
+
+    To access, log in to `kathleen-ng.rc.ucl.ac.uk` instead of `kathleen.rc.ucl.ac.uk`. This is a
+    round-robin address for two login nodes. If you are outside UCL, use the ssh-gateway or VPN as
+    usual.
+
+    If you need to access the new login nodes individually, for now you can use these addresses:
+    ```
+    login21.kathleen.rc.ucl.ac.uk
+    login22.kathleen.rc.ucl.ac.uk
+    ```
+
+    We have updated documentation at:
+
+    - https://www.rc.ucl.ac.uk/docs/Clusters/Kathleen/ - contains info on the current split state and links to the following.
+    - https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm/ - has the Slurm commands
+    - https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/ - has a couple of example jobscripts
+
+    The new software stack is provided by the `ucl-stack/2025-05` module, and we have a new
+    `default-modules/2025-05` that should also be loaded by default. We have made a change to the
+    top of everyone's `.bashrc` to make sure that the different default-modules are set
+    appropriately on both old and new Kathleen.
+
+    We do not currently have screen installed - we do have tmux.
+
+    Over the next few weeks we expect to be installing more software, fixing any issues and updating the
+    documentation further.
+
+    We expect to be running both halves of Kathleen for a month. If more work is required we may run old
+    Kathleen for a bit longer.
+
+    For any of you using VSCode, it should be able to connect to new Kathleen. The operating system on old
+    Kathleen (and Myriad) is old enough that current versions will no longer connect there.
 
 
 ### Young
