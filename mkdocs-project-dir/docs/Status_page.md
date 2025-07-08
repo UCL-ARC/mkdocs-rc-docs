@@ -879,8 +879,8 @@ This page outlines that status of each of the machines managed by the Research C
 
 #### Latest on Myriad
 
-  - 2025-07-01 16:35 - **Full outage for Myriad during maintenance window on 8 July; 2 week extension for old
-    filesystem**
+  - 2025-07-01 16:35 - Full outage for Myriad during maintenance window on 8 July; 2 week extension for old
+    filesystem
 
     We will be using Myriad's next maintenance day on **Tues 8 July** to update some firmware and make some
     filesystem adjustments, and there will be a full outage all day where you will not be able to log in or
@@ -896,6 +896,15 @@ This page outlines that status of each of the machines managed by the Research C
     **9am on Mon 21 July**. This is to give you time to finish copying your data onto the new filesystem.
     Your access will be interrupted during the maintenance period above.
 
+  - 2025-07-08 12:00 - Today's outage postponed
+
+    This outage has now been postponed and jobs have been re-enabled on Myriad.
+
+    We will likely need to reschedule it before the next maintenance period, but will let you
+    know once we have had some clarification from our vendors.
+
+    Apologies for the interruption!
+    
 
 ### Kathleen
 
