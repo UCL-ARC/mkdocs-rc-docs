@@ -420,7 +420,7 @@ For the first approach, to submit a job to the scheduler you need to write a job
 sbatch myjobscript
 ```
 
-The jobscript must begin with the `#!/bin/bash -l` as usual. The `#SBATCH` lines in your jobscript are options to `sbatch`. Slurm will take each line which has `#SBATCH` as the first characters and use the contents beyond that as an instruction. It will be put in to the queue and will begin running on the compute nodes at some point later when it has been allocated resources.  
+The jobscript must begin with the `#!/bin/bash -l` as usual. The `#SBATCH` lines in your jobscript are configuration options for `sbatch`. Slurm will take each line starting with `#SBATCH` and use the contents beyond that as an instruction. The job will be put in to the queue and will begin running on the compute nodes at some point later, when it has been allocated resources.  Here you have a very simple example of a jobscript:
 
 ```
 #!/bin/bash -l
@@ -432,17 +432,19 @@ The jobscript must begin with the `#!/bin/bash -l` as usual. The `#SBATCH` lines
 #SBATCH --time=00:10:00
 ```
 
+This example is requesting 1 node, to use 1 cpu per task and specifiying there will be 6 tasks so we will use 6 cores in total. Finally it requests to have access to this resources for 10 min. 
+
 You can also launch parallel tasks by using `srun` inside the jobscript you are running with `sbatch`. 
 
 ```
 srun mytask
 ```
 
-Practical examples of how to run parallel tasks can be found in [`Example Jobscripts`](Example_Jobscripts.md) 
+More examples of jobscripts and more practical examples of how to run parallel tasks can be found in [`Example Jobscripts`](Example_Jobscripts.md) 
 
 ### Passing in command-line arguments
 
-You can also pass options directly to the `sbatch` command and this will override the settings in your script. This can be useful if you are scripting your job submissions in more complicated ways. 
+You can also pass options directly to the `sbatch` command you will use to submit your job and this will override the settings in your script. This can be useful if you are scripting your job submissions in more complicated ways. 
 
 For example, if you want to change the name of the job for this one instance of the job you can submit your script with:
 ```
@@ -454,13 +456,13 @@ Or if you want to increase the wall-clock time to 24 hours:
 ```
 sbatch -t 0-24:00:00 myscript.sh
 ```
-
+#### srun
 You can also use `srun` to submit your jobscript. `srun` only accepts command-line arguments.
 
 ```
 srun myjobscript
 ```
-
+#### Dependencies
 You can submit jobs with dependencies by using the `--depend` option. For example, the command below submits a job that won't run until job 12345 has finished:
 ```
 srun --depend=12345 myscript.sh
@@ -475,7 +477,7 @@ srun - =L myscript.sh (Check THIS!)
 This command tells this GPU job to only run the type L nodes which have Nvidia A100s
 
 ```
-qsub -ac allow=EF myscript.sh  (Check THIS!)
+srun -ac allow=EF myscript.sh  (Check THIS!)
 ```
 
 This tells this GPU job to only run on the type E and F nodes which have Nvidia V100s.
