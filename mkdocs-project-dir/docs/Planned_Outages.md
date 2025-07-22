@@ -17,6 +17,7 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
 23 July 2025 | Myriad | Planned | Full outage all day - no login access or jobs running. Vendors will be replacing a part on the filesystem and we will be doing some network reconfiguration. Jobs to be drained for 8am. Work expected to be completed on 23rd, system will be at risk the next day on Thurs 24 (may be instabilities/reboots as a result of previous work).
+23 July 2025 | Young, Michael, Kathleen, Myriad | Planned | Host keys being updated on all clusters. You will get warnings/errors when next logging in telling you that the remost host identification has changed. On Kathleen, Young and Michael, we will temporarily stop new jobs starting at the moment of changeover. Existing running jobs will not be affected. On Myriad it will be done during the above outage.
 
 ## Previous Outages
 
