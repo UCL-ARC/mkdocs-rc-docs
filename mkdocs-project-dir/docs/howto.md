@@ -425,14 +425,21 @@ The jobscript must begin with the `#!/bin/bash -l` as usual. The `#SBATCH` lines
 ```
 #!/bin/bash -l
 
-# Request one node:
+# Configuration and request of resources:
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
 #SBATCH --ntasks=6
+#SBATCH --mem=1G
 #SBATCH --time=00:10:00
+#SBATCH --job-name="Test"
+#SBATCH -o %j.out
+#SBATCH -e %j.err
+
+# Executables 
+sleep 20s
 ```
 
-This example is requesting 1 node, to use 1 cpu per task and specifiying there will be 6 tasks so we will use 6 cores in total. Finally it requests to have access to this resources for 10 min. 
+This example is requesting 1 node, to use 1 cpu per task and specifiying there will be 6 tasks so we will use 6 cores in total. Then, it requests 1G of memory, this is a request per core, so in total our script will be using 6G. And finally, it requests to have access to this resources for 10 min. After asking for all the resources it sets some configuration flags like the name of the job in the scheduler and the name of the output and error files.   Once all the resources needed have been requested and setting the configuration flags, the script execute the task(s).
 
 You can also launch parallel tasks by using `srun` inside the jobscript you are running with `sbatch`. 
 
