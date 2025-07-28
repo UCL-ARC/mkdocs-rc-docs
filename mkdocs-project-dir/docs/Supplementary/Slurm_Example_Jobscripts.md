@@ -24,6 +24,75 @@ module load vasp/6.4.3-intel-oneapi-mpi/oneapi-2024.2.1
 srun vasp_std
 ```
 
+## Hybrid MPI with OpenMP job
+
+Here are two example NAMD jobs that use some MPI processes which can communicate between nodes, and some OpenMP threads inside a node.
+
+NAMD uses charm++ which can be complex to launch.
+
+```
+#!/bin/bash
+# NAMD build using verbs, has more complex launch line.
+
+# Based on ARCHER2 mpi+smp jobscript
+# 2 nodes, 2 MPI comm processes per node, 20 worker threads per comm process
+#SBATCH --job-name=namd_verbs_2node
+#SBATCH --ntasks-per-node=2
+#SBATCH --cpus-per-task=20
+#SBATCH --nodes=2
+#SBATCH --time=4:00:00
+
+# Purging and reloading all modules to be sure of the job's enviroment
+module purge
+module load ucl-stack/2025-05
+module load namd/3.0.1-verbs/gcc-12.3.0
+
+# Set procs per node (PPN) & OMP_NUM_THREADS
+# One CPU core left free for associated MPI process
+export PPN=$(($SLURM_CPUS_PER_TASK-1))
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export OMP_PLACES=cores
+
+# Record PPN in the output file
+echo "Number of worker threads PPN = $PPN"
+
+# Cannot use srun directly with verbs version as charmrun is required 
+# so Slurm options need to be passed as environment variables.
+# ++verbose is being passed for more debug information on what charmrun is doing.
+export SLURM_HINT=nomultithread
+charmrun ++n ${SLURM_NTASKS} ++mpiexec ++remote-shell srun ++verbose $(which namd3) +setcpuaffinity ++ppn ${PPN} apoa1.namd
+```
+
+```
+#!/bin/bash
+# NAMD build using ucx, simpler launch line, may have more overheads.
+
+# Based on ARCHER2 mpi+smp jobscript
+# 2 nodes, 2 MPI comm processes per node, 20 worker threads per comm process
+#SBATCH --job-name=namd_verbs_2node
+#SBATCH --ntasks-per-node=2
+#SBATCH --cpus-per-task=20
+#SBATCH --nodes=2
+#SBATCH --time=4:00:00
+
+# Purging and reloading all modules to be sure of the job's enviroment
+module purge
+module load ucl-stack/2025-05
+module load namd/3.0.1-ucx/gcc-12.3.0
+
+# Set procs per node (PPN) & OMP_NUM_THREADS
+# One CPU core left free for associated MPI process
+export PPN=$(($SLURM_CPUS_PER_TASK-1))
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export OMP_PLACES=cores
+
+# Record PPN in the output file
+echo "Number of worker threads PPN = $PPN"
+
+# Setting nomultithread can be omitted as set by default.
+srun --hint=nomultithread namd3 +setcpuaffinity +ppn $PPN apoa1.namd
+```
+
 ## Array job
 
 A job array is a group of jobs with the same executable and resource requirements, but different input files. A job array can be submitted, controlled, and monitored as a single unit. Each job submitted from a job array shares the same job ID as the job array and has its own `$SLURM_ARRAY_TASK_ID`. 
