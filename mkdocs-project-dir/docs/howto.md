@@ -40,6 +40,12 @@ The first time you log in to a new server, you'll get a popup telling you that t
 key is not cached in the registry - this is normal and is because you have never connected to
 this server before. If you want to, you can check the host fingerprint against [our current key fingerprints](Supplementary/Hostkeys.md).
 
+#### Using WSL2
+
+You can use Windows Subsystem for Linux to give you a Linux environment on your Windows machine.
+
+With WSL you cannot use the VPN or it breaks WSL's network connections, so you need to ssh in via the UCL SSH gateway when using this as shown below.
+
 ### Logging in from outside the UCL firewall
 
 You will need to either use the [UCL Virtual Private Network](https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn/) or ssh in to UCL's Gateway system `ssh-gateway.ucl.ac.uk` first. From there you can then ssh in to our systems. 
@@ -641,7 +647,7 @@ use X-forwarding.
 
 Desktop Linux operating systems already have X-Windows installed, so you just need to ssh in with the correct flags.
 
-You need to make sure you use either the `-X` or `-Y` (look at `man ssh` for details) flags on all ssh commands you run to establish a connection to the cluster.
+You need to make sure you use either the `-X` or `-Y` (look at `man ssh` for details) flags on all ssh commands you run to establish a connection to the cluster. Most applications should work with `-X`, some will need `-Y` for trusted X11 forwarding to work properly. 
 
 For example, connecting from outside of UCL:
 ```
@@ -693,3 +699,11 @@ Xming is a popular open source X server for Windows. These are instructions for 
 2. Open Xming - the Xming icon should appear on the task bar.
 3. Open PuTTY
 4. Set up PuTTY as shown in the Exceed section.
+
+#### X-forwarding with WSL2
+
+Using Windows Subsystem for Linux, you should first make sure you have [X11 applications installed](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps#install-x11-apps) and are able to launch one, eg `xterm` for a GUI terminal.
+
+You should then be able to `ssh -X` in to the cluster and run `xterm` or `nedit` to launch a remote graphical terminal or editor.
+
+You do not need to install any other separate X server.
