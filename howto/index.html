@@ -671,6 +671,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#using-wsl2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using WSL2
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1158,6 +1167,15 @@
   <a href="#installing-xming" class="md-nav__link">
     <span class="md-ellipsis">
       Installing Xming
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x-forwarding-with-wsl2" class="md-nav__link">
+    <span class="md-ellipsis">
+      X-forwarding with WSL2
     </span>
   </a>
   
@@ -2227,6 +2245,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#using-wsl2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using WSL2
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2719,6 +2746,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#x-forwarding-with-wsl2" class="md-nav__link">
+    <span class="md-ellipsis">
+      X-forwarding with WSL2
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2770,6 +2806,9 @@ Linux instructions.</p>
 <p>The first time you log in to a new server, you'll get a popup telling you that the server's host 
 key is not cached in the registry - this is normal and is because you have never connected to
 this server before. If you want to, you can check the host fingerprint against <a href="../Supplementary/Hostkeys/">our current key fingerprints</a>.</p>
+<h4 id="using-wsl2">Using WSL2<a class="headerlink" href="#using-wsl2" title="Permanent link">§</a></h4>
+<p>You can use Windows Subsystem for Linux to give you a Linux environment on your Windows machine.</p>
+<p>With WSL you cannot use the VPN or it breaks WSL's network connections, so you need to ssh in via the UCL SSH gateway when using this as shown below.</p>
 <h3 id="logging-in-from-outside-the-ucl-firewall">Logging in from outside the UCL firewall<a class="headerlink" href="#logging-in-from-outside-the-ucl-firewall" title="Permanent link">§</a></h3>
 <p>You will need to either use the <a href="https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn/">UCL Virtual Private Network</a> or ssh in to UCL's Gateway system <code>ssh-gateway.ucl.ac.uk</code> first. From there you can then ssh in to our systems. </p>
 <div class="codehilite"><pre><span></span><code>ssh &lt;your_UCL_user_id&gt;@ssh-gateway.ucl.ac.uk
@@ -3211,7 +3250,7 @@ local computer, you will need to have an X-Windows Server installed on your loca
 use X-forwarding.</p>
 <h3 id="x-forwarding-on-linux">X-forwarding on Linux<a class="headerlink" href="#x-forwarding-on-linux" title="Permanent link">§</a></h3>
 <p>Desktop Linux operating systems already have X-Windows installed, so you just need to ssh in with the correct flags.</p>
-<p>You need to make sure you use either the <code>-X</code> or <code>-Y</code> (look at <code>man ssh</code> for details) flags on all ssh commands you run to establish a connection to the cluster.</p>
+<p>You need to make sure you use either the <code>-X</code> or <code>-Y</code> (look at <code>man ssh</code> for details) flags on all ssh commands you run to establish a connection to the cluster. Most applications should work with <code>-X</code>, some will need <code>-Y</code> for trusted X11 forwarding to work properly. </p>
 <p>For example, connecting from outside of UCL:</p>
 <div class="codehilite"><pre><span></span><code>ssh -X &lt;your_UCL_user_id&gt;@ssh-gateway.ucl.ac.uk
 </code></pre></div>
@@ -3258,6 +3297,10 @@ use X-forwarding.</p>
 <li>Open PuTTY</li>
 <li>Set up PuTTY as shown in the Exceed section.</li>
 </ol>
+<h4 id="x-forwarding-with-wsl2">X-forwarding with WSL2<a class="headerlink" href="#x-forwarding-with-wsl2" title="Permanent link">§</a></h4>
+<p>Using Windows Subsystem for Linux, you should first make sure you have <a href="https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps#install-x11-apps">X11 applications installed</a> and are able to launch one, eg <code>xterm</code> for a GUI terminal.</p>
+<p>You should then be able to <code>ssh -X</code> in to the cluster and run <code>xterm</code> or <code>nedit</code> to launch a remote graphical terminal or editor.</p>
+<p>You do not need to install any other separate X server.</p>
 
 
 
