@@ -60,16 +60,16 @@ gnu compiler in their names but can be used alongside any other compiler.
 ```
 module avail cuda
 
-# pick one of the 11.x CUDA installs
-module load cuda/11.3.1/gnu-10.2.0
+# pick one of the 11.x or 12.x CUDA installs
+module load cuda/12.2.2/gnu-10.2.0
 # or
-module load cuda/11.2.0/gnu-10.2.0
+module load cuda/11.8.0/gnu-10.2.0
 ```
 
 ### Choosing a CUDA version
 
-The drivers we have installed on the GPU nodes are version 460.27.03 which is CUDA 11.2.
-CUDA 11 has minor version compatibility so in most cases you can use the 11.3.1 runtime,
+The drivers we have installed on the GPU nodes are version 550.127.05 which is CUDA 12.2.
+CUDA 12 has minor version compatibility so you may be able to use a newer 12.x runtime,
 but not all functionality is available.
 
 If your code builds but when running it you get an error like this:
@@ -78,7 +78,7 @@ If your code builds but when running it you get an error like this:
 CUDA RUNTIME API error: Free failed with error cudaErrorUnsupportedPtxVersion 
 ```
 
-then use the `cuda/11.2.0/gnu-10.2.0` module to build and run your program instead.
+then use the `cuda/12.2.2/gnu-10.2.0` module to build and run your program instead.
 
 ### Building with CUDA
 
