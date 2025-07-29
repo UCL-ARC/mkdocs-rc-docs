@@ -1764,6 +1764,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#perl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Perl
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2288,6 +2297,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#perl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Perl
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2356,8 +2374,7 @@ website doesn't say much, the source code will hopefully have a README or INSTAL
 <p><code>module avail compilers</code> will show you all the compiler modules available. Most 
 Open Source software tends to assume you're using GCC and OpenMPI (if it uses MPI) 
 and is most tested with that combination, so if it doesn't tell you otherwise  you 
-may want to begin there (do check what the newest modules available are - the below 
-is correct at time of writing):</p>
+may want to begin there (do check what the newest modules available are):</p>
 <div class="codehilite"><pre><span></span><code># unload your current compiler and mpi modules
 module unload -f compilers mpi
 # load the GNU compiler
@@ -2703,6 +2720,45 @@ The cache is in <code>.cache/pip</code> in your home directory, and you can dele
 additional packages installed, then you should change it so it uses the first Python found 
 in your environment instead, which will be the one from the Python module you've loaded.</p>
 <div class="codehilite"><pre><span></span><code>#!/usr/bin/env python
+</code></pre></div>
+
+<h3 id="perl">Perl<a class="headerlink" href="#perl" title="Permanent link">§</a></h3>
+<p>We have Perl installed as a module with some central packages. You can install your own additional 
+packages in your space. There is a system perl, but no packages installed for it.</p>
+<p>First, load the gnu compiler and perl:</p>
+<div class="codehilite"><pre><span></span><code>module unload -f compilers mpi
+module load compilers/gnu/4.9.2
+module load perl/5.22.0
+</code></pre></div>
+
+<p>The <code>cpan</code> command will install Perl packages for you, but it needs setting up. If you run <code>cpan</code> 
+after loading the modules above, it will ask you some questions.</p>
+<p>Say yes to automatically configuring as much as it can, and pick <code>local::lib</code> for how to set a 
+local install directory. (Or manual if you want to tell it somewhere specific). If you choose 
+<code>local::lib</code> it will put the cpan config in <code>.cpan</code> in your home, and perl libraries in <code>perl5</code> 
+in your home.</p>
+<p>It will fetch some things and do some checks, and then say this (but using your username):</p>
+<div class="codehilite"><pre><span></span><code>You must now add the following environment variables
+to your shell configuration files (or registry, if you are on Windows) and
+then restart your command line shell and CPAN before installing modules:
+
+PATH=&quot;/home/uccacxx/perl5/bin${PATH:+:${PATH}}&quot;; export PATH;
+PERL5LIB=&quot;/home/uccacxx/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}&quot;; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT=&quot;/home/uccacxx/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}&quot;; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT=&quot;--install_base \&quot;/home/uccacxx/perl5\&quot;&quot;; export PERL_MB_OPT;
+PERL_MM_OPT=&quot;INSTALL_BASE=/home/uccacxx/perl5&quot;; export PERL_MM_OPT;
+Would you like me to append that to /home/uccacxx/.bashrc now?
+</code></pre></div>
+
+<p>You can choose whether you want it to do that - if these lines are in your <code>.bashrc</code>, they'll be run for 
+every new login session you have. Or you can add those lines to a file, called for example <code>myperlsetup.sh</code> 
+and run it when you want it by doing <code>source myperlsetup.sh</code> - that'll set up those environment variables 
+in your current terminal. You can also add them directly to a jobscript.</p>
+<p>You'll be in the cpan shell at this point and can type <code>exit</code> to exit.</p>
+<p>It says you need to restart your shell before installing anything: instead you can type <code>source ~/.bashrc</code> 
+or <code>source myperlsetup.sh</code> depending on what you told it to do to get the setup done.</p>
+<p>Then you can install the Perl packages you wanted:</p>
+<div class="codehilite"><pre><span></span><code>cpan -I DB_File
 </code></pre></div>
 
 
