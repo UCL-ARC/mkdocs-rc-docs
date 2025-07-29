@@ -58,8 +58,7 @@ You may want to use a different compiler - the default is the Intel compiler.
 `module avail compilers` will show you all the compiler modules available. Most 
 Open Source software tends to assume you're using GCC and OpenMPI (if it uses MPI) 
 and is most tested with that combination, so if it doesn't tell you otherwise  you 
-may want to begin there (do check what the newest modules available are - the below 
-is correct at time of writing):
+may want to begin there (do check what the newest modules available are):
 
 ```
 # unload your current compiler and mpi modules
@@ -504,4 +503,54 @@ in your environment instead, which will be the one from the Python module you've
 #!/usr/bin/env python
 ```
 
+### Perl
 
+We have Perl installed as a module with some central packages. You can install your own additional 
+packages in your space. There is a system perl, but no packages installed for it.
+
+First, load the gnu compiler and perl:
+
+```
+module unload -f compilers mpi
+module load compilers/gnu/4.9.2
+module load perl/5.22.0
+```
+
+The `cpan` command will install Perl packages for you, but it needs setting up. If you run `cpan` 
+after loading the modules above, it will ask you some questions.
+
+Say yes to automatically configuring as much as it can, and pick `local::lib` for how to set a 
+local install directory. (Or manual if you want to tell it somewhere specific). If you choose 
+`local::lib` it will put the cpan config in `.cpan` in your home, and perl libraries in `perl5` 
+in your home.
+
+It will fetch some things and do some checks, and then say this (but using your username):
+
+```
+You must now add the following environment variables
+to your shell configuration files (or registry, if you are on Windows) and
+then restart your command line shell and CPAN before installing modules:
+
+PATH="/home/uccacxx/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/uccacxx/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/uccacxx/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/uccacxx/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/uccacxx/perl5"; export PERL_MM_OPT;
+Would you like me to append that to /home/uccacxx/.bashrc now?
+```
+
+You can choose whether you want it to do that - if these lines are in your `.bashrc`, they'll be run for 
+every new login session you have. Or you can add those lines to a file, called for example `myperlsetup.sh` 
+and run it when you want it by doing `source myperlsetup.sh` - that'll set up those environment variables 
+in your current terminal. You can also add them directly to a jobscript.
+
+You'll be in the cpan shell at this point and can type `exit` to exit.
+
+It says you need to restart your shell before installing anything: instead you can type `source ~/.bashrc` 
+or `source myperlsetup.sh` depending on what you told it to do to get the setup done.
+
+Then you can install the Perl packages you wanted:
+
+```
+cpan -I DB_File
+```
