@@ -37,10 +37,11 @@ scp ssh.rd.ucl.ac.uk:~/data_file.tgz ~/Scratch/
 
 ### From Myriad or Kathleen to RDSS
 
-The RDSS is mounted on the Myriad and Kathleen login nodes at `/rdss`. There are 
-subdirectories `rd00`, `rd01` that contain projects with names beginning 
-`ritd-ag-project-rd00` or `ritd-ag-project-rd01` and so on. You can use `cp` or local
-`rsync` commands to copy data between your RDSS space and your Myriad space.
+The RDSS is mounted on the Myriad and Kathleen login nodes at `/rdss` (or `/biomed` 
+if you are part of those projects). There are subdirectories `rd00`, `rd01` that contain 
+projects with names beginning `ritd-ag-project-rd00` or `ritd-ag-project-rd01` and so on. 
+You can use `cp` or local `rsync` commands to copy data between your RDSS space and your 
+Myriad space.
 
 Rsync is useful as rerunning it will not copy files that already exist in the 
 destination - so it can be used to synchronise data and to continue if a transfer was 
