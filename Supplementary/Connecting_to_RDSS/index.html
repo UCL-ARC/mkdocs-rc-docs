@@ -1683,10 +1683,11 @@ running jobs) running the command: </p>
 </code></pre></div>
 
 <h3 id="from-myriad-or-kathleen-to-rdss">From Myriad or Kathleen to RDSS<a class="headerlink" href="#from-myriad-or-kathleen-to-rdss" title="Permanent link">§</a></h3>
-<p>The RDSS is mounted on the Myriad and Kathleen login nodes at <code>/rdss</code>. There are 
-subdirectories <code>rd00</code>, <code>rd01</code> that contain projects with names beginning 
-<code>ritd-ag-project-rd00</code> or <code>ritd-ag-project-rd01</code> and so on. You can use <code>cp</code> or local
-<code>rsync</code> commands to copy data between your RDSS space and your Myriad space.</p>
+<p>The RDSS is mounted on the Myriad and Kathleen login nodes at <code>/rdss</code> (or <code>/biomed</code> 
+if you are part of those projects). There are subdirectories <code>rd00</code>, <code>rd01</code> that contain 
+projects with names beginning <code>ritd-ag-project-rd00</code> or <code>ritd-ag-project-rd01</code> and so on. 
+You can use <code>cp</code> or local <code>rsync</code> commands to copy data between your RDSS space and your 
+Myriad space.</p>
 <p>Rsync is useful as rerunning it will not copy files that already exist in the 
 destination - so it can be used to synchronise data and to continue if a transfer was 
 interrupted partway through.</p>
