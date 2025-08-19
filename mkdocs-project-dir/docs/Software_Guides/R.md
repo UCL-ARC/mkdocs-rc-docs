@@ -125,14 +125,17 @@ If your jobscript is called `run-R.sh` then your job submission command would be
 qsub run-R.sh
 ``` 
 
-## Example multi-node parallel job using Rmpi and snow
+## Example multi-node parallel job using Rmpi and doMPI
 
-This script uses Rmpi and snow to allow it to run across multiple nodes using MPI.
+This script uses Rmpi and doMPI to allow it to run across multiple nodes using MPI.
+
+To try this example, save this job script and the following R script (`doMPI_example.R`) in your home directory.
 
 ```
 #!/bin/bash -l
 
-# Example jobscript to run an R MPI parallel job
+# Batch script to run an MPI parallel R job using the doMPI package
+# with the upgraded software stack under SGE with OpenMPI.
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
 #$ -l h_rt=0:10:0
@@ -140,138 +143,96 @@ This script uses Rmpi and snow to allow it to run across multiple nodes using MP
 # Request 1 gigabyte of RAM per process.
 #$ -l mem=1G
 
-# Request 15 gigabytes of TMPDIR space per node (default is 10 GB)
-#$ -l tmpfs=15G
+# Set tmpfs to 1 gigabyte of TMPDIR space (default is 10 GB)
+# Remove this for clusters without temporary filesystems, e.g. Kathleen
+#$ -l tmpfs=1G
 
 # Set the name of the job.
-#$ -N snow_monte_carlo
+#$ -N R-doMPI-example
 
-# Select the MPI parallel environment with 32 processes
-#$ -pe mpi 32
+# Select the MPI parallel environment with 12 processes, the maximum possible
+# on Myriad would be 36. On Kathleen, request at least 41 processes.
+#$ -pe mpi 12
 
-# Set the working directory to somewhere in your scratch space.  This is
-# necessary because the compute nodes cannot write to your $HOME
-# NOTE: this directory must exist.
-# Replace "<your_UCL_id>" with your UCL user ID
-#$ -wd /home/<your_UCL_id>/Scratch/R_output
+# Set the working directory to the current directory. In this case, we use the home directory.
+#$ -cwd
 
-# Load the R module
 module -f unload compilers mpi gcc-libs
-module load r/recommended
+module load r/r-4.4.2_bc-3.20
 
-# Copy example files in to the working directory (not necessary if already there)
-cp ~/R/Examples/snow_example.R .
-cp ~/R/Examples/monte_carlo.R .
+# Run our MPI job.  GERun is a wrapper that launches MPI jobs on UCL clusters.
 
-# Run our MPI job. GERun is our wrapper for mpirun, which launches MPI jobs  
-gerun RMPISNOW < snow_example.R > snow.out.${JOB_ID}
+gerun Rscript doMPI_example.R
 ```
-The output file is saved in `$HOME/Scratch/R_examples/snow/snow.out.${JOB_ID}`.
+The output is saved in `~/R-doMPI-example.o${JOB_ID}`.
 
-If your jobscript is called `run-R-snow.sh` then your job submission command would be:
+If your jobscript is called `run-R-doMPI.sh` then your job submission command would be:
 ```
-qsub run-R-snow.sh
+qsub run-R-doMPI.sh
 ```
 
-### Example R script using Rmpi and snow
+### Example R script using Rmpi and doMPI
 
-This R script has been written to use Rmpi and snow and can be used with the above jobscript. It is `snow_example.R` above.
+This R script has been written to use Rmpi and doMPI and can be used with the above jobscript. It is `doMPI_example.R` above.
 
 ```
-#Load the snow and random number package.
-library(snow)
-library(Rmpi)
+# This example uses one of the historic datasets from the HistData package
+# and is from Princeton University
 
-# This example uses the already installed LEcuyers RNG library(rlecuyer)
-library(rlecuyer)
+# load the Rmpi, doMPI and HistData packages - already installed on UCL clusters.
 
-# Set up our input/output
-source('./monte_carlo.R')
-sink('./monte_carlo_output.txt')
+library (Rmpi)
+library (doMPI)
+library (HistData)
 
-# Get a reference to our snow cluster that has been set up by the RMPISNOW
-# script.
-cl <- getMPIcluster ()
+# This is Galton's data mapping the height of sons to their fathers
+# ~900 rows of 2 columns
+data (Galton)
 
-# Display info about each process in the cluster
-print(clusterCall(cl, function() Sys.info()))
+# Set up the cluster
 
-# Load the random number package on each R process
-clusterEvalQ (cl, library (rlecuyer))
+cl <- startMPIcluster ()
+registerDoMPI (cl)
 
-# Generate a seed for the pseudorandom number generator, unique to each
-# processor in the cluster.
+# Splitting the Galton data frame (mapped to df) into
+# units of 100 rows max.
 
-#Uncomment below line for default (unchanging) random number seed.
-#clusterSetupRNG(cl, type = 'RNGstream')
+df <- Galton
+n <- 100
+nr <- nrow (df)
 
-#The lines below set up a time-based random number seed.  Note that 
-#this only demonstrates the virtues of changing the seed; no guarantee
-#is made that this seed is at all useful.  Comment out if you uncomment
-#the above line.
-s <- sum(strtoi(charToRaw(date()), base = 32))
-clusterSetupRNGstream(cl, seed=rep(s,6))
+# uses rep to specify the break points without having to manually call each
+split_df <- split (df, rep(1:ceiling (nr/n), each=n, length.out=nr))
 
-#Choose which of the following blocks best fit your own needs.
+# We might want to know the ratio of the parent's height vs the child's
 
-# BLOCK 1
-# Set up the input to our Monte Carlo function.
-# Input is identical across the batch, only RNG seed has changed. 
-# For this example, both clusters will roll one die. 
+# foreach takes parameters and passes them to the MPI worker processes
+# using the dimension of the parameter with the longest length (only one here)
+# .combine= specifies a function that will be used to combine the results, i.e.
+# cbind, rbind, c, etc.
 
-nrolls <- 2
-print("Roll the dice once...")
-output <- clusterCall(cl, monte_carlo, nrolls)
-output
-print("Roll the dice again...")
-output <- clusterCall(cl, monte_carlo, nrolls)
-output
+df$results <- foreach(i=1:length(split_df), .combine='rbind') %dopar% {
 
-# Output should show the results of two rolls of a six-sided die.
-
-#BLOCK 2
-# Input is different for each processor
-print("Second example: coin flip plus 3 dice")
-input <- array(1:2)  # Set up array of inputs, with each entry
-input[1] <- 1        #   corresponding to one processor.
-input[2] <- 3
-parameters <- array(1:2)  # Set up inputs that will be used by each cluster.
-parameters[1] <- 2        #   These will be passed to monte_carlo as its
-parameters[2] <- 6        #   second argument.
-output <- clusterApply(cl, input, monte_carlo, parameters)
-
-# Output should show the results of a coin flip and the roll of three 
-# six-sided die.
-
-# Output the output.
-output
-
-inputStrings <- array(1:2)
-inputStrings[1] <- 'abc'
-inputStrings[2] <- 'def'
-output <- clusterApply(cl, inputStrings, paste, 'foo')
-output
-
-#clusterEvalQ(cl, sinkWorkerOutput("snow_monte_carlo.out"))
-
-# Clean up the cluster and release the relevant resources.
-stopCluster(cl)
-sink()
-
-mpi.quit()
-```
-
-This is `monte_carlo.R` which is called by `snow_example.R`:
-```
-monte_carlo <- function(x, numsides=6){
-  streamname <- .lec.GetStreams ()
-  dice <- .lec.uniform.int(streamname[1], n = 1, a=1, b=numsides)
-  outp <- sum(dice)
-  return(outp)
+    # We take the split lists of data frame, add a column called $ratio
+    # and assign the result just as we would with a non-parallelized operation
+    
+    result <- split_df[[i]]$parent/split_df[[i]]$child
+    as.data.frame (result)
+    
+    # this result gets rbind-ed together as a column on our df.
 }
+
+# Take a look at the df we got back that we could continue working on if we wanted to
+head (df)
+
+# close the cluster to properly free up the MPI resources so GE can see that
+# the job has finished.
+
+closeCluster (cl)
+Rmpi::mpi.quit ()
 ```
 
-This example was based on [SHARCNET's Using R and MPI](https://web.archive.org/web/20190107091729/https://www.sharcnet.ca/help/index.php/Using_R_and_MPI).
+This example was based on Princeton's [Using R on the Research Computing Clusters](https://github.com/PrincetonUniversity/HPC_R_Workshop/blob/6ddac56324021277f163789f7f501fa82d92deca/04_doMPI/04_doMPI.R) repository.
 
 ## Using your own R packages
 
@@ -324,4 +285,3 @@ If you want to keep some libraries separate, you can have multiple colon-separat
 If you are installing extra packages for BioConductor, check that you are using the same version that the R module you have loaded is using.
 
 Eg. you can find the [BioConductor 3.15 package downloads here](http://www.bioconductor.org/packages/3.15/BiocViews.html#___Software).
-

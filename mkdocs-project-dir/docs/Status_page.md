@@ -687,7 +687,7 @@ This page outlines that status of each of the machines managed by the Research C
     Further details on this to come. A similar process will take place when your Myriad user account 
     expires.
 
-#### Latest on Myriad
+#### Myriad new filesystem
 
   - 2025-03-31 - **Myriad new filesystem on Mon 7 April**
 
@@ -730,8 +730,8 @@ This page outlines that status of each of the machines managed by the Research C
 
     - Copy your old .ssh directory into your new home (~) recursively and preserve permissions:
         - `cp -rp ~/oldhome/.ssh ~`  
-    - Use rsync archive mode (recursively copy directories, copy symlinks without resolving, and preserve permissions, ownership and modification times) to copy your old .ssh directory into your new home:
-        - `rsync -r -a ~/oldhome/.ssh ~` 
+    - Use rsync archive mode (recursively copy directories, copy symlinks without resolving, and preserve permissions, ownership and modification times) to copy your old .ssh directory into your new home. The `--safe-links` option tells it to ignore any symbolic links that point outside the copied tree and any symlinks that are absolute paths:
+        - `rsync --safelinks -r -a ~/oldhome/.ssh ~` 
 
     Copy only works locally, so you can use it for any filesystems that are directly mounted on Myriad (old_lustre, ACFS, RDSS, new filesystem). Rsync can be used locally or between remote systems as well. It can also resume incomplete copies by running again and doesn't re-copy data that you have already copied if your transfer gets interrupted for any reason.
 
@@ -848,8 +848,63 @@ This page outlines that status of each of the machines managed by the Research C
     rsync --safe-links -r -a ~/oldhome ~
     ```
 
-    We are catching up on the quota and shared space requests we have received. 
+    We are catching up on the quota and shared space requests we have received.
 
+  - 2025-05-23 10:30 - Myriad filesystem issues last night and this morning
+
+    We needed to stop jobs running last night at around 22:30 after something happened with Myriad's filesystem
+    beginning around 17:00 and getting worse by 18:00 - if you've had error messages in your jobs about "stale
+    file handles" or issues using the cluster interactively this is why.
+
+    We're continuing to work out what happened and get everything running again. We will send more information
+    when we have it.
+
+  - 2025-05-23 18:20 - Re: Myriad filesystem issues last night and this morning
+
+    We let jobs run this afternoon on part of Myriad and are continuing to allow them on the rest of the compute
+    nodes in sections so that everything should be up and running over the bank holiday weekend.
+
+  - 2025-06-25 11:40 - Myriad old filesystem removal at 9am on Mon 7 July
+
+    This is a reminder that your `oldhome`, `oldscratch` and any shared spaces on `/lustre` are going to be
+    unmounted on 9am on Monday 7 July.
+
+    If you know that you cannot complete copying your data by then, please let us know asap. We can grant short
+    term emergency quota increases on the new filesystem in advance of July review by the CRAG to allow you to
+    copy your data off there before it is removed. (If you have already sent those in, we'll be looking at them
+    shortly).
+
+    Reminder: `gquota` shows your new filesystem quota. The `lquota` command will still show you the quota for
+    your old space.
+
+#### Latest on Myriad
+
+  - 2025-07-01 16:35 - Full outage for Myriad during maintenance window on 8 July; 2 week extension for old
+    filesystem
+
+    We will be using Myriad's next maintenance day on **Tues 8 July** to update some firmware and make some
+    filesystem adjustments, and there will be a full outage all day where you will not be able to log in or
+    access the filesystem. We are draining jobs for 8am that day to allow those tasks to be carried out.
+
+    A job drain means that if your job won't have time to finish before the outage, it will not start and will
+    remain in the queue until afterwards, when it will be scheduled as normal. You do not need to take any action.
+
+    **2 week extension for old filesystem**
+
+    We have also had several requests to extend the time period for access to oldhome and oldscratch on the old
+    filesystem, which was due to be removed at 9am on 7 July. We are extending this for two weeks until
+    **9am on Mon 21 July**. This is to give you time to finish copying your data onto the new filesystem.
+    Your access will be interrupted during the maintenance period above.
+
+  - 2025-07-08 12:00 - Today's outage postponed
+
+    This outage has now been postponed and jobs have been re-enabled on Myriad.
+
+    We will likely need to reschedule it before the next maintenance period, but will let you
+    know once we have had some clarification from our vendors.
+
+    Apologies for the interruption!
+    
 
 ### Kathleen
 
@@ -1069,8 +1124,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     (This did not happen, the certificate was renewed in time).
 
-#### Latest on Kathleen
-
   - 2025-02-17 - **New test software stack available**
 
     There is a test version of our next software stack available now on Kathleen. This has a small 
@@ -1096,7 +1149,7 @@ This page outlines that status of each of the machines managed by the Research C
 
     ```
     module avail libpng
--------------------------- /shared/ucl/apps/spack/0.23/deploy/2025-02/modules/applications/linux-rhel7-cascadelake --------------------------
+    -------------------------- /shared/ucl/apps/spack/0.23/deploy/2025-02/modules/applications/linux-rhel7-cascadelake --------------------------
     libpng/1.6.39/gcc-12.3.0-iopfrab
     ```
 
@@ -1110,6 +1163,62 @@ This page outlines that status of each of the machines managed by the Research C
 
     This information is available at 
     [Kathleen test software stack](https://www.rc.ucl.ac.uk/docs/Clusters/Kathleen/#test-software-stack)
+
+  - 2025-06-06 12:10 - Kathleen operating system and scheduler upgrade
+
+    We are intending to upgrade half of Kathleen to the new operating system (RHEL9) and scheduler
+    (Slurm) and give you access on **Weds 18 June** if all goes well.
+
+    We are draining half of the compute nodes in preparation for this.
+
+    We intend to run old Kathleen and new Kathleen in parallel for a while to allow any problems to
+    be found, more software to be installed, and for you to gradually move over to the new environment
+    while still being able to use the old one so your work is not interrupted.
+
+    Maximum jobsize on old Kathleen will be 70 nodes during this time.
+
+    We will give you instructions on how to access new Kathleen login nodes and what the Slurm
+    jobscripts should look like nearer the time.
+
+    We will not have Apptainer available straight away - we intend to add it later.
+
+#### Latest on Kathleen
+
+  - 2025-06-18 17:05 - Kathleen operating system and scheduler upgrade
+
+    The upgraded half of Kathleen is now available.
+
+    To access, log in to `kathleen-ng.rc.ucl.ac.uk` instead of `kathleen.rc.ucl.ac.uk`. This is a
+    round-robin address for two login nodes. If you are outside UCL, use the ssh-gateway or VPN as
+    usual.
+
+    If you need to access the new login nodes individually, for now you can use these addresses:
+    ```
+    login21.kathleen.rc.ucl.ac.uk
+    login22.kathleen.rc.ucl.ac.uk
+    ```
+
+    We have updated documentation at:
+
+    - https://www.rc.ucl.ac.uk/docs/Clusters/Kathleen/ - contains info on the current split state and links to the following.
+    - https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm/ - has the Slurm commands
+    - https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/ - has a couple of example jobscripts
+
+    The new software stack is provided by the `ucl-stack/2025-05` module, and we have a new
+    `default-modules/2025-05` that should also be loaded by default. We have made a change to the
+    top of everyone's `.bashrc` to make sure that the different default-modules are set
+    appropriately on both old and new Kathleen.
+
+    We do not currently have screen installed - we do have tmux.
+
+    Over the next few weeks we expect to be installing more software, fixing any issues and updating the
+    documentation further.
+
+    We expect to be running both halves of Kathleen for a month. If more work is required we may run old
+    Kathleen for a bit longer.
+
+    For any of you using VSCode, it should be able to connect to new Kathleen. The operating system on old
+    Kathleen (and Myriad) is old enough that current versions will no longer connect there.
 
 
 ### Young

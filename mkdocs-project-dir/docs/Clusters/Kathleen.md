@@ -9,6 +9,26 @@ categories:
 
 Kathleen is a compute cluster designed for extensively parallel, multi-node batch-processing jobs, having high-bandwidth connections between each individual node. It is named after [Professor Dame Kathleen Lonsdale](https://en.wikipedia.org/wiki/Kathleen_Lonsdale), a pioneering chemist and activist, and was installed in December 2019. It went into service at the end of January 2020.
 
+## New operating system and scheduler
+
+Half of Kathleen is currently updated to our new operating system and new scheduler, Slurm.
+
+It can be accessed via `kathleen-ng.rc.ucl.ac.uk` which will log you in to updated login nodes.
+
+The new software stack is provided by a module called `ucl-stack/2025-05` which should be being loaded by default. If not (for example if you `module purge` in your .bashrc) you can load the new environment by:
+
+```
+module load ucl-stack/2025-05
+module load default-modules/2025-05
+```
+
+The default compiler is now GCC and the default MPI is OpenMPI. We do also have Intel OneAPI modules.
+
+Your jobscripts will need to be rewritten as Slurm jobscripts, and there are different commands for submitting jobs and checking your job status.
+
+* [Usage of Slurm](../Supplementary/Slurm.md)
+* [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
+
 ## Accounts
 
 Kathleen accounts can be applied for via the [Research Computing sign up process](../Account_Services.md).
@@ -20,7 +40,11 @@ As Kathleen is intended for multi-node jobs, users who specify that they will ne
 Please use your UCL username and password to connect to Kathleen with an SSH client.
 
 ```
+# old Kathleen, RHEL7 and SGE
 ssh uccaxxx@kathleen.rc.ucl.ac.uk
+
+# new Kathleen, RHEL9 and Slurm
+ssh uccaxxx@kathleen-ng.rc.ucl.ac.uk
 ```
 
 If using PuTTY, put `kathleen.rc.ucl.ac.uk` as the hostname and your
