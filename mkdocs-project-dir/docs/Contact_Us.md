@@ -25,7 +25,7 @@ so; always use the rc-support email address provided as this is the best way for
 
 ## Drop-In Sessions
 
-Research IT Services holds drop-in sessions roughly every two weeks which at least one member of the Research Computing team usually attends. More details and dates for these sessions are available on the [the RITS pages](https://www.ucl.ac.uk/isd/services/research-it/research-it-data-management-drop-ins).
+The Centre for Advanced Research Computing (ARC) holds drop-in sessions roughly every two weeks, which at least one member of the Research Computing team usually attends. More details and dates for these sessions are available on the [the ARC pages](https://www.ucl.ac.uk/advanced-research-computing/community-events/drop-sessions).
 
 If you have a particularly complex problem, it may be useful to email the support address, <rc-support@ucl.ac.uk>, beforehand so that the person attending can prepare.
 
