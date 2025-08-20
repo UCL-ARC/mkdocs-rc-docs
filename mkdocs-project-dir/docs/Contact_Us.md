@@ -39,5 +39,5 @@ The Research Computing Team are located at:
 > WC1H 9BT
 
 We are keen to collaborate and welcome visitors to our offices to talk about all things research computing.
-However, we do not operate a walk-up service desk: if you are frustrated by slow response to a support ticket, we are sorry but please do not send reminders as there is probably a good reason why your request is not being processed.
+However, we do not operate a walk-up service desk: if you are frustrated by slow response to a support ticket, we are sorry but please do send reminders as there is probably a good reason why your request is not being processed.
 
