@@ -55,7 +55,7 @@ ssh <your_UCL_user_id>@ssh-gateway.ucl.ac.uk
 ssh <your_UCL_user_id>@<system_name>.rc.ucl.ac.uk
 ```
 
-**Advanced:** If you find you need to go via the Gateway often, you can set up this jump automatically, see [Single-step logins using tunnelling](#single-step-logins-using-tunnelling)
+**Advanced:** If you find you need to go via the Gateway often, you can set up this jump automatically, see [Single-step logins using tunnelling](#single-step-logins-using-tunnelling).  This is also necessary if you need to run graphical applications remotely on the cluster from outside the firewall (via X-forwarding).
 
 ### Login problems
 
