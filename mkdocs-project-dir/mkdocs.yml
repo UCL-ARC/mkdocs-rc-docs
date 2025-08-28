@@ -137,5 +137,17 @@ extra:
   social:
     - icon: 'fontawesome/brands/github'
       link: 'https://github.com/UCL-ARC'
+  consent:
+      github:
+      actions:
+        - reject
+        - manage
+        - accept
+      title: Local storage notification
+      description: >-
+        We don't use cookies at all, but we do use your browser's local
+        storage to remember whether you prefer dark or light mode, and
+        to store the GitHub statistics displayed in the top-right.\n
+        You can disable the stats retrieval to GitHub and associated storage here.
 extra_css:
       - 'stylesheets/tweaks.css'
