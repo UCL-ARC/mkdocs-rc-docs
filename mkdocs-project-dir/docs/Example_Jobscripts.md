@@ -326,7 +326,7 @@ The example below does this for a job array, but this works for any job type.
 ```bash
 #!/bin/bash -l
 
-# Batch script to run an array job under SGE and 
+# Batch script to run an array job under Slurm and 
 #  transfer the output to Scratch from local.
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
@@ -370,7 +370,7 @@ Your script can then have a loop that runs task IDs from `$SLURM_ARRAY_TASK_ID` 
 ```bash
 #!/bin/bash -l
 
-# Batch script to run an array job with strided task IDs under SGE.
+# Batch script to run an array job with strided task IDs under Slurm.
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
 #SBATCH --time=0:10:00  
@@ -383,7 +383,6 @@ Your script can then have a loop that runs task IDs from `$SLURM_ARRAY_TASK_ID` 
 
 # Set up the job array.  In this instance we have requested task IDs
 # numbered 1 to 10000 with a stride of 10.
-#$ -t 1-10000:10
 #SBATCH --array=1-10000:10
 
 # Set the name of the job.
@@ -421,59 +420,37 @@ the work on each node is done in a shared memory style by threads.
 When requesting resources for this type of job, what you are asking the scheduler
 for is the physical number of cores and amount of memory per core that you need.
 Whether you end up running MPI processes or threads on that core is up to your code.
-(The `-pe mpi xx` request is telling it you want an MPI parallel environment and 
-xx number of cores, not that you want xx MPI processes - this can be confusing).
-
-### Setting number of threads
-
-You can either set `$OMP_NUM_THREADS` for the number of OpenMP threads yourself, 
-or allow it to be worked out automatically by setting it to `OMP_NUM_THREADS=$(ppn)`. 
-That is a helper script on our clusters which will set `$OMP_NUM_THREADS` to 
-`$NSLOTS/$NHOSTS`, so you will use threads within a node and MPI between nodes 
-and don't need to know in advance what size of node you are running on. Gerun 
-will then run `$NSLOTS/$OMP_NUM_THREADS` processes, round-robin allocated (if 
-supported by the MPI).
+The `--ntasks` is always referring to MPI processes and the `--cpus-per-task` means 
+`SMP` processes. `--ntasks * --cpus-per-task` will indicate the total amount of cores requested.
 
 ```bash
 #!/bin/bash -l
 
-# Batch script to run a hybrid parallel job under SGE.
+# Batch script to run a hybrid parallel job under Slurm.
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
-#$ -l h_rt=0:10:0
+#SBATCH --time=0:10:00
 
 # Request 1 gigabyte of RAM per core (must be an integer)
-#$ -l mem=1G
+#SBATCH --mem-per-cpu=1G 
 
 # Request 15 gigabytes of TMPDIR space per node (default is 10 GB - remove if cluster is diskless)
-#$ -l tmpfs=15G
+#SBATCH --tmp=15G 
 
 # Set the name of the job.
-#$ -N MadIntelHybrid
+#SBATCH --job-name=MadIntelHybrid 
 
-# Select the MPI parallel environment and 80 cores.
-#$ -pe mpi 80
+# Select the MPI parallel environment. In total we want to use 80 cores.
+#SBATCH --ntasks=8                       # Number of MPI tasks
+# Select the smp parallel environment. Request 10 cores for this task (SMP/multi-threaded)
+#SBATCH --cpus-per-task=10               # OpenMP threads per MPI task (8*10=80 cores total)
 
 # Set the working directory to somewhere in your scratch space. 
 # This directory must exist.
-#$ -wd /home/<your_UCL_id/scratch/output/
-
-# Automatically set threads using ppn. On a cluster with 40 cores
-# per node this will be 80/2 = 40 threads.
-export OMP_NUM_THREADS=$(ppn)
+#SBATCH --chdir=/home/<your_UCL_id>/scratch/output
 
 # Run our MPI job with the default modules. Gerun is a wrapper script for mpirun. 
 gerun $HOME/src/madscience/madhybrid
-```
-
-If you want to specify a specific number of OMP threads yourself, you would alter 
-the relevant lines above to this:
-
-```
-# Request 80 cores and run 4 MPI processes per 40-core node, each spawning 10 threads
-#$ -pe mpi 80
-export OMP_NUM_THREADS=10
-gerun your_binary
 ```
 
 ## GPU Job Script Example
@@ -485,26 +462,26 @@ You also need to use the `-l gpu=<number>` option to request the GPUs from the s
 ```bash
 #!/bin/bash -l
 
-# Batch script to run a GPU job under SGE.
+# Batch script to run a GPU job under Slurm.
 
 # Request a number of GPU cards, in this case 2 (the maximum)
-#$ -l gpu=2
+#SBATCH --gres=gpu:2
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
-#$ -l h_rt=0:10:0
+#SBATCH --time=0:10:00
 
 # Request 1 gigabyte of RAM (must be an integer followed by M, G, or T)
-#$ -l mem=1G
+#SBATCH --mem-per-cpu=1G 
 
 # Request 15 gigabyte of TMPDIR space (default is 10 GB)
-#$ -l tmpfs=15G
+#SBATCH --tmp=15G  
 
 # Set the name of the job.
-#$ -N GPUJob
+#SBATCH --job-name=GPUJob
 
 # Set the working directory to somewhere in your scratch space.
 # Replace "<your_UCL_id>" with your UCL user ID :)
-#$ -wd /home/<your_UCL_id>/Scratch/output
+#SBATCH --chdir=/home/<your_UCL_id>/scratch/output
 
 # Change into temporary directory to run work
 cd $TMPDIR
@@ -525,25 +502,25 @@ tar zcvf $HOME/Scratch/files_from_job_$JOB_ID.tar.gz $TMPDIR
 
 ## Job using MPI and GPUs
 
-It is possible to run MPI programs that use GPUs but our clusters currently only support this within a single node. The script below shows how to run a program using 2 gpus and 12 cpus.
+It is possible to run MPI programs that use GPUs but our clusters currently only support this within a single node. The script below shows how to run a program using 2 gpus and 12 cpus using MPI.
 
 ```bash
 #!/bin/bash -l
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
-#$ -l h_rt=0:10:0
+#SBATCH --time=0:10:00 
 
 # Request 12 cores, 2 GPUs, 1 gigabyte of RAM per CPU, 15 gigabyte of TMPDIR space
-#$ -l mem=1G
-#$ -l gpu=2
-#$ -pe mpi 12
-#$ -l tmpfs=15G
+#SBATCH --mem-per-cpu=1G
+#SBATCH --gres=gpu:2
+#SBATCH --ntasks=12
+#SBATCH --tmp=15G  
 
 # Set the name of the job.
-#$ -N GPUMPIrun
+#SBATCH --job-name=GPUMPIrun
 
 # Set the working directory to somewhere in your scratch space.
-#$ -wd /home/<your user id>/Scratch/output/
+#SBATCH --chdir=/home/<your_UCL_id>/scratch/output
 
 # Run our MPI job. You can choose OpenMPI or IntelMPI for GCC.
 module unload compilers mpi
