@@ -14,38 +14,60 @@ software debugging, or to work up a script to run your program without having to
 and wait for it to complete.
 
 On the other hand, you can also immediately launch a job as he same time you allocate for resources wit the `srun` command. 
+Slurm jobs wait in queue by default, unless you specifically request `--immediate`, which is rarely used.
 We detail the use of both commands bellow. 
 
-## Requesting Access with `salloc`
+## Requesting access with `salloc`
 
-You will be granted an interactive shell after running a command that
-checks with the scheduler whether the resources you wish to use in your
-tests/analysis are available. Interactive sessions are requested using the salloc command. 
-It typically takes the form:
+When using `salloc`, you will be granted a "job allocation", a node with the resources you asked for. This process an take 
+a while depending on the amount of resources allocated and the availability of the cluster at the time.
+The process to request resources typically takes the form:
 
 ```
-srun --pty -n 8 --mem-per-cpu=512M --time=2:00:00 bash
+salloc <options> <command> <arguments to <command>>
 ```
 
-In this example you are asking to run eight parallel processes
-within an MPI environment, 512MB RAM per process, for a period of two
-hours.
+For example: 
+```
+salloc -n 8 --mem-per-cpu=512M --time=2:00:00 
+```
+In this example you are asking to run eight parallel processes within an MPI environment, 512MB RAM per process, for a period of two
+hours. This means you are requesting 8 entire nodes. If you do not specify the amount of nodes you need, the scheduler assumes `-n 1`.
+If you need to request a specific number of cores to use, you can use the `--cpus-per-task=X` argument. Following the previous example, 
+to request only 24 cores: 
 
+```
+ salloc -n 1 --cpus-per-task=24  --mem-per-cpu=512M --time=2:00:00
+```
 
-srun --pty → interactive job allocation
+If you do not specify the amount of cores, Slurm considers `--cpus-per-task=1` as the default
+You can log in into the node running an interactive session with the `srun command`:
 
--n 8 → request 8 tasks (like 8 MPI ranks)
+```
+srun --pty --jobid=<job_allocation> /bin/bash
+```
 
---mem-per-cpu=512M → 512 MB memory per task (matches SGE mem=512M)
+The session will not be automatically closed after closing/exiting the bash session. `scancel` ends interactive shell and release the resources.
 
---time=2:00:00 → 2 hours runtime limit
+```
+scancel <job_allocation>
+```
 
-bash → starts an interactive shell
-
-If you wanted to queue the job (like -now no), that’s the default in SLURM—jobs wait in queue unless you specifically request --immediate, which is rarely used.
-
+**Remember that in kathleen you need to ask for a minimum of 2 nodes while in Myriad you should ask for less than a node (36 cores maximum). If you request the wrong amount of recources for each system It will allow you to allocate them, but you will not be able to run anything successfully**
 
 ## Running interactive jobs with `srun`
+
+You can also request resources and immediately run an interactive job using `srun`. The process typically takes the form `srun --pty` → interactive job allocation.
+
+```
+ srun -n 8 --mem-per-cpu=512M --time=02:00:00 <your_job>
+```
+You can login into the node where your interactive job is running the with the same `srun` command stated before.
+
+```
+srun --pty --jobid=<job_allocation> /bin/bash
+```
+
 
 All job types we support on the system are supported via an interactive
 session (see our [examples section](Example_Jobscripts.md)).
@@ -67,7 +89,9 @@ More resources can be found here:
 
 
 srun
-
+```
+srun --pty -n 8 --mem-per-cpu=512M --time=2:00:00 bash
+```
 Purpose: Actually launch tasks (your program) on allocated resources.
 
 Can be used in two ways:
@@ -89,9 +113,7 @@ You can get an interactive X session from the head node of the job back
 to the login node. The way to do this is to run the `qrsh` command in the
 following generic fashion:
 
-```
-qrsh <options> <command> <arguments to <command>>
-```
+`
 
 Where `<command>` is either a command to launch an X terminal like
 Xterm or Mrxvt or a GUI application like XMGrace or GaussView.
