@@ -531,3 +531,35 @@ module load cuda/7.5.18/gnu-4.9.2
 gerun myGPUapp
 ```
 
+## Job using MPI + OpenMP and GPUs
+
+It is possible to run the same program than before more efficently by mixing MPI/OpenMp programs that use GPUs. The script below shows how to run a program using 2 gpus and 12 cpus in total,  using 4 MPI processes and 3 OpenMP threads per process (12 cores in total).
+
+```bash
+#!/bin/bash -l
+
+# Request ten minutes of wallclock time (format hours:minutes:seconds).
+#SBATCH --time=0:10:00 
+
+# Request 12 cores, 2 GPUs, 1 gigabyte of RAM per CPU, 15 gigabyte of TMPDIR space
+#SBATCH --mem-per-cpu=1G
+#SBATCH --gres=gpu:2
+#SBATCH --ntasks=4
+#SBATCH --cpus-per-task=3  #(Number of OpenMP threads per MPI rank (4*3=12 cores total)
+#SBATCH --tmp=15G  
+
+# Set the name of the job.
+#SBATCH --job-name=GPUMPIrun
+
+# Set the working directory to somewhere in your scratch space.
+#SBATCH --chdir=/home/<your_UCL_id>/scratch/output
+
+# Run our MPI job. You can choose OpenMPI or IntelMPI for GCC.
+module unload compilers mpi
+module load compilers/gnu/4.9.2
+module load mpi/openmpi/1.10.1/gnu-4.9.2
+module load cuda/7.5.18/gnu-4.9.2
+
+gerun myGPUapp
+```
+
