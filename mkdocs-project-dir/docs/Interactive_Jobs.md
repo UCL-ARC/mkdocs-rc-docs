@@ -13,8 +13,16 @@ These can be used when you want to allocate resources without running a job imme
 software debugging, or to work up a script to run your program without having to submit each attempt separately to the queue
 and wait for it to complete.
 
-On the other hand, you can also immediately launch a job as he same time you allocate for resources wit the `srun` command. 
-Slurm jobs wait in queue by default, unless you specifically request `--immediate`, which is rarely used.
+On the other hand, you can also immediately launch a job as he same time you allocate for resources with the `srun` command. 
+`srun` is a complex command. Without any prior allocation of recources, `srun` requests resources and runs the job (like a 
+one-off allocation + run). But if you have previously requested resources, with `salloc` or `sbatch`, then `srun` launches 
+tasks *within* that allocation.
+
+```
+  Rule of thumb:
+  - If you just want to run something immediately (interactive or batch) → use srun.
+  - If you want to hold resources for a while and maybe run multiple jobs inside them → use salloc, then run srun inside.
+```  
 We detail the use of both commands bellow. 
 
 ## Requesting access with `salloc`
@@ -62,25 +70,19 @@ You can also request resources and immediately run an interactive job using `sru
 ```
  srun -n 8 --mem-per-cpu=512M --time=02:00:00 <your_job>
 ```
+Similarly as before, this example is asking to run eight parallel processes within an MPI environment, 512MB RAM per process, for a period of two
+hours and at the same time, ejecute immediately <your_job>.
+
 You can login into the node where your interactive job is running the with the same `srun` command stated before.
 
 ```
 srun --pty --jobid=<job_allocation> /bin/bash
 ```
 
+All job types we support on the system are supported via an interactive session (see our [examples section](Example_Jobscripts.md)).
 
-All job types we support on the system are supported via an interactive
-session (see our [examples section](Example_Jobscripts.md)).
-Likewise, all qsub options are supported like regular job submission
-with the difference that with qrsh they must be given at the command
-line, and not with any job script (or via -@).
 
-In addition the `-now` option is useful when a cluster is busy. 
-By default qrsh and qlogin jobs will run on the next scheduling
-cycle or give up. The `-now no` option tells it to keep waiting
-until it gets scheduled. Pressing Ctrl+C (i.e. the control key
-and the C key at the same time) will safely cancel the request
-if it doesn't seem to be able to get you a session.
+In SGE the `-now` option was useful when a cluster was busy.  By default qrsh and qlogin jobs will run on the next scheduling cycle or give up. The `-now no` option tells it to keep waiting until it gets scheduled. This option is not present in Slurm as Slurm jobs wait in queue by default, unless you specifically request `--immediate`, which is rarely used.
 
 More resources can be found here:
 
@@ -88,47 +90,31 @@ More resources can be found here:
 * [Mediacentral](https://mediacentral.ucl.ac.uk/Play/98393) (non-UCL users)
 
 
-srun
-```
-srun --pty -n 8 --mem-per-cpu=512M --time=2:00:00 bash
-```
-Purpose: Actually launch tasks (your program) on allocated resources.
-
-Can be used in two ways:
-
-Without prior allocation: srun requests resources and runs the job (like a one-off allocation + run).
-
-Inside an allocation (salloc or sbatch): srun launches tasks within that allocation.
-
-Example direct execution:
-
-
-Log in into the node running an interactive node 
-srun --pty --jobid=… bash
-
-
 ## Interactive X sessions
 
-You can get an interactive X session from the head node of the job back
-to the login node. The way to do this is to run the `qrsh` command in the
-following generic fashion:
-
-`
-
-Where `<command>` is either a command to launch an X terminal like
-Xterm or Mrxvt or a GUI application like XMGrace or GaussView.
-
-To make effective use of the X forwarding you will need to have logged
-in to the login node with ssh -X or some equivalent method. Here is an
-example of how you can get a X terminal session with the qrsh command:
+You can get an interactive X session (If SLURM supports X11 forwarding (--x11)) ??? 
+in two ways: 
 
 ```
-qrsh -l mem=512M,h_rt=0:30:0 \
-   "/shared/ucl/apps/mrxvt/0.5.4/bin/mrxvt -title 'User Test Node'"
-``
+salloc --x11 -n 1 --mem=2G --time=2:00:00
+```
+This allocates a node with X11 forwarding enabled. Then run your GUI program:
+```
+srun --x11 <command>
+```
+Your GUI will display back on your local machine. Where `<command>` is either a command to launch an X terminal like
+Xterm or Mrxvt or a GUI application like XMGrace or GaussView.
 
-***NOTE: If we run salloc --cpus-per-task=40 --time=00:10:00, it will execute fine but if we adk more than --cpus-per-task=40, it says that node configuration is not available? Why is that? It is supossed Kathleen is for multinode purpose...***
+Another way to do this is by requesting the resources normally
 
+```
+salloc -n 1 --mem=2G --time=2:00:00
+```
+and then run
+```
+srun -pty xterm
+```
+To make effective use of the X forwarding you will need to have logged in to the login node with ssh -X or some equivalent method. 
 
 ## Working on the nodes
 
