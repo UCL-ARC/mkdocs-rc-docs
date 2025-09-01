@@ -70,24 +70,27 @@ Shown below is a simple job script that runs /bin/date (which prints the current
 ```bash
 #!/bin/bash -l
 
-# Batch script to run a serial job under SGE.
+# Batch script to run a serial job under Slurm.
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
-#SBATCH -l h_rt=0:10:0
+#SBATCH --time=0:10:00
 
 # Request 1 gigabyte of RAM (must be an integer followed by M, G, or T)
-#SBATCH -l mem=1G
+#SBATCH --mem=1G
 
 # Request 15 gigabyte of TMPDIR space (default is 10 GB - remove if cluster is diskless)
-#SBATCH -l tmpfs=15G
+#SBATCH --tmp=15G
 
-# Set the name of the job.
-#SBATCH -N Serial_Job
+# Set the name of the job.             
+#SBATCH --job-name=Serial_Job
 
-# Set the working directory to somewhere in your scratch space.  
-#  This is a necessary step as compute nodes cannot write to $HOME.
+# Set the working directory to somewhere in your scratch space.
 # Replace "<your_UCL_id>" with your UCL user ID.
-#SBATCH -wd /home/<your_UCL_id>/Scratch/workspace
+#SBATCH --chdir=/home/<your_UCL_id>/Scratch/workspace
+
+#Set your .e and .o output files
+#SBATCH --output=%x_%j.out         
+#SBATCH --error=%x_%j.err         
 
 # Your work should be done in $TMPDIR 
 cd $TMPDIR
@@ -95,15 +98,41 @@ cd $TMPDIR
 # Run the application and put the output into a file called date.txt
 /bin/date > date.txt
 
-# Preferably, tar-up (archive) all output files onto the shared scratch area
-tar -zcvf $HOME/Scratch/workspace/files_from_job_$JOB_ID.tar.gz $TMPDIR
+# Archive results back to your workspace
+tar -zcvf $HOME/Scratch/workspace/files_from_job_${SLURM_JOB_ID}.tar.gz $TMPDIR
 
-# Make sure you have given enough time for the copy to complete!
+# Ensure copy finishes before job ends (tar is blocking, so fine here)
+```
+
+The same example as an interactive job could be run with: 
+
+```bash
+salloc --time=0:10:00 --mem=1G --tmp=15G --job-name=Serial_Job --chdir=/home/<your_UCL_id>/Scratch/workspace
+```
+
+Then you login into the allocated resources with: 
+
+````bash
+srun --jobid=<job-allocation> --pty /bin/bash
+````
+And finally, in the shell execute your task and copy files back:
+
+```bash
+cd $TMPDIR
+/bin/date > date.txt
+tar -zcvf $HOME/Scratch/workspace/files_from_job_${SLURM_JOB_ID}.tar.gz $TMPDIR
+```
+Or also, a shortcut using only `srun`:
+
+```bash
+srun --time=0:10:00 --mem=1G --tmp=15G --job-name=Serial_Job \
+     --chdir=/home/<your_UCL_id>/Scratch/workspace \
+     bash -c "cd \$TMPDIR; /bin/date > date.txt; tar -zcvf \$HOME/Scratch/workspace/files_from_job_\${SLURM_JOB_ID}.tar.gz \$TMPDIR"
 ```
 
 ## Multi-threaded Job Example
 
-For programs that can use multiple threads, you can request multiple processor cores using the `-pe smp <number>` option. One common method for using multiple threads in a program is OpenMP, and the `$OMP_NUM_THREADS` environment variable is set automatically in a job of this type to tell OpenMP how many threads it should use. Most methods for running multi-threaded applications should correctly detect how many cores have been allocated, though (*via* a mechanism called `cgroups`).
+For programs that can use multiple threads, you can request multiple processor cores using the `--cpus-per-task <number>` option. This implicitly suggest `smp` use. One common method for using multiple threads in a program is OpenMP, and the `$OMP_NUM_THREADS` environment variable is set automatically in a job of this type to tell OpenMP how many threads it should use. Most methods for running multi-threaded applications should correctly detect how many cores have been allocated, though (*via* a mechanism called `cgroups`).
 
 Note that this job script works directly in scratch instead of in the temporary `$TMPDIR` storage.
 
@@ -113,20 +142,23 @@ Note that this job script works directly in scratch instead of in the temporary 
 # Batch script to run an OpenMP threaded job under SGE.
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
-#SBATCH -l h_rt=0:10:0
+#SBATCH --time=0:10:00 
 
 # Request 1 gigabyte of RAM for each core/thread 
 # (must be an integer followed by M, G, or T)
-#SBATCH -l mem=1G
+#SBATCH --mem-per-cpu=1G
 
 # Request 15 gigabyte of TMPDIR space (default is 10 GB - remove if cluster is diskless)
-#SBATCH -l tmpfs=15G
+#SBATCH --tmp=15G 
 
 # Set the name of the job.
-#SBATCH -N Multi-threaded_Job
+#SBATCH --job-name=Multi-threaded_Job
 
-# Request 16 cores.
-#SBATCH -pe smp 16
+# Specify the number of tasks (single task (serial job using multiple threads))
+#SBATCH --ntasks=1
+
+# Request 16 cores (16 cores for this task (SMP/multi-threaded))
+#SBATCH --cpus-per-task=16
 
 # Set the working directory to somewhere in your scratch space.
 # Replace "<your_UCL_id>" with your UCL user ID
