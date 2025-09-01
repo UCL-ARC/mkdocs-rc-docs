@@ -139,7 +139,7 @@ Note that this job script works directly in scratch instead of in the temporary 
 ```bash
 #!/bin/bash -l
 
-# Batch script to run an OpenMP threaded job under SGE.
+# Batch script to run an OpenMP threaded job under Slurm.
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
 #SBATCH --time=0:10:00 
@@ -154,7 +154,7 @@ Note that this job script works directly in scratch instead of in the temporary 
 # Set the name of the job.
 #SBATCH --job-name=Multi-threaded_Job
 
-# Specify the number of tasks (single task (serial job using multiple threads))
+# Specify the number of tasks (single task (serial job using multiple threads), no MPI)
 #SBATCH --ntasks=1
 
 # Request 16 cores (16 cores for this task (SMP/multi-threaded))
@@ -173,6 +173,8 @@ $HOME/my_program/example
 The default MPI implementation on our clusters is the Intel MPI stack. MPI programs don’t use a shared memory model so they can be run across multiple nodes.
 This script differs considerably from the serial and OpenMP jobs in that MPI programs need to be invoked by a program called gerun. This is our wrapper for mpirun and takes care of passing the number of processors and a file called a machine file.
 
+In Slurm the `-ntasks` and `-n` are equivalent and the implicitly means the use of MPI processes. 
+
 ***Important***: If you wish to pass a file or stream of data to the standard input (stdin) of an MPI program, there are specific command-line options you need to use to control which MPI tasks are able to receive it. (`-s` for Intel MPI, `--stdin` for OpenMPI.) Please consult the help output of the `mpirun` command for further information. The `gerun` launcher does not automatically handle this.
 
 If you use OpenMPI, you need to make sure the Intel MPI modules are removed and the OpenMPI 
@@ -181,23 +183,23 @@ modules are loaded, either in your jobscript or in your shell start-up files (e.
 ```bash
 #!/bin/bash -l
 
-# Batch script to run an MPI parallel job under SGE with Intel MPI.
+# Batch script to run an MPI parallel job under Slurm with Intel MPI.
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
-#SBATCH -l h_rt=0:10:0
+#SBATCH --time=0:10:00 
 
 # Request 1 gigabyte of RAM per process (must be an integer followed by M, G, or T)
-#SBATCH -l mem=1G
+#SBATCH --mem-per-cpu=1G 
 
 # Request 15 gigabyte of TMPDIR space per node 
 # (default is 10 GB - remove if cluster is diskless)
-#$ -l tmpfs=15G
+#SBATCH --tmp=15G 
 
 # Set the name of the job.
-#SBATCH -N MadScience_1_16
+#SBATCH --job-name=MadScience_1_16
 
-# Select the MPI parallel environment and 16 processes.
-#SBATCH -pe mpi 16
+# Select the MPI parallel environment and 16 processes (-ntasks and -n are equivalent)
+#SBATCH --ntasks=16  
 
 # Set the working directory to somewhere in your scratch space.
 # Replace "<your_UCL_id>" with your UCL user ID :
@@ -206,7 +208,6 @@ modules are loaded, either in your jobscript or in your shell start-up files (e.
 # Run our MPI job.  GERun is a wrapper that launches MPI jobs on our clusters.
 gerun $HOME/src/science/simulate
 ```
-
 
 ## Array Job Script Example
 
@@ -222,31 +223,31 @@ arrays.
 ```bash
 #!/bin/bash -l
 
-# Batch script to run a serial array job under SGE.
+# Batch script to run a serial array job under Slurm.
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
-#$ -l h_rt=0:10:0
+#SBATCH --time=0:10:00 
 
 # Request 1 gigabyte of RAM (must be an integer followed by M, G, or T)
-#$ -l mem=1G
+#SBATCH --mem=1G 
 
 # Request 15 gigabyte of TMPDIR space (default is 10 GB - remove if cluster is diskless)
-#$ -l tmpfs=15G
+#SBATCH --tmp=15G
 
 # Set up the job array.  In this instance we have requested 10000 tasks
 # numbered 1 to 10000.
-#$ -t 1-10000
+#SBATCH --array=1-10000 
 
 # Set the name of the job.
-#$ -N MyArrayJob
+#SBATCH --job-name=MyArrayJob
 
 # Set the working directory to somewhere in your scratch space. 
 # Replace "<your_UCL_id>" with your UCL user ID :)
-#$ -wd /home/<your_UCL_id>/Scratch/output
+#SBATCH --chdir=/home/<your_UCL_id>/Scratch/output
 
 # Run the application.
 
-echo "$JOB_NAME $SGE_TASK_ID"
+echo "$JOB_NAME $SLURM_ARRAY_TASK_ID"
 ```
 
 ## Array Job Script Example Using Parameter File
@@ -279,27 +280,27 @@ thousands or tens of thousands of tasks.
 # Batch script to run an array job.
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
-#$ -l h_rt=0:10:0
+#SBATCH --time=0:10:00
 
 # Request 1 gigabyte of RAM (must be an integer followed by M, G, or T)
-#$ -l mem=1G
+#SBATCH --mem=1G  
 
 # Request 15 gigabyte of TMPDIR space (default is 10 GB - remove if cluster is diskless)
-#$ -l tmpfs=15G
+#SBATCH --tmp=15G
 
 # Set up the job array.  In this instance we have requested 1000 tasks
 # numbered 1 to 1000.
-#$ -t 1-1000
+#SBATCH --array=1-10000
 
 # Set the name of the job.
-#$ -N array-params
+#SBATCH --job-name=MyArrayJob  
 
 # Set the working directory to somewhere in your scratch space.
 # Replace "<your_UCL_id>" with your UCL user ID :)
-#$ -wd /home/<your_UCL_id>/Scratch/output
+#SBATCH --chdir=/home/<your_UCL_id>/Scratch/output  # Working directory
 
 # Parse parameter file to get variables.
-number=$SGE_TASK_ID
+number=$SLURM_ARRAY_TASK_ID
 paramfile=/home/<your_UCL_id>/Scratch/input/params.txt
 
 index="`sed -n ${number}p $paramfile | awk '{print $1}'`"
@@ -329,24 +330,24 @@ The example below does this for a job array, but this works for any job type.
 #  transfer the output to Scratch from local.
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
-#$ -l h_rt=0:10:0
+#SBATCH --time=0:10:00
 
 # Request 1 gigabyte of RAM (must be an integer followed by M, G, or T)
-#$ -l mem=1G
+#SBATCH --mem=1G  
 
 # Request 15 gigabyte of TMPDIR space (default is 10 GB - remove if cluster is diskless)
-#$ -l tmpfs=15G
+#SBATCH --tmp=15G
 
 # Set up the job array.  In this instance we have requested 10000 tasks
 # numbered 1 to 10000.
-#$ -t 1-10000
+#SBATCH --array=1-10000
 
 # Set the name of the job.
-#$ -N local2scratcharray
+#SBATCH --job-name=local2scratcharray
 
 # Set the working directory to somewhere in your scratch space.
 # Replace "<your_UCL_id>" with your UCL user ID :)
-#$ -wd /home/<your_UCL_id>/Scratch/output
+#SBATCH --chdir=/home/<your_UCL_id>/Scratch/output 
 
 # Automate transfer of output to Scratch from $TMPDIR.
 #Local2Scratch
@@ -364,7 +365,7 @@ Using a stride will allow you to leave your input files numbered as before, and 
 
 For example, a stride of 10 will give you these task IDs: 1, 11, 21...
 
-Your script can then have a loop that runs task IDs from `$SGE_TASK_ID` to `$SGE_TASK_ID + 9`, so each task is doing ten times as many runs as it was before.
+Your script can then have a loop that runs task IDs from `$SLURM_ARRAY_TASK_ID` to `$SLURM_ARRAY_TASK_ID + 9`, so each task is doing ten times as many runs as it was before.
 
 ```bash
 #!/bin/bash -l
@@ -372,24 +373,25 @@ Your script can then have a loop that runs task IDs from `$SGE_TASK_ID` to `$SGE
 # Batch script to run an array job with strided task IDs under SGE.
 
 # Request ten minutes of wallclock time (format hours:minutes:seconds).
-#$ -l h_rt=0:10:0
+#SBATCH --time=0:10:00  
 
 # Request 1 gigabyte of RAM (must be an integer followed by M, G, or T)
-#$ -l mem=1G
+#SBATCH --mem=1G 
 
 # Request 15 gigabyte of TMPDIR space (default is 10 GB - remove if cluster is diskless)
-#$ -l tmpfs=15G
+#SBATCH --tmp=15G 
 
 # Set up the job array.  In this instance we have requested task IDs
 # numbered 1 to 10000 with a stride of 10.
 #$ -t 1-10000:10
+#SBATCH --array=1-10000:10
 
 # Set the name of the job.
-#$ -N arraystride
+#SBATCH --job-name=arraystride
 
 # Set the working directory to somewhere in your scratch space.
 # Replace "<your_UCL_id>" with your UCL user ID :)
-#$ -wd /home/<your_UCL_id>/Scratch/output
+#SBATCH --chdir=/home/<your_UCL_id>/Scratch/output
 
 # Automate transfer of output to Scratch from $TMPDIR.
 #Local2Scratch
@@ -400,11 +402,11 @@ cd $TMPDIR
 # 10. Loop through the IDs covered by this stride and run the application if 
 # the input file exists. (This is because the last stride may not have that
 # many inputs available). Or you can leave out the check and get an error.
-for (( i=$SGE_TASK_ID; i<$SGE_TASK_ID+10; i++ ))
+for (( i=$SLURM_ARRAY_TASK_ID; i<$SLURM_ARRAY_TASK_ID+10; i++ ))
 do
   if [ -f "input.$i" ]
   then
-    echo "$JOB_NAME" "$SGE_TASK_ID" "input.$i"
+    echo "$JOB_NAME" "$SLURM_ARRAY_TASK_ID" "input.$i"
   fi
 done
 ```
