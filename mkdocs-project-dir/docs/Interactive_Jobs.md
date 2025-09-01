@@ -40,8 +40,8 @@ For example:
 salloc -n 8 --mem-per-cpu=512M --time=2:00:00 
 ```
 In this example you are asking to run eight parallel processes within an MPI environment, 512MB RAM per process, for a period of two
-hours. This means you are requesting 8 entire nodes. If you do not specify the amount of nodes you need, the scheduler assumes `-n 1`.
-If you need to request a specific number of cores to use, you can use the `--cpus-per-task=X` argument. Following the previous example, 
+hours. This means you are requesting 8 MPI processes. If you do not specify the amount of MPI processes you need, the scheduler assumes `-n 1`.
+If you need to request a specific number of smp cores to use, you can use the `--cpus-per-task=X` argument. Following the previous example, 
 to request only 24 cores: 
 
 ```
