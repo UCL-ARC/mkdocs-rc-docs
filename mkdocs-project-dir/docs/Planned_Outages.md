@@ -16,13 +16,14 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-23 July 2025 | Myriad | Planned | Full outage all day - no login access or jobs running. Vendors will be replacing a part on the filesystem and we will be doing some network reconfiguration. Jobs to be drained for 8am. Work expected to be completed on 23rd, system will be at risk the next day on Thurs 24 (may be instabilities/reboots as a result of previous work).
-23 July 2025 | Young, Michael, Kathleen, Myriad | Planned | Host keys being updated on all clusters. You will get warnings/errors when next logging in telling you that the remost host identification has changed. On Kathleen, Young and Michael, we will temporarily stop new jobs starting at the moment of changeover. Existing running jobs will not be affected. On Myriad it will be done during the above outage.
+30 September 2025 | Myriad | Planned | Shutdown from 8am to 1pm for filesystem adjustments to help performance. May be further tweaks on 14 Oct maintenance day.
 
 ## Previous Outages
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
+23 July 2025 | Myriad | Completed | Full outage all day - no login access or jobs running. Vendors will be replacing a part on the filesystem and we will be doing some network reconfiguration. Jobs to be drained for 8am. Work expected to be completed on 23rd, system will be at risk the next day on Thurs 24 (may be instabilities/reboots as a result of previous work).
+23 July 2025 | Young, Michael, Kathleen, Myriad | Completed | Host keys being updated on all clusters. You will get warnings/errors when next logging in telling you that the remost host identification has changed. On Kathleen, Young and Michael, we will temporarily stop new jobs starting at the moment of changeover. Existing running jobs will not be affected. On Myriad it will be done during the above outage.
 8 July 2025 | Myriad | Postponed | Full outage all day - no login access or jobs running. To update firmware and make filesystem adjustments. Jobs drained for 8am. Now postponed to later date, jobs re-enabled at 12:00.
 7 April 2025 | Myriad | Completed | Outage for switchover to new filesystem. No login access from 9am. Once access is restored later that day or the next day, you will have an empty new home and Scratch with symbolic links to `oldhome` and `oldscratch`. All jobs will be held. You will need to copy your data to the new filesystem or archive it. Once done, you can release the hold on your jobs using `qrls $JOB_ID` or `qrls all`. Access restored on 8 April.
 18 March 2025 | Myriad, Kathleen | Completed | ACFS will be unavailable and all jobs on Myriad and Kathleen will be drained for 8am. This is to do some work on the ACFS that will allow archiving in future. Had to schedule for 18th not 11th based on vendor availability. Jobs that will not be able to complete before the outage will stay in the queue and will not start until after the outage. The ACFS is at risk all day. We'll let you know if the work is completed earlier.
