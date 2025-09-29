@@ -52,7 +52,7 @@ configure **Putty** to use X-Forwarding, you must look at the left side panel an
 
 <figure id="est">
 <div class="center">
-<img src="../img/SSH.png" style="width:100mm" />
+<img src="../../img/SSH.png" style="width:100mm" />
 </div>
 </figure>
 
@@ -62,7 +62,7 @@ Then select ++"X11"++ and ensure the checkbox for ++"Enable X11 forwarding"++ is
 
 <figure id="est">
 <div class="center">
-<img src="../img/EnableX.png" style="width:100mm" />
+<img src="../../img/EnableX.png" style="width:100mm" />
 </div>
 </figure>
 
