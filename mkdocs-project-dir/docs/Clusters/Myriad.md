@@ -91,20 +91,19 @@ Myriad contains three main node types: standard compute nodes, high memory
 nodes and GPU nodes. As new nodes as added over time with slightly newer processor
 variants, new letters are added.
 
-| Type  | Cores per node   | RAM per node | tmpfs | Nodes |
-| ----- | ---------------- | ------------ | ----- | ----- |
-| H,D   | 36               | 192GB        | 1500G | 342   |
-| I,B   | 36               | 1.5TB        | 1500G | 17    |
-| J     | 36 + 2 P100 GPUs | 192GB        | 1500G | 2     |
-| E,F   | 36 + 2 V100 GPUs | 192GB        | 1500G | 19    |
-| L     | 36 + 4 A100 GPUs | 192GB        | 1500G | 6     |
+| Type  | Cores per node   | RAM per node | Max usable RAM per node                 | tmpfs | Nodes |
+| ----- | ---------------- | ------------ | --------------------------------------- | ----- | ----- |
+| D     | 36               | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G | 342   |
+| I,B   | 36               | 1.5TB        | 14830GB (or 36 cores at 41.1G per core) | 1500G | 17    |
+| E,F   | 36 + 2 V100 GPUs | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G | 19    |
+| L     | 36 + 4 A100 GPUs | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G | 6     |
 
-You can tell the type of a node by its name: type H nodes are named
-`node-h00a-001` etc.
+You can tell the type of a node by its name: type D nodes are named
+`node-d00a-001` etc.
 
 Here are the processors each node type has:
 
-  - F, H, I, J: Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz
+  - F, I: Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz
   - B, D, E, L: Intel(R) Xeon(R) Gold 6240 CPU @ 2.60GHz
 
 (If you ever need to check this, you can include `cat /proc/cpuinfo` in your jobscript so
@@ -113,11 +112,10 @@ for every core).
 
 ## GPUs
 
-Myriad has four types of GPU nodes: E, F, J and L. 
+Myriad has several types of GPU nodes: E, F, L, U and V. 
 
   - L-type nodes each have four NVIDIA 40G A100s. (Compute Capability 80)
   - F-type and E-type nodes each have two NVIDIA Tesla V100s. The CPUs are slightly different on the different letters, see above. (Compute Capability 70)
-  - J-type nodes each have two NVIDIA Tesla P100s. (Compute Capability 60)
 
 You can include `nvidia-smi` in your jobscript to get information about the GPU your job ran on.
 
