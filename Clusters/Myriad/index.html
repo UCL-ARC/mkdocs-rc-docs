@@ -2006,7 +2006,7 @@ variants, new letters are added.</p>
 <td>I,B</td>
 <td>36</td>
 <td>1.5TB</td>
-<td>14830GB (or 36 cores at 41.1G per core)</td>
+<td>1483GB (or 36 cores at 41.1G per core)</td>
 <td>1500G</td>
 <td>17</td>
 </tr>
@@ -2020,11 +2020,35 @@ variants, new letters are added.</p>
 </tr>
 <tr>
 <td>L</td>
-<td>36 + 4 A100 GPUs</td>
+<td>36 + 4 A100 40G GPUs</td>
 <td>192GB</td>
 <td>160GB (or 36 cores at 4.4G per core)</td>
 <td>1500G</td>
 <td>6</td>
+</tr>
+<tr>
+<td>T</td>
+<td>64</td>
+<td>768GB</td>
+<td>755GB (or 64 cores at 11.7G per core)</td>
+<td>420G</td>
+<td>6</td>
+</tr>
+<tr>
+<td>U</td>
+<td>48 + 4 A100 80G GPUs</td>
+<td>256GB</td>
+<td>223GB (or 48 cores at 4.6G per core)</td>
+<td>1700G</td>
+<td>1</td>
+</tr>
+<tr>
+<td>V</td>
+<td>48 + 4 A100 80G GPUs</td>
+<td>256GB</td>
+<td>223GB (or 48 cores at 4.6G per core)</td>
+<td>1800G</td>
+<td>2</td>
 </tr>
 </tbody>
 </table>
@@ -2034,6 +2058,9 @@ variants, new letters are added.</p>
 <ul>
 <li>F, I: Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz</li>
 <li>B, D, E, L: Intel(R) Xeon(R) Gold 6240 CPU @ 2.60GHz</li>
+<li>T: AMD EPYC 9554P 64C 360W 3.1GHz (64 cores)</li>
+<li>U: Intel(R) Xeon(R) Gold 6336Y CPU @ 2.40GHz</li>
+<li>V: Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz</li>
 </ul>
 <p>(If you ever need to check this, you can include <code>cat /proc/cpuinfo</code> in your jobscript so
 you get it in your job's .o file for the exact node your job ran on. You will get an entry
@@ -2041,6 +2068,7 @@ for every core).</p>
 <h2 id="gpus">GPUs<a class="headerlink" href="#gpus" title="Permanent link">§</a></h2>
 <p>Myriad has several types of GPU nodes: E, F, L, U and V. </p>
 <ul>
+<li>U-type and V-type each have four NVIDIA 80G A100s. (Compute Capability 80). The CPUs and disk are slightly different.</li>
 <li>L-type nodes each have four NVIDIA 40G A100s. (Compute Capability 80)</li>
 <li>F-type and E-type nodes each have two NVIDIA Tesla V100s. The CPUs are slightly different on the different letters, see above. (Compute Capability 70)</li>
 </ul>
