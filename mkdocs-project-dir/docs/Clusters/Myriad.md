@@ -91,12 +91,15 @@ Myriad contains three main node types: standard compute nodes, high memory
 nodes and GPU nodes. As new nodes as added over time with slightly newer processor
 variants, new letters are added.
 
-| Type  | Cores per node   | RAM per node | Max usable RAM per node                 | tmpfs | Nodes |
-| ----- | ---------------- | ------------ | --------------------------------------- | ----- | ----- |
-| D     | 36               | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G | 342   |
-| I,B   | 36               | 1.5TB        | 14830GB (or 36 cores at 41.1G per core) | 1500G | 17    |
-| E,F   | 36 + 2 V100 GPUs | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G | 19    |
-| L     | 36 + 4 A100 GPUs | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G | 6     |
+| Type  | Cores per node       | RAM per node | Max usable RAM per node                 | tmpfs | Nodes |
+| ----- | -------------------- | ------------ | --------------------------------------- | ----- | ----- |
+| D     | 36                   | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G | 342   |
+| I,B   | 36                   | 1.5TB        | 1483GB (or 36 cores at 41.1G per core)  | 1500G |  17   |
+| E,F   | 36 + 2 V100 GPUs     | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G |  19   |
+| L     | 36 + 4 A100 40G GPUs | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G |   6   |
+| T     | 64                   | 768GB        | 755GB (or 64 cores at 11.7G per core)   |  420G |   6   |
+| U     | 48 + 4 A100 80G GPUs | 256GB        | 223GB (or 48 cores at 4.6G per core)    | 1700G |   1   |
+| V     | 48 + 4 A100 80G GPUs | 256GB        | 223GB (or 48 cores at 4.6G per core)    | 1800G |   2   |
 
 You can tell the type of a node by its name: type D nodes are named
 `node-d00a-001` etc.
@@ -105,6 +108,9 @@ Here are the processors each node type has:
 
   - F, I: Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz
   - B, D, E, L: Intel(R) Xeon(R) Gold 6240 CPU @ 2.60GHz
+  - T: AMD EPYC 9554P 64C 360W 3.1GHz (64 cores)
+  - U: Intel(R) Xeon(R) Gold 6336Y CPU @ 2.40GHz
+  - V: Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz
 
 (If you ever need to check this, you can include `cat /proc/cpuinfo` in your jobscript so
 you get it in your job's .o file for the exact node your job ran on. You will get an entry
@@ -114,6 +120,7 @@ for every core).
 
 Myriad has several types of GPU nodes: E, F, L, U and V. 
 
+  - U-type and V-type each have four NVIDIA 80G A100s. (Compute Capability 80). The CPUs and disk are slightly different.
   - L-type nodes each have four NVIDIA 40G A100s. (Compute Capability 80)
   - F-type and E-type nodes each have two NVIDIA Tesla V100s. The CPUs are slightly different on the different letters, see above. (Compute Capability 70)
 
