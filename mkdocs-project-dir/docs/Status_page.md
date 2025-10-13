@@ -877,8 +877,6 @@ This page outlines that status of each of the machines managed by the Research C
     Reminder: `gquota` shows your new filesystem quota. The `lquota` command will still show you the quota for
     your old space.
 
-#### Latest on Myriad
-
   - 2025-07-01 16:35 - Full outage for Myriad during maintenance window on 8 July; 2 week extension for old
     filesystem
 
@@ -904,6 +902,80 @@ This page outlines that status of each of the machines managed by the Research C
     know once we have had some clarification from our vendors.
 
     Apologies for the interruption!
+
+  - 2025-07-14 11:40 - Full outage for Myriad on 23 July
+
+    We have rescheduled the Myriad outage for Weds 23 July.
+
+    Our vendors will be replacing a part on Myriad's filesystem and we will also be doing some network reconfiguration.
+
+    There will be a full outage all day where you will not be able to log in or access the filesystem. We are draining jobs for 8am that day to allow those tasks to be carried out.
+
+    A job drain means that if your job won't have time to finish before the outage, it will not start and will remain in the queue until afterwards, when it will be scheduled as normal. You do not need to take any action.
+
+    We expect the work to be completed on the 23rd. The system is also expected to be at risk the day after on Thurs 24 July - this means it will be back up, but there are more likely to be instabilities as a result of the previous work - things might go wrong and need additional rebooting.
+
+    I will update this on https://www.rc.ucl.ac.uk/docs/Planned_Outages/ shortly.
+
+  - 2025-07-23 19:15 - Outage extended
+
+    We're now expecting Myriad to be fully available again by 14:00 tomorrow, Thursday July 24th, but if there are additional minor delays getting everything online that could still slip to the end of the day (18:00).
+
+    This is due to delays starting the work caused by inconveniently scheduled safety drills.
+
+  - 2025-07-24 15:46 - Myriad back in service
+
+    Myriad is now available for use again, and jobs are running as normal.
+
+    Please remember as you log in that the host keys have also been changed, as described in the email sent on Tuesday July 22nd with the subject "Host keys being updated on clusters on Weds 23 July". This also affects users of the Gold commands on Myriad, as these use SSH internally.
+
+  - 2025-09-25 11:20 - Myriad planned outage for Tues 30 Sept - shutdown from 8am to 1pm
+
+    On Tuesday 30 September, Myriad will be shut down from 8am to 1pm. You will not be able to log in and jobs will be held in the queue until after the outage is over. In the days before, jobs will only start if they can complete before the outage begins otherwise they will remain in the queue until afterwards.
+
+    This is so we can change some filesystem configurations that will hopefully help with Myriad's filesystem performance.
+
+    We are doing this between maintenance windows as we would like to make these improvements as soon as possible and also because there may be some further tweaks necessary on 14 October maintenance day, depending on the results.
+    
+
+#### Latest on Myriad
+
+  - 2025-10-02 12:25 - **Change to maximum memory requests in Myriad**
+
+    We are changing the maximum amount of memory that jobs can be allocated on Myriad. 
+ 
+    **Which jobs will this affect?**
+ 
+    If you are submitting jobs that request all or nearly all the memory in a node, then your job will be rejected at submit time and you will need to adjust your memory request in the #$ -l mem= line of your jobscript. Or your job will only be able to run on the high memory nodes if it could previously run on the standard compute nodes.
+ 
+    If you are submitting jobs that do not request all the memory in a node then nothing should change for you, but possibly fewer jobs will be scheduled on the same node at once which may increase queue times.
+ 
+    **How much memory can I request?**
+ 
+    On a standard Myriad compute node that has 192G physical memory we previously suggested asking for a maximum of 188G memory in total. This has reduced to 160G total. 
+ 
+    (Please recall that memory requests are per core, so if you are asking for 36 cores then the maximum is 4.4G per core for your job to fit on a standard node).
+ 
+    On a high memory node the most you can request is 1483G, reduced from 1536G.
+
+    | Nodetype                                           |  Max memory                          |
+    | -------------------------------------------------- | ------------------------------------ |
+    | Standard Myriad node and GPU nodes (types D, E, L) |  max 160G, or 36 cores at 4.4G each. |
+    | High memory nodes (types I, B)                     |  max 1483G, or 36 cores at 41.1G each. |
+ 
+    The documentation at https://www.rc.ucl.ac.uk/docs/Clusters/Myriad/#node-types will be updated to show the maximum usable amount of memory.
+ 
+    This change is to make sure there is enough memory left for the GPFS filesystem clients that run on the nodes and also GPFS caching - if there is not enough then this causes performance issues.
+ 
+    Jobs that are already in the queue with larger memory requests will continue to run as normal until we make further changes on maintenance day of 14 October where we do intend to have another outage.
+
+  - 2025-10-13 10:25 - Myriad outage tomorrow during maintenance day (14 Oct)
+
+    This is a reminder that we are making some more changes on Myriad during maintenance day on Tuesday 14 October which need an outage, so jobs are being drained for tomorrow and will not begin unless they are short enough to complete before the outage. Otherwise they will remain in the queue until after when they will run normally (unless they are asking for more memory than is now available). 
+
+    We currently expect the outage to last all day.
+
+    We are changing the maximum memory requestable by a job, and the total amounts requestable have been updated in https://www.rc.ucl.ac.uk/docs/Clusters/Myriad/#node-types 
     
 
 ### Kathleen
