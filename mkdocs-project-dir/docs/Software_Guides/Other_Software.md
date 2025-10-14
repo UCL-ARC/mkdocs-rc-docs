@@ -109,7 +109,7 @@ If you get an error similar to this when running a job:
               Abaqus Error: License for standard with cpus=X is not available.
               Abaqus/Analysis exited with error(s).
 
-where X is any number of CPUs requested, it means there were not licenses available when your job tried to start. If you're a student experincing similar issues or are unsure which kind of licence you should have access to, please contact your supervisor. For other queries about these licences, please contact the Mechanical Engineering IT Support team ( <mecheng.it-support@ucl.ac.uk> ). The Research Computing team does not manage the licenses and we will not be able to help you with license-related issues. 
+where X is any number of CPUs requested, it means there were not licenses available when your job tried to start. If you're a student experincing similar issues or are unsure which kind of licence you should have access to, please contact your supervisor. For other queries about these licences, please contact the Mechanical Engineering IT Support team (<mecheng.it-support@ucl.ac.uk>). The Research Computing team does not manage the licenses and we will not be able to help you with license-related issues. 
 
 ### BEAST
 
