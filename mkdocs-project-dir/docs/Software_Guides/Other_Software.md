@@ -104,13 +104,12 @@ abaqus interactive cpus=$NSLOTS mp_mode=mpi job=$INPUT.$JOB_ID input=$INPUT \
        scratch=$ABAQUS_PARALLELSCRATCH $ABAQUS_ARGS
 ```
 
-*** If when executing a job you get an error similar to this one:  
+If you get an error similar to this when running a job:  
 
               Abaqus Error: License for standard with cpus=X is not available.
               Abaqus/Analysis exited with error(s).
 
-where X is any number of CPUs requested, then you should contact your supervisor to check what type of license you have access to or the mechanical engineering IT support (mecheng.it-support@ucl.ac.uk). Research computing team does not manage the license and we will not be able to help you with license-related issues. 
-
+where X is any number of CPUs requested, it means there were not licenses available when your job tried to start. If you're a student experincing similar issues or are unsure which kind of licence you should have access to, please contact your supervisor. For other queries about these licences, please contact the [Mechanical Engineering IT Support team.](https://github.com/UCL-ARC/mkdocs-rc-docs/pull/mecheng.it-support@ucl.ac.uk). The Research computing team does not manage the licenses and we will not be able to help you with license-related issues. 
 
 ### BEAST
 
