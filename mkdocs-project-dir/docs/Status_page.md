@@ -1509,8 +1509,6 @@ This page outlines that status of each of the machines managed by the Research C
     The [Maximum job resources](Clusters/Young.md#maximum-job-resources) and 
     [Node types](Clusters/Young.md#node-types) tables are also updated.
 
-#### Latest on Young
-
   - 2025-01-14 11:10 Extension to availability of `/old_lustre` on Young until **9am on Tues 28 Jan**
 
     We've had multiple requests from people who have been unable to retrieve their data from Young's 
@@ -1536,6 +1534,28 @@ This page outlines that status of each of the machines managed by the Research C
 
     * [old_lustre_folders script](https://github.com/kcl-tscm/Young_instructions/tree/main/old_lustre_folders)
 
+#### Latest on Young
+
+  - 2025-10-28 12:10 - **Young full outage on 11-12 November and RHEL9 upgrade plans**
+    
+    On next maintenance day, Tuesday 11 November, we will be having a full outage of Young from 8am. It
+    has a risk of overrunning into 12 November as well.
+
+    We are going to be sorting out the high availability setup on Young's management nodes in preparation
+    for the future RHEL9 and Slurm environment.
+
+    There will be no access to Young during this time, and no jobs will be running. Jobs that would not
+    complete in time before the outage will stay in the queue until after the outage, when they will run normally.
+
+    **RHEL9 upgrade plans**
+
+    We currently plan to give you access to an upgraded "new Young" environment running Red Hat Enterprise Linux 9
+    with Slurm as the scheduler and containing half of Young's hardware during January 2026. The other half of
+    Young will stay on the current environment for a transition period so you will have some time to complete
+    current work and move over to the new environment. We will also be continuing to install new software during
+    this time. This planned time period is dependent on work being completed over the next couple of months and
+    we will update you nearer the time.
+    
 
 ### Michael
 
