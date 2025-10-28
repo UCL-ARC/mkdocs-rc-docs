@@ -16,12 +16,13 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-14 October 2025 | Myriad | Planned | Full day outage during maintenance day from 8am. Completing the adjustment to max memory sizes plus more filesystem adjustments.
+11-12 November 2025 | Young | Planned | Full outage during maintenance day from 8am, may overrun into 12 Nov. No access and jobs will remain in the queue. Work taking place on management nodes in preparation for future RHEL9 and Slurm environment. 
 
 ## Previous Outages
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
+14 October 2025 | Myriad | Completed | Full day outage during maintenance day from 8am. Completing the adjustment to max memory sizes plus more filesystem adjustments.
 30 September 2025 | Myriad | Completed | Shutdown from 8am to 1pm for filesystem adjustments to help performance. May be further tweaks on 14 Oct maintenance day.
 23 July 2025 | Myriad | Completed | Full outage all day - no login access or jobs running. Vendors will be replacing a part on the filesystem and we will be doing some network reconfiguration. Jobs to be drained for 8am. Work expected to be completed on 23rd, system will be at risk the next day on Thurs 24 (may be instabilities/reboots as a result of previous work).
 23 July 2025 | Young, Michael, Kathleen, Myriad | Completed | Host keys being updated on all clusters. You will get warnings/errors when next logging in telling you that the remost host identification has changed. On Kathleen, Young and Michael, we will temporarily stop new jobs starting at the moment of changeover. Existing running jobs will not be affected. On Myriad it will be done during the above outage.
