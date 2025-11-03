@@ -16,6 +16,7 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
+4 November 2025 | Myriad, Young, Kathleen, Michael | Planned | Emergency maintenance on the core routers by UCL Networks from 07:30am to 08:30am. We may experience intermittent network connectivity. This could cause job submission and `qstat` failures and timeouts and we may need to restart the scheduler and Gold to fix it.
 11-12 November 2025 | Young | Planned | Full outage during maintenance day from 8am, may overrun into 12 Nov. No access and jobs will remain in the queue. Work taking place on management nodes in preparation for future RHEL9 and Slurm environment. 
 
 ## Previous Outages
