@@ -469,7 +469,8 @@ job-ID  prior   name       user         state submit/start at     queue         
 -----------------------------------------------------------------------------------------------------------------
 123454 2.00685 DI_m3      ccxxxxx      Eqw   10/13/2017 15:29:11                                    12 
 123456 2.00685 DI_m3      ccxxxxx      r     10/13/2017 15:29:11 Yorick@node-x02e-006               24 
-123457 2.00398 DI_m2      ucappka      qw    10/12/2017 14:42:12                                    1 
+123457 2.00398 DI_m2      ucappka      qw    10/12/2017 14:42:12                                    1
+123444 0.00000 DI-Arr     zcapast      hqw   09/12/2017 22:52:09                                    2-6114:1
 ```
 
 This shows you the job ID, the numeric priority the scheduler has assigned to the job, the name you have given the job, your username, the state the job is in, the date and time it was submitted at (or started at, if it has begun), the head node of the job, the number of 'slots' it is taking up, and if it is an array job the last column shows the task ID.
@@ -484,6 +485,7 @@ qstat -f -j 12345
 #### Job states
 
 - `qw`: queueing, waiting
+- `hqw`: held, queueing, waiting
 -  `r`: running
 -  `Rq`: a pre-job check on a node failed and this job was put back in the queue
 -  `Rr`: this job was rescheduled but is now running on a new node
@@ -496,6 +498,8 @@ qstat -f -j 12345
 Many jobs cycling between `Rq` and `Rr` generally means there is a dodgy compute node which is failing pre-job checks, but is free so everything tries to run there. In this case, let us know and we will investigate. 
 
 If a job stays in `t` or `dr` state for a long time, the node it was on is likely to be unresponsive - again let us know and we'll investigate.
+
+For array jobs, the first task in queue will be in status `qw` and the rest in `hqw`. Once the task in `qw` changes to `r`, another task from the ones in `hqw` will go to `qw` status and then `r`. This process will repeat until complete all the tasks in the array. While the queueing is done sequentially, this doesn't mean the tasks will run sequentially too. There can be multiple tasks of an array job running in parallel. 
 
 A job in `Eqw` will remain in that state until you delete it - you should first have a look at what the error was with `qexplain`.
 
