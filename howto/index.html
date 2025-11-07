@@ -3117,7 +3117,8 @@ from there to Myriad. </p>
 -----------------------------------------------------------------------------------------------------------------
 123454 2.00685 DI_m3      ccxxxxx      Eqw   10/13/2017 15:29:11                                    12 
 123456 2.00685 DI_m3      ccxxxxx      r     10/13/2017 15:29:11 Yorick@node-x02e-006               24 
-123457 2.00398 DI_m2      ucappka      qw    10/12/2017 14:42:12                                    1 
+123457 2.00398 DI_m2      ucappka      qw    10/12/2017 14:42:12                                    1
+123444 0.00000 DI-Arr     zcapast      hqw   09/12/2017 22:52:09                                    2-6114:1
 </code></pre></div>
 
 <p>This shows you the job ID, the numeric priority the scheduler has assigned to the job, the name you have given the job, your username, the state the job is in, the date and time it was submitted at (or started at, if it has begun), the head node of the job, the number of 'slots' it is taking up, and if it is an array job the last column shows the task ID.</p>
@@ -3129,6 +3130,7 @@ from there to Myriad. </p>
 <h4 id="job-states">Job states<a class="headerlink" href="#job-states" title="Permanent link">§</a></h4>
 <ul>
 <li><code>qw</code>: queueing, waiting</li>
+<li><code>hqw</code>: held, queueing, waiting</li>
 <li><code>r</code>: running</li>
 <li><code>Rq</code>: a pre-job check on a node failed and this job was put back in the queue</li>
 <li><code>Rr</code>: this job was rescheduled but is now running on a new node</li>
@@ -3141,6 +3143,7 @@ from there to Myriad. </p>
 
 <p>Many jobs cycling between <code>Rq</code> and <code>Rr</code> generally means there is a dodgy compute node which is failing pre-job checks, but is free so everything tries to run there. In this case, let us know and we will investigate. </p>
 <p>If a job stays in <code>t</code> or <code>dr</code> state for a long time, the node it was on is likely to be unresponsive - again let us know and we'll investigate.</p>
+<p>For array jobs, the first task in queue will be in status <code>qw</code> and the rest in <code>hqw</code>. Once the task in <code>qw</code> changes to <code>r</code>, another task from the ones in <code>hqw</code> will go to <code>qw</code> status and then <code>r</code>. This process will repeat until complete all the tasks in the array. While the queueing is done sequentially, this doesn't mean the tasks will run sequentially too. There can be multiple tasks of an array job running in parallel. </p>
 <p>A job in <code>Eqw</code> will remain in that state until you delete it - you should first have a look at what the error was with <code>qexplain</code>.</p>
 <h3 id="qexplain">qexplain<a class="headerlink" href="#qexplain" title="Permanent link">§</a></h3>
 <p>This is a utility to show you the non-truncated error reported by your job. <code>qstat -j</code> will show you a truncated version near the bottom of the output.</p>
