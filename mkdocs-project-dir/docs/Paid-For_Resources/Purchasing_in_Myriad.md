@@ -6,10 +6,8 @@ categories:
 
 # Purchasing in Myriad
 
-!!! important "4 Nov 2024: The Myriad refresh is confirmed."
-    The filesystem will be replaced first and then new nodes will be added.
-    We will be able to bring new paid nodes online in March 2025 and also allow planning for 
-    future purchases. The nodes we will have available are below. 
+!!! To manage our ongoing data centre upgrades and capacity planning, we will be unable to accept new purchase requests until February 2026."
+
 
     Please contact rc-support@ucl.ac.uk for prices and let us know your timescales. 
 
