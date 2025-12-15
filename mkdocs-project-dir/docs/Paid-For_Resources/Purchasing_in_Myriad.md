@@ -6,7 +6,7 @@ categories:
 
 # Purchasing in Myriad
 
-!!! To manage our ongoing data centre upgrades and capacity planning, we will be unable to accept new purchase requests until February 2026."
+!!! "To manage our ongoing data centre upgrades and capacity planning, we will be unable to accept new purchase requests until February 2026."
 
 
     Please contact rc-support@ucl.ac.uk for prices and let us know your timescales. 
