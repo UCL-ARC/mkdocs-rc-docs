@@ -133,3 +133,47 @@ This tells Slurm to schedule two threads per physical core.
 
 By default we have set `--hint=nomultithread` so hyperthreads will not be used unless requested.
 
+## Examples for Young
+
+### CPU only jobs
+
+#### Single node script
+```
+#!/bin/bash
+
+#SBATCH --parition=cpu
+#SBATCH --qos=standcpu
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --mem-per-cpu=4G
+#SBATCH --time=12:00:00
+#SBATCH --job-name=CPU_Single_Node
+
+# Purging and reloading all modules to be sure of the job's enviroment
+module purge
+module load ucl-stack/2025-12
+module load default-modules/2025-12
+
+# Lines to execute below here
+<application execution here>
+```
+
+#### Single node interactive session
+The resource request is identical to the script above. However, once the resources are allocated you'll be migrated to the compute node and will need to then execute any lines manually.  The module commands and \<application execution here\> would be done by-hand.  You'll notice also the `--pty` flag at the end which stands for "pseudo terminal" and is letting Slurm know to start the session with `bash`.
+
+```
+srun -p cpu --qos=standcpu --nodes=1 --ntasks-per-node=8 --mem-per-cpu=4G --time=12:00:00 --pty bash -l
+```
+
+#### Multi-node script
+#### Multi-node interactive session
+
+### High-Bandwidth (HBM) memory jobs
+
+#### HBM node script
+#### HBM node interactive session
+
+### GPU jobs
+
+#### GPU node script
+#### GPU node interactive session

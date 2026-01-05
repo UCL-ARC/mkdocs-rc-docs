@@ -7,6 +7,30 @@ Materials and Molecular Modelling.
 
 Young entered pilot phase on 3 Aug 2020, and entered full service on 1 Oct 2020.
 
+## New operating system and scheduler
+
+A portion of Young is currently updated to our new operating system (RHEL 9.6) and new scheduler, Slurm.
+
+It can be accessed via `young-ng.rc.ucl.ac.uk` which will log you in to an updated login node.
+
+The new software stack is provided by a module called `ucl-stack/2025-12` which should be loaded by default. If not (for example if you `module purge` in your .bashrc) you can load the new environment with:
+
+```
+module load ucl-stack/2025-12
+module load default-modules/2025-12
+```
+
+The default compiler is now GCC and the default MPI is OpenMPI. We do also have Intel OneAPI modules.
+
+Your jobscripts will need to be rewritten as Slurm jobscripts, and there are different commands for submitting jobs and checking your job status.  Please see the following documentation pages for specifics on using Slurm, and note there are specific sub-sections within each page for the Young configuration.
+
+* [Usage of Slurm](../Supplementary/Slurm.md)
+* [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
+
+At present, project use isn't enabled in the new environment and all jobs will run through the `allusers` account. Details on how to submit to the various paritions (cpu, gpu, hbm) are outlines in the above Slurm pages.
+
+Updates to the software stack will be made based on feedback and more nodes will be added in January.  Currently there are 36 C-type, 4 W-type, and 1 X-type node in the new environment.  Please see [node types](#node-types) below for details.
+
 ## Training resources
 
 The [MMM Hub's Events and Training page](http://mmmhub.ac.uk/young-events-and-training/)
