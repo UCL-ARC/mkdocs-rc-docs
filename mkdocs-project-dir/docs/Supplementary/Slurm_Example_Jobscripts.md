@@ -154,8 +154,12 @@ module purge
 module load ucl-stack/2025-12
 module load default-modules/2025-12
 
+# Loading the modules your application needs to execute
+module load <name of the module(s) you need
+
 # Lines to execute below here
 <application execution here>
+
 ```
 
 #### Single node interactive session
@@ -166,14 +170,104 @@ srun -p cpu --qos=standcpu --nodes=1 --ntasks-per-node=8 --mem-per-cpu=4G --time
 ```
 
 #### Multi-node script
+
+By default the `mpi/openmpi/4.1.6/gcc-12.3.0-avx2` module is loaded.  If you need a cuda enabled MPI, Intel's MPI, or another specific version you can check what is available with the `module avail mpi` command.  If you see any with a seemingly random hash after the name, those are installed as dependencies for other modules.  The ones with `-avx2` or with no hash are the modules you generally should use.
+
+```
+#!/bin/bash
+
+#SBATCH --parition=cpu
+#SBATCH --qos=standcpu
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=16
+#SBATCH --mem-per-cpu=2G
+#SBATCH --time=12:00:00
+#SBATCH --job-name=CPU_Multi_Node
+
+# Purging and reloading to be sure of the job's enviroment.  This time we didn't auto-load the default modules.
+module purge
+module load ucl-stack/2025-12
+
+# Loading the MPI you'll use for execution.  Here we're going with the default openmpi.
+module load mpi/openmpi/4.1.6/gcc-12.3.0-avx2
+
+# Loading the modules your application needs to execute
+module load <name of the module(s) you need
+
+# Lines to execute below here
+srun <application to execute>
+
+```
+
 #### Multi-node interactive session
+`salloc --parition=cpu --qos=standcpu --nodes=4 --ntasks-per-node=16 --mem-per-cpu=2G --time=12:00:00`
+
+This will start a new session on the login node with the requested resources allocated.  As with the `srun` example above you'll now need to load the correct modules.  This time however you'll execute your command with `srun` as you did in the multi-node script.  `srun` will detect you're in a session and have resources allocated and will then execute your command using the loaded MPI, in-parallel.
 
 ### High-Bandwidth (HBM) memory jobs
 
 #### HBM node script
+```
+#!/bin/bash
+
+#SBATCH --parition=hbm
+#SBATCH --qos=standhbm
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=4
+#SBATCH --mem-per-cpu=64G
+#SBATCH --time=12:00:00
+#SBATCH --job-name=HBM_Job
+
+# Purging and reloading all modules to be sure of the job's enviroment
+module purge
+module load ucl-stack/2025-12
+module load default-modules/2025-12
+
+# Loading the modules your application needs to execute
+module load <name of the module(s) you need
+
+# Lines to execute below here
+<application execution here>
+
+```
+
 #### HBM node interactive session
+`srun --parition=hbm --qos=standhbm --nodes=1 --ntasks-per-node=4 --mem-per-cpu=64G --time=12:00:00 --pty bash -l`
 
 ### GPU jobs
 
 #### GPU node script
+```
+#!/bin/bash
+
+#SBATCH --parition=gpu
+#SBATCH --qos=standgpu
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem-per-cpu=8G
+#SBATCH --gres=gpu:1
+#SBATCH --time=12:00:00
+#SBATCH --job-name=GPU_Single_GPU
+
+# Purging and reloading all modules to be sure of the job's enviroment
+module purge
+module load ucl-stack/2025-12
+module load default-modules/2025-12
+
+# Loading the modules your application needs to execute
+module load <name of the module(s) you need
+
+# Outputting the nvidia information about the node
+nvidia-smi
+
+# Lines to execute below here
+<application execution here>
+
+```
+
 #### GPU node interactive session
+`srun --parition=gpu --qos=interactive --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1 --time=12:00:00 --pty bash -l`
+
+### What is the deal with srun?
+
+If you're confused about why `srun` is used above to start an interactive session but also used here to execute a parallel application within a script, there is no need to worry -- it is confusing!  `srun` is a very versitile command.  When used with no inputs it will execute whatever comes after it on all resources available.  If it detects you're using MPI it will execute in parallel using MPI.  If there is no MPI it will execute the command once on each of the available allocated CPUs.  If there are no resources yet allocated via `sbatch` or `salloc` it will look to see if you've asked for resources, allocate them for you, and then run the command.  If you feed it the `--pty` you can NOT specify a command and it will start an interactive session for you.  Versitile!
