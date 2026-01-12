@@ -16,13 +16,15 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-4 November 2025 | Myriad, Young, Kathleen, Michael | Planned | Emergency maintenance on the core routers by UCL Networks from 07:30am to 08:30am. We may experience intermittent network connectivity. This could cause job submission and `qstat` failures and timeouts and we may need to restart the scheduler and Gold to fix it.
-11-12 November 2025 | Young | Planned | Full outage during maintenance day from 8am, may overrun into 12 Nov. No access and jobs will remain in the queue. Work taking place on management nodes in preparation for future RHEL9 and Slurm environment. 
+
+20 January 2025 | Young, Michael | Planned | Half day job outage from 8am for updates to .bashrc without affecting running jobs. Jobs will remain in the queue until the outage is over. Work in preparation to grant access to RHEL9 and Slurm environment, will make sure modules work on both old and new parts of cluster.
 
 ## Previous Outages
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
+11-12 November 2025 | Young | Completed | Full outage during maintenance day from 8am, may overrun into 12 Nov. No access and jobs will remain in the queue. Work taking place on management nodes in preparation for future RHEL9 and Slurm environment.
+4 November 2025 | Myriad, Young, Kathleen, Michael | Completed | Emergency maintenance on the core routers by UCL Networks from 07:30am to 08:30am. We may experience intermittent network connectivity. This could cause job submission and `qstat` failures and timeouts and we may need to restart the scheduler and Gold to fix it.
 14 October 2025 | Myriad | Completed | Full day outage during maintenance day from 8am. Completing the adjustment to max memory sizes plus more filesystem adjustments.
 30 September 2025 | Myriad | Completed | Shutdown from 8am to 1pm for filesystem adjustments to help performance. May be further tweaks on 14 Oct maintenance day.
 23 July 2025 | Myriad | Completed | Full outage all day - no login access or jobs running. Vendors will be replacing a part on the filesystem and we will be doing some network reconfiguration. Jobs to be drained for 8am. Work expected to be completed on 23rd, system will be at risk the next day on Thurs 24 (may be instabilities/reboots as a result of previous work).
