@@ -16,7 +16,6 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-
 20 January 2025 | Young, Michael | Planned | Half day job outage from 8am for updates to .bashrc without affecting running jobs. Jobs will remain in the queue until the outage is over. Work in preparation to grant access to RHEL9 and Slurm environment, will make sure modules work on both old and new parts of cluster.
 
 ## Previous Outages
