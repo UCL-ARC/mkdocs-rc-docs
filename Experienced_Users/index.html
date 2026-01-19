@@ -2636,10 +2636,11 @@ If you asked for <code>#$ -l mem=4G</code>on a node with 80 virtual cores and 19
 you are requiring 320G RAM in total which will not fit on that node and so you 
 would be given a sparse process layout across more nodes to meet this requirement.</p>
 <h5 id="temporary-local-disk-every-machine-except-kathleen">Temporary local disk (every machine EXCEPT Kathleen)<a class="headerlink" href="#temporary-local-disk-every-machine-except-kathleen" title="Permanent link">§</a></h5>
-<div class="codehilite"><pre><span></span><code><span class="c1">#$ -l tmpdir=&lt;size in G&gt;</span>
+<div class="codehilite"><pre><span></span><code><span class="c1">#$ -l tmpfs=&lt;size in G&gt;</span>
 </code></pre></div>
 
-<p>e.g. <code>#$ -l tmpdir=10G</code> requests 10 gigabytes of temporary local disk.</p>
+<p>e.g. <code>#$ -l tmpfs=10G</code> requests 10 gigabytes of temporary local disk.</p>
+<p>The temp directory location can then be accessed via the <code>TMPDIR</code> environment variable, which is defined when you request the temp space.</p>
 <h4 id="the-rest-of-the-script">The rest of the script<a class="headerlink" href="#the-rest-of-the-script" title="Permanent link">§</a></h4>
 <p>You need to load any module dependencies, set up any custom environment variables or paths you need and then run the rest of your workflow.</p>
 <h3 id="submitting-your-jobscript">Submitting your jobscript<a class="headerlink" href="#submitting-your-jobscript" title="Permanent link">§</a></h3>
