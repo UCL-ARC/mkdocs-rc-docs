@@ -154,10 +154,12 @@ would be given a sparse process layout across more nodes to meet this requiremen
 ##### Temporary local disk (every machine EXCEPT Kathleen)
 
 ```bash
-#$ -l tmpdir=<size in G>
+#$ -l tmpfs=<size in G>
 ```
 
-e.g. `#$ -l tmpdir=10G` requests 10 gigabytes of temporary local disk.
+e.g. `#$ -l tmpfs=10G` requests 10 gigabytes of temporary local disk.
+
+The temp directory location can then be accessed via the `TMPDIR` environment variable, which is defined when you request the temp space.
 
 #### The rest of the script
 
