@@ -98,50 +98,45 @@ Note that for future reference, it helps if you have these options inside your j
 
 #### Partitions
 
-There are three partitions: `cpu`, `hbm`, and `gpu`
-
-* `cpu` should be used for CPU only jobs whether they are single node jobs or utilizing MPI across multiple nodes.
-* `hbm` is for our high bandwitch memory nodes, which are best for memory intensive jobs.
-* `gpu` is used only when you're asking for one or more GPU per job.
-
-#### QoS
-
-For the Young RHEL 9.6 environment you'll need to also explicitly specify the QoS via `--qos=` in addition to the partition, whether submitting a job with a script or running interactively. This is temporary, in the future the correct QoS will be applied automatically with no input on the user's part.
-
-| Partition   | QoS         | Notes                                      |
-| ------------| ----------- | ------------------------------------------ |
-| cpu         | standcpu    | For either scripts or interactive sessions |
-| hbm         | standhbm    | For either scripts or interactive sessions |
-| gpu         | standgpu    | For scripts                                |
-| gpu         | interactive | For interactive sessions                   |
+The correct partition will be assigned based on the resources you ask for.  However, to use High Bandwith Memory (HBM) nodes you will need to explicitly specify:
+```
+--partition=hbm
+```
+This will be covered in more detail in the example scripts linked to below.
 
 #### Interactive Sessions
 
 In addition to requesting job resources through a submission script, you can also run in an interactive manner similar to how you would run something on your PC or a login node.  Interactive sessions are best when you are in active development or need to quickly iterate a series of jobs.
 
-There are two methods for starting an interactive session.  `srun` will migrate your session to a compute node immediately whereas `salloc` will allocate resources and start a new session but leave you on the login node.  `salloc` is generally best for multi-node MPI jobs whereas `srun` should be used for pretty much all other interactive jobs.
+There are two methods for starting an interactive session.  `srun` will migrate your session to a compute node immediately whereas `salloc` will allocate resources and start a new session but leave you on the login node.  `salloc` is generally best for multi-node MPI jobs whereas `srun` should be used for pretty much all other single-node interactive jobs.
 
 All commands and resource requests are passed in via the command line, no Slurm script is used.
 
-This example would start an interactive  session with 32G RAM and 8 CPUs on one node.
-
+This example would start an interactive session with 32G RAM and 8 CPUs on one node.
 ```
-srun -p cpu --qos=standcpu --mem-per-task=4G --nodes=1 --ntasks-per-node=8 --pty bash -l
+srun --mem-per-task=4G --nodes=1 --ntasks-per-node=8 --pty bash -l
 ```
 
 This next example would start a session that requests 64 CPUs across 4 nodes, with 32G RAM reserved per node.  Since it uses salloc the session will start on the login node and *not* migrate the session to a compute node.  From here you could use `srun` or `mpirun` to execute an application in parallel.
-
 ```
-salloc -p cpu --qos=standcpu --mem-per-task=2G --nodes=4 --ntasks-per-node=16
+salloc --mem-per-task=2G --nodes=4 --ntasks-per-node=16
 ```
 
 This final example would start an interactive session on one GPU node, with one GPU, 8G RAM, and 1 CPU.
-
 ```
-srun -p gpu --qos=interactive --gres=gpu:1 --mem-per-task=8G --nodes=1 --ntasks-per-node=1 --pty bash -l
+srun --gres=gpu:1 --mem-per-task=8G --nodes=1 --ntasks-per-node=1 --pty bash -l
 ```
 
 For more detailed examples, please refer to [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
+
+#### Temporary Storage
+
+If you're running on a High-Bandwidth-Memory (HBM) or GPU node you can request temporary storage on the node's local disk.  By default the a directory is created and the location stored in the `TMPDIR` environmental variable.  If you don't explicitly request more you're automatically given 100MiB.
+
+To request more local temp space, up to a maximum of 200GiB, you use the `--gres=tmpfs:<amount>`.  In this example we request 40GiB:
+```
+--gres=tmpfs:40G
+```
 
 ### Checking your previous jobscripts
 

@@ -11,7 +11,7 @@ Young entered pilot phase on 3 Aug 2020, and entered full service on 1 Oct 2020.
 
 A portion of Young is currently updated to our new operating system (RHEL 9.6) and new scheduler, Slurm.
 
-It can be accessed via `young-ng.rc.ucl.ac.uk` which will log you in to an updated login node.
+Currently, the new portion of Young can accessed via `ssh -J <your user id>@young.rc.ucl.ac.uk login21` which will log you into Young and then hop onto an updated login node.  We're planning to configure a dedicated login node to be directly accessible, but for now the hop is required.
 
 The new software stack is provided by a module called `ucl-stack/2025-12` which should be loaded by default. If not (for example if you `module purge` in your .bashrc) you can load the new environment with:
 
@@ -27,9 +27,12 @@ Your jobscripts will need to be rewritten as Slurm jobscripts, and there are dif
 * [Usage of Slurm](../Supplementary/Slurm.md)
 * [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
 
+* [Specifics of Using Slurm on Young](../Supplementary/Slurm.md/#specifics-of-using-slurm-on-young)
+* [Slurm Example Jobscripts for Young](../Supplementary/Slurm_Example_Jobscripts.md/#examples-for-young)
+
 At present, project use isn't enabled in the new environment and all jobs will run through the `allusers` account. Details on how to submit to the various paritions (cpu, gpu, hbm) are outlines in the above Slurm pages.
 
-Updates to the software stack will be made based on feedback and more nodes will be added in January.  Currently there are 36 C-type, 4 W-type, and 1 X-type node in the new environment.  Please see [node types](#node-types) below for details.
+Updates to the software stack will be made based on feedback and more nodes will be added in February.  Currently there are 36 C-type, 4 W-type, and 1 X-type node in the new environment.  Please see [node types](#node-types) below for details.
 
 ## Training resources
 

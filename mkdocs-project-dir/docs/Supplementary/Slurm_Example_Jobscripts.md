@@ -211,7 +211,6 @@ This will start a new session on the login node with the requested resources all
 #!/bin/bash
 
 #SBATCH --parition=hbm
-#SBATCH --qos=standhbm
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
 #SBATCH --mem-per-cpu=64G
@@ -232,7 +231,7 @@ module load <name of the module(s) you need
 ```
 
 #### HBM node interactive session
-`srun --parition=hbm --qos=standhbm --nodes=1 --ntasks-per-node=4 --mem-per-cpu=64G --time=12:00:00 --pty bash -l`
+`srun --parition=hbm --nodes=1 --ntasks-per-node=4 --mem-per-cpu=64G --time=12:00:00 --pty bash -l`
 
 ### GPU jobs
 
@@ -240,8 +239,6 @@ module load <name of the module(s) you need
 ```
 #!/bin/bash
 
-#SBATCH --parition=gpu
-#SBATCH --qos=standgpu
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --mem-per-cpu=8G
@@ -266,7 +263,7 @@ nvidia-smi
 ```
 
 #### GPU node interactive session
-`srun --parition=gpu --qos=interactive --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1 --time=12:00:00 --pty bash -l`
+`srun --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1 --time=12:00:00 --pty bash -l`
 
 ### What is the deal with srun?
 
