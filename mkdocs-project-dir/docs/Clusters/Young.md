@@ -11,7 +11,7 @@ Young entered pilot phase on 3 Aug 2020, and entered full service on 1 Oct 2020.
 
 A portion of Young is currently updated to our new operating system (RHEL 9.6) and new scheduler, Slurm.
 
-Currently, the new portion of Young can accessed via `ssh -J <your user id>@young.rc.ucl.ac.uk login21` which will log you into Young and then hop onto an updated login node.  We're planning to configure a dedicated login node to be directly accessible, but for now the hop is required.
+Currently, the new portion of Young can accessed via `ssh -J <your user id>@young.rc.ucl.ac.uk login21` which will log you into Young and then hop onto an updated login node.  We're planning to configure a dedicated login node to be directly accessible, but for now the hop is required.  You can also connect to Young as you normally do and then `ssh login21` once you're logged on.
 
 The new software stack is provided by a module called `ucl-stack/2025-12` which should be loaded by default. If not (for example if you `module purge` in your .bashrc) you can load the new environment with:
 
@@ -25,11 +25,9 @@ The default compiler is now GCC and the default MPI is OpenMPI. We do also have 
 Your jobscripts will need to be rewritten as Slurm jobscripts, and there are different commands for submitting jobs and checking your job status.  Please see the following documentation pages for specifics on using Slurm, and note there are specific sub-sections within each page for the Young configuration.
 
 * [Usage of Slurm](../Supplementary/Slurm.md)
+  * [Specifics of Using Slurm on Young](../Supplementary/Slurm.md/#specifics-of-using-slurm-on-young)
 * [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
-
-
-* [Specifics of Using Slurm on Young](../Supplementary/Slurm.md/#specifics-of-using-slurm-on-young)
-* [Slurm Example Jobscripts for Young](../Supplementary/Slurm_Example_Jobscripts.md/#examples-for-young)
+  * [Slurm Example Jobscripts for Young](../Supplementary/Slurm_Example_Jobscripts.md/#examples-for-young)
 
 At present, project use isn't enabled in the new environment and all jobs will run through the `allusers` account.
 
