@@ -11,7 +11,13 @@ Young entered pilot phase on 3 Aug 2020, and entered full service on 1 Oct 2020.
 
 A portion of Young is currently updated to our new operating system (RHEL 9.6) and new scheduler, Slurm.
 
-Currently, the new portion of Young can accessed via `ssh -J <your_user_id>@young.rc.ucl.ac.uk <your_user_id>@login21` which will log you into Young and then hop onto an updated login node.  `login22` is also available and can be reached in the same manner.  We're planning to configure the new login nodes to be directly accessible, but for now the hop is required.
+Currently, the new portion of Young can accessed via 
+
+```
+ssh -J <your_user_id>@young.rc.ucl.ac.uk <your_user_id>@login21
+```
+
+which will log you into Young and then hop onto an updated login node.  `login22` is also available and can be reached in the same manner.  We're planning to configure the new login nodes to be directly accessible, but for now the hop is required.
 
 The new software stack is provided by a module called `ucl-stack/2025-12` which should be loaded by default. If not (for example if you `module purge` in your .bashrc) you can load the new environment with:
 
