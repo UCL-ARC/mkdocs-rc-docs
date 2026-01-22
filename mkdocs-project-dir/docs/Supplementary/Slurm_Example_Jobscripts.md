@@ -152,7 +152,7 @@ module purge
 module load ucl-stack/2025-12
 
 # Loading the modules your application needs to execute
-module load <name of the module(s) you need
+module load <name of the module(s) you need>
 
 # Lines to execute below here
 <application execution here>
@@ -160,7 +160,7 @@ module load <name of the module(s) you need
 ```
 
 #### Single node interactive session
-The resource request is identical to the script above. However, once the resources are allocated you'll be migrated to the compute node and will need to then execute any lines manually.  The module commands and \<application execution here\> would be done by-hand.  You'll notice also the `--pty` flag at the end which stands for "pseudo terminal" and is letting Slurm know to start the session with `bash`.
+The resource request is identical to the script above. However, once the resources are allocated you'll be migrated to the compute node and will need to then execute any lines manually.  The module commands and `<application execution here>` would be done by-hand.  You'll notice also the `--pty` flag at the end which stands for "pseudo terminal" and is letting Slurm know to start the session using `bash`.
 
 ```
 srun --nodes=1 --ntasks-per-node=8 --mem-per-cpu=4G --time=12:00:00 --pty bash -l
@@ -264,10 +264,14 @@ echo $TMPDIR
 
 ```
 
+Note that we're requesting both one GPU and 20G of temporary storage.
+
 #### GPU node interactive session
 `srun --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1,tmpfs:20G --time=12:00:00 --pty bash -l`
 
-### What is the deal with srun?
+### What is the deal with srun and salloc?
 
-If you're confused about why `srun` is used above to start an interactive session but also used here to execute a parallel application within a script, there is no need to worry -- it is confusing!  `srun` is a very versitile command.  When used with no inputs it will execute whatever comes after it on all resources available.  If it detects you're using MPI it will execute in parallel using MPI.  If there is no MPI it will execute the command once on each of the available allocated CPUs.  If there are no resources yet allocated via `sbatch` or `salloc` it will look to see if you've asked for resources, allocate them for you, and then run the command.  If you feed it the `--pty` you can NOT specify a command and it will start an interactive session for you.  Versitile!
+If you're confused about why `srun` is used above to start an interactive session but also used to execute a parallel application within a script, there is no need to worry -- it is confusing!  `srun` is a very versitile command.  When used with no inputs it will execute whatever comes after it on all resources available.  If it detects you're using MPI it will execute in parallel using MPI.  If there is no MPI it will execute the command once on each of the available allocated CPUs.  If there are no resources yet allocated via `sbatch` or `salloc` it will look to see if you've asked for resources, allocate them for you, and then run the command.  If you feed it the `--pty` you can NOT specify a command and it will start an interactive session for you.  Versitile!
+
+The more straight-forward interactive session command is `salloc`.  There is no need to specify a shell as it starts a session for you, you don't have to worry about the environment on a compute node being different to the login node as your new session stays on the login node, and you can use srun to initiate parallel job.  The two methods are very similar, just remember that when you use `salloc` to start an interactive session you need to use `srun <application executable>` to run on the allocated compute resources, as you would in a submission script.
 
