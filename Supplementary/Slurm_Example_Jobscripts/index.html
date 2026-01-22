@@ -1941,6 +1941,201 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#examples-for-young" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples for Young
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples for Young">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-only-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU only jobs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CPU only jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-node-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Single node script
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-node-interactive-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Single node interactive session
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-node-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-node script
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-node-interactive-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-node interactive session
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-bandwidth-hbm-memory-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High-Bandwidth (HBM) memory jobs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="High-Bandwidth (HBM) memory jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-node-hbm-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Single node HBM script
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-node-hbm-interactive-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Single node HBM interactive session
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU jobs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPU jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-node-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU node script
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-node-interactive-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU node interactive session
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-srun-and-salloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the difference between srun and salloc?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is the difference between srun and salloc?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#srun" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        srun
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#salloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        salloc
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2074,6 +2269,125 @@ myprogram dataset${SLURM_ARRAY_TASK_ID}.csv
 
 <p>This tells Slurm to schedule two threads per physical core.</p>
 <p>By default we have set <code>--hint=nomultithread</code> so hyperthreads will not be used unless requested.</p>
+<h2 id="examples-for-young">Examples for Young<a class="headerlink" href="#examples-for-young" title="Permanent link">§</a></h2>
+<h3 id="cpu-only-jobs">CPU only jobs<a class="headerlink" href="#cpu-only-jobs" title="Permanent link">§</a></h3>
+<h4 id="single-node-script">Single node script<a class="headerlink" href="#single-node-script" title="Permanent link">§</a></h4>
+<div class="codehilite"><pre><span></span><code>#!/bin/bash
+
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --mem-per-cpu=4G
+#SBATCH --time=12:00:00
+#SBATCH --job-name=CPU_Single_Node
+
+# Purging and reloading all modules to be sure of the job&#39;s environment
+module purge
+module load ucl-stack/2025-12
+
+# Loading the modules your application needs to execute
+module load &lt;name of the module(s) you need&gt;
+
+# Lines to execute below here
+&lt;application execution here&gt;
+</code></pre></div>
+
+<h4 id="single-node-interactive-session">Single node interactive session<a class="headerlink" href="#single-node-interactive-session" title="Permanent link">§</a></h4>
+<p>The resource request is identical to the script above. However, once the resources are allocated you'll be migrated to the compute node and will need to then execute any lines manually.  The module commands and <code>&lt;application execution here&gt;</code> would be done by-hand.  You'll notice also the <code>--pty</code> flag at the end which stands for "pseudo terminal" and is letting Slurm know to start the session using <code>bash</code>.</p>
+<div class="codehilite"><pre><span></span><code>srun --nodes=1 --ntasks-per-node=8 --mem-per-cpu=4G --time=12:00:00 --pty bash -l
+</code></pre></div>
+
+<h4 id="multi-node-script">Multi-node script<a class="headerlink" href="#multi-node-script" title="Permanent link">§</a></h4>
+<p>By default the <code>mpi/openmpi/4.1.6/gcc-12.3.0-avx2</code> module is loaded.  If you need a cuda enabled MPI, Intel's MPI, or another specific version you can check what is available with the <code>module avail mpi</code> command.  If you see any with a seemingly random hash after the name, those are installed as dependencies for other modules.  The ones with <code>-avx2</code> or with no hash are the modules you generally should use.</p>
+<div class="codehilite"><pre><span></span><code>#!/bin/bash
+
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=16
+#SBATCH --mem-per-cpu=2G
+#SBATCH --time=12:00:00
+#SBATCH --job-name=CPU_Multi_Node
+
+# Purging and reloading to be sure of the job&#39;s environment
+module purge
+module load ucl-stack/2025-12
+
+# Loading the MPI you&#39;ll use for execution.  Here we&#39;re going with the default openmpi.
+module load mpi/openmpi/4.1.6/gcc-12.3.0-avx2
+
+# Loading the modules your application needs to execute
+module load &lt;name of the module(s) you need
+
+# Lines to execute below here
+srun &lt;application to execute&gt;
+</code></pre></div>
+
+<h4 id="multi-node-interactive-session">Multi-node interactive session<a class="headerlink" href="#multi-node-interactive-session" title="Permanent link">§</a></h4>
+<p><code>salloc --nodes=4 --ntasks-per-node=16 --mem-per-cpu=2G --time=12:00:00</code></p>
+<p>This will start a new session on the login node with the requested resources allocated.  As with the <code>srun</code> example above you'll now need to load the correct modules.  This time however you'll execute your command with <code>srun</code> as you did in the multi-node script.  <code>srun</code> will detect you're in a session and have resources allocated and will then execute your command using the loaded MPI, in-parallel.</p>
+<h3 id="high-bandwidth-hbm-memory-jobs">High-Bandwidth (HBM) memory jobs<a class="headerlink" href="#high-bandwidth-hbm-memory-jobs" title="Permanent link">§</a></h3>
+<h4 id="single-node-hbm-script">Single node HBM script<a class="headerlink" href="#single-node-hbm-script" title="Permanent link">§</a></h4>
+<div class="codehilite"><pre><span></span><code>#!/bin/bash
+
+#SBATCH --parition=hbm
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=4
+#SBATCH --mem-per-cpu=64G
+#SBATCH --gres=tmpfs:40G
+#SBATCH --time=12:00:00
+#SBATCH --job-name=HBM_Job
+
+# Purging and reloading all modules to be sure of the job&#39;s environment
+module purge
+module load ucl-stack/2025-12
+
+# Loading the modules your application needs to execute
+module load &lt;name of the module(s) you need
+
+# Printing the location of the temporary storage
+echo $TMPDIR
+
+# Lines to execute below here
+&lt;application execution here&gt;
+</code></pre></div>
+
+<p>Note that the <code>hbm</code> partition you need to explicitly specify.  If you don't, the job will run on a regular CPU node.  In this example we've also asked for 40G of temporary storage on the node.  </p>
+<h4 id="single-node-hbm-interactive-session">Single node HBM interactive session<a class="headerlink" href="#single-node-hbm-interactive-session" title="Permanent link">§</a></h4>
+<p><code>srun --parition=hbm --nodes=1 --ntasks-per-node=4 --mem-per-cpu=64G --gres=tmpfs:40G --time=12:00:00 --pty bash -l</code></p>
+<h3 id="gpu-jobs">GPU jobs<a class="headerlink" href="#gpu-jobs" title="Permanent link">§</a></h3>
+<h4 id="gpu-node-script">GPU node script<a class="headerlink" href="#gpu-node-script" title="Permanent link">§</a></h4>
+<div class="codehilite"><pre><span></span><code>#!/bin/bash
+
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem-per-cpu=8G
+#SBATCH --gres=gpu:1,tmpfs:20G
+#SBATCH --time=12:00:00
+#SBATCH --job-name=GPU_Single_GPU
+
+# Purging and reloading all modules to be sure of the job&#39;s environment
+module purge
+module load ucl-stack/2025-12
+
+# Loading the modules your application needs to execute
+module load &lt;name of the module(s) you need
+
+# Outputting the nvidia information about the node
+nvidia-smi
+
+# Printing the location of the temporary directory
+echo $TMPDIR
+
+# Lines to execute below here
+&lt;application execution here&gt;
+</code></pre></div>
+
+<p>Note that we're requesting both one GPU and 20G of temporary storage.</p>
+<h4 id="gpu-node-interactive-session">GPU node interactive session<a class="headerlink" href="#gpu-node-interactive-session" title="Permanent link">§</a></h4>
+<p><code>srun --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1,tmpfs:20G --time=12:00:00 --pty bash -l</code></p>
+<h3 id="what-is-the-difference-between-srun-and-salloc">What is the difference between srun and salloc?<a class="headerlink" href="#what-is-the-difference-between-srun-and-salloc" title="Permanent link">§</a></h3>
+<h4 id="srun">srun<a class="headerlink" href="#srun" title="Permanent link">§</a></h4>
+<p>If you're confused about why <code>srun</code> is used above to start an interactive session but also used to execute a parallel application within a script, there is no need to worry -- it is confusing!  <code>srun</code> is a very versatile command.  When used with no inputs it will execute whatever comes after it on all resources available.  If it detects you're using MPI it will execute in parallel using MPI.  If there is no MPI it will execute the command once on each of the available allocated CPUs.  If there are no resources yet allocated via <code>sbatch</code> or <code>salloc</code> it will look to see if you've asked for resources, allocate them for you, and then run the command.  If you feed it the <code>--pty</code> you can NOT specify a command and it will start an interactive session for you.  Versatile!</p>
+<h4 id="salloc">salloc<a class="headerlink" href="#salloc" title="Permanent link">§</a></h4>
+<p>The more straight-forward command is <code>salloc</code> as its only purpose is to allocate resources and spawn an interactive session. The two methods are very similar, just remember that when you use <code>salloc</code> to start an interactive session you need to use <code>srun &lt;application executable&gt;</code> to run on the allocated compute resources, as you would in a submission script.</p>
 
 
 

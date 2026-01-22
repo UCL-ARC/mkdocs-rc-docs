@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#training-resources" class="md-skip">
+        <a href="#new-operating-system-and-scheduler" class="md-skip">
           Skip to content
         </a>
       
@@ -1013,6 +1013,17 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#new-operating-system-and-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New operating system and scheduler
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#training-resources" class="md-nav__link">
@@ -2547,6 +2558,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#new-operating-system-and-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New operating system and scheduler
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#training-resources" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3177,6 +3199,25 @@
 <p>Young is the compute cluster for the UK National Tier 2 High Performance Computing Hub in
 Materials and Molecular Modelling.</p>
 <p>Young entered pilot phase on 3 Aug 2020, and entered full service on 1 Oct 2020.</p>
+<h2 id="new-operating-system-and-scheduler">New operating system and scheduler<a class="headerlink" href="#new-operating-system-and-scheduler" title="Permanent link">§</a></h2>
+<p>A portion of Young is currently updated to our new operating system (RHEL 9.6) and new scheduler, Slurm.</p>
+<p>Currently, the new portion of Young can accessed via <code>ssh -J &lt;your_user_id&gt;@young.rc.ucl.ac.uk &lt;your_user_id&gt;@login21</code> which will log you into Young and then hop onto an updated login node.  <code>login22</code> is also available and can be reached in the same manner.  We're planning to configure the new login nodes to be directly accessible, but for now the hop is required.</p>
+<p>The new software stack is provided by a module called <code>ucl-stack/2025-12</code> which should be loaded by default. If not (for example if you <code>module purge</code> in your .bashrc) you can load the new environment with:</p>
+<div class="codehilite"><pre><span></span><code>module load ucl-stack/2025-12
+module load default-modules/2025-12
+</code></pre></div>
+
+<p>The default compiler is now GCC and the default MPI is OpenMPI. We do also have Intel OneAPI modules.</p>
+<p>When you examine the available modules (<code>module avail</code>) you'll notice some with the <code>-avx2</code> suffix and some without.  The CPU and HBM nodes are compatible with the AVX-512 instruction set and you should select end-use application modules without the <code>-avx2</code> ending, if possible.  However, the GPU nodes are not AVX-512 compatible and the <code>-axv2</code> modules should be selected if you're executing your job there.  If you load a non<code>-avx2</code> module and it loads dependencies which have the <code>-avx2</code> ending, that is expected and no cause for alarm.</p>
+<p>Your jobscripts will need to be rewritten as Slurm jobscripts, and there are different commands for submitting jobs and checking your job status.  Please see the following documentation pages for specifics on using Slurm, and note there are specific sub-sections within each page for the Young configuration.</p>
+<ul>
+<li><a href="../../Supplementary/Slurm/">Usage of Slurm</a></li>
+<li><a href="../../Supplementary/Slurm/#specifics-of-using-slurm-on-young">Specifics of Using Slurm on Young</a></li>
+<li><a href="../../Supplementary/Slurm_Example_Jobscripts/">Slurm Example Jobscripts</a></li>
+<li><a href="../../Supplementary/Slurm_Example_Jobscripts/#examples-for-young">Slurm Example Jobscripts for Young</a></li>
+</ul>
+<p>At present, project use isn't enabled in the new environment and all jobs will run through the <code>allusers</code> account.</p>
+<p>Updates to the software stack will be made based on feedback and more nodes will be added in February.  Currently there are 36 C-type, 4 W-type, and 1 X-type node in the new environment.  Please see <a href="#node-types">node types</a> below for details.</p>
 <h2 id="training-resources">Training resources<a class="headerlink" href="#training-resources" title="Permanent link">§</a></h2>
 <p>The <a href="http://mmmhub.ac.uk/young-events-and-training/">MMM Hub's Events and Training page</a>
 contains useful information for new users and about specific software.</p>
@@ -3185,10 +3226,8 @@ contains useful information for new users and about specific software.</p>
 <li><a href="http://youtu.be/bagooylPXY4">A basic introduction video to Young</a>, including 
    details of hardware, how to submit jobs and an overview of types of parallelism</li>
 <li><a href="https://www.youtube.com/watch?v=pYspFuxbWjs">A quick 4 minute overview of how to choose memory</a></li>
-<li><a href="https://www.youtube.com/watch?v=D3iF_N0cwv4">Longer videos on memory allocation for new users</a><ul>
+<li><a href="https://www.youtube.com/watch?v=D3iF_N0cwv4">Longer videos on memory allocation for new users</a></li>
 <li><a href="https://www.youtube.com/watch?v=QlMaN_ECIwg">A hands-on memory allocation example</a> </li>
-</ul>
-</li>
 </ul>
 <h3 id="mmm-hub-hpe-nvidia-gpu-training-day">MMM Hub: HPE / NVIDIA GPU Training Day<a class="headerlink" href="#mmm-hub-hpe-nvidia-gpu-training-day" title="Permanent link">§</a></h3>
 <p>The MMM Hub: HPE / NVIDIA GPU Training Day took place on 31 March 2022 and recordings 
