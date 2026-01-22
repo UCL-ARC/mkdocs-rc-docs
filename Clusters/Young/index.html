@@ -3201,7 +3201,11 @@ Materials and Molecular Modelling.</p>
 <p>Young entered pilot phase on 3 Aug 2020, and entered full service on 1 Oct 2020.</p>
 <h2 id="new-operating-system-and-scheduler">New operating system and scheduler<a class="headerlink" href="#new-operating-system-and-scheduler" title="Permanent link">§</a></h2>
 <p>A portion of Young is currently updated to our new operating system (RHEL 9.6) and new scheduler, Slurm.</p>
-<p>Currently, the new portion of Young can accessed via <code>ssh -J &lt;your_user_id&gt;@young.rc.ucl.ac.uk &lt;your_user_id&gt;@login21</code> which will log you into Young and then hop onto an updated login node.  <code>login22</code> is also available and can be reached in the same manner.  We're planning to configure the new login nodes to be directly accessible, but for now the hop is required.</p>
+<p>Currently, the new portion of Young can accessed via </p>
+<div class="codehilite"><pre><span></span><code>ssh -J &lt;your_user_id&gt;@young.rc.ucl.ac.uk &lt;your_user_id&gt;@login21
+</code></pre></div>
+
+<p>which will log you into Young and then hop onto an updated login node.  <code>login22</code> is also available and can be reached in the same manner.  We're planning to configure the new login nodes to be directly accessible, but for now the hop is required.</p>
 <p>The new software stack is provided by a module called <code>ucl-stack/2025-12</code> which should be loaded by default. If not (for example if you <code>module purge</code> in your .bashrc) you can load the new environment with:</p>
 <div class="codehilite"><pre><span></span><code>module load ucl-stack/2025-12
 module load default-modules/2025-12
