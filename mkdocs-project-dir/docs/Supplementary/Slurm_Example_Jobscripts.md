@@ -269,9 +269,10 @@ Note that we're requesting both one GPU and 20G of temporary storage.
 #### GPU node interactive session
 `srun --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1,tmpfs:20G --time=12:00:00 --pty bash -l`
 
-### What is the deal with srun and salloc?
+### What is the difference between srun and salloc?
 
-If you're confused about why `srun` is used above to start an interactive session but also used to execute a parallel application within a script, there is no need to worry -- it is confusing!  `srun` is a very versitile command.  When used with no inputs it will execute whatever comes after it on all resources available.  If it detects you're using MPI it will execute in parallel using MPI.  If there is no MPI it will execute the command once on each of the available allocated CPUs.  If there are no resources yet allocated via `sbatch` or `salloc` it will look to see if you've asked for resources, allocate them for you, and then run the command.  If you feed it the `--pty` you can NOT specify a command and it will start an interactive session for you.  Versitile!
+#### srun
+If you're confused about why `srun` is used above to start an interactive session but also used to execute a parallel application within a script, there is no need to worry -- it is confusing!  `srun` is a very versatile command.  When used with no inputs it will execute whatever comes after it on all resources available.  If it detects you're using MPI it will execute in parallel using MPI.  If there is no MPI it will execute the command once on each of the available allocated CPUs.  If there are no resources yet allocated via `sbatch` or `salloc` it will look to see if you've asked for resources, allocate them for you, and then run the command.  If you feed it the `--pty` you can NOT specify a command and it will start an interactive session for you.  Versatile!
 
-The more straight-forward interactive session command is `salloc`.  There is no need to specify a shell as it starts a session for you, you don't have to worry about the environment on a compute node being different to the login node as your new session stays on the login node, and you can use srun to initiate parallel job.  The two methods are very similar, just remember that when you use `salloc` to start an interactive session you need to use `srun <application executable>` to run on the allocated compute resources, as you would in a submission script.
-
+#### salloc
+The more straight-forward command is `salloc` as its only purpose is to allocate resources and spawn an interactive session. The two methods are very similar, just remember that when you use `salloc` to start an interactive session you need to use `srun <application executable>` to run on the allocated compute resources, as you would in a submission script.

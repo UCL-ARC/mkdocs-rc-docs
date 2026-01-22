@@ -22,6 +22,8 @@ module load default-modules/2025-12
 
 The default compiler is now GCC and the default MPI is OpenMPI. We do also have Intel OneAPI modules.
 
+When you examine the available modules (`module avail`) you'll notice some with the `-avx2` suffix and some without.  The CPU and HBM nodes are compatible with the AVX-512 instruction set and you should select end-use application modules without the `-avx2` ending, if possible.  However, the GPU nodes are not AVX-512 compatible and the `-axv2` modules should be selected if you're executing your job there.  If you load a non`-avx2` module and it loads dependencies which have the `-avx2` ending, that is expected and no cause for alarm.
+
 Your jobscripts will need to be rewritten as Slurm jobscripts, and there are different commands for submitting jobs and checking your job status.  Please see the following documentation pages for specifics on using Slurm, and note there are specific sub-sections within each page for the Young configuration.
 
 * [Usage of Slurm](../Supplementary/Slurm.md)
