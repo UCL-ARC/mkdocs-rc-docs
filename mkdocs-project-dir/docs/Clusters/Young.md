@@ -7,6 +7,34 @@ Materials and Molecular Modelling.
 
 Young entered pilot phase on 3 Aug 2020, and entered full service on 1 Oct 2020.
 
+## New operating system and scheduler
+
+A portion of Young is currently updated to our new operating system (RHEL 9.6) and new scheduler, Slurm.
+
+Currently, the new portion of Young can accessed via `ssh -J <your_user_id>@young.rc.ucl.ac.uk <your_user_id>@login21` which will log you into Young and then hop onto an updated login node.  `login22` is also available and can be reached in the same manner.  We're planning to configure the new login nodes to be directly accessible, but for now the hop is required.
+
+The new software stack is provided by a module called `ucl-stack/2025-12` which should be loaded by default. If not (for example if you `module purge` in your .bashrc) you can load the new environment with:
+
+```
+module load ucl-stack/2025-12
+module load default-modules/2025-12
+```
+
+The default compiler is now GCC and the default MPI is OpenMPI. We do also have Intel OneAPI modules.
+
+When you examine the available modules (`module avail`) you'll notice some with the `-avx2` suffix and some without.  The CPU and HBM nodes are compatible with the AVX-512 instruction set and you should select end-use application modules without the `-avx2` ending, if possible.  However, the GPU nodes are not AVX-512 compatible and the `-axv2` modules should be selected if you're executing your job there.  If you load a non`-avx2` module and it loads dependencies which have the `-avx2` ending, that is expected and no cause for alarm.
+
+Your jobscripts will need to be rewritten as Slurm jobscripts, and there are different commands for submitting jobs and checking your job status.  Please see the following documentation pages for specifics on using Slurm, and note there are specific sub-sections within each page for the Young configuration.
+
+* [Usage of Slurm](../Supplementary/Slurm.md)
+  * [Specifics of Using Slurm on Young](../Supplementary/Slurm.md/#specifics-of-using-slurm-on-young)
+* [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
+  * [Slurm Example Jobscripts for Young](../Supplementary/Slurm_Example_Jobscripts.md/#examples-for-young)
+
+At present, project use isn't enabled in the new environment and all jobs will run through the `allusers` account.
+
+Updates to the software stack will be made based on feedback and more nodes will be added in February.  Currently there are 36 C-type, 4 W-type, and 1 X-type node in the new environment.  Please see [node types](#node-types) below for details.
+
 ## Training resources
 
 The [MMM Hub's Events and Training page](http://mmmhub.ac.uk/young-events-and-training/)
@@ -18,7 +46,7 @@ In particular the "Software Training" section:
    details of hardware, how to submit jobs and an overview of types of parallelism
  - [A quick 4 minute overview of how to choose memory](https://www.youtube.com/watch?v=pYspFuxbWjs)
  - [Longer videos on memory allocation for new users](https://www.youtube.com/watch?v=D3iF_N0cwv4)
-    - [A hands-on memory allocation example](https://www.youtube.com/watch?v=QlMaN_ECIwg) 
+ - [A hands-on memory allocation example](https://www.youtube.com/watch?v=QlMaN_ECIwg) 
 
 ### MMM Hub: HPE / NVIDIA GPU Training Day
 
