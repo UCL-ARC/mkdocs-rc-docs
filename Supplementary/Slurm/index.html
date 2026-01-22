@@ -2193,8 +2193,9 @@ srun myprog
 
 <p>For more detailed examples, please refer to <a href="../Slurm_Example_Jobscripts/">Slurm Example Jobscripts</a></p>
 <h4 id="temporary-storage">Temporary Storage<a class="headerlink" href="#temporary-storage" title="Permanent link">§</a></h4>
-<p>If you're running on a High-Bandwidth-Memory (HBM) or GPU node you can request temporary storage on the node's local disk.  By default, a temporary directory is created and the location stored in the <code>TMPDIR</code> environmental variable.  If you don't explicitly request more you're automatically given 100MiB.</p>
-<p>To request more local temp space, up to a maximum of 200GiB, you use the <code>--gres=tmpfs:&lt;amount&gt;</code>.  In this example we request 80GiB.</p>
+<p>If you're running on a GPU node you can request temporary storage on the node's local disk.  By default, a temporary directory is created and the location stored in the <code>TMPDIR</code> environmental variable.  If you don't explicitly request more you're automatically given 100MiB.</p>
+<p>If you're running on a High-Bandwidth-Memory (HBM) node, then you automatically are allocated all the available local disk in the job and do not need to ask for it. </p>
+<p>To request more local temp space on a GPU node, up to a maximum of 5900GiB, you use the <code>--gres=tmpfs:&lt;amount&gt;</code>.  In this example we request 80GiB.</p>
 <div class="codehilite"><pre><span></span><code>--gres=tmpfs:80G
 </code></pre></div>
 
