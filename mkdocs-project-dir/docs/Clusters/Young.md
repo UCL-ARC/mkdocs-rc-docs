@@ -27,10 +27,11 @@ Your jobscripts will need to be rewritten as Slurm jobscripts, and there are dif
 * [Usage of Slurm](../Supplementary/Slurm.md)
 * [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
 
+
 * [Specifics of Using Slurm on Young](../Supplementary/Slurm.md/#specifics-of-using-slurm-on-young)
 * [Slurm Example Jobscripts for Young](../Supplementary/Slurm_Example_Jobscripts.md/#examples-for-young)
 
-At present, project use isn't enabled in the new environment and all jobs will run through the `allusers` account. Details on how to submit to the various paritions (cpu, gpu, hbm) are outlines in the above Slurm pages.
+At present, project use isn't enabled in the new environment and all jobs will run through the `allusers` account.
 
 Updates to the software stack will be made based on feedback and more nodes will be added in February.  Currently there are 36 C-type, 4 W-type, and 1 X-type node in the new environment.  Please see [node types](#node-types) below for details.
 
@@ -45,7 +46,7 @@ In particular the "Software Training" section:
    details of hardware, how to submit jobs and an overview of types of parallelism
  - [A quick 4 minute overview of how to choose memory](https://www.youtube.com/watch?v=pYspFuxbWjs)
  - [Longer videos on memory allocation for new users](https://www.youtube.com/watch?v=D3iF_N0cwv4)
-    - [A hands-on memory allocation example](https://www.youtube.com/watch?v=QlMaN_ECIwg) 
+ - [A hands-on memory allocation example](https://www.youtube.com/watch?v=QlMaN_ECIwg) 
 
 ### MMM Hub: HPE / NVIDIA GPU Training Day
 

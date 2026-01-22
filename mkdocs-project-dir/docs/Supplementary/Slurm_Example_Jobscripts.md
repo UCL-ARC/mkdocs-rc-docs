@@ -141,18 +141,15 @@ By default we have set `--hint=nomultithread` so hyperthreads will not be used u
 ```
 #!/bin/bash
 
-#SBATCH --parition=cpu
-#SBATCH --qos=standcpu
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
 #SBATCH --mem-per-cpu=4G
 #SBATCH --time=12:00:00
 #SBATCH --job-name=CPU_Single_Node
 
-# Purging and reloading all modules to be sure of the job's enviroment
+# Purging and reloading all modules to be sure of the job's environment
 module purge
 module load ucl-stack/2025-12
-module load default-modules/2025-12
 
 # Loading the modules your application needs to execute
 module load <name of the module(s) you need
@@ -166,7 +163,7 @@ module load <name of the module(s) you need
 The resource request is identical to the script above. However, once the resources are allocated you'll be migrated to the compute node and will need to then execute any lines manually.  The module commands and \<application execution here\> would be done by-hand.  You'll notice also the `--pty` flag at the end which stands for "pseudo terminal" and is letting Slurm know to start the session with `bash`.
 
 ```
-srun -p cpu --qos=standcpu --nodes=1 --ntasks-per-node=8 --mem-per-cpu=4G --time=12:00:00 --pty bash -l
+srun --nodes=1 --ntasks-per-node=8 --mem-per-cpu=4G --time=12:00:00 --pty bash -l
 ```
 
 #### Multi-node script
@@ -176,15 +173,13 @@ By default the `mpi/openmpi/4.1.6/gcc-12.3.0-avx2` module is loaded.  If you nee
 ```
 #!/bin/bash
 
-#SBATCH --parition=cpu
-#SBATCH --qos=standcpu
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=16
 #SBATCH --mem-per-cpu=2G
 #SBATCH --time=12:00:00
 #SBATCH --job-name=CPU_Multi_Node
 
-# Purging and reloading to be sure of the job's enviroment.  This time we didn't auto-load the default modules.
+# Purging and reloading to be sure of the job's environment
 module purge
 module load ucl-stack/2025-12
 
@@ -200,13 +195,13 @@ srun <application to execute>
 ```
 
 #### Multi-node interactive session
-`salloc --parition=cpu --qos=standcpu --nodes=4 --ntasks-per-node=16 --mem-per-cpu=2G --time=12:00:00`
+`salloc --nodes=4 --ntasks-per-node=16 --mem-per-cpu=2G --time=12:00:00`
 
 This will start a new session on the login node with the requested resources allocated.  As with the `srun` example above you'll now need to load the correct modules.  This time however you'll execute your command with `srun` as you did in the multi-node script.  `srun` will detect you're in a session and have resources allocated and will then execute your command using the loaded MPI, in-parallel.
 
 ### High-Bandwidth (HBM) memory jobs
 
-#### HBM node script
+#### Single node HBM script
 ```
 #!/bin/bash
 
@@ -214,24 +209,29 @@ This will start a new session on the login node with the requested resources all
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
 #SBATCH --mem-per-cpu=64G
+#SBATCH --gres=tmpfs:40G
 #SBATCH --time=12:00:00
 #SBATCH --job-name=HBM_Job
 
-# Purging and reloading all modules to be sure of the job's enviroment
+# Purging and reloading all modules to be sure of the job's environment
 module purge
 module load ucl-stack/2025-12
-module load default-modules/2025-12
 
 # Loading the modules your application needs to execute
 module load <name of the module(s) you need
+
+# Printing the location of the temporary storage
+echo $TMPDIR
 
 # Lines to execute below here
 <application execution here>
 
 ```
 
-#### HBM node interactive session
-`srun --parition=hbm --nodes=1 --ntasks-per-node=4 --mem-per-cpu=64G --time=12:00:00 --pty bash -l`
+Note that the `hbm` partition you need to explicitly specify.  If you don't, the job will run on a regular CPU node.  In this example we've also asked for 40G of temporary storage on the node.  
+
+#### Single node HBM interactive session
+`srun --parition=hbm --nodes=1 --ntasks-per-node=4 --mem-per-cpu=64G --gres=tmpfs:40G --time=12:00:00 --pty bash -l`
 
 ### GPU jobs
 
@@ -242,14 +242,13 @@ module load <name of the module(s) you need
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --mem-per-cpu=8G
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:1,tmpfs:20G
 #SBATCH --time=12:00:00
 #SBATCH --job-name=GPU_Single_GPU
 
-# Purging and reloading all modules to be sure of the job's enviroment
+# Purging and reloading all modules to be sure of the job's environment
 module purge
 module load ucl-stack/2025-12
-module load default-modules/2025-12
 
 # Loading the modules your application needs to execute
 module load <name of the module(s) you need
@@ -257,14 +256,18 @@ module load <name of the module(s) you need
 # Outputting the nvidia information about the node
 nvidia-smi
 
+# Printing the location of the temporary directory
+echo $TMPDIR
+
 # Lines to execute below here
 <application execution here>
 
 ```
 
 #### GPU node interactive session
-`srun --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1 --time=12:00:00 --pty bash -l`
+`srun --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1,tmpfs:20G --time=12:00:00 --pty bash -l`
 
 ### What is the deal with srun?
 
 If you're confused about why `srun` is used above to start an interactive session but also used here to execute a parallel application within a script, there is no need to worry -- it is confusing!  `srun` is a very versitile command.  When used with no inputs it will execute whatever comes after it on all resources available.  If it detects you're using MPI it will execute in parallel using MPI.  If there is no MPI it will execute the command once on each of the available allocated CPUs.  If there are no resources yet allocated via `sbatch` or `salloc` it will look to see if you've asked for resources, allocate them for you, and then run the command.  If you feed it the `--pty` you can NOT specify a command and it will start an interactive session for you.  Versitile!
+

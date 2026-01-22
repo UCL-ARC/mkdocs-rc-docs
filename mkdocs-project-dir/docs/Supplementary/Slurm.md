@@ -131,12 +131,18 @@ For more detailed examples, please refer to [Slurm Example Jobscripts](../Supple
 
 #### Temporary Storage
 
-If you're running on a High-Bandwidth-Memory (HBM) or GPU node you can request temporary storage on the node's local disk.  By default the a directory is created and the location stored in the `TMPDIR` environmental variable.  If you don't explicitly request more you're automatically given 100MiB.
+If you're running on a High-Bandwidth-Memory (HBM) or GPU node you can request temporary storage on the node's local disk.  By default, a temporary directory is created and the location stored in the `TMPDIR` environmental variable.  If you don't explicitly request more you're automatically given 100MiB.
 
-To request more local temp space, up to a maximum of 200GiB, you use the `--gres=tmpfs:<amount>`.  In this example we request 40GiB:
+To request more local temp space, up to a maximum of 200GiB, you use the `--gres=tmpfs:<amount>`.  In this example we request 80GiB.
 ```
---gres=tmpfs:40G
+--gres=tmpfs:80G
 ```
+
+If you're requesting both a GPU and temp space, you separate the `gres` request with a comma (no space).
+```
+--gres=gpu:1,tmpfs:80G
+```
+
 
 ### Checking your previous jobscripts
 
