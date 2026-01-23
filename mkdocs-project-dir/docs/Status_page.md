@@ -1534,8 +1534,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     * [old_lustre_folders script](https://github.com/kcl-tscm/Young_instructions/tree/main/old_lustre_folders)
 
-#### Latest on Young
-
   - 2025-10-28 12:10 - **Young full outage on 11-12 November and RHEL9 upgrade plans**
     
     On next maintenance day, Tuesday 11 November, we will be having a full outage of Young from 8am. It
@@ -1555,6 +1553,40 @@ This page outlines that status of each of the machines managed by the Research C
     current work and move over to the new environment. We will also be continuing to install new software during
     this time. This planned time period is dependent on work being completed over the next couple of months and
     we will update you nearer the time.
+
+#### Latest on Young
+
+  - 2026-01-22 17:30 - **Upgraded Young section now available for testing**
+
+    An upgraded portion of Young is now available, with RedHat Enterprise Linux 9 as the operating system and Slurm as the scheduler.
+
+    To access, ssh in to the upgraded login nodes like this (there is login21 and login22 available):
+    ```
+    ssh -J <your_user_id>@young.rc.ucl.ac.uk <your_user_id>@login21
+    ```
+
+    We have updated documentation at
+
+    * https://www.rc.ucl.ac.uk/docs/Clusters/Young/ - contains info on the current split state and links to the following.
+    * https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm/ - has the Slurm commands
+    * https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm/#specifics-of-using-slurm-on-young - on that same page has more specific-to-Young parts
+    * https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/ - has a couple of example jobscripts
+    * https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/#examples-for-young - has some more specific-to-Young examples
+
+    The new software stack is provided by the ucl-stack/2025-12 module, and we have a new default-modules/2025-12
+    that should also be loaded by default. We have made a change to the top of everyone's .bashrc to make sure that
+    the different default-modules are set appropriately on both old and new Young.
+
+    There are no paid allocations yet, these will be coming in future. Just now, all jobs will be submitted under the
+    default project.
+
+    We do not currently have screen installed - we do have tmux.
+
+    Over the next few weeks we expect to be installing more software, fixing any issues and updating the documentation further.
+
+    We will be adding more nodes into new Young in February.
+
+    Please give us feedback on things that don't work or need more documenting!
     
 
 ### Michael
