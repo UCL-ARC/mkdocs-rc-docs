@@ -3595,9 +3595,6 @@ directories, then second 10 and so on, if that is useful to you: </p>
 <li><a href="https://github.com/kcl-tscm/Young_instructions/tree/main/old_lustre_folders">old_lustre_folders script</a></li>
 </ul>
 </li>
-</ul>
-<h4 id="latest-on-young">Latest on Young<a class="headerlink" href="#latest-on-young" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2025-10-28 12:10 - <strong>Young full outage on 11-12 November and RHEL9 upgrade plans</strong></p>
 <p>On next maintenance day, Tuesday 11 November, we will be having a full outage of Young from 8am. It
@@ -3613,6 +3610,32 @@ Young will stay on the current environment for a transition period so you will h
 current work and move over to the new environment. We will also be continuing to install new software during
 this time. This planned time period is dependent on work being completed over the next couple of months and
 we will update you nearer the time.</p>
+</li>
+</ul>
+<h4 id="latest-on-young">Latest on Young<a class="headerlink" href="#latest-on-young" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-01-22 17:30 - <strong>Upgraded Young section now available for testing</strong></p>
+<p>An upgraded portion of Young is now available, with RedHat Enterprise Linux 9 as the operating system and Slurm as the scheduler.</p>
+<p>To access, ssh in to the upgraded login nodes like this (there is login21 and login22 available):
+<code>ssh -J &lt;your_user_id&gt;@young.rc.ucl.ac.uk &lt;your_user_id&gt;@login21</code></p>
+<p>We have updated documentation at</p>
+<ul>
+<li>https://www.rc.ucl.ac.uk/docs/Clusters/Young/ - contains info on the current split state and links to the following.</li>
+<li>https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm/ - has the Slurm commands</li>
+<li>https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm/#specifics-of-using-slurm-on-young - on that same page has more specific-to-Young parts</li>
+<li>https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/ - has a couple of example jobscripts</li>
+<li>https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/#examples-for-young - has some more specific-to-Young examples</li>
+</ul>
+<p>The new software stack is provided by the ucl-stack/2025-12 module, and we have a new default-modules/2025-12
+that should also be loaded by default. We have made a change to the top of everyone's .bashrc to make sure that
+the different default-modules are set appropriately on both old and new Young.</p>
+<p>There are no paid allocations yet, these will be coming in future. Just now, all jobs will be submitted under the
+default project.</p>
+<p>We do not currently have screen installed - we do have tmux.</p>
+<p>Over the next few weeks we expect to be installing more software, fixing any issues and updating the documentation further.</p>
+<p>We will be adding more nodes into new Young in February.</p>
+<p>Please give us feedback on things that don't work or need more documenting!</p>
 </li>
 </ul>
 <h3 id="michael">Michael<a class="headerlink" href="#michael" title="Permanent link">§</a></h3>
