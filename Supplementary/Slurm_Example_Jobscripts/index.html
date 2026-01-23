@@ -2276,7 +2276,6 @@ myprogram dataset${SLURM_ARRAY_TASK_ID}.csv
 
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
-#SBATCH --mem-per-cpu=4G
 #SBATCH --time=12:00:00
 #SBATCH --job-name=CPU_Single_Node
 
@@ -2293,7 +2292,7 @@ module load &lt;name of the module(s) you need&gt;
 
 <h4 id="single-node-interactive-session">Single node interactive session<a class="headerlink" href="#single-node-interactive-session" title="Permanent link">§</a></h4>
 <p>The resource request is identical to the script above. However, once the resources are allocated you'll be migrated to the compute node and will need to then execute any lines manually.  The module commands and <code>&lt;application execution here&gt;</code> would be done by-hand.  You'll notice also the <code>--pty</code> flag at the end which stands for "pseudo terminal" and is letting Slurm know to start the session using <code>bash</code>.</p>
-<div class="codehilite"><pre><span></span><code>srun --nodes=1 --ntasks-per-node=8 --mem-per-cpu=4G --time=12:00:00 --pty bash -l
+<div class="codehilite"><pre><span></span><code>srun --nodes=1 --ntasks-per-node=8 --time=12:00:00 --pty bash -l
 </code></pre></div>
 
 <h4 id="multi-node-script">Multi-node script<a class="headerlink" href="#multi-node-script" title="Permanent link">§</a></h4>
@@ -2302,7 +2301,6 @@ module load &lt;name of the module(s) you need&gt;
 
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=16
-#SBATCH --mem-per-cpu=2G
 #SBATCH --time=12:00:00
 #SBATCH --job-name=CPU_Multi_Node
 
@@ -2321,7 +2319,7 @@ srun &lt;application to execute&gt;
 </code></pre></div>
 
 <h4 id="multi-node-interactive-session">Multi-node interactive session<a class="headerlink" href="#multi-node-interactive-session" title="Permanent link">§</a></h4>
-<p><code>salloc --nodes=4 --ntasks-per-node=16 --mem-per-cpu=2G --time=12:00:00</code></p>
+<p><code>salloc --nodes=4 --ntasks-per-node=16 --time=12:00:00</code></p>
 <p>This will start a new session on the login node with the requested resources allocated.  As with the <code>srun</code> example above you'll now need to load the correct modules.  This time however you'll execute your command with <code>srun</code> as you did in the multi-node script.  <code>srun</code> will detect you're in a session and have resources allocated and will then execute your command using the loaded MPI, in-parallel.</p>
 <h3 id="high-bandwidth-hbm-memory-jobs">High-Bandwidth (HBM) memory jobs<a class="headerlink" href="#high-bandwidth-hbm-memory-jobs" title="Permanent link">§</a></h3>
 <h4 id="single-node-hbm-script">Single node HBM script<a class="headerlink" href="#single-node-hbm-script" title="Permanent link">§</a></h4>
@@ -2330,8 +2328,6 @@ srun &lt;application to execute&gt;
 #SBATCH --parition=hbm
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
-#SBATCH --mem-per-cpu=64G
-#SBATCH --gres=tmpfs:40G
 #SBATCH --time=12:00:00
 #SBATCH --job-name=HBM_Job
 
@@ -2351,7 +2347,7 @@ echo $TMPDIR
 
 <p>Note that the <code>hbm</code> partition you need to explicitly specify.  If you don't, the job will run on a regular CPU node.  In this example we've also asked for 40G of temporary storage on the node.  </p>
 <h4 id="single-node-hbm-interactive-session">Single node HBM interactive session<a class="headerlink" href="#single-node-hbm-interactive-session" title="Permanent link">§</a></h4>
-<p><code>srun --parition=hbm --nodes=1 --ntasks-per-node=4 --mem-per-cpu=64G --gres=tmpfs:40G --time=12:00:00 --pty bash -l</code></p>
+<p><code>srun --parition=hbm --nodes=1 --ntasks-per-node=4 --time=12:00:00 --pty bash -l</code></p>
 <h3 id="gpu-jobs">GPU jobs<a class="headerlink" href="#gpu-jobs" title="Permanent link">§</a></h3>
 <h4 id="gpu-node-script">GPU node script<a class="headerlink" href="#gpu-node-script" title="Permanent link">§</a></h4>
 <div class="codehilite"><pre><span></span><code>#!/bin/bash
