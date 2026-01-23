@@ -143,7 +143,6 @@ By default we have set `--hint=nomultithread` so hyperthreads will not be used u
 
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
-#SBATCH --mem-per-cpu=4G
 #SBATCH --time=12:00:00
 #SBATCH --job-name=CPU_Single_Node
 
@@ -163,7 +162,7 @@ module load <name of the module(s) you need>
 The resource request is identical to the script above. However, once the resources are allocated you'll be migrated to the compute node and will need to then execute any lines manually.  The module commands and `<application execution here>` would be done by-hand.  You'll notice also the `--pty` flag at the end which stands for "pseudo terminal" and is letting Slurm know to start the session using `bash`.
 
 ```
-srun --nodes=1 --ntasks-per-node=8 --mem-per-cpu=4G --time=12:00:00 --pty bash -l
+srun --nodes=1 --ntasks-per-node=8 --time=12:00:00 --pty bash -l
 ```
 
 #### Multi-node script
@@ -175,7 +174,6 @@ By default the `mpi/openmpi/4.1.6/gcc-12.3.0-avx2` module is loaded.  If you nee
 
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=16
-#SBATCH --mem-per-cpu=2G
 #SBATCH --time=12:00:00
 #SBATCH --job-name=CPU_Multi_Node
 
@@ -195,7 +193,7 @@ srun <application to execute>
 ```
 
 #### Multi-node interactive session
-`salloc --nodes=4 --ntasks-per-node=16 --mem-per-cpu=2G --time=12:00:00`
+`salloc --nodes=4 --ntasks-per-node=16 --time=12:00:00`
 
 This will start a new session on the login node with the requested resources allocated.  As with the `srun` example above you'll now need to load the correct modules.  This time however you'll execute your command with `srun` as you did in the multi-node script.  `srun` will detect you're in a session and have resources allocated and will then execute your command using the loaded MPI, in-parallel.
 
@@ -208,8 +206,6 @@ This will start a new session on the login node with the requested resources all
 #SBATCH --parition=hbm
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
-#SBATCH --mem-per-cpu=64G
-#SBATCH --gres=tmpfs:40G
 #SBATCH --time=12:00:00
 #SBATCH --job-name=HBM_Job
 
@@ -231,7 +227,7 @@ echo $TMPDIR
 Note that the `hbm` partition you need to explicitly specify.  If you don't, the job will run on a regular CPU node.  In this example we've also asked for 40G of temporary storage on the node.  
 
 #### Single node HBM interactive session
-`srun --parition=hbm --nodes=1 --ntasks-per-node=4 --mem-per-cpu=64G --gres=tmpfs:40G --time=12:00:00 --pty bash -l`
+`srun --parition=hbm --nodes=1 --ntasks-per-node=4 --time=12:00:00 --pty bash -l`
 
 ### GPU jobs
 
