@@ -11,7 +11,7 @@ Young entered pilot phase on 3 Aug 2020, and entered full service on 1 Oct 2020.
 
 A portion of Young is currently updated to our new operating system (RHEL 9.6) and new scheduler, Slurm.
 
-Currently, the new portion of Young can accessed via 
+Currently, the new portion of Young can be accessed via 
 
 ```
 ssh -J <your_user_id>@young.rc.ucl.ac.uk <your_user_id>@login21
