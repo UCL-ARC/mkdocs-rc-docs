@@ -81,6 +81,8 @@ finding where space is being used.
 | ------- | ------------- |
 | 1       | 72hrs         |
 | 2 to 36 | 48hrs         |
+| 2 to 48 (UV type nodes only) | 48hrs |
+| 2 to 64 (T type nodes only) | 48hrs |
 
 [Interactive jobs](../Interactive_Jobs.md) run with `qrsh` have the same
 maximum wallclock time as other jobs.
