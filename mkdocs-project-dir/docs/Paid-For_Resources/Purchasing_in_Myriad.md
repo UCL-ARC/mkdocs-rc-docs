@@ -6,8 +6,8 @@ categories:
 
 # Purchasing in Myriad
 
-!!! important "16 Dec 2025: Myriad node purchases paused"
-    To manage our ongoing data centre upgrades and capacity planning, we will be unable to accept new purchase requests until February 2026.
+!!! important "27 Jan 2026: Myriad node purchases paused"
+    To ensure system stability, we are not accepting new hardware for Myriad until the networking refresh and operating system upgrades are finalized. We are avoiding further integrations on the current OS due to driver complexity. We anticipate reopening for purchases in March/April, pending successful infrastructure deployment.
 
     Please contact rc-support@ucl.ac.uk for prices and let us know your timescales. 
 
