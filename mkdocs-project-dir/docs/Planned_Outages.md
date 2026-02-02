@@ -16,7 +16,7 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-3 February 2026 | Young | Planned | To be confirmed end of week. Second half of GPU nodes being moved to different cabinet. Nodes `node-x12t-001` and `003` in current Young and `002` in new Young portion will be drained, moved and re-enabled.
+3 February 2026 | Young | Postponed | Cancelled for 3 Feb, to be rescheduled. Second half of GPU nodes being moved to different cabinet. Nodes `node-x12t-001` and `003` in current Young and `002` in new Young portion will be drained, moved and re-enabled.
 
 ## Previous Outages
 
