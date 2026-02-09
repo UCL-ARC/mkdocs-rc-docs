@@ -64,6 +64,10 @@ srun myprog
 
 Practical examples of how to run parallel tasks can be found in [Slurm Example Jobscripts](Slurm_Example_Jobscripts.md).
 
+#### Slurm directives must be at the top
+
+Slurm requires all the `#SBATCH` directives to be together at the top of the file. Once there are any commands being run, it will ignore any further `#SBATCH` lines. This is different from SGE which would parse those lines from anywhere in the file.
+
 ### Passing in command-line arguments
 
 You can also pass options directly to the `sbatch` command and this will override the settings in your script. This can be useful if you are scripting your job submissions in more complicated ways.
