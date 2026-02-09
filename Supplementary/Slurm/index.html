@@ -1918,6 +1918,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Using a bash jobscript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slurm-directives-must-be-at-the-top" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slurm directives must be at the top
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2149,6 +2166,8 @@ srun myprog
 </code></pre></div>
 
 <p>Practical examples of how to run parallel tasks can be found in <a href="../Slurm_Example_Jobscripts/">Slurm Example Jobscripts</a>.</p>
+<h4 id="slurm-directives-must-be-at-the-top">Slurm directives must be at the top<a class="headerlink" href="#slurm-directives-must-be-at-the-top" title="Permanent link">§</a></h4>
+<p>Slurm requires all the <code>#SBATCH</code> directives to be together at the top of the file. Once there are any commands being run, it will ignore any further <code>#SBATCH</code> lines. This is different from SGE which would parse those lines from anywhere in the file.</p>
 <h3 id="passing-in-command-line-arguments">Passing in command-line arguments<a class="headerlink" href="#passing-in-command-line-arguments" title="Permanent link">§</a></h3>
 <p>You can also pass options directly to the <code>sbatch</code> command and this will override the settings in your script. This can be useful if you are scripting your job submissions in more complicated ways.</p>
 <p>For example, if you want to change the name of the job for this one instance of the job you can submit your script with:</p>
