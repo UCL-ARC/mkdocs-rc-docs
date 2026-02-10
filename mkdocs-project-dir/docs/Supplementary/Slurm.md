@@ -118,17 +118,17 @@ All commands and resource requests are passed in via the command line, no Slurm 
 
 This example would start an interactive session with 32G RAM and 8 CPUs on one node.
 ```
-srun --mem-per-task=4G --nodes=1 --ntasks-per-node=8 --pty bash -l
+srun --mem-per-cpu=4G --nodes=1 --ntasks-per-node=8 --pty bash -l
 ```
 
 This next example would start a session that requests 64 CPUs across 4 nodes, with 32G RAM reserved per node.  Since it uses salloc the session will start on the login node and *not* migrate the session to a compute node.  From here you could use `srun` or `mpirun` to execute an application in parallel.
 ```
-salloc --mem-per-task=2G --nodes=4 --ntasks-per-node=16
+salloc --mem-per-cpu=2G --nodes=4 --ntasks-per-node=16
 ```
 
 This final example would start an interactive session on one GPU node, with one GPU, 8G RAM, and 1 CPU.
 ```
-srun --gres=gpu:1 --mem-per-task=8G --nodes=1 --ntasks-per-node=1 --pty bash -l
+srun --gres=gpu:1 --mem-per-cpu=8G --nodes=1 --ntasks-per-node=1 --pty bash -l
 ```
 
 For more detailed examples, please refer to [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
