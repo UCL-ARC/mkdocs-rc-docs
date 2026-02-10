@@ -2199,15 +2199,15 @@ srun myprog
 <p>There are two methods for starting an interactive session.  <code>srun</code> will migrate your session to a compute node immediately whereas <code>salloc</code> will allocate resources and start a new session but leave you on the login node.  <code>salloc</code> is generally best for multi-node MPI jobs whereas <code>srun</code> should be used for pretty much all other single-node interactive jobs.</p>
 <p>All commands and resource requests are passed in via the command line, no Slurm script is used.</p>
 <p>This example would start an interactive session with 32G RAM and 8 CPUs on one node.</p>
-<div class="codehilite"><pre><span></span><code>srun --mem-per-task=4G --nodes=1 --ntasks-per-node=8 --pty bash -l
+<div class="codehilite"><pre><span></span><code>srun --mem-per-cpu=4G --nodes=1 --ntasks-per-node=8 --pty bash -l
 </code></pre></div>
 
 <p>This next example would start a session that requests 64 CPUs across 4 nodes, with 32G RAM reserved per node.  Since it uses salloc the session will start on the login node and <em>not</em> migrate the session to a compute node.  From here you could use <code>srun</code> or <code>mpirun</code> to execute an application in parallel.</p>
-<div class="codehilite"><pre><span></span><code>salloc --mem-per-task=2G --nodes=4 --ntasks-per-node=16
+<div class="codehilite"><pre><span></span><code>salloc --mem-per-cpu=2G --nodes=4 --ntasks-per-node=16
 </code></pre></div>
 
 <p>This final example would start an interactive session on one GPU node, with one GPU, 8G RAM, and 1 CPU.</p>
-<div class="codehilite"><pre><span></span><code>srun --gres=gpu:1 --mem-per-task=8G --nodes=1 --ntasks-per-node=1 --pty bash -l
+<div class="codehilite"><pre><span></span><code>srun --gres=gpu:1 --mem-per-cpu=8G --nodes=1 --ntasks-per-node=1 --pty bash -l
 </code></pre></div>
 
 <p>For more detailed examples, please refer to <a href="../Slurm_Example_Jobscripts/">Slurm Example Jobscripts</a></p>
