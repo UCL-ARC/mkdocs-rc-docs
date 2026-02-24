@@ -1554,8 +1554,6 @@ This page outlines that status of each of the machines managed by the Research C
     this time. This planned time period is dependent on work being completed over the next couple of months and
     we will update you nearer the time.
 
-#### Latest on Young
-
   - 2026-01-22 17:30 - **Upgraded Young section now available for testing**
 
     An upgraded portion of Young is now available, with RedHat Enterprise Linux 9 as the operating system and Slurm as the scheduler.
@@ -1587,6 +1585,15 @@ This page outlines that status of each of the machines managed by the Research C
     We will be adding more nodes into new Young in February.
 
     Please give us feedback on things that don't work or need more documenting!
+
+    #### Latest on Young
+
+  - 2026-02-24 10:20 - Young currently down - issue with routers
+
+    Young is currently down - there was a cooling failure in the datacentre that caused some of Young's routers to shut down.
+    We have people going to investigate and will update you when we know more.
+
+    You will not be able to log in and jobs that were running will have failed.
     
 
 ### Michael
