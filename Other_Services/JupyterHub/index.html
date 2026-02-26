@@ -1316,6 +1316,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#500-internal-server-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        500: Internal Server Error
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1990,6 +2018,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#500-internal-server-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        500: Internal Server Error
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2031,6 +2087,22 @@ first.</p>
   users, we reserve the right to terminate sessions without
   notice. For computationally intensive
   research you should be using the <a href="https://www.rc.ucl.ac.uk/docs/Clusters/Myriad/">Myriad Cluster</a>.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">§</a></h2>
+<p>As mentioned above, the Data Science Platform's Jupyterhub service is only available from the UCL network. If you aren't able to see the login page, please start by checking your network status (particularly your VPN if off-campus). If you run into issues with Jupyterhub after logging in, please see below for guidance.</p>
+<h3 id="500-internal-server-error">500: Internal Server Error<a class="headerlink" href="#500-internal-server-error" title="Permanent link">§</a></h3>
+<p>If you see <code>500: Internal Server Error</code> after attempting to open a notebook or new kernel, this is usually a result of configurations you have made to your local pip/conda/jupyter directories, which end up conflicting with what JupyterHub uses for sessions.</p>
+<p>You can try to fix this by temporarily renaming the hidden directories in your home folder with the following steps.</p>
+<ol>
+<li>Sign in to jupyterhub and open a terminal with <code>New</code> &gt; <code>Terminal</code></li>
+<li>You can list all files and folders in your home directory (including hidden folders, which start with <code>.</code>) using the following command:
+   - <code>ls -al ~/</code></li>
+<li>One at a time, rename/move the following directories using the <code>mv</code> command and check if you still get the error:
+   - <code>mv ~/.local ~/.local.old</code>
+   - <code>mv ~/.conda ~/.conda.old</code>
+   - <code>mv ~/.jupyter ~/.jupyter.old</code></li>
+<li>Your home folder may have additional hidden folders (e.g. <code>.ipython</code> or <code>.cache</code>), so try renaming these too if the above don't work</li>
+</ol>
+<p>This process is moving rather than deleting the directories, so you can still check on their contents, or change each back to the original name if not the source of the issue.</p>
 
 
 
