@@ -16,7 +16,8 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-? February 2026 | Young | Postponed | Cancelled for 3 Feb, to be rescheduled. Second half of GPU nodes being moved to different cabinet. Nodes `node-x12t-001` and `003` in current Young and `002` in new Young portion will be drained, moved and re-enabled.
+Easter, dates TBC | Kathleen, Young, Michael | Planned | Electrical testing in datacentre over Easter. Full outage expected for clusters.  
+? March 2026 | Young | Postponed | Cancelled for 3 Feb, to be rescheduled. Second half of GPU nodes being moved to different cabinet. Nodes `node-x12t-001` and `003` in current Young and `002` in new Young portion will be drained, moved and re-enabled. On hold until door is replaced.
 
 ## Previous Outages
 
