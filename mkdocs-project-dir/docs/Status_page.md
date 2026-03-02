@@ -1254,8 +1254,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     We will not have Apptainer available straight away - we intend to add it later.
 
-#### Latest on Kathleen
-
   - 2025-06-18 17:05 - Kathleen operating system and scheduler upgrade
 
     The upgraded half of Kathleen is now available.
@@ -1291,6 +1289,14 @@ This page outlines that status of each of the machines managed by the Research C
 
     For any of you using VSCode, it should be able to connect to new Kathleen. The operating system on old
     Kathleen (and Myriad) is old enough that current versions will no longer connect there.
+
+#### Latest on Kathleen
+
+  - 2026-03-02 10:00 - Overheating happening in Kathleen - nodes being switched off
+
+    There is overheating in the datacentre where Kathleen is and we are switching off compute nodes. It is possible
+    that Kathleen will be fully down depending on what else is affected - at present the login nodes and filesystem
+    are still up. We will investigate the cause and bring it back up when it is safe to do so.
 
 
 ### Young
@@ -1597,8 +1603,14 @@ This page outlines that status of each of the machines managed by the Research C
 
   - 2026-02-24 15:55 - Young running again
 
-   Young has been back up and running jobs since 2pm. We believe we have identified the root cause, but it is not fixed at
-   present and so the issue may reoccur. We will be talking to the datacentre team about what can be done. 
+    Young has been back up and running jobs since 2pm. We believe we have identified the root cause, but it is not fixed at
+    present and so the issue may reoccur. We will be talking to the datacentre team about what can be done. 
+
+  - 2026-03-02 09:50 - Young currently down - issue with routers
+
+    Young is currently down - we can see there was a temperature spike shortly before 8pm on Sunday and the routers shut
+    down as a result. We will be checking if the cause was the same as last week or something different and then bringing
+    the cluster back up.
     
 
 ### Michael
