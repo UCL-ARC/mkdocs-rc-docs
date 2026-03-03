@@ -1298,6 +1298,30 @@ This page outlines that status of each of the machines managed by the Research C
     that Kathleen will be fully down depending on what else is affected - at present the login nodes and filesystem
     are still up. We will investigate the cause and bring it back up when it is safe to do so.
 
+  - 2026-03-03 16:25 - **Overheating in Kathleen update**
+
+    We have found the root cause of the datacentre overheating issues, and works will be taking place tomorrow to fit
+    replacement water-cooled doors to some cabinets in there. There were issues with leaks in the pipes and hoses to
+    the doors, and this caused coolant shutdowns and subsequent overheating in adjacent cabinets.
+
+    Assuming the door replacement goes ahead as scheduled and everything is at normal temperature afterwards, we should
+    be able to bring Kathleen back into service after the works tomorrow, minus one cabinet of compute nodes.
+ 
+    **Further work in a few weeks**
+
+    We expect to need a one-day outage and full shutdown in a few weeks to fix a slow underfloor leak that currently has
+    a temporary fix. It requires draining the coolant so needs a full outage. We will let you know when that is scheduled.
+
+    **Easter electrical work**
+
+    We expect there to also be an outage during Easter for annual electrical testing in the datacentre but do not have
+    dates for this yet. 
+
+    The planned outages are listed at [Planned Outages](https://www.rc.ucl.ac.uk/docs/Planned_Outages/) and will be updated
+    as well when we have dates.
+
+    My apologies for the interruption to your work, and hopefully we now have the situation understood and under control.
+
 
 ### Young
 
@@ -1611,6 +1635,39 @@ This page outlines that status of each of the machines managed by the Research C
     Young is currently down - we can see there was a temperature spike shortly before 8pm on Sunday and the routers shut
     down as a result. We will be checking if the cause was the same as last week or something different and then bringing
     the cluster back up.
+
+  - 2026-03-03 16:20 - **Update on Young**
+
+    An update on Young: the cause of the problems has been the water-cooled doors on the cabinets - more specifically,
+    leaks in the pipes and hoses carrying coolant to them. 
+
+    Tomorrow we are expecting a replacement door to arrive and be fitted for the cabinet that the routers are in. They
+    have been running without a door since 12 February, which would normally be ok for them as long as no other overheating
+    issues are happening nearby - but on 24 Feb and 1-2 March there were other overheating issues nearby. 
+
+    Assuming the door replacement goes ahead as scheduled and everything is at normal temperature afterwards, we should be
+    able to bring Young back into service after the works tomorrow, minus one cabinet of standard nodes that also needs a new
+    door. That cabinet had a serious leak with its door on Sun/Mon that triggered a shutdown of the coolant to it and its
+    adjacent cabinets, and this caused the current overheating and shutdown of the whole cluster.
+
+    **Further work in a few weeks**
+
+    We expect to need a one-day outage and full shutdown in a few weeks for a permanent fix to the February 24 issue, which was
+    a slow underfloor leak that currently has a temporary fix. It requires draining the coolant so needs a full outage. We will
+    let you know when that is scheduled.
+
+    **Easter electrical work**
+
+    We expect there to also be an outage during Easter for annual electrical testing in the datacentre but do not have dates
+    for this yet. 
+
+    The planned outages are listed at [Planned Outages](https://www.rc.ucl.ac.uk/docs/Planned_Outages/) and will be updated
+    as well when we have dates.
+
+    **New Young login nodes**
+
+    Once Young is back up, we have a proper external address for the login nodes in the new portion now, so you will be able to log
+    directly into `young-ng.rc.ucl.ac.uk` and not need to jump through the current login nodes to access it. [Young new OS and scheduler](https://www.rc.ucl.ac.uk/docs/Clusters/Young/#new-operating-system-and-scheduler)
     
 
 ### Michael
