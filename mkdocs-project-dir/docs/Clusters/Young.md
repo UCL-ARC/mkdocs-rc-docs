@@ -396,7 +396,7 @@ CPU cores per node.
 
 | Type  | Cores per node | RAM per node | tmpfs | Nodes | Memory request necessary | GPU |
 | ----- | -------------- | ------------ | ----- | ----- | ------------------------ | --- |
-| C     | 40             | 192G (188G usable) | None  | 576   | Any | None |
+| C     | 40             | 192G (188G usable) | None  | 508   | Any | None |
 | Y     | 40             | 1.5T         | None  | 3     | mpi: mem >=19G, smp: >186G total | None |
 | Z     | 36             | 3.0T         | None  | 3     | mpi: mem >=42G, smp: >1530G total | None |
 | X     | 64             | 1T           | 200G  | 6     | Any | 8 x Nvidia 40G A100 |
