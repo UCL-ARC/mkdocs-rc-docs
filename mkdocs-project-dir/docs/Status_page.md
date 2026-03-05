@@ -1290,8 +1290,6 @@ This page outlines that status of each of the machines managed by the Research C
     For any of you using VSCode, it should be able to connect to new Kathleen. The operating system on old
     Kathleen (and Myriad) is old enough that current versions will no longer connect there.
 
-#### Latest on Kathleen
-
   - 2026-03-02 10:00 - Overheating happening in Kathleen - nodes being switched off
 
     There is overheating in the datacentre where Kathleen is and we are switching off compute nodes. It is possible
@@ -1321,6 +1319,18 @@ This page outlines that status of each of the machines managed by the Research C
     as well when we have dates.
 
     My apologies for the interruption to your work, and hopefully we now have the situation understood and under control.
+
+#### Latest on Kathleen
+
+  - 2026-03-05 09:40 - **Kathleen running again**
+
+    The door replacements went ahead successfully and jobs were running again by around 18:00 last night. 
+
+    The further planned outages are listed at [Planned Outages](https://www.rc.ucl.ac.uk/docs/Planned_Outages/) and will
+    be updated as well when we have dates.
+
+    We intend for all of Kathleen's nodes to be in the new RHEL9+Slurm portion by the end of March, so if you haven't tried
+    that section out yet, please do: [Kathleen New OS and Scheduler](https://www.rc.ucl.ac.uk/docs/Clusters/Kathleen/#new-operating-system-and-scheduler). (We are currently working on getting the next set of software installed, which I know some of you are waiting for).
 
 
 ### Young
@@ -1616,8 +1626,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     Please give us feedback on things that don't work or need more documenting!
 
-    #### Latest on Young
-
   - 2026-02-24 10:20 - Young currently down - issue with routers
 
     Young is currently down - there was a cooling failure in the datacentre that caused some of Young's routers to shut down.
@@ -1668,7 +1676,24 @@ This page outlines that status of each of the machines managed by the Research C
 
     Once Young is back up, we have a proper external address for the login nodes in the new portion now, so you will be able to log
     directly into `young-ng.rc.ucl.ac.uk` and not need to jump through the current login nodes to access it. [Young new OS and scheduler](https://www.rc.ucl.ac.uk/docs/Clusters/Young/#new-operating-system-and-scheduler)
+
+#### Latest on Young
+
+  - 2026-03-05 09:40 - **Young running again**
+
+    The door replacements went ahead successfully and jobs were running again by around 18:00 last night. 
+
+    The further planned outages are listed at [Planned Outages](https://www.rc.ucl.ac.uk/docs/Planned_Outages/) and will be
+    updated as well when we have dates.
+
+    **New Young login nodes**
+
+    We have a proper external address for the login nodes in the new portion now, so you will be able to log directly into
+    `young-ng.rc.ucl.ac.uk` and not need to jump through the current login nodes to access it. [Young new OS and scheduler](https://www.rc.ucl.ac.uk/docs/Clusters/Young/#new-operating-system-and-scheduler)
     
+    We intend to move more nodes into the new portion of Young next week, so do try it out. Reminder: there is no Gold equivalent
+    available there yet.
+
 
 ### Michael
 
