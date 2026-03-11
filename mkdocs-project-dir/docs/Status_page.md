@@ -1694,6 +1694,21 @@ This page outlines that status of each of the machines managed by the Research C
     We intend to move more nodes into the new portion of Young next week, so do try it out. Reminder: there is no Gold equivalent
     available there yet.
 
+  - 2026-03-11 12:50 - **GPU node move happening on Tues 17 March; More nodes going into Slurm part of Young tomorrow**
+
+    The previously-postponed moving of the second half of the GPU nodes will be going ahead on Tuesday 17 March. Nodes
+    `node-x12t-001` and `003` in current Young and `002` in the new Young portion will be drained, physically moved into another
+    cabinet and re-enabled. You do not need to take any action, there will just temporarily be fewer GPU nodes available.
+
+    We are moving one of our routers at the same time so they are not both in the same cabinet. Young will be running as
+    normal but at risk during Tues 17 March if anything goes wrong with the other router since we will be lacking redundancy
+    during the move. This will be updated on [Planned Outages](https://www.rc.ucl.ac.uk/docs/Planned_Outages/) shortly.
+
+    Also a reminder that more nodes are being added in to the Slurm part of Young tomorrow so do try using it if you haven't yet:
+    for access and the differences in Slurm jobscripts and commands see [Young new operating system and scheduler](https://www.rc.ucl.ac.uk/docs/Clusters/Young/#new-operating-system-and-scheduler).
+
+    We are working on adding more licensed software back to the Slurm side.
+
 
 ### Michael
 
