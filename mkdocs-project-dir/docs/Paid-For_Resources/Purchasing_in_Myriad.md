@@ -18,17 +18,6 @@ Researchers may purchase additional resources to be used as part of the [Myriad]
 
 Costs will include backend infrastructure – racks, switches, cables etc – needed to integrate the compute nodes into the facility. Both options can be costed into research proposals. These costs will be stated in an agreed Statement of Work document giving details of the number of each node type to be purchased, which must be approved by ARC and the purchaser before the purchase can go ahead.
 
-## Deadline
-
-We will be able to bring new hardware online in March 2025, no hardware can be added to Myriad before then. 
-If you need your purchase to be receipted before this date, let us know and we may be able to accommodate 
-this. However, holding the hardware ahead of March will require additional work for us to store it and 
-would be a last resort. We will not be able to do this for large numbers of nodes.
-
-We expect to be able to run regular quarterly rounds again after this.
-
-Next round (currently unconfirmed): **mid-June 2025**. Let us know if you intend to take part in this one.
-
 
 ## Node types
 
@@ -44,55 +33,56 @@ Lenovo ThinkSystem SD535 V3
 - 2x 480GB M.2 7450 PRO NVMe SSD (960G)
 
 ### NVIDIA GPU nodes
+Note that RAM and disk amounts are volatile just now and some of these specs are likely to change. The H200s are also being discontinued.
 
 #### [GPU node 2U 01] 
 Lenovo ThinkSystem SR655 V3 with 2x NVIDIA L40S GPUs
 
-- 1x AMD EPYC 9354P 32C 280W 3.25GHz 
+- 1x AMD EPYC 9355 32C 280W 3.55GHz Processor (32 cores)
 - 768G RAM, 2x 960GB M.2 NVMe (1920GB)
 - 2x NVIDIA L40S 48GB
 
 #### [GPU node 2U 02] 
-Lenovo ThinkSystem SR655 V3 with 2x NVIDIA H100
+Lenovo ThinkSystem SR655 V3 with 2x NVIDIA H200
 
-- 1x AMD EPYC 9354P 32C 280W 3.25GHz
-- 768G RAM, 2x 960GB M.2 NVMe (1920GB)
-- 2x NVIDIA H100 94GB
+- 2 x AMD EPYC 9355 32C 280W 3.55GHz Processor (64 cores)
+- 768G RAM, 2x 960GB M.2 NVMe (960GB)
+- 2 x NVIDIA H200 NVL 141GB PCIe GPU
 
 #### [GPU node 2U 03] 
 Lenovo ThinkSystem SR655 V3 with 4x NVIDIA L4
 
-- 1x AMD EPYC 9354P 32C 280W 3.25GHz
+- 1x AMD EPYC 9355 32C 280W 3.55GHz Processor (32 cores)
 - 768G RAM, 2x 960GB M.2 NVMe (1920GB)
 - 4x NVIDIA L4 24GB
 
-#### [GPU node 3U 01] 
-Lenovo ThinkSystem SR675 V3 with 4x NVIDIA L40S GPUs
+#### [GPU node 2U 04]
+Lenovo ThinkSystem SR655 V3 with 2x NVIDIA RTX 6000 (Max-Q)
 
-- 2x AMD EPYC 9354 32C 280W 3.25GHz (64 cores total)
-- 1536G RAM, 2x 960GB NVMe (1920GB)
-- 4x NVIDIA L40S 48GB
-
-#### [GPU node 3U 02] 
-Lenovo ThinkSystem SR675 V3 with 4x NVIDIA H100 GPUs
-
-- 2x AMD EPYC 9354 32C 280W 3.25GHz (64 cores total)
-- 1536G RAM, 2x 960GB NVMe (1920GB)
-- 4x NVIDIA H100 94GB
+- 1x AMD EPYC 9355 32C 280W 3.55GHz Processor (32 cores)
+- 768GB RAM, 2x 480GB M.2 NVMe (960G)
+- 2x RTX 6000 Ada 96GB
 
 #### [GPU node 3U 03] 
-Lenovo ThinkSystem SR675 V3 with 8x NVIDIA L40S GPUs
+Lenovo ThinkSystem SR675 V3 with 8x NVIDIA RTX PRO 6000 GPUs
 
-- 2x AMD EPYC 9354 32C 280W 3.25GHz (64 cores total)
-- 1536G RAM, 2x E1.S 5.9mm 7450 PRO 3.84TB NVMe
-- 8x NVIDIA L40S 48GB
+- 2 x AMD EPYC 9455 48C 300W 3.15GHz Processor (96 cores)
+- 768G RAM, 2 x M.2 VA 480GB NVMe SSD (960G)
+- 8 x NVIDIA RTX PRO 6000 Blackwell Server Edition 96GB
 
 #### [GPU node 3U 04] 
-Lenovo ThinkSystem SR675 V3 with 8x NVIDIA H100 GPUs
+Lenovo ThinkSystem SR675 V3 with 8x NVIDIA H200 GPUs
 
-- 2x AMD EPYC 9354 32C 280W 3.25GHz (64 cores total)
-- 1536G RAM, 2x E1.S 5.9mm 7450 PRO 3.84TB NVMe
-- 8x NVIDIA H100 94GB
+- 2x AMD EPYC 9475F 48C 400W 3.65GHz Processor (96 cores total)
+- 1536G RAM, 2x 15.36TB NVMe (30.72TB)
+- 8x NVIDIA H200 NVL 141GB PCIe GPU + NVLink Bridges
+
+#### [GPU node 3U 05] 
+Lenovo ThinkSystem SR675 V3 with 4x NVIDIA H200 GPUs
+
+- 2x AMD EPYC 9355 32C 280W 3.55GHz (64 cores total)
+- 768GB RAM, 2 x M.2 VA 480GB NVMe SSD (960GB)
+- 4 x NVIDIA H200 NVL 141GB PCIe GPU
 
 ### AMD GPU nodes
 
@@ -100,7 +90,7 @@ Lenovo ThinkSystem SR675 V3 with 8x NVIDIA H100 GPUs
 Lenovo SR675 V3 with 4x AMD Instinct MI210
 
 - 2x AMD EPYC 9354P 32C 280W 3.25GHz (64 cores total)
-- 1536GB RAM,  2x 960GB NVMe (1920GB)
+- 1536GB RAM, 2x 960GB NVMe (1920GB)
 - 4x AMD Instinct MI210
 
 #### [GPU node 3U AMD 02]
