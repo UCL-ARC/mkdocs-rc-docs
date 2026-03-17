@@ -103,6 +103,8 @@ The SSH gateway consists of two separate servers in a pool internally named `ejp
 
 Because the `/home` filesystem is not shared across the jump boxes, you need to sync SSH configuration files like `~/.ssh/authorized_keys` across all the available jump boxes so that the change takes effect whichever jump box you are allocated to.
 
+If you have ended up on the server without your new keys, you can ssh directly to the other one with `ssh ejp-gateway01` if you are on `ejp-gateway02` or `ssh ejp-gateway02` if you are on `ejp-gateway01`.
+
 A script is installed on the systems to help you with the synchronisation.
 
 Check the help for the `copy-ssh-keys` command:
