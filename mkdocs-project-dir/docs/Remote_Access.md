@@ -38,11 +38,23 @@ The public key needs to be copied on to the systems you want to SSH into. You ca
 
 #### Example of adding a public key using `scp` while connected to the VPN:
 
+You can do this in multiple commands, or you can run the one-line multi-part command given in [Using Desktop Anywhere instead of UCL VPN](#using-desktop-anywhere-instead-of-ucl-vpn). These are the multiple commands:
+
 ```
 scp /home/ccaaxyz/.ssh/id_ed25519.pub ccaaxyz@ssh-gateway.ucl.ac.uk:
 ```
 
 It will ask you for your UCL password and copy the file on to the ssh-gateway. The `:` at the end is important, it is followed by the remote location the key is being copied to - defaulting to your home directory. 
+
+```
+ssh ccaaxyz@ssh-gateway.ucl.ac.uk
+mkdir -p .ssh
+chmod go-rwx .ssh
+cat id_ed25519.pub >> .ssh/authorized_keys
+chmod go-rwx .ssh/authorized_keys
+```
+
+This logs you in to the gateway, makes a `.ssh` directory if it doesn't exist, sets the permissions so that no one other than you can read, write and execute. It appends the contents of your `.pub` file to the end of the `.ssh/authorized_keys` if it already exists, or creates it if it doesn't. It sets the permissions on that so that no one other than you can read and write.
 
 #### Example of adding a public key using `ssh-copy-id` while connected to the VPN:
 
@@ -54,11 +66,11 @@ ssh-copy-id ccaaxyz@ssh-gateway.ucl.ac.uk
 
 ### Test the key authentication by logging in
 
-SSH into the gateway and observe whether it asks for your key passphrase instead of a password. 
+SSH into the gateway and observe whether it asks for your key passphrase instead of a password. (It may not, see [Synchronise your key](synchronise-your-key).
 
 ![Testing SSH login](img/ssh_keys/ssh_keys_03.png)
 
-### Using Desktop@UCL Anywhere instead of UCL VPN
+### Using Desktop Anywhere instead of UCL VPN
 
 You can still use ssh-keygen to generate a key, but you may prefer to generate the key somewhere else and just copy the contents of the public key file. The `ssh-copy-id` tool is not implemented on this platform, so a one line ssh command can be used instead.
 
@@ -117,7 +129,9 @@ You can configure your ssh client to automatically connect via these jump boxes 
 
 ### Video resources
 
-These videos show SSH key creation and use. They were created when you could still log in to the SSH Gateway with a password from outside UCL, however. They show multiple steps for the `scp` option above rather than a one-line command:
+These videos show SSH key creation and use. They were created when you could still log in to the SSH Gateway with a password from outside UCL, however, so do not include a connecting to the VPN step. We show multiple steps for the `scp` option above rather than a one-line command.
+
+We go on to add the SSH public key to the cluster in the same manner as you added it to the SSH Gateway.
 
 * [SSH key pair pt 1 (moodle)](https://moodle.ucl.ac.uk/mod/page/view.php?id=4845640) (UCL users)
 * [SSH key pair pt 2 (moodle)](https://moodle.ucl.ac.uk/mod/page/view.php?id=4845645) (UCL users)
