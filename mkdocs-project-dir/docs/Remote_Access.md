@@ -58,6 +58,8 @@ This logs you in to the gateway, makes a `.ssh` directory if it doesn't exist, s
 
 #### Example of adding a public key using `ssh-copy-id` while connected to the VPN:
 
+You can do this instead of the `scp` command above if you have a `ssh-copy-id` command available on your system.
+
 ```
 ssh-copy-id ccaaxyz@ssh-gateway.ucl.ac.uk
 ```
