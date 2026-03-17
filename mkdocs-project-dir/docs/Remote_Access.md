@@ -11,6 +11,17 @@ As of 23 March 2026, you need to set up SSH keys on the SSH gateway to be able t
 
 - [SSH Gateway and Key Authentication documentation from ISD](https://liveuclac.sharepoint.com/sites/Cloud/SitePages/SSH-Gateway-+-Key-Authentication.aspx) - some of the below is copied from there.
 
+## Post-quantum key exchange warning
+
+If your OpenSSH version is new enough, you may see this warning when running the ssh command.
+
+```
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+```
+
+You do not need to be concerned about this as it is not an imminent threat, but read the linked information in the message if you want to know more.
 
 ## Set up SSH keys
 
