@@ -9,20 +9,120 @@ UCL's Research Computing services are accessible from inside the UCL firewall.  
 
 As of 23 March 2026, you need to set up SSH keys on the SSH gateway to be able to log into it from outside UCL. It accepts password logins when you are on the [UCL VPN](https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn) or on [Desktop@UCL Anywhere](https://www.ucl.ac.uk/isd/services/computers/remote-access/desktopucl-anywhere) - you can use these routes to do the initial set up your SSH keys which you can then use from anywhere not at UCL.
 
-- [SSH Gateway and Key Authentication documentation from ISD](https://liveuclac.sharepoint.com/sites/Cloud/SitePages/SSH-Gateway-+-Key-Authentication.aspx)
+- [SSH Gateway and Key Authentication documentation from ISD](https://liveuclac.sharepoint.com/sites/Cloud/SitePages/SSH-Gateway-+-Key-Authentication.aspx) - some of the below is copied from there.
 
 
-## Connecting to the jump boxes
+## Set up SSH keys
 
-You can connect to the jump boxes by connecting with your SSH client to:
+The first time you use the SSH Gateway, you will need to be on the [UCL VPN](https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn) or on [Desktop@UCL Anywhere](https://www.ucl.ac.uk/isd/services/computers/remote-access/desktopucl-anywhere).
+
+In order to enable SSH key authentication, you will first of all need to upload a private key to the service.
+
+This can be done via the trusted sources (VPN/Desktop Anywhere).
+
+### Create an SSH key pair on your own system
+
+An SSH key consists of a public and private pair. The public key can be shared, while the private key should be kept safe, never emailed to anyone and never shared in any form.
+
+Open a terminal and run `ssh-keygen`. It will ask you the location and name of the private key file to save, and show you the default place and name it will create. It will ask you for a passphrase - do not leave this blank, give it a memorable and secure passphrase. If you leave it blank, then your private key will be unencrypted. 
+
+It will tell you that your identification has been saved (the private key) and that your public key has been saved (the same name with `.pub` on the end).
+
+If you forget the passphrase, it is not recoverable and you will need to create a new key pair.
+
+![SSH keygen](img/ssh_keys/ssh_keys_01.png)
+
+### Add the SSH public key to the gateway
+
+The public key needs to be copied on to the systems you want to SSH into. You can do this with the Secure Copy command `scp` or you may have `ssh-copy-id` available as a command, which is more straightforward.
+
+#### Example of adding a public key using `scp` while connected to the VPN:
 
 ```
-ssh-gateway.ucl.ac.uk
+scp /home/ccaaxyz/.ssh/id_ed25519.pub ccaaxyz@ssh-gateway.ucl.ac.uk:
 ```
 
-Once connected you can then log on to the UCL RC service you are using as normal.
+It will ask you for your UCL password and copy the file on to the ssh-gateway. The `:` at the end is important, it is followed by the remote location the key is being copied to - defaulting to your home directory. 
+
+#### Example of adding a public key using `ssh-copy-id` while connected to the VPN:
+
+```
+ssh-copy-id ccaaxyz@ssh-gateway.ucl.ac.uk
+```
+
+![Using ssh-copy-id](img/ssh_keys/ssh_keys_02.png)
+
+### Test the key authentication by logging in
+
+SSH into the gateway and observe whether it asks for your key passphrase instead of a password. 
+
+![Testing SSH login](img/ssh_keys/ssh_keys_03.png)
+
+### Using Desktop@UCL Anywhere instead of UCL VPN
+
+You can still use ssh-keygen to generate a key, but you may prefer to generate the key somewhere else and just copy the contents of the public key file. The `ssh-copy-id` tool is not implemented on this platform, so a one line ssh command can be used instead.
+
+Create a key pair in Windows PowerShell using `ssh-keygen`:
+![Creating a key paid in Windows PowerShell](img/ssh_keys/ssh_keys_04.png)
+
+Upload the public key to the SSH Gateway with a one line multi-part command:
+
+```
+cat .\.ssh\id_ed25519.pub | ssh ccaaxyz@ssh-gateway.ucl.ac.uk "mkdir -p .ssh && chmod 700 .ssh && cat >> .ssh/authorized_keys && chmod 600 .ssh/authorized_keys"
+```
+
+This pipes in the contents of your `.pub` key file to an ssh command that connects to the gateway and then runs the bash commands in quotes. These are 
+- `mkdir -p .ssh` - make a directory called `.ssh` if it doesn't exist
+- `chmod 700 .ssh` - change the permissions on the `.ssh` directory to only read, write and executable by you
+- `cat >> .ssh/authorized_keys` - append the piped-in contents of your `.pub` key file to `.ssh/authorized_keys`, creating it if it doesn't exist
+- `chmod 600 .ssh/authorized_keys` - change the permissions on the `.ssh/authorized_keys` file to only readable and writable by you
+
+![Uploading key in one command](img/ssh_keys/ssh_keys_05.png)
+
+Test the key authentication by logging in:
+
+![Testing SSH login in PowerShell](img/ssh_keys/ssh_keys_06.png)
+
+### Synchronise your key
+
+The SSH gateway consists of two separate servers in a pool internally named `ejp-gateway01.ad.ucl.ac.uk` and `ejp-gateway02.ad.ucl.ac.uk`. You can see which machine you are logged into by the bash prompt.
+
+Because the `/home` filesystem is not shared across the jump boxes, you need to sync SSH configuration files like `~/.ssh/authorized_keys` across all the available jump boxes so that the change takes effect whichever jump box you are allocated to.
+
+A script is installed on the systems to help you with the synchronisation.
+
+Check the help for the `copy-ssh-keys` command:
+```
+copy-ssh-keys -h
+```
+
+![Help display for copy-ssh-keys](img/ssh_keys/ssh_keys_07.png)
+
+It can be run from one jump box and will use rsync to synchronise files in ~/.ssh to the other jump box:
+
+```
+copy-ssh-keys -copy -verbose
+```
+
+![Run copy-ssh-keys](img/ssh_keys/ssh_keys_08.png)
+
+If `authorized_keys` does not match on the partner system then you will be prompted for your password.
+
+!!! warning
+    If you use SSH keys you absolutely **MUST NOT STORE UNENCRYPTED/NON-PASSWORD-PROTECTED PRIVATE KEYS ON THE CLUSTERS OR ANY OTHER MULTI-USER COMPUTER**. This is a security risk. We will be running regular scans of the filesystem to identify and then block unencrypted key pairs across our services.
+
+Once the SSH gateway is set up you can then ssh on to the UCL RC service you are using as normal.
 
 You can configure your ssh client to automatically connect via these jump boxes so that you make the connection in one step.
+
+### Video resources
+
+These videos show SSH key creation and use. They were created when you could still log in to the SSH Gateway with a password from outside UCL, however. They show multiple steps for the `scp` option above rather than a one-line command:
+
+* [SSH key pair pt 1 (moodle)](https://moodle.ucl.ac.uk/mod/page/view.php?id=4845640) (UCL users)
+* [SSH key pair pt 2 (moodle)](https://moodle.ucl.ac.uk/mod/page/view.php?id=4845645) (UCL users)
+* [SSH key pair pt 1 (mediacentral)](https://mediacentral.ucl.ac.uk/Play/96472) (non-UCL users)
+* [SSH key pair pt 2 (mediacentral)](https://mediacentral.ucl.ac.uk/Play/96694) (non-UCL users)
 
 ### Single-step logins using tunnelling
 
@@ -44,13 +144,6 @@ scp -o ProxyJump=ccxxxxx@ssh-gateway.ucl.ac.uk my_file ccxxxxx@kathleen.rc.ucl.a
 This tunnels through the jump box service in order to get you to your destination - you'll be asked for your password twice, once for each machine. You can use this to log in or to copy files.
 
 You may also need to do this if you are trying to reach one cluster from another and there is a firewall in the way.
-
-Useful resources can be found here:
-
-* [SSH key pair pt 1 (moodle)](https://moodle.ucl.ac.uk/mod/page/view.php?id=4845640) (UCL users)
-* [SSH key pair pt 2 (moodle)](https://moodle.ucl.ac.uk/mod/page/view.php?id=4845645) (UCL users)
-* [SSH key pair pt 1 (mediacentral)](https://mediacentral.ucl.ac.uk/Play/96472) (non-UCL users)
-* [SSH key pair pt 2 (mediacentral)](https://mediacentral.ucl.ac.uk/Play/96694) (non-UCL users)
 
 ##### Using a config file
 
@@ -156,27 +249,3 @@ separate boxes for hostname and port, put `localhost` as the hostname and `3333`
 The individual servers in the pool for the Gateway service have extremely limited file storage space, intentionally, and should not be used for storing files - if you need to transfer files you should use the two-step process above.  This storage should only be used for SSH configuration files.
 
 This storage is not mirrored across the jump boxes which means if you write a file to your home directory, you will not be able to read it if you are allocated to another jump box next time you log in.
-
-## Key management
-
-!!! warning
-    If you use SSH keys you absolutely **MUST NOT STORE UNENCRYPTED PRIVATE KEYS ON THIS OR ANY OTHER MULTI-USER COMPUTER**.  We will be running regular scans of the filesystem to identify and then block unencrypted key pairs across our services.
-
-There are currently two servers in the pool, internally named `ejp-gateway01` and `ejp-gateway02`. 
-
-Because the `/home` filesystem is not shared across the jump boxes, you need to sync SSH configuration files like `~/.ssh/authorized_keys` across all the available jump boxes so that the change takes effect whichever jump box you are allocated to.
-
-You can see which machine you are logged into by the bash prompt.
-
-So for example, if on `ejp-gateway02` then do:
-
-```console
-[ccaaxxx@ad.ucl.ac.uk@ejp-gateway02 ~]$ scp -r ~/.ssh ejp-gateway01:
-
-Password:
-known_hosts 100% 196 87.1KB/s 00:00
-authorized_keys 100% 0 0.0KB/s 00:00
-[ccaaxxx@ad.ucl.ac.uk@ejp-gateway02 ~]$
-```
-
-and similarly if on `ejp-gateway01` do `scp -r ~/.ssh ejp-gateway02:`
