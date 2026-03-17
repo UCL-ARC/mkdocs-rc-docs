@@ -48,14 +48,7 @@ With WSL you cannot use the VPN or it breaks WSL's network connections, so you n
 
 ### Logging in from outside the UCL firewall
 
-You will need to either use the [UCL Virtual Private Network](https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn/) or ssh in to UCL's Gateway system `ssh-gateway.ucl.ac.uk` first. From there you can then ssh in to our systems. 
-
-```
-ssh <your_UCL_user_id>@ssh-gateway.ucl.ac.uk
-ssh <your_UCL_user_id>@<system_name>.rc.ucl.ac.uk
-```
-
-**Advanced:** If you find you need to go via the Gateway often, you can set up this jump automatically, see [Single-step logins using tunnelling](#single-step-logins-using-tunnelling).  This is also necessary if you need to run graphical applications remotely on the cluster from outside the firewall (via X-forwarding).
+You will need to either use the [UCL Virtual Private Network](https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn/) or ssh in to UCL's Gateway system `ssh-gateway.ucl.ac.uk` first. From there you can then ssh in to our systems. You will need to [set up SSH keys](Remote_Access.md#set-up-ssh-keys) to be able to access the SSH Gateway from outside UCL as it will no longer accept password logins from external sources. See [Remote Access](Remote_Access.md) for details.
 
 ### Login problems
 
@@ -215,123 +208,7 @@ files and have them transferred to the cluster.
 
 As when logging in, when you are outside the UCL firewall you will need a method to connect inside it before you copy files.
 
-You can use the [UCL Virtual Private Network](https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn/) and scp direct to our systems or you can do some form of SSH tunnelling.
-
-### Single-step logins using tunnelling
-
-#### Linux / Unix / macOS
-
-##### On the command line
-
-```
-# Log in to Myriad, jumping via the Gateway (replace ccxxxxx with your own username)
-ssh -o ProxyJump=ccxxxxx@ssh-gateway.ucl.ac.uk ccxxxxx@myriad.rc.ucl.ac.uk
-```
-or
-```
-# Copy 'my_file' from the machine you are logged in to into your Scratch on Grace
-# Replace ccxxxxx with your own username.
-scp -o ProxyJump=ccxxxxx@ssh-gateway.ucl.ac.uk my_file ccxxxxx@myriad.rc.ucl.ac.uk:~/Scratch/
-```
-
-This tunnels through the Gateway in order to get you to your destination - you'll be asked for your password twice, once for each machine. You can use this to log in or to copy files.
-
-You may also need to do this if you are trying to reach one cluster from another and there is a firewall in the way.
-
-##### Using a config file
-
-You can create a config file which does this without you needing to type it every time.
-
-Inside your `~/.ssh` directory on your local machine, add the below to your `config` file (or create a file called `config` if you don't already have one).
-
-Generally, it should be of this form where `<name>` can be anything you want to call this entry.
-
-```
-Host <name>
-   User <remote_user_id>
-   HostName <remote_hostname>
-   proxyCommand ssh -W <remote_hostname>:22 <remote_user_id>@ssh-gateway.ucl.ac.uk
-```
-This causes the commands you type in your client to be forwarded on over a secure channel to the specified remote host.
-
-Here are some examples - you can have as many of these as you need in your config file.
-```
-Host myriad
-   User ccxxxxx
-   HostName myriad.rc.ucl.ac.uk
-   proxyCommand ssh -W myriad.rc.ucl.ac.uk:22 ccxxxxx@ssh-gateway.ucl.ac.uk
-
-Host myriad12
-   User ccxxxxx
-   HostName login12.myriad.rc.ucl.ac.uk
-   proxyCommand ssh -W login12.myriad.rc.ucl.ac.uk:22 ccxxxxx@ssh-gateway.ucl.ac.uk
-
-Host aristotle
-   User ccxxxxx
-   HostName aristotle.rc.ucl.ac.uk
-   proxyCommand ssh -W aristotle.rc.ucl.ac.uk:22 ccxxxxx@ssh-gateway.ucl.ac.uk
-```
-
-You can now just type `ssh myriad` or `scp file1 aristotle:~` and you will go through the Gateway. You'll be asked for login details twice since you're logging in to two machines, a Gateway server and your endpoint.  
-
-#### Windows - WinSCP
-
-WinSCP can also set up SSH tunnels.
-
- 1. Create a new session as before, and tick the Advanced options box in the bottom left corner.
- 2. Select Connection > Tunnel from the left pane.
- 3. Tick the Connect through SSH tunnel box and enter the hostname of the gateway you are tunnelling through, for example ssh-gateway.ucl.ac.uk
- 4. Fill in your username and password for that host. (Central UCL ones for the Gateway).
- 5. Select Session from the left pane and fill in the hostname you want to end up on after the tunnel.
- 6. Fill in your username and password for that host and set the file protocol to SCP.
- 7. Save your settings with a useful name.
-
-#### Creating a tunnel that other applications can use
-
-Some applications do not read your SSH config file and also cannot set up tunnels themselves,
-but can use one that you have created separately. FileZilla in particular is something you
-may want to do this with to transfer your files directly to the clusters from outside UCL using 
-a graphical client.
-
-##### SSH tunnel creation using a terminal
-
-You can do this in Linux, macOS and the Windows Command Prompt on Windows 10 and later.
-
-Set up a tunnel between a port on your local computer (this is using 3333 as it is unlikely to be
-in use, but you can pick different ones) to Myriad's port 22 (which is the standard port for ssh), 
-going via a UCL gateway.
-
-```
-# replace ccxxxxx with your UCL username
-ssh -L 3333:myriad.rc.ucl.ac.uk:22 ccxxxxx@ssh-gateway.ucl.ac.uk 
-```
-
-You may also want to use the `-N` option to tell it not to execute any remote commands and 
-`-f` to put this command into the background if you want to continue to type other commands 
-into the same terminal.
-
-The tunnel now exists, and `localhost:3333` on your computer connects to Myriad.
-
-You can do this with ports other than 22 if you are not wanting to ssh in but to instead connect
-with a local browser to something running on Myriad. Here the port remains as 3333,
-something could be launched on that port on Myriad and your browser could be pointed at 
-`localhost:3333` to connect to it.
-
-```
-# replace ccxxxxx with your UCL username
-ssh -L 3333:myriad.rc.ucl.ac.uk:3333 ccxxxxx@ssh-gateway.ucl.ac.uk
-```
-
-Do not leave things like this running for long periods on the login nodes.
-
-##### SSH tunnel creation using PuTTY
-
-On Windows you can also [set up a tunnel using PuTTY](https://winscp.net/eng/docs/guide_tunnel#tunnel_putty).
-
-##### Connect to your tunnel with an application (like FileZilla)
-
-You can then tell your application to connect to `localhost:3333` instead of Myriad. If it has 
-separate boxes for hostname and port, put `localhost` as the hostname and `3333` as the port.
+You can use the [UCL Virtual Private Network](https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn/) and scp direct to our systems or you can do some form of [SSH tunnelling](RemoteAccess.md#single-step-logins-using-tunnelling).
 
 ### Managing your quota
 
