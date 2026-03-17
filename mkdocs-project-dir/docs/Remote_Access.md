@@ -125,8 +125,8 @@ copy-ssh-keys -copy -verbose
 If `authorized_keys` does not match on the partner system then you will be prompted for your password.
 
 !!! warning
-    If you use SSH keys you absolutely **MUST NOT STORE UNENCRYPTED/NON-PASSWORD-PROTECTED PRIVATE KEYS ON THE CLUSTERS OR ANY OTHER MULTI-USER COMPUTER**. This is a security risk. We will be running regular scans of the filesystem to identify and then block unencrypted key pairs across our services.
-
+    If you use SSH keys you absolutely **MUST NOT STORE UNENCRYPTED/NON-PASSWORD-PROTECTED PRIVATE KEYS ON THE CLUSTERS OR ANY OTHER MULTI-USER COMPUTER**. This is a security risk. 
+    
 Once the SSH gateway is set up you can then ssh on to the UCL RC service you are using as normal.
 
 You can configure your ssh client to automatically connect via these jump boxes so that you make the connection in one step.
