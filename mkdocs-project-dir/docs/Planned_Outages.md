@@ -16,7 +16,6 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-17 March 2026 | Young | Planned | Second half of GPU nodes being moved to different cabinet. Nodes `node-x12t-001` and `003` in current Young and `002` in new Young portion will be drained, moved and re-enabled. Also one router will be moved at the same time so they are not both in the same cabinet. Young will be running as normal but at risk during this since we will be lacking redundancy.
 March, date TBC | Young, Kathleen | Planned | One-day outage and full shutdown for a permanent fix to a slow underfloor leak.
 Easter, dates TBC | Kathleen, Young, Michael | Planned | Electrical testing in datacentre over Easter. Full outage expected for clusters.  
 
@@ -24,6 +23,7 @@ Easter, dates TBC | Kathleen, Young, Michael | Planned | Electrical testing in d
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
+17 March 2026 | Young | Completed | Second half of GPU nodes being moved to different cabinet. Nodes `node-x12t-001` and `003` in current Young and `002` in new Young portion will be drained, moved and re-enabled. Also one router will be moved at the same time so they are not both in the same cabinet. Young will be running as normal but at risk during this since we will be lacking redundancy.
 27 January 2026 | Young | Completed | Half of the GPU nodes being moved to different cabinet. `node-x12t-00[4-6]` will be drained, moved and re-enabled. Jobs will keep running on `node-x12t-001` and `003` during this time (`002` is in the new operating system portion of Young). Queue time likely to increase. We then plan to move the other three GPU nodes a week or two later.
 20 January 2026 | Young, Michael | Completed | Half day job outage from 8am for updates to .bashrc without affecting running jobs. Jobs will remain in the queue until the outage is over. Work in preparation to grant access to RHEL9 and Slurm environment, will make sure modules work on both old and new parts of cluster.
 11-12 November 2025 | Young | Completed | Full outage during maintenance day from 8am, may overrun into 12 Nov. No access and jobs will remain in the queue. Work taking place on management nodes in preparation for future RHEL9 and Slurm environment.
