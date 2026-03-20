@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -613,16 +613,121 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#connecting-to-the-jump-boxes" class="md-nav__link">
+  <a href="#post-quantum-key-exchange-warning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Connecting to the jump boxes
+        Post-quantum key exchange warning
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Connecting to the jump boxes">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-ssh-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set up SSH keys
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Set up SSH keys">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-an-ssh-key-pair-on-your-own-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create an SSH key pair on your own system
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-the-ssh-public-key-to-the-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add the SSH public key to the gateway
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Add the SSH public key to the gateway">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-of-adding-a-public-key-using-scp-while-connected-to-the-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example of adding a public key using scp while connected to the VPN:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-of-adding-a-public-key-using-ssh-copy-id-while-connected-to-the-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example of adding a public key using ssh-copy-id while connected to the VPN:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-the-key-authentication-by-logging-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test the key authentication by logging in
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-desktop-anywhere-instead-of-ucl-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Desktop Anywhere instead of UCL VPN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronise-your-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Synchronise your key
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#video-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Video resources
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#single-step-logins-using-tunnelling" class="md-nav__link">
@@ -675,6 +780,67 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#windows-winscp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows - WinSCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-tunnel-that-other-applications-can-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a tunnel that other applications can use
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a tunnel that other applications can use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh-tunnel-creation-using-a-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSH tunnel creation using a terminal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-tunnel-creation-using-putty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSH tunnel creation using PuTTY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-to-your-tunnel-with-an-application-like-filezilla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connect to your tunnel with an application (like FileZilla)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -690,17 +856,6 @@
     <span class="md-ellipsis">
       
         File storage on the Gateway servers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key management
       
     </span>
   </a>
@@ -2040,16 +2195,121 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#connecting-to-the-jump-boxes" class="md-nav__link">
+  <a href="#post-quantum-key-exchange-warning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Connecting to the jump boxes
+        Post-quantum key exchange warning
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Connecting to the jump boxes">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-ssh-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set up SSH keys
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Set up SSH keys">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-an-ssh-key-pair-on-your-own-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create an SSH key pair on your own system
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-the-ssh-public-key-to-the-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add the SSH public key to the gateway
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Add the SSH public key to the gateway">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-of-adding-a-public-key-using-scp-while-connected-to-the-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example of adding a public key using scp while connected to the VPN:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-of-adding-a-public-key-using-ssh-copy-id-while-connected-to-the-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example of adding a public key using ssh-copy-id while connected to the VPN:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-the-key-authentication-by-logging-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test the key authentication by logging in
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-desktop-anywhere-instead-of-ucl-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Desktop Anywhere instead of UCL VPN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronise-your-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Synchronise your key
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#video-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Video resources
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#single-step-logins-using-tunnelling" class="md-nav__link">
@@ -2102,6 +2362,67 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#windows-winscp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows - WinSCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-tunnel-that-other-applications-can-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a tunnel that other applications can use
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a tunnel that other applications can use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh-tunnel-creation-using-a-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSH tunnel creation using a terminal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-tunnel-creation-using-putty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSH tunnel creation using PuTTY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-to-your-tunnel-with-an-application-like-filezilla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connect to your tunnel with an application (like FileZilla)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2117,17 +2438,6 @@
     <span class="md-ellipsis">
       
         File storage on the Gateway servers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key management
       
     </span>
   </a>
@@ -2156,13 +2466,100 @@
 
 <h1 id="remote-access-to-research-computing-resources">Remote Access to Research Computing Resources<a class="headerlink" href="#remote-access-to-research-computing-resources" title="Permanent link">§</a></h1>
 <p>UCL's Research Computing services are accessible from inside the UCL firewall.  If you wish to connect from outside, you need to either connect through a VPN or use SSH to log in to a machine accessible from outside and use that to "jump" through into the UCL network.</p>
-<h2 id="connecting-to-the-jump-boxes">Connecting to the jump boxes<a class="headerlink" href="#connecting-to-the-jump-boxes" title="Permanent link">§</a></h2>
-<p>You can connect to the jump boxes by connecting with your SSH client to:</p>
-<div class="codehilite"><pre><span></span><code>ssh-gateway.ucl.ac.uk
+<p>As of 23 March 2026, you need to set up SSH keys on the SSH gateway to be able to log into it from outside UCL. It accepts password logins when you are on the <a href="https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn">UCL VPN</a> or on <a href="https://www.ucl.ac.uk/isd/services/computers/remote-access/desktopucl-anywhere">Desktop@UCL Anywhere</a> - you can use these routes to do the initial set up your SSH keys which you can then use from anywhere not at UCL.</p>
+<ul>
+<li><a href="https://liveuclac.sharepoint.com/sites/Cloud/SitePages/SSH-Gateway-+-Key-Authentication.aspx">SSH Gateway and Key Authentication documentation from ISD</a> - some of the below is copied from there.</li>
+</ul>
+<h2 id="post-quantum-key-exchange-warning">Post-quantum key exchange warning<a class="headerlink" href="#post-quantum-key-exchange-warning" title="Permanent link">§</a></h2>
+<p>If your OpenSSH version is new enough, you may see this warning when running the ssh command.</p>
+<div class="codehilite"><pre><span></span><code>** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to &quot;store now, decrypt later&quot; attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
 </code></pre></div>
 
-<p>Once connected you can then log on to the UCL RC service you are using as normal.</p>
+<p>You do not need to be concerned about this as it is not an imminent threat, but read the linked information in the message if you want to know more.</p>
+<h2 id="set-up-ssh-keys">Set up SSH keys<a class="headerlink" href="#set-up-ssh-keys" title="Permanent link">§</a></h2>
+<p>The first time you use the SSH Gateway, you will need to be on the <a href="https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn">UCL VPN</a> or on <a href="https://www.ucl.ac.uk/isd/services/computers/remote-access/desktopucl-anywhere">Desktop@UCL Anywhere</a>.</p>
+<p>In order to enable SSH key authentication, you will first of all need to upload a private key to the service.</p>
+<p>This can be done via the trusted sources (VPN/Desktop Anywhere).</p>
+<h3 id="create-an-ssh-key-pair-on-your-own-system">Create an SSH key pair on your own system<a class="headerlink" href="#create-an-ssh-key-pair-on-your-own-system" title="Permanent link">§</a></h3>
+<p>An SSH key consists of a public and private pair. The public key can be shared, while the private key should be kept safe, never emailed to anyone and never shared in any form.</p>
+<p>Open a terminal and run <code>ssh-keygen</code>. It will ask you the location and name of the private key file to save, and show you the default place and name it will create. It will ask you for a passphrase - do not leave this blank, give it a memorable and secure passphrase. If you leave it blank, then your private key will be unencrypted. </p>
+<p>It will tell you that your identification has been saved (the private key) and that your public key has been saved (the same name with <code>.pub</code> on the end).</p>
+<p>If you forget the passphrase, it is not recoverable and you will need to create a new key pair.</p>
+<p><img alt="SSH keygen" src="../img/ssh_keys/ssh_keys_01.png" /></p>
+<h3 id="add-the-ssh-public-key-to-the-gateway">Add the SSH public key to the gateway<a class="headerlink" href="#add-the-ssh-public-key-to-the-gateway" title="Permanent link">§</a></h3>
+<p>The public key needs to be copied on to the systems you want to SSH into. You can do this with the Secure Copy command <code>scp</code> or you may have <code>ssh-copy-id</code> available as a command, which is more straightforward.</p>
+<h4 id="example-of-adding-a-public-key-using-scp-while-connected-to-the-vpn">Example of adding a public key using <code>scp</code> while connected to the VPN:<a class="headerlink" href="#example-of-adding-a-public-key-using-scp-while-connected-to-the-vpn" title="Permanent link">§</a></h4>
+<p>You can do this in multiple commands, or you can run the one-line multi-part command given in <a href="#using-desktop-anywhere-instead-of-ucl-vpn">Using Desktop Anywhere instead of UCL VPN</a>. These are the multiple commands:</p>
+<div class="codehilite"><pre><span></span><code>scp /home/ccaaxyz/.ssh/id_ed25519.pub ccaaxyz@ssh-gateway.ucl.ac.uk:
+</code></pre></div>
+
+<p>It will ask you for your UCL password and copy the file on to the ssh-gateway. The <code>:</code> at the end is important, it is followed by the remote location the key is being copied to - defaulting to your home directory. </p>
+<div class="codehilite"><pre><span></span><code>ssh ccaaxyz@ssh-gateway.ucl.ac.uk
+mkdir -p .ssh
+chmod go-rwx .ssh
+cat id_ed25519.pub &gt;&gt; .ssh/authorized_keys
+chmod go-rwx .ssh/authorized_keys
+</code></pre></div>
+
+<p>This logs you in to the gateway, makes a <code>.ssh</code> directory if it doesn't exist, sets the permissions so that no one other than you can read, write and execute. It appends the contents of your <code>.pub</code> file to the end of the <code>.ssh/authorized_keys</code> if it already exists, or creates it if it doesn't. It sets the permissions on that so that no one other than you can read and write.</p>
+<h4 id="example-of-adding-a-public-key-using-ssh-copy-id-while-connected-to-the-vpn">Example of adding a public key using <code>ssh-copy-id</code> while connected to the VPN:<a class="headerlink" href="#example-of-adding-a-public-key-using-ssh-copy-id-while-connected-to-the-vpn" title="Permanent link">§</a></h4>
+<p>You can do this instead of the <code>scp</code> command above if you have a <code>ssh-copy-id</code> command available on your system.</p>
+<div class="codehilite"><pre><span></span><code>ssh-copy-id ccaaxyz@ssh-gateway.ucl.ac.uk
+</code></pre></div>
+
+<p><img alt="Using ssh-copy-id" src="../img/ssh_keys/ssh_keys_02.png" /></p>
+<h3 id="test-the-key-authentication-by-logging-in">Test the key authentication by logging in<a class="headerlink" href="#test-the-key-authentication-by-logging-in" title="Permanent link">§</a></h3>
+<p>SSH into the gateway and observe whether it asks for your key passphrase instead of a password. (It may not, in either case go next to <a href="synchronise-your-key">Synchronise your key</a>.</p>
+<p><img alt="Testing SSH login" src="../img/ssh_keys/ssh_keys_03.png" /></p>
+<h3 id="using-desktop-anywhere-instead-of-ucl-vpn">Using Desktop Anywhere instead of UCL VPN<a class="headerlink" href="#using-desktop-anywhere-instead-of-ucl-vpn" title="Permanent link">§</a></h3>
+<p>You can still use ssh-keygen to generate a key, but you may prefer to generate the key somewhere else and just copy the contents of the public key file. The <code>ssh-copy-id</code> tool is not implemented on this platform, so a one line ssh command can be used instead.</p>
+<p>Create a key pair in Windows PowerShell using <code>ssh-keygen</code>:
+<img alt="Creating a key paid in Windows PowerShell" src="../img/ssh_keys/ssh_keys_04.png" /></p>
+<p>Upload the public key to the SSH Gateway with a one line multi-part command:</p>
+<div class="codehilite"><pre><span></span><code>cat .\.ssh\id_ed25519.pub | ssh ccaaxyz@ssh-gateway.ucl.ac.uk &quot;mkdir -p .ssh &amp;&amp; chmod 700 .ssh &amp;&amp; cat &gt;&gt; .ssh/authorized_keys &amp;&amp; chmod 600 .ssh/authorized_keys&quot;
+</code></pre></div>
+
+<p>This pipes in the contents of your <code>.pub</code> key file to an ssh command that connects to the gateway and then runs the bash commands in quotes. These are 
+- <code>mkdir -p .ssh</code> - make a directory called <code>.ssh</code> if it doesn't exist
+- <code>chmod 700 .ssh</code> - change the permissions on the <code>.ssh</code> directory to only read, write and executable by you
+- <code>cat &gt;&gt; .ssh/authorized_keys</code> - append the piped-in contents of your <code>.pub</code> key file to <code>.ssh/authorized_keys</code>, creating it if it doesn't exist
+- <code>chmod 600 .ssh/authorized_keys</code> - change the permissions on the <code>.ssh/authorized_keys</code> file to only readable and writable by you</p>
+<p><img alt="Uploading key in one command" src="../img/ssh_keys/ssh_keys_05.png" /></p>
+<p>Test the key authentication by logging in:</p>
+<p><img alt="Testing SSH login in PowerShell" src="../img/ssh_keys/ssh_keys_06.png" /></p>
+<h3 id="synchronise-your-key">Synchronise your key<a class="headerlink" href="#synchronise-your-key" title="Permanent link">§</a></h3>
+<p>The SSH gateway consists of two separate servers in a pool internally named <code>ejp-gateway01.ad.ucl.ac.uk</code> and <code>ejp-gateway02.ad.ucl.ac.uk</code>. You can see which machine you are logged into by the bash prompt.</p>
+<p>Because the <code>/home</code> filesystem is not shared across the jump boxes, you need to sync SSH configuration files like <code>~/.ssh/authorized_keys</code> across all the available jump boxes so that the change takes effect whichever jump box you are allocated to.</p>
+<p>If you have ended up on the server without your new keys, you can ssh directly to the other one with <code>ssh ejp-gateway01</code> if you are on <code>ejp-gateway02</code> or <code>ssh ejp-gateway02</code> if you are on <code>ejp-gateway01</code>.</p>
+<p>A script is installed on the systems to help you with the synchronisation.</p>
+<p>Check the help for the <code>copy-ssh-keys</code> command:</p>
+<div class="codehilite"><pre><span></span><code>copy-ssh-keys -h
+</code></pre></div>
+
+<p><img alt="Help display for copy-ssh-keys" src="../img/ssh_keys/ssh_keys_07.png" /></p>
+<p>It can be run from one jump box and will use rsync to synchronise files in ~/.ssh to the other jump box:</p>
+<div class="codehilite"><pre><span></span><code>copy-ssh-keys -copy -verbose
+</code></pre></div>
+
+<p><img alt="Run copy-ssh-keys" src="../img/ssh_keys/ssh_keys_08.png" /></p>
+<p>If <code>authorized_keys</code> does not match on the partner system then you will be prompted for your password.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you use SSH keys you absolutely <strong>MUST NOT STORE UNENCRYPTED/NON-PASSWORD-PROTECTED PRIVATE KEYS ON THE CLUSTERS OR ANY OTHER MULTI-USER COMPUTER</strong>. This is a security risk. </p>
+</div>
+<p>Once the SSH gateway is set up you can then ssh on to the UCL RC service you are using as normal.</p>
 <p>You can configure your ssh client to automatically connect via these jump boxes so that you make the connection in one step.</p>
+<h3 id="video-resources">Video resources<a class="headerlink" href="#video-resources" title="Permanent link">§</a></h3>
+<p>These videos show SSH key creation and use. They were created when you could still log in to the SSH Gateway with a password from outside UCL, however, so do not include a connecting to the VPN step. We show multiple steps for the <code>scp</code> option above rather than a one-line command.</p>
+<p>We go on to add the SSH public key to the cluster in the same manner as you added it to the SSH Gateway.</p>
+<ul>
+<li><a href="https://moodle.ucl.ac.uk/mod/page/view.php?id=4845640">SSH key pair pt 1 (moodle)</a> (UCL users)</li>
+<li><a href="https://moodle.ucl.ac.uk/mod/page/view.php?id=4845645">SSH key pair pt 2 (moodle)</a> (UCL users)</li>
+<li><a href="https://mediacentral.ucl.ac.uk/Play/96472">SSH key pair pt 1 (mediacentral)</a> (non-UCL users)</li>
+<li><a href="https://mediacentral.ucl.ac.uk/Play/96694">SSH key pair pt 2 (mediacentral)</a> (non-UCL users)</li>
+</ul>
 <h3 id="single-step-logins-using-tunnelling">Single-step logins using tunnelling<a class="headerlink" href="#single-step-logins-using-tunnelling" title="Permanent link">§</a></h3>
 <h4 id="linux-unix-macos">Linux / Unix / macOS<a class="headerlink" href="#linux-unix-macos" title="Permanent link">§</a></h4>
 <h5 id="on-the-command-line">On the command line<a class="headerlink" href="#on-the-command-line" title="Permanent link">§</a></h5>
@@ -2179,13 +2576,6 @@ scp -o ProxyJump=ccxxxxx@ssh-gateway.ucl.ac.uk my_file ccxxxxx@kathleen.rc.ucl.a
 
 <p>This tunnels through the jump box service in order to get you to your destination - you'll be asked for your password twice, once for each machine. You can use this to log in or to copy files.</p>
 <p>You may also need to do this if you are trying to reach one cluster from another and there is a firewall in the way.</p>
-<p>Useful resources can be found here:</p>
-<ul>
-<li><a href="https://moodle.ucl.ac.uk/mod/page/view.php?id=4845640">SSH key pair pt 1 (moodle)</a> (UCL users)</li>
-<li><a href="https://moodle.ucl.ac.uk/mod/page/view.php?id=4845645">SSH key pair pt 2 (moodle)</a> (UCL users)</li>
-<li><a href="https://mediacentral.ucl.ac.uk/Play/96472">SSH key pair pt 1 (mediacentral)</a> (non-UCL users)</li>
-<li><a href="https://mediacentral.ucl.ac.uk/Play/96694">SSH key pair pt 2 (mediacentral)</a> (non-UCL users)</li>
-</ul>
 <h5 id="using-a-config-file">Using a config file<a class="headerlink" href="#using-a-config-file" title="Permanent link">§</a></h5>
 <p>You can create a config which does this without you needing to type it every time.</p>
 <p>Inside your <code>~/.ssh</code> directory on your local machine, add the below to your <code>config</code> file (or create a file called <code>config</code> if you don't already have one).</p>
@@ -2217,27 +2607,52 @@ Host aristotle
 </code></pre></div>
 
 <p>You can now just type <code>ssh myriad</code> or <code>scp file1 aristotle:~</code> and you will go through the jump box. You'll be asked for login details twice since you're logging in to two machines, the jump box and your endpoint.  </p>
+<h4 id="windows-winscp">Windows - WinSCP<a class="headerlink" href="#windows-winscp" title="Permanent link">§</a></h4>
+<p>WinSCP can also set up SSH tunnels.</p>
+<ol>
+<li>Create a new session as before, and tick the Advanced options box in the bottom left corner.</li>
+<li>Select Connection &gt; Tunnel from the left pane.</li>
+<li>Tick the Connect through SSH tunnel box and enter the hostname of the gateway you are tunnelling through, for example ssh-gateway.ucl.ac.uk</li>
+<li>Fill in your username and password for that host. (Central UCL ones for the Gateway).</li>
+<li>Select Session from the left pane and fill in the hostname you want to end up on after the tunnel.</li>
+<li>Fill in your username and password for that host and set the file protocol to SCP.</li>
+<li>Save your settings with a useful name.</li>
+</ol>
+<h4 id="creating-a-tunnel-that-other-applications-can-use">Creating a tunnel that other applications can use<a class="headerlink" href="#creating-a-tunnel-that-other-applications-can-use" title="Permanent link">§</a></h4>
+<p>Some applications do not read your SSH config file and also cannot set up tunnels themselves,
+but can use one that you have created separately. FileZilla in particular is something you
+may want to do this with to transfer your files directly to the clusters from outside UCL using 
+a graphical client.</p>
+<h5 id="ssh-tunnel-creation-using-a-terminal">SSH tunnel creation using a terminal<a class="headerlink" href="#ssh-tunnel-creation-using-a-terminal" title="Permanent link">§</a></h5>
+<p>You can do this in Linux, macOS and the Windows Command Prompt on Windows 10 and later.</p>
+<p>Set up a tunnel between a port on your local computer (this is using 3333 as it is unlikely to be
+in use, but you can pick different ones) to Myriad's port 22 (which is the standard port for ssh), 
+going via a UCL gateway.</p>
+<div class="codehilite"><pre><span></span><code># replace ccxxxxx with your UCL username
+ssh -L 3333:myriad.rc.ucl.ac.uk:22 ccxxxxx@ssh-gateway.ucl.ac.uk 
+</code></pre></div>
+
+<p>You may also want to use the <code>-N</code> option to tell it not to execute any remote commands and 
+<code>-f</code> to put this command into the background if you want to continue to type other commands 
+into the same terminal.</p>
+<p>The tunnel now exists, and <code>localhost:3333</code> on your computer connects to Myriad.</p>
+<p>You can do this with ports other than 22 if you are not wanting to ssh in but to instead connect
+with a local browser to something running on Myriad. Here the port remains as 3333,
+something could be launched on that port on Myriad and your browser could be pointed at 
+<code>localhost:3333</code> to connect to it.</p>
+<div class="codehilite"><pre><span></span><code># replace ccxxxxx with your UCL username
+ssh -L 3333:myriad.rc.ucl.ac.uk:3333 ccxxxxx@ssh-gateway.ucl.ac.uk
+</code></pre></div>
+
+<p>Do not leave things like this running for long periods on the login nodes.</p>
+<h5 id="ssh-tunnel-creation-using-putty">SSH tunnel creation using PuTTY<a class="headerlink" href="#ssh-tunnel-creation-using-putty" title="Permanent link">§</a></h5>
+<p>On Windows you can also <a href="https://winscp.net/eng/docs/guide_tunnel#tunnel_putty">set up a tunnel using PuTTY</a>.</p>
+<h5 id="connect-to-your-tunnel-with-an-application-like-filezilla">Connect to your tunnel with an application (like FileZilla)<a class="headerlink" href="#connect-to-your-tunnel-with-an-application-like-filezilla" title="Permanent link">§</a></h5>
+<p>You can then tell your application to connect to <code>localhost:3333</code> instead of Myriad. If it has 
+separate boxes for hostname and port, put <code>localhost</code> as the hostname and <code>3333</code> as the port.</p>
 <h2 id="file-storage-on-the-gateway-servers">File storage on the Gateway servers<a class="headerlink" href="#file-storage-on-the-gateway-servers" title="Permanent link">§</a></h2>
 <p>The individual servers in the pool for the Gateway service have extremely limited file storage space, intentionally, and should not be used for storing files - if you need to transfer files you should use the two-step process above.  This storage should only be used for SSH configuration files.</p>
 <p>This storage is not mirrored across the jump boxes which means if you write a file to your home directory, you will not be able to read it if you are allocated to another jump box next time you log in.</p>
-<h2 id="key-management">Key management<a class="headerlink" href="#key-management" title="Permanent link">§</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>If you use SSH keys you absolutely <strong>MUST NOT STORE UNENCRYPTED PRIVATE KEYS ON THIS OR ANY OTHER MULTI-USER COMPUTER</strong>.  We will be running regular scans of the filesystem to identify and then block unencrypted key pairs across our services.</p>
-</div>
-<p>There are currently two servers in the pool, internally named <code>ejp-gateway01</code> and <code>ejp-gateway02</code>. </p>
-<p>Because the <code>/home</code> filesystem is not shared across the jump boxes, you need to sync SSH configuration files like <code>~/.ssh/authorized_keys</code> across all the available jump boxes so that the change takes effect whichever jump box you are allocated to.</p>
-<p>You can see which machine you are logged into by the bash prompt.</p>
-<p>So for example, if on <code>ejp-gateway02</code> then do:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">[ccaaxxx@ad.ucl.ac.uk@ejp-gateway02 ~]$ </span>scp<span class="w"> </span>-r<span class="w"> </span>~/.ssh<span class="w"> </span>ejp-gateway01:
-
-<span class="go">Password:</span>
-<span class="go">known_hosts 100% 196 87.1KB/s 00:00</span>
-<span class="go">authorized_keys 100% 0 0.0KB/s 00:00</span>
-<span class="gp">[ccaaxxx@ad.ucl.ac.uk@ejp-gateway02 ~]$</span>
-</code></pre></div>
-
-<p>and similarly if on <code>ejp-gateway01</code> do <code>scp -r ~/.ssh ejp-gateway02:</code></p>
 
 
 
