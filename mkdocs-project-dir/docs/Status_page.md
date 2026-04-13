@@ -1320,8 +1320,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     My apologies for the interruption to your work, and hopefully we now have the situation understood and under control.
 
-#### Latest on Kathleen
-
   - 2026-03-05 09:40 - **Kathleen running again**
 
     The door replacements went ahead successfully and jobs were running again by around 18:00 last night. 
@@ -1331,6 +1329,61 @@ This page outlines that status of each of the machines managed by the Research C
 
     We intend for all of Kathleen's nodes to be in the new RHEL9+Slurm portion by the end of March, so if you haven't tried
     that section out yet, please do: [Kathleen New OS and Scheduler](https://www.rc.ucl.ac.uk/docs/Clusters/Kathleen/#new-operating-system-and-scheduler). (We are currently working on getting the next set of software installed, which I know some of you are waiting for).
+
+#### Latest on Kathleen
+
+  - 2026-04-13 16:00 - **New software stack available on Kathleen - will be made default in 2 weeks**
+
+    On the new half of Kathleen there is now a `ucl-stack/2026-03` module as well as the previous `ucl-stack/2025-05`. 
+
+    Additional software it provides includes: 
+    - openfoamplus 2112 and 2312 (module name `openfoam`)
+    - paraview
+    - R 4.5.2 and the corresponding bundle package `r-4.5.2_bc-3.22` with many R and Bioconductor packages included
+    - VMD
+    - Grace
+    - GULP
+    - glpk
+    - CP2K 2025.2
+    - CRYSTAL23
+    - parallel
+    - openbabel
+    - ORCA 6.1.1
+
+    The `2025-05` stack is being left as the default for the next two weeks, after which the 2026-03 stack will be made the default (so if you module load ucl-stack without a version included what you get will change, but if you load a specific version you will continue to get that version).
+
+    To use now, do this on the login nodes or in your jobscripts:
+
+    ```
+    module purge 
+    module load ucl-stack/2026-03
+    ```
+
+    You can then run module avail to see the new modules.
+
+    You should see output that looks like this:
+
+    ```
+    ----------------------------------- /apps/spack/0.23/deploy/2026-03/modules/linux-rhel9-cascadelake ------------------------------------
+    apr-util/1.6.3/gcc-12.3.0                                         libxcursor/1.2.2/gcc-12.3.0                           
+    apr/1.7.5/gcc-12.3.0                                              mpi/intel-oneapi-mpi/2021.14.0/intel-oneapi-2024.2.1  
+    (lots more modules)
+
+    ------------------------------------------------- /apps/hpc-modulefiles/kathleen/core --------------------------------------------------
+    default-modules/2025-05  default-modules/2026-03  ucl-stack/2025-05  ucl-stack/2026-03  userscripts/2025-05  userscripts/2026-03  
+
+    ------------------------------------------------- /apps/hpc-modulefiles/kathleen/apps --------------------------------------------------
+    comsol/6.4-chemeng  comsol/6.4-eee  crystal23/1.0.1/intel-2021.13.1  gulp/6.4/gcc-12.3.0  star-ccm+/13.06.012  
+
+    ------------------------------------------------ /apps/hpc-modulefiles/kathleen/bundles ------------------------------------------------
+    r-4.5.2_bc-3.22 
+    ```
+
+    If you don't see separate sections for the core, apps and bundles modules, if you log out and in again you will get the new layout.
+
+    We intend to keep the current and previous stacks available and deprecate and then remove the oldest stack as we build more. You will receive notice of this.
+
+    We are aware of NAMD issues and are still working on a different NAMD install. We are also waiting for new installers for various of the other licensed applications that belong to departments.
 
 
 ### Young
