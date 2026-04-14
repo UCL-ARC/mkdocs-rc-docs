@@ -16,13 +16,15 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-March, date TBC | Young, Kathleen | Planned | One-day outage and full shutdown for a permanent fix to a slow underfloor leak.
-Easter, dates TBC | Kathleen, Young, Michael | Planned | Electrical testing in datacentre over Easter. Full outage expected for clusters.  
+20 April 2026 | Kathleen | Planned | Replacement chiller door scheduled to arrive for old-Kathleen cabinet that is currently out of service. (Outage should not be required, but that cabinet is not running jobs until this is fixed).
+April, date TBC | Young, Kathleen | Planned | One-day outage and full shutdown for a permanent fix to a slow underfloor leak.
+ 
 
 ## Previous Outages
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
+Easter, dates TBC | Kathleen, Young, Michael | Cancelled | Electrical testing in datacentre over Easter. Full outage expected for clusters. 
 17 March 2026 | Young | Completed | Second half of GPU nodes being moved to different cabinet. Nodes `node-x12t-001` and `003` in current Young and `002` in new Young portion will be drained, moved and re-enabled. Also one router will be moved at the same time so they are not both in the same cabinet. Young will be running as normal but at risk during this since we will be lacking redundancy.
 27 January 2026 | Young | Completed | Half of the GPU nodes being moved to different cabinet. `node-x12t-00[4-6]` will be drained, moved and re-enabled. Jobs will keep running on `node-x12t-001` and `003` during this time (`002` is in the new operating system portion of Young). Queue time likely to increase. We then plan to move the other three GPU nodes a week or two later.
 20 January 2026 | Young, Michael | Completed | Half day job outage from 8am for updates to .bashrc without affecting running jobs. Jobs will remain in the queue until the outage is over. Work in preparation to grant access to RHEL9 and Slurm environment, will make sure modules work on both old and new parts of cluster.
