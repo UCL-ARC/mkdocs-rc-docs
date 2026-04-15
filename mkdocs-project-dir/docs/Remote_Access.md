@@ -79,7 +79,9 @@ ssh-copy-id ccaaxyz@ssh-gateway.ucl.ac.uk
 
 ### Test the key authentication by logging in
 
-SSH into the gateway and observe whether it asks for your key passphrase instead of a password. (It may not, in either case go next to [Synchronise your key](synchronise-your-key).
+SSH into the gateway and observe whether it asks for your key passphrase instead of a password. (It may not, if you get the half of the gateway it isn't yet uploaded to). 
+
+In either case go next to [Synchronise your key](#synchronise-your-key).
 
 ![Testing SSH login](img/ssh_keys/ssh_keys_03.png)
 
