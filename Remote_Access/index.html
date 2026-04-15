@@ -2511,7 +2511,8 @@ chmod go-rwx .ssh/authorized_keys
 
 <p><img alt="Using ssh-copy-id" src="../img/ssh_keys/ssh_keys_02.png" /></p>
 <h3 id="test-the-key-authentication-by-logging-in">Test the key authentication by logging in<a class="headerlink" href="#test-the-key-authentication-by-logging-in" title="Permanent link">§</a></h3>
-<p>SSH into the gateway and observe whether it asks for your key passphrase instead of a password. (It may not, in either case go next to <a href="synchronise-your-key">Synchronise your key</a>.</p>
+<p>SSH into the gateway and observe whether it asks for your key passphrase instead of a password. (It may not, if you get the half of the gateway it isn't yet uploaded to). </p>
+<p>In either case go next to <a href="#synchronise-your-key">Synchronise your key</a>.</p>
 <p><img alt="Testing SSH login" src="../img/ssh_keys/ssh_keys_03.png" /></p>
 <h3 id="using-desktop-anywhere-instead-of-ucl-vpn">Using Desktop Anywhere instead of UCL VPN<a class="headerlink" href="#using-desktop-anywhere-instead-of-ucl-vpn" title="Permanent link">§</a></h3>
 <p>You can still use ssh-keygen to generate a key, but you may prefer to generate the key somewhere else and just copy the contents of the public key file. The <code>ssh-copy-id</code> tool is not implemented on this platform, so a one line ssh command can be used instead.</p>
