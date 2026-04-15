@@ -75,37 +75,21 @@ missing or not receiving the approval email, so check with your sponsor first if
 your application is stuck waiting for approval. Research Computing can only
 create your account after it is approved.
 
-## Accounts for visitors
+## Accounts for visitors and Honorary staff
 
-UCL visitors are welcome to apply for accounts on Research Computing Services.
+UCL visitors and Honorary staff are welcome to apply for accounts on Research Computing Services.
 Please note that:
 
-1. Applicants must have a central UCL account. UCL Visitor accounts can be
-   arranged by your Departmental Administrator, so you should speak to them
+1. Applicants must have a central UCL account. UCL Visitor or Honorary accounts
+   can be arranged by your Departmental Administrator, so you should speak to them
    first.
-2. Account applications should specify the UCL grant under which the work is
+3. Account applications should specify the UCL grant under which the work is
    being carried out, if possible, as well as an associated UCL Group or
-   Researcher.
-3. Account applications may not be submitted on behalf of another, except to
+   Researcher. They will require you to list a fulltime UCL member of
+   staff as the account sponsor.
+4. Account applications may not be submitted on behalf of another, except to
    cover accessibility requirements, as the account application process includes
    agreeing to relevant legal terms and conditions.
-
-## Accounts for Honorary staff
-
-UCL Staff Members may nominate Honorary members (named individuals) to be
-provided with access to Research Computing services where this is beneficial to
-UCL's research interests.
-
-Nomination should be made via the
-[CRAG](http://www.ucl.ac.uk/isd/about/governance/research-it/crag), explaining
-the benefit arising to UCL.
-
-Proposals will be reviewed by the
-[CRAG](http://www.ucl.ac.uk/isd/about/governance/research-it/crag) at their
-monthly meeting and on a case by case basis.
-
-All accounts thus provided are subject to all other 'standard' T&C's relating to
-their use of Research Computing Services.
 
 ## Charges for use of Research Computing services
 
