@@ -26,7 +26,7 @@ Location: `/myriadfs/projects/blastdb`
 
 Contains weekly updated [NCBI BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) repositories for BLAST 
 nucleotide (nt), protein (nr) , core nucl (core_nt), and Diamond. Plus Taxonomizr and fcs (foreign 
-contammination scan) downloaded when needed.
+contamination scan) downloaded when needed.
 
 There is a README at `/myriadfs/projects/blastdb/README.md`.
 
@@ -36,6 +36,7 @@ you have used and when they were downloaded (For reproducibility).
 ### Cancer
 
 Location: `/myriadfs/projects/cancer`
+
 Software modules: `module load blic-modules`
 
 This space provides modules for NextFlow and other tools that can be made visible by first loading the
