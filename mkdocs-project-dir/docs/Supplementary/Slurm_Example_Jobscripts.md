@@ -214,7 +214,7 @@ module purge
 module load ucl-stack/2025-12
 
 # Loading the modules your application needs to execute
-module load <name of the module(s) you need
+module load <name of the module(s) you need>
 
 # Printing the location of the temporary storage
 echo $TMPDIR
@@ -228,6 +228,41 @@ Note that the `hbm` partition you need to explicitly specify.  If you don't, the
 
 #### Single node HBM interactive session
 `srun --parition=hbm --nodes=1 --ntasks-per-node=4 --time=12:00:00 --pty bash -l`
+
+### High-Memory node jobs
+
+#### Single node high memory script
+```
+#!/bin/bash
+
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=16
+#SBATCH --mem-per-cpu=100G
+#SBATCH --time=12:00:00
+#SBATCH --job-name=High_Mem_Job
+
+# Purging and reloading all modules to be sure of the job's environment
+module purge
+module load ucl-stack/2025-12
+
+# Loading the modules your application needs to execute
+module load <name of the module(s) you need>
+
+# Printing the location of the temporary storage
+echo $TMPDIR
+
+# Lines to execute below here
+<application execution here>
+
+```
+
+There are two ways to specify your memory needs, either with `--mem` which specifies memory per node, or with a combination of `--ntasks-per-node` and `--mem-per-cpu` which functionally specifies memory per node.  `--cpus-per-task` can also be set, but defaults to `1`.
+
+The threshholds for whether your job will land on a `Y` vs. `Z` node can be found in [Young Node Types](../Clusters/Young.md/#node-types).
+
+#### Single node high memory interactive session
+`srun --nodes=1 --ntasks-per-node=16 --mem-per-cpu=100G --time=12:00:00 --pty bash -l`
+
 
 ### GPU jobs
 
