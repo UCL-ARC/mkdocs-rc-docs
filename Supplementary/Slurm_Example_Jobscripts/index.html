@@ -2054,6 +2054,45 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#high-memory-node-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High-Memory node jobs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="High-Memory node jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-node-high-memory-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Single node high memory script
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-node-high-memory-interactive-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Single node high memory interactive session
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#gpu-jobs" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2336,7 +2375,7 @@ module purge
 module load ucl-stack/2025-12
 
 # Loading the modules your application needs to execute
-module load &lt;name of the module(s) you need
+module load &lt;name of the module(s) you need&gt;
 
 # Printing the location of the temporary storage
 echo $TMPDIR
@@ -2348,6 +2387,34 @@ echo $TMPDIR
 <p>Note that the <code>hbm</code> partition you need to explicitly specify.  If you don't, the job will run on a regular CPU node.  In this example we've also asked for 40G of temporary storage on the node.  </p>
 <h4 id="single-node-hbm-interactive-session">Single node HBM interactive session<a class="headerlink" href="#single-node-hbm-interactive-session" title="Permanent link">§</a></h4>
 <p><code>srun --parition=hbm --nodes=1 --ntasks-per-node=4 --time=12:00:00 --pty bash -l</code></p>
+<h3 id="high-memory-node-jobs">High-Memory node jobs<a class="headerlink" href="#high-memory-node-jobs" title="Permanent link">§</a></h3>
+<h4 id="single-node-high-memory-script">Single node high memory script<a class="headerlink" href="#single-node-high-memory-script" title="Permanent link">§</a></h4>
+<div class="codehilite"><pre><span></span><code>#!/bin/bash
+
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=16
+#SBATCH --mem-per-cpu=100G
+#SBATCH --time=12:00:00
+#SBATCH --job-name=High_Mem_Job
+
+# Purging and reloading all modules to be sure of the job&#39;s environment
+module purge
+module load ucl-stack/2025-12
+
+# Loading the modules your application needs to execute
+module load &lt;name of the module(s) you need&gt;
+
+# Printing the location of the temporary storage
+echo $TMPDIR
+
+# Lines to execute below here
+&lt;application execution here&gt;
+</code></pre></div>
+
+<p>There are two ways to specify your memory needs, either with <code>--mem</code> which specifies memory per node, or with a combination of <code>--ntasks-per-node</code> and <code>--mem-per-cpu</code> which functionally specifies memory per node.  <code>--cpus-per-task</code> can also be set, but defaults to <code>1</code>.</p>
+<p>The threshholds for whether your job will land on a <code>Y</code> vs. <code>Z</code> node can be found in <a href="../../Clusters/Young/#node-types">Young Node Types</a>.</p>
+<h4 id="single-node-high-memory-interactive-session">Single node high memory interactive session<a class="headerlink" href="#single-node-high-memory-interactive-session" title="Permanent link">§</a></h4>
+<p><code>srun --nodes=1 --ntasks-per-node=16 --mem-per-cpu=100G --time=12:00:00 --pty bash -l</code></p>
 <h3 id="gpu-jobs">GPU jobs<a class="headerlink" href="#gpu-jobs" title="Permanent link">§</a></h3>
 <h4 id="gpu-node-script">GPU node script<a class="headerlink" href="#gpu-node-script" title="Permanent link">§</a></h4>
 <div class="codehilite"><pre><span></span><code>#!/bin/bash
