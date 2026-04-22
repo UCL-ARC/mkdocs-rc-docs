@@ -50,4 +50,5 @@ Contact ci.bioinfohub@ucl.ac.uk if you have any questions about the modules.
 Location: `/myriadfs/projects/DTAdb`
 
 Contains datasets such as GWAS summary statistics and some core datasets like 1000 genomes and VEP.
+The GWAS data were normalised using this pipeline: https://cfinan.gitlab.io/gwas-norm/index.html
 
