@@ -7,7 +7,8 @@ In this example all modules are purged and then reloaded. This is not necessary,
 ```
 #!/bin/bash
 
-#SBATCH --job-name=vasp_6.4.3_2node
+# VASP
+#SBATCH --job-name=vasp_6.5.1_2node
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=40
 #SBATCH --cpus-per-task=1
@@ -15,28 +16,47 @@ In this example all modules are purged and then reloaded. This is not necessary,
 
 # Purging and reloading all modules to be sure of the job's enviroment
 module purge
-module load ucl-stack/2025-05
+module load ucl-stack/2026-03
 module load mpi/intel-oneapi-mpi/2021.14.0/intel-oneapi-2024.2.1
 module load intel-oneapi-mkl/2023.2.0-intel-oneapi-mpi/intel-oneapi-2024.2.1
-module load hdf5/1.14.3-intel-oneapi-mpi/oneapi-2024.2.1
-module load vasp/6.4.3-intel-oneapi-mpi/oneapi-2024.2.1
+module load hdf5/1.14.5-intel-oneapi-mpi/oneapi-2024.2.1
+module load vasp/6.5.1-intel-oneapi-mpi/oneapi-2024.2.1
 
 srun vasp_std
 ```
 
+```
+#!/bin/bash
+
+# NAMD MPI build
+# 2 nodes, 40 processes per node, no threads
+#SBATCH --job-name=namd_mpi_2node
+#SBATCH --ntasks-per-node=40
+#SBATCH --cpus-per-task=1
+#SBATCH --nodes=2
+#SBATCH --time=4:00:00
+
+# Purging and reloading all modules to be sure of the job's enviroment
+module purge
+module load ucl-stack/2026-03
+module load namd/3.0.1-openmpi-smp/gcc-12.3.0
+
+# NAMD ApoA1 benchmark, /lustre/apps/benchmarks/namd/ApoA1/apoa1/
+cp /apps/benchmarks/namd/ApoA1/apoa1/* .
+srun namd3 apoa1.namd
+```
+
 ## Hybrid MPI with OpenMP job
 
-Here are two example NAMD jobs that use some MPI processes which can communicate between nodes, and some OpenMP threads inside a node.
-
-NAMD uses charm++ which can be complex to launch.
+The above example NAMD job used MPI processes only. The next example uses a smaller number of MPI processes which can communicate between nodes, and some OpenMP threads inside the node.
 
 ```
 #!/bin/bash
-# NAMD build using verbs, has more complex launch line.
+# NAMD MPI build using OpenMP threads
 
 # Based on ARCHER2 mpi+smp jobscript
 # 2 nodes, 2 MPI comm processes per node, 20 worker threads per comm process
-#SBATCH --job-name=namd_verbs_2node
+#SBATCH --job-name=namd_mpi_smp_2node
 #SBATCH --ntasks-per-node=2
 #SBATCH --cpus-per-task=20
 #SBATCH --nodes=2
@@ -44,8 +64,8 @@ NAMD uses charm++ which can be complex to launch.
 
 # Purging and reloading all modules to be sure of the job's enviroment
 module purge
-module load ucl-stack/2025-05
-module load namd/3.0.1-verbs/gcc-12.3.0
+module load ucl-stack/2026-03
+module load namd/3.0.1-openmpi-smp/gcc-12.3.0
 
 # Set procs per node (PPN) & OMP_NUM_THREADS
 # One CPU core left free for associated MPI process
@@ -56,41 +76,9 @@ export OMP_PLACES=cores
 # Record PPN in the output file
 echo "Number of worker threads PPN = $PPN"
 
-# Cannot use srun directly with verbs version as charmrun is required 
-# so Slurm options need to be passed as environment variables.
-# ++verbose is being passed for more debug information on what charmrun is doing.
-export SLURM_HINT=nomultithread
-charmrun ++n ${SLURM_NTASKS} ++mpiexec ++remote-shell srun ++verbose $(which namd3) +setcpuaffinity ++ppn ${PPN} apoa1.namd
-```
-
-```
-#!/bin/bash
-# NAMD build using ucx, simpler launch line, may have more overheads.
-
-# Based on ARCHER2 mpi+smp jobscript
-# 2 nodes, 2 MPI comm processes per node, 20 worker threads per comm process
-#SBATCH --job-name=namd_verbs_2node
-#SBATCH --ntasks-per-node=2
-#SBATCH --cpus-per-task=20
-#SBATCH --nodes=2
-#SBATCH --time=4:00:00
-
-# Purging and reloading all modules to be sure of the job's enviroment
-module purge
-module load ucl-stack/2025-05
-module load namd/3.0.1-ucx/gcc-12.3.0
-
-# Set procs per node (PPN) & OMP_NUM_THREADS
-# One CPU core left free for associated MPI process
-export PPN=$(($SLURM_CPUS_PER_TASK-1))
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-export OMP_PLACES=cores
-
-# Record PPN in the output file
-echo "Number of worker threads PPN = $PPN"
-
-# Setting nomultithread can be omitted as set by default.
-srun --hint=nomultithread namd3 +setcpuaffinity +ppn $PPN apoa1.namd
+# NAMD ApoA1 benchmark, /lustre/apps/benchmarks/namd/ApoA1/apoa1/
+cp /apps/benchmarks/namd/ApoA1/apoa1/* .
+srun namd3 +setcpuaffinity +ppn $PPN apoa1.namd
 ```
 
 ## Array job

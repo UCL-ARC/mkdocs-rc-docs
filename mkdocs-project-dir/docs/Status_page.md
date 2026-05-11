@@ -1330,8 +1330,6 @@ This page outlines that status of each of the machines managed by the Research C
     We intend for all of Kathleen's nodes to be in the new RHEL9+Slurm portion by the end of March, so if you haven't tried
     that section out yet, please do: [Kathleen New OS and Scheduler](https://www.rc.ucl.ac.uk/docs/Clusters/Kathleen/#new-operating-system-and-scheduler). (We are currently working on getting the next set of software installed, which I know some of you are waiting for).
 
-#### Latest on Kathleen
-
   - 2026-04-13 16:00 - **New software stack available on Kathleen - will be made default in 2 weeks**
 
     On the new half of Kathleen there is now a `ucl-stack/2026-03` module as well as the previous `ucl-stack/2025-05`. 
@@ -1384,6 +1382,34 @@ This page outlines that status of each of the machines managed by the Research C
     We intend to keep the current and previous stacks available and deprecate and then remove the oldest stack as we build more. You will receive notice of this.
 
     We are aware of NAMD issues and are still working on a different NAMD install. We are also waiting for new installers for various of the other licensed applications that belong to departments.
+
+#### Latest on Kathleen
+
+  - 2026-05-11 17:10 - **Kathleen 2026-03 software stack is now the default**
+
+    `ucl-stack/2026-03` is now the default software stack on Kathleen. This means it will be loaded automatically in new
+    login sessions and if you `module load ucl-stack` with no version included, you will get the 2026-03 version. 
+
+    (If you have an existing login session, you will still see the older stack).
+
+    You can still specifically load `ucl-stack/2025-05` for the time being, so jobs using it will not be interrupted. We
+    will deprecate and then remove it as we add newer versions of the stack, so do update your jobscripts as you submit new jobs.
+
+    The 2026-03 stack has more software available, including these:
+    - openfoamplus 2112 and 2312 (module name `openfoam`)
+    - paraview
+    - R 4.5.2 and the corresponding bundle package `r-4.5.2_bc-3.22` with many R and Bioconductor packages included
+    - VMD
+    - Grace
+    - GULP
+    - glpk
+    - CP2K 2025.2
+    - CRYSTAL23
+    - parallel
+    - openbabel
+    - ORCA 6.1.1
+
+    Also available is `gaussian/g16-c01/nvhpc-24.9`
 
 
 ### Young
