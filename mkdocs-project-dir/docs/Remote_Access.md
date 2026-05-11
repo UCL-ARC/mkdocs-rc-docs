@@ -9,7 +9,7 @@ UCL's Research Computing services are accessible from inside the UCL firewall.  
 
 As of 23 March 2026, you need to set up SSH keys on the SSH gateway to be able to log into it from outside UCL. It accepts password logins when you are on the [UCL VPN](https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn) or on [Desktop@UCL Anywhere](https://www.ucl.ac.uk/isd/services/computers/remote-access/desktopucl-anywhere) - you can use these routes to do the initial set up your SSH keys which you can then use from anywhere not at UCL.
 
-- [SSH Gateway and Key Authentication documentation from ISD](https://liveuclac.sharepoint.com/sites/Cloud/SitePages/SSH-Gateway-+-Key-Authentication.aspx) - some of the below is copied from there.
+- [SSH Gateway and Key Authentication documentation from ISD](https://liveuclac.sharepoint.com/:u:/r/sites/Cloud/SitePages/SSH-Gateway-+-Key-Authentication.aspx?csf=1&web=1&share=IQDTWt_6AhyJSqzDCAIEuvZ6AXF4Zj0wPAVX5ytq_jRTstU&e=oxQMNF) - some of the below is copied from there.
 
 ## Post-quantum key exchange warning
 
