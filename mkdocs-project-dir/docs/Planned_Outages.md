@@ -17,7 +17,7 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
 20 April 2026 | Kathleen | Planned | Replacement chiller door scheduled to arrive for old-Kathleen cabinet that is currently out of service. (Outage should not be required, but that cabinet is not running jobs until this is fixed).
-April, date TBC | Young, Kathleen | Planned | One-day outage and full shutdown for a permanent fix to a slow underfloor leak.
+27 June 2026 | Young, Kathleen, Michael | Planned | Electrical testing in datacentre. Full shutdown outage expected for clusters. Also includes the permanent fix to a slow underfloor leak that affected Young and Kathleen.
  
 
 ## Previous Outages
