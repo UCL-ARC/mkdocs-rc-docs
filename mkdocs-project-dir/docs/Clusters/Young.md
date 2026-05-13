@@ -721,6 +721,23 @@ Justifications that are solely based on simplifying your workflow and job
 management will not be approved - clear reasoning must be provided for why it 
 is either very difficult or impossible to work within a 48-hour wall time.
 
+## Energy usage of jobs
+
+We have power monitoring data for jobs that were run on Young and can provide 
+this on request - tell us the job IDs you are interested in, or the time period 
+in which you ran jobs of interest.
+
+GPU power monitoring:
+
+- Per-GPU power draw in watts at 5 minute intervals from `nvidia-smi`, linked to job and task IDs. Doesn't include chassis fans.
+- Available from 22 Jan 2024 16:00 onwards, email rc-support@ucl.ac.uk 
+
+CPU power monitoring:
+
+- Per-node average instantaneous power draw in watts at 5 minute intervals from ipmitool dcmi. Doesn't include chassis fans.
+- Available from 22 Jan 2024 16:00 onwards, email rc-support@ucl.ac.uk 
+
+
 ## Support
 
 Email <rc-support@ucl.ac.uk> with any support queries. It will be helpful
