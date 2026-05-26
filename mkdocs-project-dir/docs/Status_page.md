@@ -1383,8 +1383,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     We are aware of NAMD issues and are still working on a different NAMD install. We are also waiting for new installers for various of the other licensed applications that belong to departments.
 
-#### Latest on Kathleen
-
   - 2026-05-11 17:10 - **Kathleen 2026-03 software stack is now the default**
 
     `ucl-stack/2026-03` is now the default software stack on Kathleen. This means it will be loaded automatically in new
@@ -1410,6 +1408,33 @@ This page outlines that status of each of the machines managed by the Research C
     - ORCA 6.1.1
 
     Also available is `gaussian/g16-c01/nvhpc-24.9`
+
+#### Latest on Kathleen
+
+  - 2026-05-26 10:00 - **MPI issues on Kathleen; All nodes going into RHEL9 part of Kathleen in 2 weeks**
+
+    We're aware of current MPI issues on Kathleen and will be applying a kernel patch to deal with them.
+    (The issue is a temporary security mitigation for one of the root exploits recently released - it breaks
+    certain types of MPI shared memory communications).
+
+    **All nodes going into RHEL9+Slurm part of Kathleen**
+
+    On **Tuesday 9 June** we will be draining all the nodes left in the old part of Kathleen for 8am. Jobs will
+    only be scheduled if they can finish before then. We will then be migrating those nodes into the RHEL9 and
+    Slurm part of Kathleen, currently accessible via `kathleen-ng.rc.ucl.ac.uk`. If you have not  tried the new
+    part of Kathleen yet, please see [Kathleen new operating system and scheduler](https://www.rc.ucl.ac.uk/docs/Clusters/Kathleen/#new-operating-system-and-scheduler) for details.
+
+    (We'll eventually be pointing the `kathleen.rc.ucl.ac.uk` address to the new portion but that will take a bit
+    longer to be altered).
+
+    **Outage on 27 June**
+
+    The electrical testing that did not happen over Easter is now scheduled for 27 June and Kathleen will be fully
+    down for that day, possibly the next day too. There will be no access and no jobs will be running. A full check
+    of the underfloor piping will also take place then along with a final fix to the slow underfloor leak that previously
+    had a temporary fix.
+
+    The outage is listed at [Planned Outages](https://www.rc.ucl.ac.uk/docs/Planned_Outages/)
 
 
 ### Young
@@ -1756,8 +1781,6 @@ This page outlines that status of each of the machines managed by the Research C
     Once Young is back up, we have a proper external address for the login nodes in the new portion now, so you will be able to log
     directly into `young-ng.rc.ucl.ac.uk` and not need to jump through the current login nodes to access it. [Young new OS and scheduler](https://www.rc.ucl.ac.uk/docs/Clusters/Young/#new-operating-system-and-scheduler)
 
-#### Latest on Young
-
   - 2026-03-05 09:40 - **Young running again**
 
     The door replacements went ahead successfully and jobs were running again by around 18:00 last night. 
@@ -1787,6 +1810,49 @@ This page outlines that status of each of the machines managed by the Research C
     for access and the differences in Slurm jobscripts and commands see [Young new operating system and scheduler](https://www.rc.ucl.ac.uk/docs/Clusters/Young/#new-operating-system-and-scheduler).
 
     We are working on adding more licensed software back to the Slurm side.
+
+  - 2026-04-21 10:50 - **Young-ng - High Memory Nodes**
+
+    There are now two high memory nodes over on the RHEL9 side of Young, available to run jobs.
+    One is a Y-type node with 1.5 TiB RAM and the other a Z-type node with 3.0TiB RAM. For details
+    on Young node types, please see the following page in our documentation:
+    [Young nodetypes](https://www.rc.ucl.ac.uk/docs/Clusters/Young/#node-types)
+
+    For information on how to access the RHEL9 portion of Young, along with details on using the new scheduler
+    (Slurm): [Young new operating system and scheduler](https://www.rc.ucl.ac.uk/docs/Clusters/Young/#new-operating-system-and-scheduler)
+
+    Finally, here is an example script showing how to submit a job which would run on one of the high memory nodes:
+    [High memory node jobs](https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/#high-memory-node-jobs)
+
+#### Latest on Young
+
+  - 2026-05-26 10:20 - **MPI issues on Young; Outage on 27 June**
+
+    We're aware of current MPI issues on Young and will be applying a kernel patch to deal with them.
+    (The issue is a temporary security mitigation for one of the root exploits recently released - it breaks
+    certain types of MPI shared memory communications).
+
+    **Outage on 27 June**
+
+    The electrical testing that did not happen over Easter is now scheduled for 27 June and Young will be fully down
+    for that day, possibly the next day too. There will be no access and no jobs will be running. A full check of the
+    underfloor piping will also take place then.
+
+    The outage is listed at [Planned Outages](https://www.rc.ucl.ac.uk/docs/Planned_Outages/)
+
+    **Energy usage of jobs**
+
+    This is an occasional reminder that we have power monitoring data for jobs that were run on Young and can provide
+    this on request for specific jobs IDs or time periods: [energy usage of jobs](https://www.rc.ucl.ac.uk/docs/Clusters/Young/#energy-usage-of-jobs)
+
+    **Please do not try out proof of concept exploits on the cluster**
+
+    I'm sure the vast majority of you would never consider doing this, but there have been many local root exploits
+    released over the past weeks and likely to be more. Please do not run the proof of concepts of the exploits on
+    any clusters you have access to, for any reason. This is against institutional Terms of Service, could fall afoul
+    of the Computer Misuse Act, and at UCL our Information Security Group has tracking that identifies the existence of
+    these and when they are run. We are doing our best to keep the clusters secure for your use. If you have any concerns
+    about whether systems are vulnerable or not, please ask the teams that run them rather than testing it yourself.
 
 
 ### Michael
@@ -1903,6 +1969,15 @@ This page outlines that status of each of the machines managed by the Research C
   - 2024-10-08 13:30 Logins are enabled.
 
     Logins are enabled again.
+
+#### Latest on Michael
+
+  - 2026-05-26 10:35 - **Outage on 27 June for electrical testing**
+
+    The electrical testing that did not happen over Easter is now scheduled for 27 June and Michael will be
+    fully down for that day, possibly the next day too. There will be no access and no jobs will be running. 
+
+    The outage is listed at [Planned Outages](https://www.rc.ucl.ac.uk/docs/Planned_Outages/)
 
 
 ### Thomas
