@@ -817,6 +817,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#latest-on-michael" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Latest on Michael
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2289,6 +2300,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#latest-on-michael" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Latest on Michael
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3468,9 +3490,6 @@ r-4.5.2_bc-3.22
 <p>We intend to keep the current and previous stacks available and deprecate and then remove the oldest stack as we build more. You will receive notice of this.</p>
 <p>We are aware of NAMD issues and are still working on a different NAMD install. We are also waiting for new installers for various of the other licensed applications that belong to departments.</p>
 </li>
-</ul>
-<h4 id="latest-on-kathleen">Latest on Kathleen<a class="headerlink" href="#latest-on-kathleen" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-05-11 17:10 - <strong>Kathleen 2026-03 software stack is now the default</strong></p>
 <p><code>ucl-stack/2026-03</code> is now the default software stack on Kathleen. This means it will be loaded automatically in new
@@ -3492,6 +3511,28 @@ will deprecate and then remove it as we add newer versions of the stack, so do u
 - openbabel
 - ORCA 6.1.1</p>
 <p>Also available is <code>gaussian/g16-c01/nvhpc-24.9</code></p>
+</li>
+</ul>
+<h4 id="latest-on-kathleen">Latest on Kathleen<a class="headerlink" href="#latest-on-kathleen" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-05-26 10:00 - <strong>MPI issues on Kathleen; All nodes going into RHEL9 part of Kathleen in 2 weeks</strong></p>
+<p>We're aware of current MPI issues on Kathleen and will be applying a kernel patch to deal with them.
+(The issue is a temporary security mitigation for one of the root exploits recently released - it breaks
+certain types of MPI shared memory communications).</p>
+<p><strong>All nodes going into RHEL9+Slurm part of Kathleen</strong></p>
+<p>On <strong>Tuesday 9 June</strong> we will be draining all the nodes left in the old part of Kathleen for 8am. Jobs will
+only be scheduled if they can finish before then. We will then be migrating those nodes into the RHEL9 and
+Slurm part of Kathleen, currently accessible via <code>kathleen-ng.rc.ucl.ac.uk</code>. If you have not  tried the new
+part of Kathleen yet, please see <a href="https://www.rc.ucl.ac.uk/docs/Clusters/Kathleen/#new-operating-system-and-scheduler">Kathleen new operating system and scheduler</a> for details.</p>
+<p>(We'll eventually be pointing the <code>kathleen.rc.ucl.ac.uk</code> address to the new portion but that will take a bit
+longer to be altered).</p>
+<p><strong>Outage on 27 June</strong></p>
+<p>The electrical testing that did not happen over Easter is now scheduled for 27 June and Kathleen will be fully
+down for that day, possibly the next day too. There will be no access and no jobs will be running. A full check
+of the underfloor piping will also take place then along with a final fix to the slow underfloor leak that previously
+had a temporary fix.</p>
+<p>The outage is listed at <a href="https://www.rc.ucl.ac.uk/docs/Planned_Outages/">Planned Outages</a></p>
 </li>
 </ul>
 <h3 id="young">Young<a class="headerlink" href="#young" title="Permanent link">§</a></h3>
@@ -3793,9 +3834,6 @@ as well when we have dates.</p>
 <p>Once Young is back up, we have a proper external address for the login nodes in the new portion now, so you will be able to log
 directly into <code>young-ng.rc.ucl.ac.uk</code> and not need to jump through the current login nodes to access it. <a href="https://www.rc.ucl.ac.uk/docs/Clusters/Young/#new-operating-system-and-scheduler">Young new OS and scheduler</a></p>
 </li>
-</ul>
-<h4 id="latest-on-young">Latest on Young<a class="headerlink" href="#latest-on-young" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-03-05 09:40 - <strong>Young running again</strong></p>
 <p>The door replacements went ahead successfully and jobs were running again by around 18:00 last night. </p>
@@ -3818,6 +3856,41 @@ during the move. This will be updated on <a href="https://www.rc.ucl.ac.uk/docs/
 <p>Also a reminder that more nodes are being added in to the Slurm part of Young tomorrow so do try using it if you haven't yet:
 for access and the differences in Slurm jobscripts and commands see <a href="https://www.rc.ucl.ac.uk/docs/Clusters/Young/#new-operating-system-and-scheduler">Young new operating system and scheduler</a>.</p>
 <p>We are working on adding more licensed software back to the Slurm side.</p>
+</li>
+<li>
+<p>2026-04-21 10:50 - <strong>Young-ng - High Memory Nodes</strong></p>
+<p>There are now two high memory nodes over on the RHEL9 side of Young, available to run jobs.
+One is a Y-type node with 1.5 TiB RAM and the other a Z-type node with 3.0TiB RAM. For details
+on Young node types, please see the following page in our documentation:
+<a href="https://www.rc.ucl.ac.uk/docs/Clusters/Young/#node-types">Young nodetypes</a></p>
+<p>For information on how to access the RHEL9 portion of Young, along with details on using the new scheduler
+(Slurm): <a href="https://www.rc.ucl.ac.uk/docs/Clusters/Young/#new-operating-system-and-scheduler">Young new operating system and scheduler</a></p>
+<p>Finally, here is an example script showing how to submit a job which would run on one of the high memory nodes:
+<a href="https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/#high-memory-node-jobs">High memory node jobs</a></p>
+</li>
+</ul>
+<h4 id="latest-on-young">Latest on Young<a class="headerlink" href="#latest-on-young" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-05-26 10:20 - <strong>MPI issues on Young; Outage on 27 June</strong></p>
+<p>We're aware of current MPI issues on Young and will be applying a kernel patch to deal with them.
+(The issue is a temporary security mitigation for one of the root exploits recently released - it breaks
+certain types of MPI shared memory communications).</p>
+<p><strong>Outage on 27 June</strong></p>
+<p>The electrical testing that did not happen over Easter is now scheduled for 27 June and Young will be fully down
+for that day, possibly the next day too. There will be no access and no jobs will be running. A full check of the
+underfloor piping will also take place then.</p>
+<p>The outage is listed at <a href="https://www.rc.ucl.ac.uk/docs/Planned_Outages/">Planned Outages</a></p>
+<p><strong>Energy usage of jobs</strong></p>
+<p>This is an occasional reminder that we have power monitoring data for jobs that were run on Young and can provide
+this on request for specific jobs IDs or time periods: <a href="https://www.rc.ucl.ac.uk/docs/Clusters/Young/#energy-usage-of-jobs">energy usage of jobs</a></p>
+<p><strong>Please do not try out proof of concept exploits on the cluster</strong></p>
+<p>I'm sure the vast majority of you would never consider doing this, but there have been many local root exploits
+released over the past weeks and likely to be more. Please do not run the proof of concepts of the exploits on
+any clusters you have access to, for any reason. This is against institutional Terms of Service, could fall afoul
+of the Computer Misuse Act, and at UCL our Information Security Group has tracking that identifies the existence of
+these and when they are run. We are doing our best to keep the clusters secure for your use. If you have any concerns
+about whether systems are vulnerable or not, please ask the teams that run them rather than testing it yourself.</p>
 </li>
 </ul>
 <h3 id="michael">Michael<a class="headerlink" href="#michael" title="Permanent link">§</a></h3>
@@ -3927,6 +4000,15 @@ email us confirming that we can delete your accounts and we will do so and remov
 <li>
 <p>2024-10-08 13:30 Logins are enabled.</p>
 <p>Logins are enabled again.</p>
+</li>
+</ul>
+<h4 id="latest-on-michael">Latest on Michael<a class="headerlink" href="#latest-on-michael" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-05-26 10:35 - <strong>Outage on 27 June for electrical testing</strong></p>
+<p>The electrical testing that did not happen over Easter is now scheduled for 27 June and Michael will be
+fully down for that day, possibly the next day too. There will be no access and no jobs will be running. </p>
+<p>The outage is listed at <a href="https://www.rc.ucl.ac.uk/docs/Planned_Outages/">Planned Outages</a></p>
 </li>
 </ul>
 <h3 id="thomas">Thomas<a class="headerlink" href="#thomas" title="Permanent link">§</a></h3>
