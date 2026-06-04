@@ -17,8 +17,8 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
 20 April 2026 | Kathleen | Planned | Replacement chiller door scheduled to arrive for old-Kathleen cabinet that is currently out of service. (Outage should not be required, but that cabinet is not running jobs until this is fixed).
-27 June 2026 | Young, Kathleen, Michael | Planned | Electrical testing in datacentre. Full shutdown outage expected for clusters. Also includes the permanent fix to a slow underfloor leak that affected Young and Kathleen.
- 
+27 June 2026 | Young, Kathleen, Michael | Planned | Electrical testing in datacentre. Full shutdown outage all day expected for clusters. Also includes the permanent fix to a slow underfloor leak that affected Young and Kathleen.
+11 July 2026 | Myriad | Planned | Network Modernisation project will result in no login access to Myriad between 09:00 - 13:00 and will be at risk until 17:00. 
 
 ## Previous Outages
 
