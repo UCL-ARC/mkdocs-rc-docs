@@ -11,15 +11,15 @@ Kathleen is a compute cluster designed for extensively parallel, multi-node batc
 
 ## New operating system and scheduler
 
-Half of Kathleen is currently updated to our new operating system and new scheduler, Slurm.
+Kathleen is currently updated to our new operating system (RHEL9) and new scheduler, Slurm.
 
 It can be accessed via `kathleen-ng.rc.ucl.ac.uk` which will log you in to updated login nodes.
 
-The new software stack is provided by a module called `ucl-stack/2025-05` which should be being loaded by default. If not (for example if you `module purge` in your .bashrc) you can load the new environment by:
+The new software stack is provided by a module called `ucl-stack/2026-03` which should be being loaded by default. If not (for example if you `module purge` in your .bashrc) you can load the new environment by:
 
 ```
-module load ucl-stack/2025-05
-module load default-modules/2025-05
+module load ucl-stack/2026-03
+module load default-modules/2026-03
 ```
 
 The default compiler is now GCC and the default MPI is OpenMPI. We do also have Intel OneAPI modules.
@@ -40,14 +40,11 @@ As Kathleen is intended for multi-node jobs, users who specify that they will ne
 Please use your UCL username and password to connect to Kathleen with an SSH client.
 
 ```
-# old Kathleen, RHEL7 and SGE
-ssh uccaxxx@kathleen.rc.ucl.ac.uk
-
-# new Kathleen, RHEL9 and Slurm
+# Kathleen, RHEL9 and Slurm
 ssh uccaxxx@kathleen-ng.rc.ucl.ac.uk
 ```
 
-If using PuTTY, put `kathleen.rc.ucl.ac.uk` as the hostname and your
+If using PuTTY, put `kathleen-ng.rc.ucl.ac.uk` as the hostname and your
 seven-character username (with no @ after) as the username when logging
 in, eg. `uccaxxx`. When entering your password in PuTTY no characters or
 bulletpoints will show on screen - this is normal.
@@ -59,10 +56,10 @@ The login nodes allow you to manage your files, compile code and submit jobs. Ve
 
 ### Logging in to a specific node
 
-You can access a specific Kathleen login node by using their dedicated addresses instead of the main `kathleen.rc.ucl.ac.uk` address, for example:
+You can access a specific Kathleen login node by using their dedicated addresses instead of the main `kathleen-ng.rc.ucl.ac.uk` address, for example:
 
 ```
-ssh uccaxxx@login01.kathleen.rc.ucl.ac.uk
+ssh uccaxxx@login21.kathleen.rc.ucl.ac.uk
 ```
 
 The main address will unpredictably direct you to either one of these (to balance load), so if you need multiple sessions on one, this lets you do that.
@@ -125,55 +122,20 @@ Two nodes identical to these, but with two 1 terabyte hard-disk drives added, se
 
 ## Hyperthreading
 
-Kathleen has hyperthreading enabled and you can choose on a per-job basis whether you want to use it.
+On clusters with hyperthreading enabled (Kathleen, Young, Michael), you can request it with:
+
+```
+#SBATCH --hint=multithread
+```
+
+This tells Slurm to schedule two threads per physical core.
+
+By default we have set `--hint=nomultithread` so hyperthreads will not be used unless requested.
 
 Hyperthreading lets you use two virtual cores instead of one physical core - some programs can take advantage of this. 
 
 If you do not ask for hyperthreading, your job only uses one thread per core as normal.
 
-The `-l threads=` request is not a true/false setting, instead you are telling the scheduler
-you want one slot to block one virtual cpu instead of the normal situation where it blocks two.
-If you have a script with a threads request and want to override it on the command line or set
-it back to normal, the usual case is `-l threads=2`. (Setting threads to 0 does not disable
-hyperthreading!)
-
-```
-# request hyperthreading in this job
-#$ -l threads=1
-
-# request the number of virtual cores
-#$ -pe mpi 160
-
-# request 2G RAM per virtual core
-#$ -l mem=2G
-
-# set number of OpenMP threads being used per MPI process 
-export OMP_NUM_THREADS=2
-```
-
-This job would be using 80 physical cores, using 80 MPI processes each of which would create two threads (on Hyperthreads).
-
-Note that memory requests are now per virtual core with hyperthreading enabled. 
-If you asked for `#$ -l mem=4G`on a node with 80 virtual cores and 192G RAM then 
-you are requiring 320G RAM in total which will not fit on that node and so you 
-would be given a sparse process layout across more nodes to meet this requirement.
-
-```
-# request hyperthreading in this job
-#$ -l threads=1
-
-# request the number of virtual cores
-#$ -pe mpi 160
-
-# request 2G RAM per virtual core
-#$ -l mem=2G
-
-# set number of OpenMP threads being used per MPI process
-# (a whole node's worth)
-export OMP_NUM_THREADS=80
-```
-
-This job would still be using 80 physical cores, but would use one MPI process per node which would create 80 threads on the node (on Hyperthreads).
 
 ## Diskless nodes
 
@@ -182,23 +144,7 @@ Kathleen nodes are diskless (have no local hard drives) - there is no `$TMPDIR` 
 If you need temporary space, you should use somewhere in your Scratch.
 
 
-## Test software stack
-
-There is a test version of our next software stack available now on Kathleen. This has a small number of packages at
-present. What is in it and the names of modules are liable to change over time, so please do not rely on it for
-production work. Instead, please test whether the applications you intend to use work the way you would expect.
-
-This stack is built using [Spack](https://spack.readthedocs.io/en/latest/).
-
-To use:
-
-```
-module load beta-modules
-module load test-stack/2025-02
-```
-
-After that, when you type "module avail" there will be several sections of additional modules at the top of the
-output.
+## New software stack
 
 Not everything contained in the stack is visible by default - we have made the applications that we expect people 
 to use directly visible and lots of their dependencies are hidden. These will show up if you search for that package 
@@ -216,3 +162,8 @@ and this will change over time with different builds.
 If you find you are needing one of these modules often, let us know and we'll make it one that is not hidden in the 
 next release of this stack.
 
+If you'd like to view all available modules, the ones we've chosen to be visible and all dependant packages, you can use the `--all` flag:
+
+```
+module avail --all
+```

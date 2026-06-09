@@ -163,13 +163,13 @@ We go on to add the SSH public key to the cluster in the same manner as you adde
 ```
 # Log in to Kathleen, jumping via jump box
 # Replace ccxxxxx with your own username.
-ssh -o ProxyJump=ccxxxxx@ssh-gateway.ucl.ac.uk ccxxxxx@kathleen.rc.ucl.ac.uk
+ssh -o ProxyJump=ccxxxxx@ssh-gateway.ucl.ac.uk ccxxxxx@kathleen-ng.rc.ucl.ac.uk
 ```
 or
 ```
 # Copy 'my_file', from the machine you are logged in to, into your Scratch on Kathleen
 # Replace ccxxxxx with your own username.
-scp -o ProxyJump=ccxxxxx@ssh-gateway.ucl.ac.uk my_file ccxxxxx@kathleen.rc.ucl.ac.uk:~/Scratch/
+scp -o ProxyJump=ccxxxxx@ssh-gateway.ucl.ac.uk my_file ccxxxxx@kathleen-ng.rc.ucl.ac.uk:~/Scratch/
 ```
 
 This tunnels through the jump box service in order to get you to your destination - you'll be asked for your password twice, once for each machine. You can use this to log in or to copy files.
@@ -202,10 +202,10 @@ Host myriad
    HostName myriad.rc.ucl.ac.uk
    proxyCommand ssh -W myriad.rc.ucl.ac.uk:22 ccxxxxx@ssh-gateway.ucl.ac.uk
 
-Host kathleen01
+Host kathleen21
    User ccxxxxx
-   HostName login01.kathleen.rc.ucl.ac.uk
-   proxyCommand ssh -W login01.kathleen.rc.ucl.ac.uk:22 ccxxxxx@ssh-gateway.ucl.ac.uk
+   HostName login21.kathleen.rc.ucl.ac.uk
+   proxyCommand ssh -W login21.kathleen.rc.ucl.ac.uk:22 ccxxxxx@ssh-gateway.ucl.ac.uk
 
 Host aristotle
    User ccxxxxx
