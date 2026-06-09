@@ -1106,10 +1106,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#test-software-stack" class="md-nav__link">
+  <a href="#new-software-stack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Test software stack
+        New software stack
       
     </span>
   </a>
@@ -2217,10 +2217,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#test-software-stack" class="md-nav__link">
+  <a href="#new-software-stack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Test software stack
+        New software stack
       
     </span>
   </a>
@@ -2250,11 +2250,11 @@
 <h1 id="kathleen">Kathleen<a class="headerlink" href="#kathleen" title="Permanent link">§</a></h1>
 <p>Kathleen is a compute cluster designed for extensively parallel, multi-node batch-processing jobs, having high-bandwidth connections between each individual node. It is named after <a href="https://en.wikipedia.org/wiki/Kathleen_Lonsdale">Professor Dame Kathleen Lonsdale</a>, a pioneering chemist and activist, and was installed in December 2019. It went into service at the end of January 2020.</p>
 <h2 id="new-operating-system-and-scheduler">New operating system and scheduler<a class="headerlink" href="#new-operating-system-and-scheduler" title="Permanent link">§</a></h2>
-<p>Half of Kathleen is currently updated to our new operating system and new scheduler, Slurm.</p>
+<p>Kathleen is currently updated to our new operating system (RHEL9) and new scheduler, Slurm.</p>
 <p>It can be accessed via <code>kathleen-ng.rc.ucl.ac.uk</code> which will log you in to updated login nodes.</p>
-<p>The new software stack is provided by a module called <code>ucl-stack/2025-05</code> which should be being loaded by default. If not (for example if you <code>module purge</code> in your .bashrc) you can load the new environment by:</p>
-<div class="codehilite"><pre><span></span><code>module load ucl-stack/2025-05
-module load default-modules/2025-05
+<p>The new software stack is provided by a module called <code>ucl-stack/2026-03</code> which should be being loaded by default. If not (for example if you <code>module purge</code> in your .bashrc) you can load the new environment by:</p>
+<div class="codehilite"><pre><span></span><code>module load ucl-stack/2026-03
+module load default-modules/2026-03
 </code></pre></div>
 
 <p>The default compiler is now GCC and the default MPI is OpenMPI. We do also have Intel OneAPI modules.</p>
@@ -2268,14 +2268,11 @@ module load default-modules/2025-05
 <p>As Kathleen is intended for multi-node jobs, users who specify that they will need to use multi-node jobs (e.g. with <a href="../../Supplementary/Glossary/#mpi">MPI</a>) will be given access to Kathleen.</p>
 <h2 id="logging-in">Logging in<a class="headerlink" href="#logging-in" title="Permanent link">§</a></h2>
 <p>Please use your UCL username and password to connect to Kathleen with an SSH client.</p>
-<div class="codehilite"><pre><span></span><code># old Kathleen, RHEL7 and SGE
-ssh uccaxxx@kathleen.rc.ucl.ac.uk
-
-# new Kathleen, RHEL9 and Slurm
+<div class="codehilite"><pre><span></span><code># Kathleen, RHEL9 and Slurm
 ssh uccaxxx@kathleen-ng.rc.ucl.ac.uk
 </code></pre></div>
 
-<p>If using PuTTY, put <code>kathleen.rc.ucl.ac.uk</code> as the hostname and your
+<p>If using PuTTY, put <code>kathleen-ng.rc.ucl.ac.uk</code> as the hostname and your
 seven-character username (with no @ after) as the username when logging
 in, eg. <code>uccaxxx</code>. When entering your password in PuTTY no characters or
 bulletpoints will show on screen - this is normal.</p>
@@ -2283,8 +2280,8 @@ bulletpoints will show on screen - this is normal.</p>
 instructions for <a href="../../howto/#logging-in-from-outside-the-ucl-firewall">Logging in from outside the UCL firewall</a>.</p>
 <p>The login nodes allow you to manage your files, compile code and submit jobs. Very short (\&lt;15mins) and non-resource-intensive software tests can be run on the login nodes, but anything more should be submitted as a job.</p>
 <h3 id="logging-in-to-a-specific-node">Logging in to a specific node<a class="headerlink" href="#logging-in-to-a-specific-node" title="Permanent link">§</a></h3>
-<p>You can access a specific Kathleen login node by using their dedicated addresses instead of the main <code>kathleen.rc.ucl.ac.uk</code> address, for example:</p>
-<div class="codehilite"><pre><span></span><code>ssh uccaxxx@login01.kathleen.rc.ucl.ac.uk
+<p>You can access a specific Kathleen login node by using their dedicated addresses instead of the main <code>kathleen-ng.rc.ucl.ac.uk</code> address, for example:</p>
+<div class="codehilite"><pre><span></span><code>ssh uccaxxx@login21.kathleen.rc.ucl.ac.uk
 </code></pre></div>
 
 <p>The main address will unpredictably direct you to either one of these (to balance load), so if you need multiple sessions on one, this lets you do that.</p>
@@ -2340,62 +2337,18 @@ finding where space is being used.</p>
 <p>Kathleen's compute capability comprises 192 diskless compute nodes each with two 20-core <a href="https://ark.intel.com/content/www/us/en/ark/products/192446/intel-xeon-gold-6248-processor-27-5m-cache-2-50-ghz.html">Intel Xeon Gold 6248 2.5GHz</a> processors, 192 gigabytes of 2933MHz DDR4 RAM, and an Intel OmniPath network.</p>
 <p>Two nodes identical to these, but with two 1 terabyte hard-disk drives added, serve as the login nodes.</p>
 <h2 id="hyperthreading">Hyperthreading<a class="headerlink" href="#hyperthreading" title="Permanent link">§</a></h2>
-<p>Kathleen has hyperthreading enabled and you can choose on a per-job basis whether you want to use it.</p>
+<p>On clusters with hyperthreading enabled (Kathleen, Young, Michael), you can request it with:</p>
+<div class="codehilite"><pre><span></span><code>#SBATCH --hint=multithread
+</code></pre></div>
+
+<p>This tells Slurm to schedule two threads per physical core.</p>
+<p>By default we have set <code>--hint=nomultithread</code> so hyperthreads will not be used unless requested.</p>
 <p>Hyperthreading lets you use two virtual cores instead of one physical core - some programs can take advantage of this. </p>
 <p>If you do not ask for hyperthreading, your job only uses one thread per core as normal.</p>
-<p>The <code>-l threads=</code> request is not a true/false setting, instead you are telling the scheduler
-you want one slot to block one virtual cpu instead of the normal situation where it blocks two.
-If you have a script with a threads request and want to override it on the command line or set
-it back to normal, the usual case is <code>-l threads=2</code>. (Setting threads to 0 does not disable
-hyperthreading!)</p>
-<div class="codehilite"><pre><span></span><code># request hyperthreading in this job
-#$ -l threads=1
-
-# request the number of virtual cores
-#$ -pe mpi 160
-
-# request 2G RAM per virtual core
-#$ -l mem=2G
-
-# set number of OpenMP threads being used per MPI process 
-export OMP_NUM_THREADS=2
-</code></pre></div>
-
-<p>This job would be using 80 physical cores, using 80 MPI processes each of which would create two threads (on Hyperthreads).</p>
-<p>Note that memory requests are now per virtual core with hyperthreading enabled. 
-If you asked for <code>#$ -l mem=4G</code>on a node with 80 virtual cores and 192G RAM then 
-you are requiring 320G RAM in total which will not fit on that node and so you 
-would be given a sparse process layout across more nodes to meet this requirement.</p>
-<div class="codehilite"><pre><span></span><code># request hyperthreading in this job
-#$ -l threads=1
-
-# request the number of virtual cores
-#$ -pe mpi 160
-
-# request 2G RAM per virtual core
-#$ -l mem=2G
-
-# set number of OpenMP threads being used per MPI process
-# (a whole node&#39;s worth)
-export OMP_NUM_THREADS=80
-</code></pre></div>
-
-<p>This job would still be using 80 physical cores, but would use one MPI process per node which would create 80 threads on the node (on Hyperthreads).</p>
 <h2 id="diskless-nodes">Diskless nodes<a class="headerlink" href="#diskless-nodes" title="Permanent link">§</a></h2>
 <p>Kathleen nodes are diskless (have no local hard drives) - there is no <code>$TMPDIR</code> available on Kathleen, so you should not request <code>-l tmpfs=10G</code> in your jobscripts or your job will be rejected at submit time.</p>
 <p>If you need temporary space, you should use somewhere in your Scratch.</p>
-<h2 id="test-software-stack">Test software stack<a class="headerlink" href="#test-software-stack" title="Permanent link">§</a></h2>
-<p>There is a test version of our next software stack available now on Kathleen. This has a small number of packages at
-present. What is in it and the names of modules are liable to change over time, so please do not rely on it for
-production work. Instead, please test whether the applications you intend to use work the way you would expect.</p>
-<p>This stack is built using <a href="https://spack.readthedocs.io/en/latest/">Spack</a>.</p>
-<p>To use:</p>
-<div class="codehilite"><pre><span></span><code>module load beta-modules
-module load test-stack/2025-02
-</code></pre></div>
-
-<p>After that, when you type "module avail" there will be several sections of additional modules at the top of the
-output.</p>
+<h2 id="new-software-stack">New software stack<a class="headerlink" href="#new-software-stack" title="Permanent link">§</a></h2>
 <p>Not everything contained in the stack is visible by default - we have made the applications that we expect people 
 to use directly visible and lots of their dependencies are hidden. These will show up if you search for that package 
 specifically, for example:</p>
@@ -2408,6 +2361,9 @@ libpng/1.6.39/gcc-12.3.0-iopfrab
 and this will change over time with different builds.</p>
 <p>If you find you are needing one of these modules often, let us know and we'll make it one that is not hidden in the 
 next release of this stack.</p>
+<p>If you'd like to view all available modules, the ones we've chosen to be visible and all dependant packages, you can use the <code>--all</code> flag:</p>
+<div class="codehilite"><pre><span></span><code>module avail --all
+</code></pre></div>
 
 
 
