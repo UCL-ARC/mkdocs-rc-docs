@@ -936,9 +936,6 @@ This page outlines that status of each of the machines managed by the Research C
     This is so we can change some filesystem configurations that will hopefully help with Myriad's filesystem performance.
 
     We are doing this between maintenance windows as we would like to make these improvements as soon as possible and also because there may be some further tweaks necessary on 14 October maintenance day, depending on the results.
-    
-
-#### Latest on Myriad
 
   - 2025-10-02 12:25 - **Change to maximum memory requests in Myriad**
 
@@ -976,6 +973,28 @@ This page outlines that status of each of the machines managed by the Research C
     We currently expect the outage to last all day.
 
     We are changing the maximum memory requestable by a job, and the total amounts requestable have been updated in https://www.rc.ucl.ac.uk/docs/Clusters/Myriad/#node-types 
+
+#### Latest on Myriad
+
+  - 2026-06-11 14:45 - **Myriad planned outages: 18 June, 11 July**
+
+    **Outage on Thursday 18 June**
+
+    Myriad will have a full outage on Thursday 18 June for at least half of the day. This is to apply a configuration
+    change on Myriad's filesystem that is expected to improve performance. You may have noticed that git clones and
+    similar operations can take a very long time at present and this will hopefully improve that somewhat.
+
+    We do expect to have a further outage later on to properly address the root cause of these problems which has now
+    been identified and will send updates when we know when that will be. This change should help in the meantime.
+
+    Jobs will be drained for 8am on 18 June so if jobs cannot complete before then, they will remain in the queue and
+    not start until afterwards. You do not need to take any action. You will not be able to log in during the outage.
+    We will update you when access is restored.
+
+    **Outage on Saturday 11 July**
+
+    Work on the UCL Network Modernisation project will result in no access to Myriad between 09:00 - 13:00 on 11 July and
+    it will be at risk until 17:00.
     
 
 ### Kathleen
