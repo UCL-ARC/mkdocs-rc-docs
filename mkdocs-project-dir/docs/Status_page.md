@@ -974,7 +974,7 @@ This page outlines that status of each of the machines managed by the Research C
 
     We are changing the maximum memory requestable by a job, and the total amounts requestable have been updated in https://www.rc.ucl.ac.uk/docs/Clusters/Myriad/#node-types 
 
-#### Latest on Myriad
+#### Latest on Myriad 
 
   - 2026-06-11 14:45 - **Myriad planned outages: 18 June, 11 July**
 
@@ -995,7 +995,14 @@ This page outlines that status of each of the machines managed by the Research C
 
     Work on the UCL Network Modernisation project will result in no access to Myriad between 09:00 - 13:00 on 11 July and
     it will be at risk until 17:00.
-    
+
+  - 2026-06-18 14:10 - Myriad planned outage over
+  
+    Jobs are running again on Myriad and you can log in again.
+
+    Our configuration change was unsuccessful and not compatible with our current filesystem version, so we will be
+    planning future updates to deal with the problem. (We had tried this one anyway on the recommendation of our vendor).
+
 
 ### Kathleen
 

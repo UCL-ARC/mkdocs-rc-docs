@@ -16,7 +16,6 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-18 June 2026 | Myriad | Planned | Full outage of Myriad for at least half the day, no login access or jobs running. To apply a configuration change on Myriad's filesystem that is expected to improve performance. Further outage to fully address the root cause TBC.
 26-27 June 2026 | Young, Kathleen, Michael | Planned | Electrical testing in datacentre. The clusters will be drained for 13:00 on 26 June. The login nodes and filesystem will be accessible until 16:00. Full shutdown outage all day on 27 June. Outage also includes the permanent fix to a slow underfloor leak that affected Young and Kathleen.  
 11 July 2026 | Myriad | Planned | Network Modernisation project will result in no login access to Myriad between 09:00 - 13:00 and will be at risk until 17:00. 
 Unknown 2026 | Kathleen | Planned | Replacement chiller door scheduled to arrive for old-Kathleen cabinet that is currently out of service. (Outage should not be required, but that cabinet is not running jobs until this is fixed).
@@ -25,6 +24,7 @@ Unknown 2026 | Kathleen | Planned | Replacement chiller door scheduled to arrive
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
+18 June 2026 | Myriad | Unsuccessful | Full outage of Myriad for at least half the day, no login access or jobs running. To apply a configuration change on Myriad's filesystem that is expected to improve performance. Further outage to fully address the root cause TBC. The change was not compatible with our current filesystem version and we will be planning further updates later.
 Easter, dates TBC | Kathleen, Young, Michael | Cancelled | Electrical testing in datacentre over Easter. Full outage expected for clusters. 
 17 March 2026 | Young | Completed | Second half of GPU nodes being moved to different cabinet. Nodes `node-x12t-001` and `003` in current Young and `002` in new Young portion will be drained, moved and re-enabled. Also one router will be moved at the same time so they are not both in the same cabinet. Young will be running as normal but at risk during this since we will be lacking redundancy.
 27 January 2026 | Young | Completed | Half of the GPU nodes being moved to different cabinet. `node-x12t-00[4-6]` will be drained, moved and re-enabled. Jobs will keep running on `node-x12t-001` and `003` during this time (`002` is in the new operating system portion of Young). Queue time likely to increase. We then plan to move the other three GPU nodes a week or two later.
