@@ -16,7 +16,7 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-26-27 June 2026 | Young, Kathleen, Michael | Planned | Electrical testing in datacentre. The clusters will be drained for 13:00 on 26 June. The login nodes and filesystem will be accessible until 16:00. Full shutdown outage all day on 27 June. Outage also includes the permanent fix to a slow underfloor leak that affected Young and Kathleen.  
+26-28 June 2026 | Young, Kathleen, Michael | Planned | Electrical testing in datacentre. The clusters will be drained for 13:00 on 26 June. The login nodes and filesystem will be accessible until 16:00. Full shutdown outage all day on 27 and 28 June. Should be operational again on Monday. Outage also includes the permanent fix to a slow underfloor leak that affected Young and Kathleen.  
 Unknown 2026 | Kathleen | Planned | Replacement chiller door scheduled to arrive for old-Kathleen cabinet that is currently out of service. (Outage should not be required, but that cabinet is not running jobs until this is fixed).
 
 ## Previous Outages
