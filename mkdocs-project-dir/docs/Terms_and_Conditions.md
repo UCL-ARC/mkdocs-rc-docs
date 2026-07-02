@@ -66,6 +66,9 @@ You may contact us to arrange to transfer ownership of your data on a service to
 - [Requesting transfer of your data to another user](Data_Management.md#requesting-transfer-of-your-data-to-another-user)
 - [Requesting data belonging to a user who has left](Data_Management.md#requesting-data-belonging-to-a-user-who-has-left)
 
+Outside such requests, we will not honour requests from users to obtain access to, or operate on, data owned by other users. This includes requests by supervisors of students, and requests by supervisors of former students.
+
+
 ### Data Access by Support Staff
 
 We will not access your data without your consent, except in the following circumstances:
@@ -86,7 +89,7 @@ This process is not currently automated, so data may still be retained after thi
 
 #### Backup Retention
 
-- On clusters where home is backed up, backups are retained for 15 days.
+- On clusters where home directories are backed up, backups are retained for 15 days.
 - On the ACFS, backups are retained for 30 days minimum.
   
 #### Filesystem Retirement
