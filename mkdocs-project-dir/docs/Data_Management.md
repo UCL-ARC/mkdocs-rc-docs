@@ -56,6 +56,13 @@ Follow the guidance on that page for how to encrypt the form when sending it to 
 to be signed by the head of department/division and the UCL data protection officer 
 (data-protection@ucl.ac.uk).
 
+### Requesting a shared space ownership reset
+
+If you are the owner of a shared space, and there are files owned by other users in the space, you can
+ask us to reset the ownership of those files to you and the group that owns the space.
+
+We would like to automate this process in the future, but for now you should [contact us in the usual way](Contact_Us.md).
+
 ## Other Data Protection Concerns
 
 None of our filesystems are encrypted at rest or certified for the storage of special category
