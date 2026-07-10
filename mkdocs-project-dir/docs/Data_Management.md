@@ -16,7 +16,7 @@ The amount of storage you can use on the cluster is limited by a quota.
 
 ### Local filesystem quota
 
-Check your quota and usage for home and Scratch with the `lquota` command.
+Check your quota and usage for home and Scratch with the `lquota` command. On Myriad, use `gquota` instead.
 
 ### ACFS quotas
 
