@@ -61,10 +61,17 @@ Outages and data-loss events will be handled on a best-efforts basis within norm
 
 ### Transferring Data Ownership
 
-You may contact us to arrange to transfer ownership of your data on a service to another user, with their consent. Please arrange this before you stop being a user.
+You may contact us to arrange to transfer ownership of your data on a service to another user, with their consent. Please arrange this before you stop being a user, as requesting the data of a user who has left or cannot respond is significantly more complicated.
 
 - [Requesting transfer of your data to another user](Data_Management.md#requesting-transfer-of-your-data-to-another-user)
 - [Requesting data belonging to a user who has left](Data_Management.md#requesting-data-belonging-to-a-user-who-has-left)
+
+Data in a shared space is considered to belong to the owner of the shared space, and the listed ownership of that data may be reset at the owner's request.
+
+- [Requesting a shared space ownership reset](Data_Management.md#requesting-a-shared-space-ownership-reset)
+
+Outside these listed requests, we will not honour requests from users to obtain access to, or operate on, data owned by other users. This includes requests by supervisors of students, and requests by supervisors of former students.
+
 
 ### Data Access by Support Staff
 
@@ -86,7 +93,7 @@ This process is not currently automated, so data may still be retained after thi
 
 #### Backup Retention
 
-- On clusters where home is backed up, backups are retained for 15 days.
+- On clusters where home directories are backed up, backups are retained for 15 days.
 - On the ACFS, backups are retained for 30 days minimum.
   
 #### Filesystem Retirement
