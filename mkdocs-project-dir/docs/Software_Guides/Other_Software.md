@@ -79,7 +79,7 @@ The top of a jobscript should contain your [resource requests](../Experienced_Us
 
 ABAQUS is a commercial software suite for finite element analysis and computer-aided engineering.
 
-You must be authorised by the Mech Eng Department before you can be added to the group controlling access to ABAQUS (legabq).
+You must be authorised by the Mech Eng Department before you can be added to the group controlling access to ABAQUS (`ag-archpc-abaqus`).
 
 A serial interactive analysis can be run on the compute nodes (via a `qrsh` session) like this:
 ```
