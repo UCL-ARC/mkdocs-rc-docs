@@ -9,6 +9,8 @@ There are other UK HPC resources that may be available to you.
 
 ## National Compute Resources (NCR)
 
+These systems are mostly still under development - a couple are accessible already.
+
 ### Cirrus NCR (University of Edinburgh)
 
 - CPU-based
@@ -27,6 +29,7 @@ There are other UK HPC resources that may be available to you.
 
 - CPU-based
 - 380 Nodes consisting of NVIDIA Grace-Grace CPUs; 54,720 cores; 200Gb/s interconnect
+- Available internal to Bristol; external TBC
 - [Bristol Centre for Supercomputing](https://www.bristol.ac.uk/research/centres/bristol-supercomputing/)
 
 ### Baskerville NCR (University of Birmingham)
@@ -49,6 +52,8 @@ There are other UK HPC resources that may be available to you.
 - [Mary Coombs website](https://www.hartree.stfc.ac.uk/technologies/mary-coombs/)
 
 ## AI Research Resource (AIRR)
+
+The AIRR systems have one common [access route for academia](https://www.ukri.org/opportunity/access-to-isambard-ai-and-dawn-airr-supercomputers-gateway-route/), applied for via the AIRR portal.
 
 ### Isambard AI (University of Bristol)
 
@@ -74,6 +79,6 @@ UKRI-funded communities through the Digital Research Infrastructure programme.
 
 ## Next National Supercomputing Service (NNSS)
 
-ARCHER2 replacement
+Replaces ARCHER2 as the UK National Supercomputer, with different focus for use cases.
 
 [UKRI National Compute Ecosystem Town Hall Meeting](https://zenodo.org/records/20539798) slides from 2 June 2026.
