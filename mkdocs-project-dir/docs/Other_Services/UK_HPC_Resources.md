@@ -53,7 +53,12 @@ These systems are mostly still under development - a couple are accessible alrea
 
 ## AI Research Resource (AIRR)
 
-The AIRR systems have one common [access route for academia](https://www.ukri.org/opportunity/access-to-isambard-ai-and-dawn-airr-supercomputers-gateway-route/), applied for via the AIRR portal.
+### AIRR access route
+
+- [Gateway route for academia](https://www.ukri.org/opportunity/access-to-isambard-ai-and-dawn-airr-supercomputers-gateway-route/)
+- "Users should be looking to explore novel and developing areas of AI research, as well as supporting upskilling across a wide range of AI-relevant experience."
+- At time of writing, 10,000 GPU hours can be requested by each application, to be used within three months of project being awarded.
+- Application via AIRR portal, linked in above page.
 
 ### Isambard AI (University of Bristol)
 
@@ -65,12 +70,6 @@ The AIRR systems have one common [access route for academia](https://www.ukri.or
 - 256 Dell PowerEdge XE9640 server nodes, 2x Intel Xeon Platinum CPUs and 3x Intel Data Centre GPU Max 1550
 - [Dawn and Zenith website](https://www.hpc.cam.ac.uk/d-w-n)
 
-### AIRR access routes
-
-- [Gateway route](https://www.ukri.org/opportunity/access-to-isambard-ai-and-dawn-airr-supercomputers-gateway-route/)
-- "Users should be looking to explore novel and developing areas of AI research, as well as supporting upskilling across a wide range of AI-relevant experience."
-- At time of writing, 10,000 GPU hours can be requested by each application, to be used within three months of project being awarded.
-- Application via AIRR portal, linked in above page.
 
 ## Communities
 
