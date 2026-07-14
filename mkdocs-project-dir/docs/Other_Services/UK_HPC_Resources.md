@@ -44,6 +44,7 @@ There are other UK HPC resources that may be available to you.
 
 ### Mary Coombs NCR (Daresbury)
 
+- GPU-based
 - 628 NVIDIA H100 GPUs (157 nodes), Infiniband NDR200 interconnect
 - [Mary Coombs website](https://www.hartree.stfc.ac.uk/technologies/mary-coombs/)
 
