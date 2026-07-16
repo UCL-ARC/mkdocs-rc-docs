@@ -6,10 +6,10 @@ categories:
 
 # Purchasing in Myriad
 
-!!! important "15 Apr 2026: Myriad node purchases paused - no deliveries until next UCL financial year"
-    To ensure system stability, we are not accepting new hardware for Myriad until the networking refresh and operating system upgrades are finalized. We anticipate reopening for purchases in June or July for orders for the UCL financial year beginning August 2026, pending successful infrastructure deployment. 
+!!! important "16 July 2026: Myriad node purchases no longer available"
+    No new hardware will be added to Myriad. Paid resources should be available in a future cluster. The node specs below are obsolete. 
 
-    Please contact rc-support@ucl.ac.uk for prices and let us know your timescales. 
+    Please contact rc-support@ucl.ac.uk. 
 
 Researchers may purchase additional resources to be used as part of the [Myriad](../Clusters/Myriad.md) High Performance Computing cluster if the free service does not meet their needs. These resources can be made available in one of two ways:
 
