@@ -974,8 +974,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     We are changing the maximum memory requestable by a job, and the total amounts requestable have been updated in https://www.rc.ucl.ac.uk/docs/Clusters/Myriad/#node-types 
 
-#### Latest on Myriad 
-
   - 2026-06-11 14:45 - **Myriad planned outages: 18 June, 11 July**
 
     **Outage on Thursday 18 June**
@@ -1003,6 +1001,16 @@ This page outlines that status of each of the machines managed by the Research C
     Our configuration change was unsuccessful and not compatible with our current filesystem version, so we will be
     planning future updates to deal with the problem. (We had tried this one anyway on the recommendation of our vendor).
 
+#### Latest on Myriad 
+
+  - 2026-07-17 11:15 - **Myriad login issues this morning**
+
+    We've been seeing two periods this morning now where you won't have been able to log in - the second one right now.
+    (We have two util nodes that run the scheduler's qmaster and some monitoring functions and those were trying to fail
+    over from one node to the other and not able to come back up on the second one).
+
+    Logins are failing again now and I assume this is for the same reason but we are investigating.
+    
 
 ### Kathleen
 
