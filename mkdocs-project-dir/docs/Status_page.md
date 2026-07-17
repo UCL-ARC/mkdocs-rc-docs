@@ -1010,7 +1010,11 @@ This page outlines that status of each of the machines managed by the Research C
     over from one node to the other and not able to come back up on the second one).
 
     Logins are failing again now and I assume this is for the same reason but we are investigating.
-    
+
+  - 2026-07-17 12:30
+    We think this is fixed now - we have sorted out why the nodes were not able to fail over to each other.
+    Logins to Myriad are working again.
+
 
 ### Kathleen
 
