@@ -1862,8 +1862,6 @@ This page outlines that status of each of the machines managed by the Research C
     Finally, here is an example script showing how to submit a job which would run on one of the high memory nodes:
     [High memory node jobs](https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/#high-memory-node-jobs)
 
-#### Latest on Young
-
   - 2026-05-26 10:20 - **MPI issues on Young; Outage on 27 June**
 
     We're aware of current MPI issues on Young and will be applying a kernel patch to deal with them.
@@ -1891,6 +1889,45 @@ This page outlines that status of each of the machines managed by the Research C
     of the Computer Misuse Act, and at UCL our Information Security Group has tracking that identifies the existence of
     these and when they are run. We are doing our best to keep the clusters secure for your use. If you have any concerns
     about whether systems are vulnerable or not, please ask the teams that run them rather than testing it yourself.
+
+#### Latest on Young
+
+  - 2026-07-20 11:15 - **More GPU nodes moving to Young-ng; Young-ng info**
+
+    **GPU nodes**
+
+    Currently there is one GPU node in Young-ng and five in Young, and the one in young-ng is having an issue where it will
+    not power on. We will now move across another two so there are three in each part of Young.
+
+    We will then move the final three GPU nodes to Young-ng in two weeks, around 4 August. All current GPU use is Free so this
+    will give everyone access to the newer software on the GPU nodes and having them all in one place will help with the queues.
+    If you are using GPUs and haven't had a look at Young-ng yet, please do so.
+
+    **Young-ng access**
+
+    Everyone with a Young account can also access the new RHEL9 + Slurm part of Young via `young-ng.rc.ucl.ac.uk`, or `login21`
+    and `login22.young.rc.ucl.ac.uk`.
+
+    Your home directory is the same so your ssh keys are already there.
+
+    There is only free use on Young-ng at present, so there are no Gold-style allocations there. Gold is currently only available
+    on the old half of Young. Job priority on Young-ng at present is managed by Slurm's per user fair share. (We will be adding
+    priority allocations but they are still in development).
+
+    - Info and links to example Slurm jobscripts: [Young new operating system and scheduler](https://www.rc.ucl.ac.uk/docs/Clusters/Young/#new-operating-system-and-scheduler)
+
+    Young-ng currently contains 202 standard type-C compute nodes, 16 type-W HBM nodes, one type-Y high memory node, one type-Z
+    very high memory node, and the single type-X GPU node.
+
+    The old half of Young has 302 type-C compute nodes, 16 type-W HBM nodes, two type-Y high memory nodes, two type-Z very high
+    memory nodes, and the five type-X GPU nodes that are going to be moved in two stages.
+
+    **Software stack on Young-ng**
+
+    We are soon going to deploy the next version of the Spack software stack on Young-ng. It has some additional applications,
+    some new versions of existing applications and some updates to the GPU stack. We will first make it available but leave the
+    current one as the default, then make the new one the default 1 month later. The `ucl-stack/2025-12` will remain there for the
+    time being so you can still choose to use it if you need to.
 
 
 ### Michael
