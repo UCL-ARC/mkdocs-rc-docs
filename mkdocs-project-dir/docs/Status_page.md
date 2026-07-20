@@ -2045,14 +2045,55 @@ This page outlines that status of each of the machines managed by the Research C
 
     Logins are enabled again.
 
-#### Latest on Michael
-
   - 2026-05-26 10:35 - **Outage on 27 June for electrical testing**
 
     The electrical testing that did not happen over Easter is now scheduled for 27 June and Michael will be
     fully down for that day, possibly the next day too. There will be no access and no jobs will be running. 
 
     The outage is listed at [Planned Outages](https://www.rc.ucl.ac.uk/docs/Planned_Outages/)
+
+#### Latest on Michael
+
+  - 2026-07-20 11:50 - **Plans for Michael operating system and scheduler upgrade**
+
+    The below changes are not happening immediately, this is to let you know that they will be happening soon.
+
+    We are upgrading the operating system on Michael to Red Hat Enterprise Linux 9 (from 7) and changing the
+    scheduler to Slurm rather than SGE.
+
+    We will do this in stages, so first we will move half the nodes into `michael-ng.rc.ucl.ac.uk` (the new part)
+    and leaving the other half running the existing environment. (The address `michael-ng.rc.ucl.ac.uk` is not
+    active yet and is what we are waiting for - we will send you another email when it is ready).
+
+    **Jobscripts**
+
+    Once you have access to Michael-ng your jobscripts will need to be rewritten as Slurm jobscripts, and there
+    are different commands for submitting jobs and checking your job status. Please see the following
+    documentation pages for specifics on using Slurm.
+
+    - [Usage of Slurm](https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm/)
+    - [Slurm Example Jobscripts](https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/)
+
+    **Plan for remainder of upgrade**
+
+    Please give us feedback on what is or isn't working in the new environment and if any software you rely on is missing.
+
+    Assuming no large changes are needed, we then plan to move all of Michael's nodes into michael-ng one month later.
+
+    **Free use**
+
+    There is not currently a priority allocation mechanism available on Michael-ng, but we do not have anyone
+    managing the Faraday Institution's Gold allocations right now either, so in both cases only free jobs are
+    available and the scheduler's per user fair share controls what runs.
+
+    **Michael lifetime and retirement dates**
+
+    The old type-K nodes will be available for running jobs until the end of September 2026, after which they will
+    be retired.
+
+    The type-A nodes will be available until the end of March 2027, after which Michael will cease running as a service.
+    There will be another two months of login access for data retrieval after it stops running jobs, and then Michael
+    as a whole will be retired. 
 
 
 ### Thomas
