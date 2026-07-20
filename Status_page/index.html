@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3901,9 +3901,6 @@ on Young node types, please see the following page in our documentation:
 <p>Finally, here is an example script showing how to submit a job which would run on one of the high memory nodes:
 <a href="https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/#high-memory-node-jobs">High memory node jobs</a></p>
 </li>
-</ul>
-<h4 id="latest-on-young">Latest on Young<a class="headerlink" href="#latest-on-young" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-05-26 10:20 - <strong>MPI issues on Young; Outage on 27 June</strong></p>
 <p>We're aware of current MPI issues on Young and will be applying a kernel patch to deal with them.
@@ -3924,6 +3921,37 @@ any clusters you have access to, for any reason. This is against institutional T
 of the Computer Misuse Act, and at UCL our Information Security Group has tracking that identifies the existence of
 these and when they are run. We are doing our best to keep the clusters secure for your use. If you have any concerns
 about whether systems are vulnerable or not, please ask the teams that run them rather than testing it yourself.</p>
+</li>
+</ul>
+<h4 id="latest-on-young">Latest on Young<a class="headerlink" href="#latest-on-young" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-07-20 11:15 - <strong>More GPU nodes moving to Young-ng; Young-ng info</strong></p>
+<p><strong>GPU nodes</strong></p>
+<p>Currently there is one GPU node in Young-ng and five in Young, and the one in young-ng is having an issue where it will
+not power on. We will now move across another two so there are three in each part of Young.</p>
+<p>We will then move the final three GPU nodes to Young-ng in two weeks, around 4 August. All current GPU use is Free so this
+will give everyone access to the newer software on the GPU nodes and having them all in one place will help with the queues.
+If you are using GPUs and haven't had a look at Young-ng yet, please do so.</p>
+<p><strong>Young-ng access</strong></p>
+<p>Everyone with a Young account can also access the new RHEL9 + Slurm part of Young via <code>young-ng.rc.ucl.ac.uk</code>, or <code>login21</code>
+and <code>login22.young.rc.ucl.ac.uk</code>.</p>
+<p>Your home directory is the same so your ssh keys are already there.</p>
+<p>There is only free use on Young-ng at present, so there are no Gold-style allocations there. Gold is currently only available
+on the old half of Young. Job priority on Young-ng at present is managed by Slurm's per user fair share. (We will be adding
+priority allocations but they are still in development).</p>
+<ul>
+<li>Info and links to example Slurm jobscripts: <a href="https://www.rc.ucl.ac.uk/docs/Clusters/Young/#new-operating-system-and-scheduler">Young new operating system and scheduler</a></li>
+</ul>
+<p>Young-ng currently contains 202 standard type-C compute nodes, 16 type-W HBM nodes, one type-Y high memory node, one type-Z
+very high memory node, and the single type-X GPU node.</p>
+<p>The old half of Young has 302 type-C compute nodes, 16 type-W HBM nodes, two type-Y high memory nodes, two type-Z very high
+memory nodes, and the five type-X GPU nodes that are going to be moved in two stages.</p>
+<p><strong>Software stack on Young-ng</strong></p>
+<p>We are soon going to deploy the next version of the Spack software stack on Young-ng. It has some additional applications,
+some new versions of existing applications and some updates to the GPU stack. We will first make it available but leave the
+current one as the default, then make the new one the default 1 month later. The <code>ucl-stack/2025-12</code> will remain there for the
+time being so you can still choose to use it if you need to.</p>
 </li>
 </ul>
 <h3 id="michael">Michael<a class="headerlink" href="#michael" title="Permanent link">§</a></h3>
@@ -4187,7 +4215,7 @@ fully down for that day, possibly the next day too. There will be no access and 
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["instant"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
