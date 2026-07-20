@@ -4062,14 +4062,44 @@ email us confirming that we can delete your accounts and we will do so and remov
 <p>2024-10-08 13:30 Logins are enabled.</p>
 <p>Logins are enabled again.</p>
 </li>
-</ul>
-<h4 id="latest-on-michael">Latest on Michael<a class="headerlink" href="#latest-on-michael" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-05-26 10:35 - <strong>Outage on 27 June for electrical testing</strong></p>
 <p>The electrical testing that did not happen over Easter is now scheduled for 27 June and Michael will be
 fully down for that day, possibly the next day too. There will be no access and no jobs will be running. </p>
 <p>The outage is listed at <a href="https://www.rc.ucl.ac.uk/docs/Planned_Outages/">Planned Outages</a></p>
+</li>
+</ul>
+<h4 id="latest-on-michael">Latest on Michael<a class="headerlink" href="#latest-on-michael" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-07-20 11:50 - <strong>Plans for Michael operating system and scheduler upgrade</strong></p>
+<p>The below changes are not happening immediately, this is to let you know that they will be happening soon.</p>
+<p>We are upgrading the operating system on Michael to Red Hat Enterprise Linux 9 (from 7) and changing the
+scheduler to Slurm rather than SGE.</p>
+<p>We will do this in stages, so first we will move half the nodes into <code>michael-ng.rc.ucl.ac.uk</code> (the new part)
+and leaving the other half running the existing environment. (The address <code>michael-ng.rc.ucl.ac.uk</code> is not
+active yet and is what we are waiting for - we will send you another email when it is ready).</p>
+<p><strong>Jobscripts</strong></p>
+<p>Once you have access to Michael-ng your jobscripts will need to be rewritten as Slurm jobscripts, and there
+are different commands for submitting jobs and checking your job status. Please see the following
+documentation pages for specifics on using Slurm.</p>
+<ul>
+<li><a href="https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm/">Usage of Slurm</a></li>
+<li><a href="https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/">Slurm Example Jobscripts</a></li>
+</ul>
+<p><strong>Plan for remainder of upgrade</strong></p>
+<p>Please give us feedback on what is or isn't working in the new environment and if any software you rely on is missing.</p>
+<p>Assuming no large changes are needed, we then plan to move all of Michael's nodes into michael-ng one month later.</p>
+<p><strong>Free use</strong></p>
+<p>There is not currently a priority allocation mechanism available on Michael-ng, but we do not have anyone
+managing the Faraday Institution's Gold allocations right now either, so in both cases only free jobs are
+available and the scheduler's per user fair share controls what runs.</p>
+<p><strong>Michael lifetime and retirement dates</strong></p>
+<p>The old type-K nodes will be available for running jobs until the end of September 2026, after which they will
+be retired.</p>
+<p>The type-A nodes will be available until the end of March 2027, after which Michael will cease running as a service.
+There will be another two months of login access for data retrieval after it stops running jobs, and then Michael
+as a whole will be retired. </p>
 </li>
 </ul>
 <h3 id="thomas">Thomas<a class="headerlink" href="#thomas" title="Permanent link">§</a></h3>
