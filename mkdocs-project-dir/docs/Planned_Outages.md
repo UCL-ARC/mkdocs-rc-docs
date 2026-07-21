@@ -16,6 +16,8 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
+28 July 2026 | Young, Michael, Kathleen | Planned | Network Modernisation outage to replace central UCL switches. Jobs being drained. No access to each cluster during swap out of its switches. Expected to complete that day, may run into next day.
+12 August 2026 | Myriad | Planned | Network Modernisation outage to replace central UCL switches. Jobs being drained. No access to Myriad during swap out of its switches. Expected to complete that day, may run into next day.
 Unknown 2026 | Kathleen | Planned | Replacement chiller door scheduled to arrive for old-Kathleen cabinet that is currently out of service. (Outage should not be required, but that cabinet is not running jobs until this is fixed).
 
 ## Previous Outages
