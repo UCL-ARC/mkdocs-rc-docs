@@ -286,7 +286,7 @@ echo $TMPDIR
 Note that we're requesting both one GPU and 20G of temporary storage.
 
 #### GPU node interactive session
-`srun --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1,tmpfs:20G --time=12:00:00 --pty bash -l`
+`srun --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1,tmpfs:20G --time=2:00:00 --pty bash -l`
 
 ### What is the difference between srun and salloc?
 
