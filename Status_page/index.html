@@ -3953,6 +3953,14 @@ some new versions of existing applications and some updates to the GPU stack. We
 current one as the default, then make the new one the default 1 month later. The <code>ucl-stack/2025-12</code> will remain there for the
 time being so you can still choose to use it if you need to.</p>
 </li>
+<li>
+<p>2026-08-04 12:30 - <strong>Young-ng temporary scheduler issue fixed; all GPU nodes moved</strong></p>
+<p>For about an hour you will have been getting errors like this when running Slurm commands on young-ng:</p>
+<p><code>slurm_load_jobs error: Socket timed out on send/recv operation</code></p>
+<p>Slurm is now back and you can submit jobs and query the queue again.</p>
+<p>We caused this when adding the three GPU nodes over into Young-ng and are investigating what went wrong.</p>
+<p>There are now no GPU nodes in the old half of Young. If you have GPU jobs still in SGE's queue from before, these will never run.</p>
+</li>
 </ul>
 <h3 id="michael">Michael<a class="headerlink" href="#michael" title="Permanent link">§</a></h3>
 <ul>
