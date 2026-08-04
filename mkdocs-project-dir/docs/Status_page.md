@@ -1929,6 +1929,18 @@ This page outlines that status of each of the machines managed by the Research C
     current one as the default, then make the new one the default 1 month later. The `ucl-stack/2025-12` will remain there for the
     time being so you can still choose to use it if you need to.
 
+  - 2026-08-04 12:30 - **Young-ng temporary scheduler issue fixed; all GPU nodes moved**
+
+    For about an hour you will have been getting errors like this when running Slurm commands on young-ng:
+
+    `slurm_load_jobs error: Socket timed out on send/recv operation`
+
+    Slurm is now back and you can submit jobs and query the queue again.
+
+    We caused this when adding the three GPU nodes over into Young-ng and are investigating what went wrong.
+
+    There are now no GPU nodes in the old half of Young. If you have GPU jobs still in SGE's queue from before, these will never run.
+
 
 ### Michael
 
