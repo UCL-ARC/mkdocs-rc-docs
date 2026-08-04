@@ -2380,7 +2380,7 @@ srun &lt;application to execute&gt;
 <h4 id="single-node-hbm-script">Single node HBM script<a class="headerlink" href="#single-node-hbm-script" title="Permanent link">§</a></h4>
 <div class="codehilite"><pre><span></span><code>#!/bin/bash
 
-#SBATCH --parition=hbm
+#SBATCH --partition=hbm
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
 #SBATCH --time=12:00:00
@@ -2402,7 +2402,7 @@ echo $TMPDIR
 
 <p>Note that the <code>hbm</code> partition you need to explicitly specify.  If you don't, the job will run on a regular CPU node.  In this example we've also asked for 40G of temporary storage on the node.  </p>
 <h4 id="single-node-hbm-interactive-session">Single node HBM interactive session<a class="headerlink" href="#single-node-hbm-interactive-session" title="Permanent link">§</a></h4>
-<p><code>srun --parition=hbm --nodes=1 --ntasks-per-node=4 --time=12:00:00 --pty bash -l</code></p>
+<p><code>srun --partition=hbm --nodes=1 --ntasks-per-node=4 --time=12:00:00 --pty bash -l</code></p>
 <h3 id="high-memory-node-jobs">High-Memory node jobs<a class="headerlink" href="#high-memory-node-jobs" title="Permanent link">§</a></h3>
 <h4 id="single-node-high-memory-script">Single node high memory script<a class="headerlink" href="#single-node-high-memory-script" title="Permanent link">§</a></h4>
 <div class="codehilite"><pre><span></span><code>#!/bin/bash
