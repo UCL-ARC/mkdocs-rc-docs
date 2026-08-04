@@ -2461,7 +2461,7 @@ echo $TMPDIR
 
 <p>Note that we're requesting both one GPU and 20G of temporary storage.</p>
 <h4 id="gpu-node-interactive-session">GPU node interactive session<a class="headerlink" href="#gpu-node-interactive-session" title="Permanent link">§</a></h4>
-<p><code>srun --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1,tmpfs:20G --time=12:00:00 --pty bash -l</code></p>
+<p><code>srun --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1,tmpfs:20G --time=2:00:00 --pty bash -l</code></p>
 <h3 id="what-is-the-difference-between-srun-and-salloc">What is the difference between srun and salloc?<a class="headerlink" href="#what-is-the-difference-between-srun-and-salloc" title="Permanent link">§</a></h3>
 <h4 id="srun">srun<a class="headerlink" href="#srun" title="Permanent link">§</a></h4>
 <p>If you're confused about why <code>srun</code> is used above to start an interactive session but also used to execute a parallel application within a script, there is no need to worry -- it is confusing!  <code>srun</code> is a very versatile command.  When used with no inputs it will execute whatever comes after it on all resources available.  If it detects you're using MPI it will execute in parallel using MPI.  If there is no MPI it will execute the command once on each of the available allocated CPUs.  If there are no resources yet allocated via <code>sbatch</code> or <code>salloc</code> it will look to see if you've asked for resources, allocate them for you, and then run the command.  If you feed it the <code>--pty</code> you can NOT specify a command and it will start an interactive session for you.  Versatile!</p>
