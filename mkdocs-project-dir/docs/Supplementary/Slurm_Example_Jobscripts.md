@@ -191,7 +191,7 @@ This will start a new session on the login node with the requested resources all
 ```
 #!/bin/bash
 
-#SBATCH --parition=hbm
+#SBATCH --partition=hbm
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
 #SBATCH --time=12:00:00
@@ -215,7 +215,7 @@ echo $TMPDIR
 Note that the `hbm` partition you need to explicitly specify.  If you don't, the job will run on a regular CPU node.  In this example we've also asked for 40G of temporary storage on the node.  
 
 #### Single node HBM interactive session
-`srun --parition=hbm --nodes=1 --ntasks-per-node=4 --time=12:00:00 --pty bash -l`
+`srun --partition=hbm --nodes=1 --ntasks-per-node=4 --time=12:00:00 --pty bash -l`
 
 ### High-Memory node jobs
 
