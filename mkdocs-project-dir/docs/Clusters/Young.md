@@ -11,7 +11,7 @@ Young entered pilot phase on 3 Aug 2020, and entered full service on 1 Oct 2020.
 
 A portion of Young is currently updated to our new operating system (RHEL 9.6) and new scheduler, Slurm.
 
-Currently, the new portion of Young can be accessed via `young-ng.rc.ucl.ac.uk` which will log you onto an updated login node.
+Currently, the new portion of Young (referred to as Young-ng) can be accessed via `young-ng.rc.ucl.ac.uk` which will log you onto an updated login node.
 
 The new software stack is provided by a module called `ucl-stack/2025-12` which should be loaded by default. If not (for example if you `module purge` in your .bashrc) you can load the new environment with:
 
@@ -31,9 +31,11 @@ Your jobscripts will need to be rewritten as Slurm jobscripts, and there are dif
 * [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
   * [Slurm Example Jobscripts for Young](../Supplementary/Slurm_Example_Jobscripts.md/#examples-for-young)
 
-At present, project use isn't enabled in the new environment and all jobs will run through the `allusers` account.
+At present, project use and allocations aren't enabled in the new environment and all jobs will run as free through the `allusers` account.
 
-Updates to the software stack will be made based on feedback and more nodes will be added in February.  Currently there are 36 C-type, 4 W-type, and 1 X-type node in the new environment.  Please see [node types](#node-types) below for details.
+Young-ng currently contains 202 standard type-C compute nodes, 16 type-W HBM nodes, one type-Y high memory node, one type-Z very high memory node, and all six type-X GPU nodes.  Please see [node types](#node-types) below for details.
+
+The old half of Young has 302 type-C compute nodes, 16 type-W HBM nodes, two type-Y high memory nodes, and two type-Z very high memory nodes.
 
 ## Training resources
 
