@@ -3250,7 +3250,7 @@ Materials and Molecular Modelling.</p>
 <p>Young entered pilot phase on 3 Aug 2020, and entered full service on 1 Oct 2020.</p>
 <h2 id="new-operating-system-and-scheduler">New operating system and scheduler<a class="headerlink" href="#new-operating-system-and-scheduler" title="Permanent link">§</a></h2>
 <p>A portion of Young is currently updated to our new operating system (RHEL 9.6) and new scheduler, Slurm.</p>
-<p>Currently, the new portion of Young can be accessed via <code>young-ng.rc.ucl.ac.uk</code> which will log you onto an updated login node.</p>
+<p>Currently, the new portion of Young (referred to as Young-ng) can be accessed via <code>young-ng.rc.ucl.ac.uk</code> which will log you onto an updated login node.</p>
 <p>The new software stack is provided by a module called <code>ucl-stack/2025-12</code> which should be loaded by default. If not (for example if you <code>module purge</code> in your .bashrc) you can load the new environment with:</p>
 <div class="codehilite"><pre><span></span><code>module load ucl-stack/2025-12
 module load default-modules/2025-12
@@ -3265,8 +3265,9 @@ module load default-modules/2025-12
 <li><a href="../../Supplementary/Slurm_Example_Jobscripts/">Slurm Example Jobscripts</a></li>
 <li><a href="../../Supplementary/Slurm_Example_Jobscripts/#examples-for-young">Slurm Example Jobscripts for Young</a></li>
 </ul>
-<p>At present, project use isn't enabled in the new environment and all jobs will run through the <code>allusers</code> account.</p>
-<p>Updates to the software stack will be made based on feedback and more nodes will be added in February.  Currently there are 36 C-type, 4 W-type, and 1 X-type node in the new environment.  Please see <a href="#node-types">node types</a> below for details.</p>
+<p>At present, project use and allocations aren't enabled in the new environment and all jobs will run as free through the <code>allusers</code> account.</p>
+<p>Young-ng currently contains 202 standard type-C compute nodes, 16 type-W HBM nodes, one type-Y high memory node, one type-Z very high memory node, and all six type-X GPU nodes.  Please see <a href="#node-types">node types</a> below for details.</p>
+<p>The old half of Young has 302 type-C compute nodes, 16 type-W HBM nodes, two type-Y high memory nodes, and two type-Z very high memory nodes.</p>
 <h2 id="training-resources">Training resources<a class="headerlink" href="#training-resources" title="Permanent link">§</a></h2>
 <p>The <a href="http://mmmhub.ac.uk/young-events-and-training/">MMM Hub's Events and Training page</a>
 contains useful information for new users and about specific software.</p>
