@@ -5,6 +5,11 @@ layout: docs
 
 # Using Paid-For Resources
 
+!!! important "16 July 2026: Myriad paid resources no longer available"
+    Paid resources should be available in a future cluster. The information below is obsolete.
+
+    Please contact rc-support@ucl.ac.uk. 
+
 Paid resources may be in the form of priority access (Gold), dedicated nodes
 or both.
 
