@@ -16,6 +16,8 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
+18-19 August 2026 | Kathleen | Planned | GPFS upgrade outage for ACFS. Cluster will be drained for morning of 18, no access to login nodes. If work is happening on 19 instead (depends on engineers), jobs and access will be reinstated until morning of 19 when there will be no access again.
+20-21 August 2026 | Myriad | Planned | GPFS upgrade outage for ACFS. Cluster will be drained for morning of 20, no access to login nodes. If work is happening on 21 instead (depends on engineers), jobs and access will be reinstated until morning of 21 when there will be no access again.
 15-16 September 2026 | Young, Michael, Kathleen | Planned | Dates are tentative. Network Modernisation outage to replace central UCL switches. Jobs being drained. No access to each cluster during swap out of its switches. Expected to complete that day, may run into next day.
 24-25 September 2026 | Myriad | Planned | Dates are tentative. Network Modernisation outage to replace central UCL switches. Jobs being drained. No access to Myriad during swap out of its switches. Expected to complete that day, may run into next day.
 Unknown 2026 | Kathleen | Planned | Replacement chiller door scheduled to arrive for old-Kathleen cabinet that is currently out of service. (Outage should not be required, but that cabinet is not running jobs until this is fixed).
