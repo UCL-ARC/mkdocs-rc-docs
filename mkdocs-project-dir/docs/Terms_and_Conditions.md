@@ -95,6 +95,14 @@ When filesystems or clusters are retired, they will be decommissioned and we wil
 the data left on them. Barring unforeseen circumstances, you will receive three months' notice before this
 happens.
 
+### Autonomous Systems
+
+We have not yet determined whether and how it should be permissible to use non-deterministic automated systems that incorporate e.g. Large-Language Models into the control flow, or whether and how this should be affected by whether the system involves making control-flow-influencing requests to an external system.
+
+However, in the meanwhile, the following applies:
+
+ - You are fully responsible and accountable for the results of any actions taken by an automated system you use.
+ - This includes actions that breach security boundaries, actions that disrupt or impair the operation of systems, actions that harm other users, and actions that delete or modify data.
 
 ## Acknowledgement in Works
 
