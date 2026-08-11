@@ -16,8 +16,6 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-18-19 August 2026 | Kathleen | Planned | GPFS upgrade outage for ACFS. Cluster will be drained for morning of 18, no access to login nodes. If work is happening on 19 instead (depends on engineers), jobs and access will be reinstated until morning of 19 when there will be no access again.
-20-21 August 2026 | Myriad | Planned | GPFS upgrade outage for ACFS. Cluster will be drained for morning of 20, no access to login nodes. If work is happening on 21 instead (depends on engineers), jobs and access will be reinstated until morning of 21 when there will be no access again.
 15-16 September 2026 | Young, Michael, Kathleen | Planned | Dates are tentative. Network Modernisation outage to replace central UCL switches. Jobs being drained. No access to each cluster during swap out of its switches. Expected to complete that day, may run into next day.
 24-25 September 2026 | Myriad | Planned | Dates are tentative. Network Modernisation outage to replace central UCL switches. Jobs being drained. No access to Myriad during swap out of its switches. Expected to complete that day, may run into next day.
 Unknown 2026 | Kathleen | Planned | Replacement chiller door scheduled to arrive for old-Kathleen cabinet that is currently out of service. (Outage should not be required, but that cabinet is not running jobs until this is fixed).
@@ -26,6 +24,8 @@ Unknown 2026 | Kathleen | Planned | Replacement chiller door scheduled to arrive
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
+18-19 August 2026 | Kathleen | Cancelled | Cancelled due to on-going issues with back-up system associated with ACFS. Was: GPFS upgrade outage for ACFS. Cluster will be drained for morning of 18, no access to login nodes. If work is happening on 19 instead (depends on engineers), jobs and access will be reinstated until morning of 19 when there will be no access again. 
+20-21 August 2026 | Myriad | Cancelled | Cancelled due to on-going issues with back-up system associated with ACFS. Was: GPFS upgrade outage for ACFS. Cluster will be drained for morning of 20, no access to login nodes. If work is happening on 21 instead (depends on engineers), jobs and access will be reinstated until morning of 21 when there will be no access again.
 11 July 2026 | Myriad | Postponed | Network Modernisation project will result in no login access to Myriad between 09:00 - 13:00 and will be at risk until 17:00. Now postponed to future date.
 26-28 June 2026 | Young, Kathleen, Michael | Completed | Electrical testing in datacentre. The clusters will be drained for 13:00 on 26 June. The login nodes and filesystem will be accessible until 16:00. Full shutdown outage all day on 27 and 28 June. Should be operational again on Monday. Outage also includes the permanent fix to a slow underfloor leak that affected Young and Kathleen.
 18 June 2026 | Myriad | Unsuccessful | Full outage of Myriad for at least half the day, no login access or jobs running. To apply a configuration change on Myriad's filesystem that is expected to improve performance. Further outage to fully address the root cause TBC. The change was not compatible with our current filesystem version and we will be planning further updates later.
