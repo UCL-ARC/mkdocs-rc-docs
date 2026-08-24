@@ -2389,7 +2389,7 @@ disk space on the node, if it is not diskless). In the case for array jobs, each
 
 <span class="c1"># Set the working directory to somewhere in your scratch space.  </span>
 <span class="c1">#  This is a necessary step as compute nodes cannot write to $HOME.</span>
-<span class="c1"># Replace &quot;&lt;your_UCL_id&gt;&quot; with your UCL user ID.</span>
+<span class="c1"># Replace "&lt;your_UCL_id&gt;" with your UCL user ID.</span>
 <span class="c1">#$ -wd /home/&lt;your_UCL_id&gt;/Scratch/workspace</span>
 
 <span class="c1"># Your work should be done in $TMPDIR </span>
@@ -2428,7 +2428,7 @@ tar<span class="w"> </span>-zcvf<span class="w"> </span><span class="nv">$HOME</
 <span class="c1">#$ -pe smp 16</span>
 
 <span class="c1"># Set the working directory to somewhere in your scratch space.</span>
-<span class="c1"># Replace &quot;&lt;your_UCL_id&gt;&quot; with your UCL user ID</span>
+<span class="c1"># Replace "&lt;your_UCL_id&gt;" with your UCL user ID</span>
 <span class="c1">#$ -wd /home/&lt;your_UCL_id&gt;/Scratch/output</span>
 
 <span class="c1"># 8. Run the application.</span>
@@ -2462,7 +2462,7 @@ modules are loaded, either in your jobscript or in your shell start-up files (e.
 <span class="c1">#$ -pe mpi 16</span>
 
 <span class="c1"># Set the working directory to somewhere in your scratch space.</span>
-<span class="c1"># Replace &quot;&lt;your_UCL_id&gt;&quot; with your UCL user ID :</span>
+<span class="c1"># Replace "&lt;your_UCL_id&gt;" with your UCL user ID :</span>
 <span class="c1">#$ -wd /home/&lt;your_UCL_id&gt;/Scratch/output</span>
 
 <span class="c1"># Run our MPI job.  GERun is a wrapper that launches MPI jobs on our clusters.</span>
@@ -2499,12 +2499,12 @@ arrays.</p>
 <span class="c1">#$ -N MyArrayJob</span>
 
 <span class="c1"># Set the working directory to somewhere in your scratch space. </span>
-<span class="c1"># Replace &quot;&lt;your_UCL_id&gt;&quot; with your UCL user ID :)</span>
+<span class="c1"># Replace "&lt;your_UCL_id&gt;" with your UCL user ID :)</span>
 <span class="c1">#$ -wd /home/&lt;your_UCL_id&gt;/Scratch/output</span>
 
 <span class="c1"># Run the application.</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$JOB_NAME</span><span class="s2"> </span><span class="nv">$SGE_TASK_ID</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$JOB_NAME</span><span class="s2"> </span><span class="nv">$SGE_TASK_ID</span><span class="s2">"</span>
 </code></pre></div>
 
 <h2 id="array-job-script-example-using-parameter-file">Array Job Script Example Using Parameter File<a class="headerlink" href="#array-job-script-example-using-parameter-file" title="Permanent link">§</a></h2>
@@ -2546,21 +2546,21 @@ thousands or tens of thousands of tasks.</p>
 <span class="c1">#$ -N array-params</span>
 
 <span class="c1"># Set the working directory to somewhere in your scratch space.</span>
-<span class="c1"># Replace &quot;&lt;your_UCL_id&gt;&quot; with your UCL user ID :)</span>
+<span class="c1"># Replace "&lt;your_UCL_id&gt;" with your UCL user ID :)</span>
 <span class="c1">#$ -wd /home/&lt;your_UCL_id&gt;/Scratch/output</span>
 
 <span class="c1"># Parse parameter file to get variables.</span>
 <span class="nv">number</span><span class="o">=</span><span class="nv">$SGE_TASK_ID</span>
 <span class="nv">paramfile</span><span class="o">=</span>/home/&lt;your_UCL_id&gt;/Scratch/input/params.txt
 
-<span class="nv">index</span><span class="o">=</span><span class="s2">&quot;`sed -n </span><span class="si">${</span><span class="nv">number</span><span class="si">}</span><span class="s2">p </span><span class="nv">$paramfile</span><span class="s2"> | awk &#39;{print </span><span class="nv">$1</span><span class="s2">}&#39;`&quot;</span>
-<span class="nv">variable1</span><span class="o">=</span><span class="s2">&quot;`sed -n </span><span class="si">${</span><span class="nv">number</span><span class="si">}</span><span class="s2">p </span><span class="nv">$paramfile</span><span class="s2"> | awk &#39;{print </span><span class="nv">$2</span><span class="s2">}&#39;`&quot;</span>
-<span class="nv">variable2</span><span class="o">=</span><span class="s2">&quot;`sed -n </span><span class="si">${</span><span class="nv">number</span><span class="si">}</span><span class="s2">p </span><span class="nv">$paramfile</span><span class="s2"> | awk &#39;{print </span><span class="nv">$3</span><span class="s2">}&#39;`&quot;</span>
-<span class="nv">variable3</span><span class="o">=</span><span class="s2">&quot;`sed -n </span><span class="si">${</span><span class="nv">number</span><span class="si">}</span><span class="s2">p </span><span class="nv">$paramfile</span><span class="s2"> | awk &#39;{print </span><span class="nv">$4</span><span class="s2">}&#39;`&quot;</span>
+<span class="nv">index</span><span class="o">=</span><span class="s2">"`sed -n </span><span class="si">${</span><span class="nv">number</span><span class="si">}</span><span class="s2">p </span><span class="nv">$paramfile</span><span class="s2"> | awk '{print </span><span class="nv">$1</span><span class="s2">}'`"</span>
+<span class="nv">variable1</span><span class="o">=</span><span class="s2">"`sed -n </span><span class="si">${</span><span class="nv">number</span><span class="si">}</span><span class="s2">p </span><span class="nv">$paramfile</span><span class="s2"> | awk '{print </span><span class="nv">$2</span><span class="s2">}'`"</span>
+<span class="nv">variable2</span><span class="o">=</span><span class="s2">"`sed -n </span><span class="si">${</span><span class="nv">number</span><span class="si">}</span><span class="s2">p </span><span class="nv">$paramfile</span><span class="s2"> | awk '{print </span><span class="nv">$3</span><span class="s2">}'`"</span>
+<span class="nv">variable3</span><span class="o">=</span><span class="s2">"`sed -n </span><span class="si">${</span><span class="nv">number</span><span class="si">}</span><span class="s2">p </span><span class="nv">$paramfile</span><span class="s2"> | awk '{print </span><span class="nv">$4</span><span class="s2">}'`"</span>
 
 <span class="c1"># Run the program (replace echo with your binary and options).</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$index</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$variable1</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$variable2</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$variable3</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$index</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$variable1</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$variable2</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$variable3</span><span class="s2">"</span>
 </code></pre></div>
 
 <h2 id="example-array-job-using-local2scratch">Example Array Job Using Local2Scratch<a class="headerlink" href="#example-array-job-using-local2scratch" title="Permanent link">§</a></h2>
@@ -2592,7 +2592,7 @@ with the structure <code>&lt;job id&gt;/&lt;job id&gt;.&lt;task id&gt;.&lt;queue
 <span class="c1">#$ -N local2scratcharray</span>
 
 <span class="c1"># Set the working directory to somewhere in your scratch space.</span>
-<span class="c1"># Replace &quot;&lt;your_UCL_id&gt;&quot; with your UCL user ID :)</span>
+<span class="c1"># Replace "&lt;your_UCL_id&gt;" with your UCL user ID :)</span>
 <span class="c1">#$ -wd /home/&lt;your_UCL_id&gt;/Scratch/output</span>
 
 <span class="c1"># Automate transfer of output to Scratch from $TMPDIR.</span>
@@ -2629,7 +2629,7 @@ hostname<span class="w"> </span>&gt;<span class="w"> </span>hostname.txt
 <span class="c1">#$ -N arraystride</span>
 
 <span class="c1"># Set the working directory to somewhere in your scratch space.</span>
-<span class="c1"># Replace &quot;&lt;your_UCL_id&gt;&quot; with your UCL user ID :)</span>
+<span class="c1"># Replace "&lt;your_UCL_id&gt;" with your UCL user ID :)</span>
 <span class="c1">#$ -wd /home/&lt;your_UCL_id&gt;/Scratch/output</span>
 
 <span class="c1"># Automate transfer of output to Scratch from $TMPDIR.</span>
@@ -2643,9 +2643,9 @@ hostname<span class="w"> </span>&gt;<span class="w"> </span>hostname.txt
 <span class="c1"># many inputs available). Or you can leave out the check and get an error.</span>
 <span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">i</span><span class="o">=</span><span class="nv">$SGE_TASK_ID</span><span class="p">;</span><span class="w"> </span>i&lt;<span class="nv">$SGE_TASK_ID</span>+10<span class="p">;</span><span class="w"> </span>i++<span class="w"> </span><span class="o">))</span>
 <span class="k">do</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;input.</span><span class="nv">$i</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">"input.</span><span class="nv">$i</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span>
 <span class="w">  </span><span class="k">then</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$JOB_NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SGE_TASK_ID</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;input.</span><span class="nv">$i</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$JOB_NAME</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$SGE_TASK_ID</span><span class="s2">"</span><span class="w"> </span><span class="s2">"input.</span><span class="nv">$i</span><span class="s2">"</span>
 <span class="w">  </span><span class="k">fi</span>
 <span class="k">done</span>
 </code></pre></div>
@@ -2730,7 +2730,7 @@ gerun your_binary
 <span class="c1">#$ -N GPUJob</span>
 
 <span class="c1"># Set the working directory to somewhere in your scratch space.</span>
-<span class="c1"># Replace &quot;&lt;your_UCL_id&gt;&quot; with your UCL user ID :)</span>
+<span class="c1"># Replace "&lt;your_UCL_id&gt;" with your UCL user ID :)</span>
 <span class="c1">#$ -wd /home/&lt;your_UCL_id&gt;/Scratch/output</span>
 
 <span class="c1"># Change into temporary directory to run work</span>

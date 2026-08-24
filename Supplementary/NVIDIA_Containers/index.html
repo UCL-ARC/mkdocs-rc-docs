@@ -2006,7 +2006,7 @@ wget -O - https://gitlab.com/NVHPC/ngc-examples/raw/master/namd/3.0/get_apoa1.sh
 </code></pre></div>
 
 <p>There are a couple of typos in the instructions: you'll need to use the tag <code>3.0-alpha3-singlenode</code> instead of <code>3.0_alpha3-singlenode</code>:</p>
-<div class="codehilite"><pre><span></span><code>export NAMD_TAG=&quot;3.0-alpha3-singlenode&quot;
+<div class="codehilite"><pre><span></span><code>export NAMD_TAG="3.0-alpha3-singlenode"
 </code></pre></div>
 
 <h3 id="creating-the-container-image">Creating the Container Image<a class="headerlink" href="#creating-the-container-image" title="Permanent link">§</a></h3>
@@ -2019,8 +2019,8 @@ wget -O - https://gitlab.com/NVHPC/ngc-examples/raw/master/namd/3.0/get_apoa1.sh
 </code></pre></div>
 
 <p>This can take a while: Singularity has to download quite a few file collections and assemble them into a single usable set. You may see some of the following warnings:</p>
-<div class="codehilite"><pre><span></span><code>WARNING: &#39;nodev&#39; mount option set on /lustre, it could be a source of failure during build process
-2022/02/03 14:06:28  warn xattr{var/log/apt/term.log} ignoring ENOTSUP on setxattr &quot;user.rootlesscontainers&quot;
+<div class="codehilite"><pre><span></span><code>WARNING: 'nodev' mount option set on /lustre, it could be a source of failure during build process
+2022/02/03 14:06:28  warn xattr{var/log/apt/term.log} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
 2022/02/03 14:06:28  warn xattr{/home/uccaiki/Scratch/.singularity/tmp/rootfs-5ac43e37-84fa-11ec-8784-0894ef553d4e/var/log/apt/term.log} destination filesystem does not support xattrs, further warnings will be suppressed
 </code></pre></div>
 
@@ -2035,14 +2035,14 @@ INFO:    Build complete: 3.0-alpha3-singlenode.sif
 </code></pre></div>
 
 <p>gives:</p>
-<div class="codehilite"><pre><span></span><code>WARNING: Bind mount &#39;/home/uccaiki =&gt; /home/uccaiki&#39; overlaps container CWD /home/uccaiki/ngc_namd_experiment, may not be available
+<div class="codehilite"><pre><span></span><code>WARNING: Bind mount '/home/uccaiki =&gt; /home/uccaiki' overlaps container CWD /home/uccaiki/ngc_namd_experiment, may not be available
 bin  boot  dev  environment  etc  home  host_pwd  lib  lib64  lustre  media  mnt  opt  proc  root  run  sbin  scratch  singularity  srv  sys  tmp  tmpdir  usr  var
 </code></pre></div>
 
 <p>The warning you get is telling you that your current working directory overlaps with a directory being "bound" into the container. Binding brings a directory into the container's view of the filesystem, so that, for example, programs can still access your home directory as usual. In this case it's not a problem, because it's warning you that your home directory is being bound into the container in the same place it would usually be, and that means the same files are visible.</p>
 <p>By default, the clusters have Singularity configured to bind your home and Scratch directories into the container, as well as the per-job temporary storage allocated to jobs under <code>$TMPDIR</code>. </p>
 <p>The NAMD instructions make an alternative suggestion when setting up this environment variable to use to run Singularity, binding your data directory into a fixed place in the container:</p>
-<div class="codehilite"><pre><span></span><code>SINGULARITY=&quot;$(which singularity) exec --nv -B $(pwd):/host_pwd ${NAMD_TAG}.sif&quot;
+<div class="codehilite"><pre><span></span><code>SINGULARITY="$(which singularity) exec --nv -B $(pwd):/host_pwd ${NAMD_TAG}.sif"
 </code></pre></div>
 
 <p>The option <code>-B $(pwd):/host_pwd</code> handles this, binding wherever you run the command from to the fixed location <code>/host_pwd</code> inside the container.</p>
@@ -2057,7 +2057,7 @@ $SINGULARITY ls /host_pwd
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash -l</span>
 
 <span class="c1"># Start with our resource requirements:</span>
-<span class="c1">#  1 hour&#39;s maximum runtime</span>
+<span class="c1">#  1 hour's maximum runtime</span>
 <span class="c1">#$ -l h_rt=1:00:00</span>
 
 <span class="c1"># 2 GPUs</span>
@@ -2073,22 +2073,22 @@ $SINGULARITY ls /host_pwd
 module<span class="w"> </span>load<span class="w"> </span>singularity-env
 
 <span class="c1"># Set the variables we need for this example to run</span>
-<span class="nv">NAMD_TAG</span><span class="o">=</span><span class="s2">&quot;3.0-alpha3-singlenode&quot;</span>
-<span class="nv">SINGULARITY</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>which<span class="w"> </span>singularity<span class="k">)</span><span class="s2"> exec --nv -B </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">:/host_pwd </span><span class="si">${</span><span class="nv">NAMD_TAG</span><span class="si">}</span><span class="s2">.sif&quot;</span>
+<span class="nv">NAMD_TAG</span><span class="o">=</span><span class="s2">"3.0-alpha3-singlenode"</span>
+<span class="nv">SINGULARITY</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>which<span class="w"> </span>singularity<span class="k">)</span><span class="s2"> exec --nv -B </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">:/host_pwd </span><span class="si">${</span><span class="nv">NAMD_TAG</span><span class="si">}</span><span class="s2">.sif"</span>
 
-<span class="c1"># This is where the benchmark&#39;s data ends up inside the container</span>
-<span class="nv">INPUT</span><span class="o">=</span><span class="s2">&quot;/host_pwd/apoa1/apoa1_nve_cuda.namd&quot;</span>
+<span class="c1"># This is where the benchmark's data ends up inside the container</span>
+<span class="nv">INPUT</span><span class="o">=</span><span class="s2">"/host_pwd/apoa1/apoa1_nve_cuda.namd"</span>
 
 <span class="c1"># Show us some info we can refer to later</span>
-<span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;Running NAMD using:\n Cores: %d\n GPUs: %d\n Container image: %s\nWorking directory: %s\n Input: %s\n&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;</span><span class="nv">$NSLOTS</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;</span><span class="nv">$GPU</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">NAMD_TAG</span><span class="si">}</span><span class="s2">.sif&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;</span><span class="nv">$INPUT</span><span class="s2">&quot;</span>
+<span class="nb">printf</span><span class="w"> </span><span class="s2">"Running NAMD using:\n Cores: %d\n GPUs: %d\n Container image: %s\nWorking directory: %s\n Input: %s\n"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"</span><span class="nv">$NSLOTS</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"</span><span class="nv">$GPU</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"</span><span class="si">${</span><span class="nv">NAMD_TAG</span><span class="si">}</span><span class="s2">.sif"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"</span><span class="nv">$INPUT</span><span class="s2">"</span>
 
 <span class="c1"># Run NAMD</span>
-<span class="s2">&quot;</span><span class="nv">$SINGULARITY</span><span class="s2">&quot;</span><span class="w"> </span>namd3<span class="w">  </span>+ppn<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$NSLOTS</span><span class="s2">&quot;</span><span class="w"> </span>+setcpuaffinity<span class="w"> </span>+idlepoll<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INPUT</span><span class="s2">&quot;</span>
+<span class="s2">"</span><span class="nv">$SINGULARITY</span><span class="s2">"</span><span class="w"> </span>namd3<span class="w">  </span>+ppn<span class="w"> </span><span class="s2">"</span><span class="nv">$NSLOTS</span><span class="s2">"</span><span class="w"> </span>+setcpuaffinity<span class="w"> </span>+idlepoll<span class="w"> </span><span class="s2">"</span><span class="nv">$INPUT</span><span class="s2">"</span>
 </code></pre></div>
 
 <p>Copy this into a file, and submit it to the queue, e.g.:</p>

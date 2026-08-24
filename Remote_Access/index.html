@@ -2500,7 +2500,7 @@
 <h2 id="post-quantum-key-exchange-warning">Post-quantum key exchange warning<a class="headerlink" href="#post-quantum-key-exchange-warning" title="Permanent link">§</a></h2>
 <p>If your OpenSSH version is new enough, you may see this warning when running the ssh command.</p>
 <div class="codehilite"><pre><span></span><code>** WARNING: connection is not using a post-quantum key exchange algorithm.
-** This session may be vulnerable to &quot;store now, decrypt later&quot; attacks.
+** This session may be vulnerable to "store now, decrypt later" attacks.
 ** The server may need to be upgraded. See https://openssh.com/pq.html
 </code></pre></div>
 
@@ -2546,7 +2546,7 @@ chmod go-rwx .ssh/authorized_keys
 <p>Create a key pair in Windows PowerShell using <code>ssh-keygen</code>:
 <img alt="Creating a key paid in Windows PowerShell" src="../img/ssh_keys/ssh_keys_04.png" /></p>
 <p>Upload the public key to the SSH Gateway with a one line multi-part command:</p>
-<div class="codehilite"><pre><span></span><code>cat .\.ssh\id_ed25519.pub | ssh ccaaxyz@ssh-gateway.ucl.ac.uk &quot;mkdir -p .ssh &amp;&amp; chmod 700 .ssh &amp;&amp; cat &gt;&gt; .ssh/authorized_keys &amp;&amp; chmod 600 .ssh/authorized_keys&quot;
+<div class="codehilite"><pre><span></span><code>cat .\.ssh\id_ed25519.pub | ssh ccaaxyz@ssh-gateway.ucl.ac.uk "mkdir -p .ssh &amp;&amp; chmod 700 .ssh &amp;&amp; cat &gt;&gt; .ssh/authorized_keys &amp;&amp; chmod 600 .ssh/authorized_keys"
 </code></pre></div>
 
 <p>This pipes in the contents of your <code>.pub</code> key file to an ssh command that connects to the gateway and then runs the bash commands in quotes. These are 
@@ -2597,7 +2597,7 @@ ssh -o ProxyJump=ccxxxxx@ssh-gateway.ucl.ac.uk ccxxxxx@kathleen-ng.rc.ucl.ac.uk
 </code></pre></div>
 
 <p>or</p>
-<div class="codehilite"><pre><span></span><code># Copy &#39;my_file&#39;, from the machine you are logged in to, into your Scratch on Kathleen
+<div class="codehilite"><pre><span></span><code># Copy 'my_file', from the machine you are logged in to, into your Scratch on Kathleen
 # Replace ccxxxxx with your own username.
 scp -o ProxyJump=ccxxxxx@ssh-gateway.ucl.ac.uk my_file ccxxxxx@kathleen-ng.rc.ucl.ac.uk:~/Scratch/
 </code></pre></div>

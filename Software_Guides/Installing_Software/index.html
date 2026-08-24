@@ -2945,9 +2945,9 @@ MPIF90=mpif90
 <p>CFLAGS and LDFLAGS are flags for the compiler and linker respectively,
 and there might be LIBS or INCLUDE in the Makefile as well. When linking a library 
 with the name libfoo, use <code>-lfoo</code>.</p>
-<div class="codehilite"><pre><span></span><code>CFLAGS=&quot;-I/path/to/include&quot;
-LDFLAGS=&quot;-L/path/to/foo/lib -L/path/to/bar/lib&quot;
-LDLIBS=&quot;-lfoo -lbar&quot;
+<div class="codehilite"><pre><span></span><code>CFLAGS="-I/path/to/include"
+LDFLAGS="-L/path/to/foo/lib -L/path/to/bar/lib"
+LDLIBS="-lfoo -lbar"
 </code></pre></div>
 
 <p>Remember to <code>make clean</code> first if you are recompiling with new options. This will delete
@@ -3189,11 +3189,11 @@ in your home.</p>
 to your shell configuration files (or registry, if you are on Windows) and
 then restart your command line shell and CPAN before installing modules:
 
-PATH=&quot;/home/uccacxx/perl5/bin${PATH:+:${PATH}}&quot;; export PATH;
-PERL5LIB=&quot;/home/uccacxx/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}&quot;; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT=&quot;/home/uccacxx/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}&quot;; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT=&quot;--install_base \&quot;/home/uccacxx/perl5\&quot;&quot;; export PERL_MB_OPT;
-PERL_MM_OPT=&quot;INSTALL_BASE=/home/uccacxx/perl5&quot;; export PERL_MM_OPT;
+PATH="/home/uccacxx/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/uccacxx/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/uccacxx/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/uccacxx/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/uccacxx/perl5"; export PERL_MM_OPT;
 Would you like me to append that to /home/uccacxx/.bashrc now?
 </code></pre></div>
 

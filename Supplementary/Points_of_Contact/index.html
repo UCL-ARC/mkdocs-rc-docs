@@ -2306,7 +2306,7 @@ existing username.</p>
 <p>You can get your <code>poc_id</code> by looking at <code>young-show --contacts</code>.</p>
 <div class="codehilite"><pre><span></span><code>young-add user -h  
 usage: young-add user [-h] -u USERNAME -n GIVEN_NAME [-s SURNAME] -e  
-                      EMAIL_ADDRESS -k &quot;SSH_KEY&quot; -p PROJECT_ID -c POC_ID  
+                      EMAIL_ADDRESS -k "SSH_KEY" -p PROJECT_ID -c POC_ID  
                       [--debug]
 
 optional arguments:  
@@ -2319,13 +2319,13 @@ optional arguments:
                        Surname of user (optional)  
  -e EMAIL_ADDRESS, --email EMAIL_ADDRESS  
                        Institutional email address of user  
- -k &quot;SSH_KEY&quot;, --key &quot;SSH_KEY&quot;  
-                       User&#39;s public ssh key (quotes necessary)  
+ -k "SSH_KEY", --key "SSH_KEY"  
+                       User's public ssh key (quotes necessary)  
  -p PROJECT_ID, --project PROJECT_ID  
                        Initial project the user belongs to  
  -c POC_ID, --contact POC_ID  
-                       Short ID of the user&#39;s Point of Contact  
- --noconfirm           Don&#39;t ask for confirmation on user account creation
+                       Short ID of the user's Point of Contact  
+ --noconfirm           Don't ask for confirmation on user account creation
  --verbose             Show SQL queries that are being submitted  
  --debug               Show SQL query submitted without committing the change
 </code></pre></div>
@@ -2337,7 +2337,7 @@ has line breaks and header items, make it into this format by adding the
 key type to the start and removing the line breaks from the key body.</p>
 <p>This key:</p>
 <div class="codehilite"><pre><span></span><code>---- BEGIN SSH2 PUBLIC KEY ----  
-Comment: &quot;comment goes here&quot;  
+Comment: "comment goes here"  
 AAAAB3NzaC1yc2EAAAABJQAAAQEAlLhFLr/4LGC3cM1xgRZVxfQ7JgoSvnVXly0K  
 7MNufZbUSUkKtVnBXAOIjtOYe7EPndyT/SAq1s9RGZ63qsaVc/05diLrgL0E0gW+  
 9VptTmiUh7OSsXkoKQn1RiACfH7sbKi6H373bmB5/TyXNZ5C5KVmdXxO+laT8IdW  

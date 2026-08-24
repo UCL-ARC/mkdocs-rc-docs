@@ -2459,7 +2459,7 @@ Stage: build
 %post
     chmod 644 /pi.py
     dnf update -y
-    dnf install -y &#39;dnf-command(config-manager)&#39;
+    dnf install -y 'dnf-command(config-manager)'
     dnf config-manager --set-enabled crb
     dnf install -y epel-release
     dnf install -y python3 python3-pip python3-virtualenv

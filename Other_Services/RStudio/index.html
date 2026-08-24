@@ -2289,7 +2289,7 @@ filesystem as the RStudio machines: </li>
 <h3 id="issues-uploading-files-or-failure-during-writing-data">Issues uploading files or failure during writing data<a class="headerlink" href="#issues-uploading-files-or-failure-during-writing-data" title="Permanent link">§</a></h3>
 <p>You may have run out of space on the Unix Filestore (T: drive).</p>
 <p>Check your quota:</p>
-<div class="codehilite"><pre><span></span><code>system(&quot;quota -s&quot;)
+<div class="codehilite"><pre><span></span><code>system("quota -s")
 </code></pre></div>
 
 <p>It will tell you the space you are using, your quota and the limit, then the number of files, 

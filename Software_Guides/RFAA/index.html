@@ -2089,7 +2089,7 @@ cp /shared/ucl/apps/rfaa/20250304/RoseTTAFold-All-Atom/rf2aa/config/inference/ba
 <div class="codehilite"><pre><span></span><code><span class="nt">defaults</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base</span>
 
-<span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;7u7w_protein&quot;</span>
+<span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="s">"7u7w_protein"</span>
 <span class="nt">protein_inputs</span><span class="p">:</span><span class="w"> </span>
 <span class="w">  </span><span class="nt">A</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">fasta_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">examples/protein/7u7w_A.fasta</span>
@@ -2102,7 +2102,7 @@ cp /shared/ucl/apps/rfaa/20250304/RoseTTAFold-All-Atom/rf2aa/config/inference/ba
 <div class="codehilite"><pre><span></span><code><span class="nt">defaults</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base</span>
 
-<span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;7u7w_protein&quot;</span>
+<span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="s">"7u7w_protein"</span>
 <span class="nt">protein_inputs</span><span class="p">:</span><span class="w"> </span>
 <span class="w">  </span><span class="nt">A</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">fasta_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7u7w_A.fasta</span>
@@ -2114,7 +2114,7 @@ cp /shared/ucl/apps/rfaa/20250304/RoseTTAFold-All-Atom/rf2aa/config/inference/ba
 
 <p>Note that we specify where to find the config files with the <code>--config-path</code> option and give it a configuration name to run with <code>--config-name</code>.</p>
 <div class="codehilite"><pre><span></span><code>$ python3 -m rf2aa.run_inference --config-path=$(pwd) --config-name protein
-/shared/ucl/apps/rfaa/20250304/miniforge3/envs/RFAA/lib/python3.10/site-packages/hydra/_internal/defaults_list.py:251: UserWarning: In &#39;protein&#39;: Defaults list is missing `_self_`. See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/default_composition_order for more information
+/shared/ucl/apps/rfaa/20250304/miniforge3/envs/RFAA/lib/python3.10/site-packages/hydra/_internal/defaults_list.py:251: UserWarning: In 'protein': Defaults list is missing `_self_`. See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/default_composition_order for more information
   warnings.warn(msg, UserWarning)
 Using the cif atom ordering for TRP.
 make_msa.sh 7u7w_A.fasta 7u7w_protein/A 4 64  pdb100_2021Mar03/pdb100_2021Mar03

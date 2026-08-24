@@ -2548,7 +2548,7 @@ module load matlab/full/r2021a/9.10
 # On Myriad you can set the number of threads to a maximum of 36. 
 #$ -pe smp 36
 
-# Request one MATLAB licence - makes sure your job doesn&#39;t start 
+# Request one MATLAB licence - makes sure your job doesn't start 
 # running until sufficient licenses are free.
 #$ -l matlab=1
 
@@ -2557,7 +2557,7 @@ module load matlab/full/r2021a/9.10
 
 # Set the working directory to somewhere in your scratch space.
 # This is a necessary step as compute nodes cannot write to $HOME.
-# Replace &quot;&lt;your_UCL_id&gt;&quot; with your UCL user ID.
+# Replace "&lt;your_UCL_id&gt;" with your UCL user ID.
 # This directory must already exist.
 #$ -wd /home/&lt;your_UCL_id&gt;/Scratch/Matlab_examples
 
@@ -2579,9 +2579,9 @@ cp ~/Scratch/Matlab_examples/initialise.m $TMPDIR
 cp ~/Scratch/Matlab_examples/analyse.m $TMPDIR
 
 # These echoes output what you are about to run
-echo &quot;&quot;
-echo &quot;Running matlab -nosplash -nodisplay &lt; myMatlabJob.m ...&quot;
-echo &quot;&quot;
+echo ""
+echo "Running matlab -nosplash -nodisplay &lt; myMatlabJob.m ..."
+echo ""
 
 matlab -nosplash -nodesktop -nodisplay &lt; myMatlabJob.m
 # Or if you did not copy your files:
@@ -2633,8 +2633,8 @@ job.</p>
 
 <h4 id="import-using-matlab-functions">Import using MATLAB functions<a class="headerlink" href="#import-using-matlab-functions" title="Permanent link">§</a></h4>
 <p>Run these functions from a MATLAB session:</p>
-<div class="codehilite"><pre><span></span><code>profile_Myriad = parallel.importProfile (&#39;/shared/ucl/apps/Matlab/toolbox_local/R2021a/myriad_R2021a.mlsettings&#39;);
-parallel.defaultClusterProfile (&#39;myriad_R2021a&#39;);
+<div class="codehilite"><pre><span></span><code>profile_Myriad = parallel.importProfile ('/shared/ucl/apps/Matlab/toolbox_local/R2021a/myriad_R2021a.mlsettings');
+parallel.defaultClusterProfile ('myriad_R2021a');
 </code></pre></div>
 
 <h4 id="import-from-matlab-gui">Import from MATLAB GUI<a class="headerlink" href="#import-from-matlab-gui" title="Permanent link">§</a></h4>
@@ -2669,10 +2669,10 @@ export SGE_ACCOUNT=&lt;your Gold project&gt;
 </code></pre></div>
 
 <p>2) Inside your MATLAB session, using MATLAB's <code>setenv</code> function:</p>
-<div class="codehilite"><pre><span></span><code>setenv (&#39;SGE_CONTEXT&#39;, &#39;exclusive&#39;);
-setenv (&#39;SGE_OPT&#39;, &#39;h_rt=0:15:0,mem=2G,tmpfs=15G&#39;); 
-setenv (&#39;SGE_PROJECT&#39;, &#39;&lt;your project ID&gt;&#39;);
-setenv (&#39;SGE_ACCOUNT&#39;, &#39;&lt;your Gold project&gt;&#39;);
+<div class="codehilite"><pre><span></span><code>setenv ('SGE_CONTEXT', 'exclusive');
+setenv ('SGE_OPT', 'h_rt=0:15:0,mem=2G,tmpfs=15G'); 
+setenv ('SGE_PROJECT', '&lt;your project ID&gt;');
+setenv ('SGE_ACCOUNT', '&lt;your Gold project&gt;');
 </code></pre></div>
 
 <h4 id="example-a-simple-mps-job">Example: a simple MPS job<a class="headerlink" href="#example-a-simple-mps-job" title="Permanent link">§</a></h4>
@@ -2692,11 +2692,11 @@ export SGE_OPT=h_rt=0:10:0,mem=2G,tmpfs=15G
 </code></pre></div>
 
 <p>3) Inside MATLAB, create a cluster object using the cluster profile:</p>
-<div class="codehilite"><pre><span></span><code>c = parcluster (&#39;myriad_R2021a&#39;);
+<div class="codehilite"><pre><span></span><code>c = parcluster ('myriad_R2021a');
 </code></pre></div>
 
 <p>4) Use your cluster object to create a job object of the type you need. For this example the job is a parallel job with communication between MATLAB workers of type "Single Program Multiple Data":</p>
-<div class="codehilite"><pre><span></span><code>myJob = createCommunicatingJob (c, &#39;Type&#39;, &#39;SPMD&#39;);
+<div class="codehilite"><pre><span></span><code>myJob = createCommunicatingJob (c, 'Type', 'SPMD');
 </code></pre></div>
 
 <p>5) Set the number of workers:</p>
@@ -2705,7 +2705,7 @@ export SGE_OPT=h_rt=0:10:0,mem=2G,tmpfs=15G
 
 <p>The maximum value you can set here on Myriad is 36.</p>
 <p>6) Tell the job the files needed to be made available to each worker - in this example there is only one file:</p>
-<div class="codehilite"><pre><span></span><code>myJob.AttachedFiles = {&#39;colsum.m&#39;};
+<div class="codehilite"><pre><span></span><code>myJob.AttachedFiles = {'colsum.m'};
 </code></pre></div>
 
 <p><code>colsum.m</code> contains the simple magic square example from the MATLAB manual "Parallel Computing Toolbox User's Guide". </p>
@@ -2744,11 +2744,11 @@ matlab
 </code></pre></div>
 
 <p>to start a terminal session. </p>
-<div class="codehilite"><pre><span></span><code>c = parcluster (&#39;myriad_R2021a&#39;);
+<div class="codehilite"><pre><span></span><code>c = parcluster ('myriad_R2021a');
 </code></pre></div>
 
 <p>2) Using our cluster object create a job object of type "Pool":</p>
-<div class="codehilite"><pre><span></span><code>myJob2 = createCommunicatingJob (c, &#39;Type&#39;, &#39;Pool&#39;);
+<div class="codehilite"><pre><span></span><code>myJob2 = createCommunicatingJob (c, 'Type', 'Pool');
 </code></pre></div>
 
 <p>3) Set the number of workers and another variable used by the example:</p>
@@ -2758,19 +2758,19 @@ simulation_duration_ms = 1000;
 
 <p>4) Tell the job all the input files needed to be made available to each worker as a cell array:</p>
 <div class="codehilite"><pre><span></span><code>myJob2.AttachedFiles = {
-&#39;AssemblyFiniteDifferencesMatrix.m&#39;
-&#39;AssemblyFiniteDifferencesRightHandSide.m&#39;
-&#39;CellModelsComputeIonicCurrents.m&#39;
-&#39;CellModelsGetVoltage.m&#39;
-&#39;CellModelsInitialise.m&#39;
-&#39;CellModelsSetVoltage.m&#39;
-&#39;GetStimuliForTimeStep.m&#39;
-&#39;SubmitMonodomainJob.m&#39;
-&#39;RegressionTest.m&#39;
-&#39;RunAndVisualiseMonodomainSimulation.m&#39;
-&#39;SolveLinearSystem.m&#39;
-&#39;luo_rudy_1991_iionic.m&#39;
-&#39;luo_rudy_1991_time_deriv.m&#39;};
+'AssemblyFiniteDifferencesMatrix.m'
+'AssemblyFiniteDifferencesRightHandSide.m'
+'CellModelsComputeIonicCurrents.m'
+'CellModelsGetVoltage.m'
+'CellModelsInitialise.m'
+'CellModelsSetVoltage.m'
+'GetStimuliForTimeStep.m'
+'SubmitMonodomainJob.m'
+'RegressionTest.m'
+'RunAndVisualiseMonodomainSimulation.m'
+'SolveLinearSystem.m'
+'luo_rudy_1991_iionic.m'
+'luo_rudy_1991_time_deriv.m'};
 </code></pre></div>
 
 <p>5) Set the minimum and maximum number of workers for the job:</p>
@@ -2787,7 +2787,7 @@ simulation_duration_ms = 1000;
 
 <p>As before use <code>fetchOutputs</code> to collect the results.</p>
 <p>If you closed your session, you can get your results by:</p>
-<div class="codehilite"><pre><span></span><code>c = parcluster (&#39;myriad_R2021a&#39;);                  # get a cluster object
+<div class="codehilite"><pre><span></span><code>c = parcluster ('myriad_R2021a');                  # get a cluster object
 jobs = findJob(c)                                  # get a list of jobs submitted to that cluster
 job = jobs(3);                                     # pick a particular job
 results = fetchOutputs(job)
@@ -2834,14 +2834,14 @@ The default local toolbox location is <code>C:\Program Files\MATLAB\R2021a\toolb
 <h3 id="submitting-a-job-to-the-cluster">Submitting a job to the cluster<a class="headerlink" href="#submitting-a-job-to-the-cluster" title="Permanent link">§</a></h3>
 <p>1) You need to set the <a href="#environment-variables-needed-for-job-submission">Grid Engine support environment variables</a> on your local computer.
 Eg. in your MATLAB session set:</p>
-<div class="codehilite"><pre><span></span><code>setenv (&#39;SGE_CONTEXT&#39;, &#39;exclusive&#39;);                # optional
-setenv (&#39;SGE_OPT&#39;, &#39;h_rt=0:15:0,mem=2G,tmpfs=15G&#39;); 
-setenv (&#39;SGE_PROJECT&#39;, &#39;&lt;your project ID&gt;&#39;);        # optional
-setenv (&#39;SGE_ACCOUNT&#39;, &#39;&lt;your Gold project&gt;&#39;);      # optional
+<div class="codehilite"><pre><span></span><code>setenv ('SGE_CONTEXT', 'exclusive');                # optional
+setenv ('SGE_OPT', 'h_rt=0:15:0,mem=2G,tmpfs=15G'); 
+setenv ('SGE_PROJECT', '&lt;your project ID&gt;');        # optional
+setenv ('SGE_ACCOUNT', '&lt;your Gold project&gt;');      # optional
 </code></pre></div>
 
 <p>2) In your MATLAB session create a cluster object using the cluster profile created by the <code>parallelProfile...</code> functions. For Myriad:</p>
-<div class="codehilite"><pre><span></span><code>c = parcluster (&#39;myriad_R2021a&#39;);
+<div class="codehilite"><pre><span></span><code>c = parcluster ('myriad_R2021a');
 </code></pre></div>
 
 <p>3) You can now create and submit jobs in a similar way to that shown in the MPS examples above starting from step 4 in the <a href="#example-a-simple-mps-job">simple MPS job example</a> or step 2 in the <a href="#example-a-mps-job-with-more-than-one-input-file">MPS job with multiple input files example</a>.</p>
@@ -2851,8 +2851,8 @@ setenv (&#39;SGE_ACCOUNT&#39;, &#39;&lt;your Gold project&gt;&#39;);      # opti
 <p>This will bring up the job monitor where you can see the status of your jobs and whether they are finished. MATLAB numbers the jobs sequentially.</p>
 <p>Right-click on a job and choose "fetch outputs".</p>
 <p>This is what will be executed (for job4 on Myriad):</p>
-<div class="codehilite"><pre><span></span><code>myCluster = parcluster(&#39;myriad_R2021a&#39;);
-job4 = myCluster.findJob(&#39;ID&#39;,4);
+<div class="codehilite"><pre><span></span><code>myCluster = parcluster('myriad_R2021a');
+job4 = myCluster.findJob('ID',4);
 job4_output = fetchOutputs(job4);
 </code></pre></div>
 
@@ -2866,8 +2866,8 @@ job4_output = fetchOutputs(job4);
 </code></pre></div>
 
 <p>You need to retrieve the debug log to find out what happened. Example:</p>
-<div class="codehilite"><pre><span></span><code>myCluster = parcluster(&#39;myriad_R2021a&#39;);
-job4 = myCluster.findJob(&#39;ID&#39;,4);
+<div class="codehilite"><pre><span></span><code>myCluster = parcluster('myriad_R2021a');
+job4 = myCluster.findJob('ID',4);
 
 jobLog = getDebugLog (myCluster, job4);
 jobLog
@@ -2895,7 +2895,7 @@ jobLog
 # Request 1 CPU core. (Max on Myriad is 36)
 #$ -pe smp 1
 
-# Request one MATLAB licence - makes sure your job doesn&#39;t start 
+# Request one MATLAB licence - makes sure your job doesn't start 
 # running until sufficient licenses are free.
 #$ -l matlab=1
 
@@ -2904,7 +2904,7 @@ jobLog
 
 # Set the working directory to somewhere in your scratch space.
 # This is a necessary step as compute nodes cannot write to $HOME.
-# Replace &quot;&lt;your_UCL_id&gt;&quot; with your UCL user ID.
+# Replace "&lt;your_UCL_id&gt;" with your UCL user ID.
 # This directory must already exist.
 #$ -wd /home/&lt;your_UCL_id&gt;/Scratch/Matlab_examples
 
@@ -2922,9 +2922,9 @@ module load matlab/full/r2021a/9.10
 module list
 
 # These echoes output what you are about to run
-echo &quot;&quot;
-echo &quot;Running matlab -nosplash -nodisplay &lt; Mandelbrot_GPU.m ...&quot;
-echo &quot;&quot;
+echo ""
+echo "Running matlab -nosplash -nodisplay &lt; Mandelbrot_GPU.m ..."
+echo ""
 matlab -nosplash -nodesktop -nodisplay &lt; Mandelbrot_GPU.m
 
 # tar up all contents of $TMPDIR back into your space

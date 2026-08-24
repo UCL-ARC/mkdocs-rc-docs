@@ -2234,7 +2234,7 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --time=4:00:00
 
-# Purging and reloading all modules to be sure of the job&#39;s enviroment
+# Purging and reloading all modules to be sure of the job's enviroment
 module purge
 module load ucl-stack/2026-03
 module load mpi/intel-oneapi-mpi/2021.14.0/intel-oneapi-2024.2.1
@@ -2255,7 +2255,7 @@ srun vasp_std
 #SBATCH --nodes=2
 #SBATCH --time=4:00:00
 
-# Purging and reloading all modules to be sure of the job&#39;s enviroment
+# Purging and reloading all modules to be sure of the job's enviroment
 module purge
 module load ucl-stack/2026-03
 module load namd/3.0.1-openmpi-smp/gcc-12.3.0
@@ -2278,7 +2278,7 @@ srun namd3 apoa1.namd
 #SBATCH --nodes=2
 #SBATCH --time=4:00:00
 
-# Purging and reloading all modules to be sure of the job&#39;s enviroment
+# Purging and reloading all modules to be sure of the job's enviroment
 module purge
 module load ucl-stack/2026-03
 module load namd/3.0.1-openmpi-smp/gcc-12.3.0
@@ -2290,7 +2290,7 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export OMP_PLACES=cores
 
 # Record PPN in the output file
-echo &quot;Number of worker threads PPN = $PPN&quot;
+echo "Number of worker threads PPN = $PPN"
 
 # NAMD ApoA1 benchmark, /lustre/apps/benchmarks/namd/ApoA1/apoa1/
 cp /apps/benchmarks/namd/ApoA1/apoa1/* .
@@ -2334,7 +2334,7 @@ myprogram dataset${SLURM_ARRAY_TASK_ID}.csv
 #SBATCH --time=12:00:00
 #SBATCH --job-name=CPU_Single_Node
 
-# Purging and reloading all modules to be sure of the job&#39;s environment
+# Purging and reloading all modules to be sure of the job's environment
 module purge
 module load ucl-stack/2025-12
 
@@ -2359,11 +2359,11 @@ module load &lt;name of the module(s) you need&gt;
 #SBATCH --time=12:00:00
 #SBATCH --job-name=CPU_Multi_Node
 
-# Purging and reloading to be sure of the job&#39;s environment
+# Purging and reloading to be sure of the job's environment
 module purge
 module load ucl-stack/2025-12
 
-# Loading the MPI you&#39;ll use for execution.  Here we&#39;re going with the default openmpi.
+# Loading the MPI you'll use for execution.  Here we're going with the default openmpi.
 module load mpi/openmpi/4.1.6/gcc-12.3.0-avx2
 
 # Loading the modules your application needs to execute
@@ -2386,7 +2386,7 @@ srun &lt;application to execute&gt;
 #SBATCH --time=12:00:00
 #SBATCH --job-name=HBM_Job
 
-# Purging and reloading all modules to be sure of the job&#39;s environment
+# Purging and reloading all modules to be sure of the job's environment
 module purge
 module load ucl-stack/2025-12
 
@@ -2413,7 +2413,7 @@ echo $TMPDIR
 #SBATCH --time=12:00:00
 #SBATCH --job-name=High_Mem_Job
 
-# Purging and reloading all modules to be sure of the job&#39;s environment
+# Purging and reloading all modules to be sure of the job's environment
 module purge
 module load ucl-stack/2025-12
 
@@ -2442,7 +2442,7 @@ echo $TMPDIR
 #SBATCH --time=12:00:00
 #SBATCH --job-name=GPU_Single_GPU
 
-# Purging and reloading all modules to be sure of the job&#39;s environment
+# Purging and reloading all modules to be sure of the job's environment
 module purge
 module load ucl-stack/2025-12
 

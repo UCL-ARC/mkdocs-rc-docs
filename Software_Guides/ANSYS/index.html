@@ -2441,7 +2441,7 @@ cp /home/&lt;your userid&gt;/cfx_examples/StaticMixer.def .
 # Run cfx5solve - Note: -max-elapsed-time needs to be set to the same
 # time as defined by 2 above.
 
-cfx5solve -max-elapsed-time &quot;15 [min]&quot; -def StaticMixer.def -par-local -partition $OMP_NUM_THREADS
+cfx5solve -max-elapsed-time "15 [min]" -def StaticMixer.def -par-local -partition $OMP_NUM_THREADS
 </code></pre></div>
 
 <p>You will need to change the <code>-wd /home/&lt;your_UCL_id&gt;/Scratch/cfxtests-2023.R1</code> location and may need to change the memory, wallclock time, number of threads and job name directives as well. Replace the .def file with your one and modify the -max-elapsed-time value if needed. The simplest form of qsub command can be used to submit the job eg:</p>
@@ -2500,7 +2500,7 @@ export CFX_NODES=`cfxnodes $TMPDIR/machines`
 # time as defined by 2 above.
 
 # Run with default MPI.
-cfx5solve -max-elapsed-time &quot;60 [min]&quot; -def StaticMixer.def -start-method &quot;Intel MPI 2018 Distributed Parallel&quot; -par-dist $CFX_NODES
+cfx5solve -max-elapsed-time "60 [min]" -def StaticMixer.def -start-method "Intel MPI 2018 Distributed Parallel" -par-dist $CFX_NODES
 </code></pre></div>
 
 <p>Please copy if you wish and edit it to suit your jobs. You will
@@ -2760,7 +2760,7 @@ module load giflib/5.1.1
 
 # 10. Run ansysedt
 
-ansysedt -ng -Distributed -machinelist num=$NSLOTS -batchoptions &#39;HFSS/MPIVendor&#39;=&#39;Intel&#39; -batchoptions &#39;TempDirectory&#39;=&quot;${TMPDIR}&quot; -batchoptions &#39;HFSS/HPCLicenseType&#39;=&#39;pool&#39;  -batchoptions &#39;HFSS-IE/HPCLicenseType&#39;=&#39;pool&#39; -BatchSolve differential_stripline.aedt
+ansysedt -ng -Distributed -machinelist num=$NSLOTS -batchoptions 'HFSS/MPIVendor'='Intel' -batchoptions 'TempDirectory'="${TMPDIR}" -batchoptions 'HFSS/HPCLicenseType'='pool'  -batchoptions 'HFSS-IE/HPCLicenseType'='pool' -BatchSolve differential_stripline.aedt
 </code></pre></div>
 
 
