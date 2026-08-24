@@ -8,10 +8,13 @@ layout: docs
 Paid resources may be in the form of priority access (Gold), dedicated nodes
 or both.
 
-Users with access to Gold have tools for monitoring budgets and usage.
+This page assumes you have already purchased nodes as laid out in [Purchasing in Myriad](Purchasing_in_Myriad.md) 
+and has information about how to use them. Usage of the nodes can be as priority access or as dedicated resource
+and this is specified prior to them being put into production.
 
-Users with access to dedicated nodes have a tool for monitoring current use of 
-their nodes.
+Users with access to priority access (Gold) have tools for monitoring budgets and usage.
+
+Users with access to dedicated nodes have a tool for monitoring current use of their nodes.
 
 ## Why we recommend priority access
 
