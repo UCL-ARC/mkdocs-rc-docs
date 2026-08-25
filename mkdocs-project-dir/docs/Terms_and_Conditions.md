@@ -95,9 +95,9 @@ When filesystems or clusters are retired, they will be decommissioned and we wil
 the data left on them. Barring unforeseen circumstances, you will receive three months' notice before this
 happens.
 
-### Autonomous Systems
+### Autonomous & Agentic AI Tools
 
-We have not yet determined whether and how it should be permissible to use non-deterministic automated systems that incorporate e.g. Large-Language Models into the control flow, or whether and how this should be affected by whether the system involves making control-flow-influencing requests to an external system.
+We have not yet determined whether to allow the use of non-deterministic automated systems that incorporate e.g. Large-Language Models into the control flow on our clusters.
 
 However, in the meanwhile, the following applies:
 
