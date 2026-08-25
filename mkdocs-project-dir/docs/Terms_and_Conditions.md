@@ -97,7 +97,7 @@ happens.
 
 ### Autonomous & Agentic AI Tools
 
-We have not yet determined whether to allow the use of non-deterministic automated systems that incorporate e.g. Large-Language Models into the control flow on our clusters.
+On our clusters, we have not yet decided whether to allow the use of non-deterministic automated systems that incorporate e.g. Large-Language Models into the control flow.
 
 However, in the meanwhile, the following applies:
 
