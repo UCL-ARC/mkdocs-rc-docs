@@ -1001,8 +1001,6 @@ This page outlines that status of each of the machines managed by the Research C
     Our configuration change was unsuccessful and not compatible with our current filesystem version, so we will be
     planning future updates to deal with the problem. (We had tried this one anyway on the recommendation of our vendor).
 
-#### Latest on Myriad 
-
   - 2026-07-17 11:15 - **Myriad login issues this morning**
 
     We've been seeing two periods this morning now where you won't have been able to log in - the second one right now.
@@ -1015,6 +1013,39 @@ This page outlines that status of each of the machines managed by the Research C
     We think this is fixed now - we have sorted out why the nodes were not able to fail over to each other.
     Logins to Myriad are working again.
 
+#### Latest on Myriad 
+
+  - 2026-08-07 13:15 - **Myriad ACFS upgrade outage on 20 or 21 August**
+
+    There will be an outage for Myriad on 20 or 21 August to upgrade the version of the filesystem software
+    that the ACFS uses (ARC Cluster File System).
+
+    - What is the ACFS?: https://www.rc.ucl.ac.uk/docs/Background/Data_Storage/#arc-cluster-file-system-acfs
+    - How much space do I have on the ACFS?: https://www.rc.ucl.ac.uk/docs/Data_Management/#acfs-quotas
+
+    Jobs will be drained for 8am on Thursday 20 August and there will be no access to the login nodes. If the
+    work is not going ahead that day, we will allow access and jobs again until the morning of Friday 21 August
+    where the same restrictions will apply.
+
+    If your jobs cannot complete before the drain they will remain in the queue and will be scheduled again after
+    the outage is complete. You do not need to take any action.
+
+    Apologies for the uncertainty, we have external engineers coming to do this work on a number of different systems
+    and the exact date they are working on the part that will affect Myriad is not fully determined so we need to
+    drain for both days.
+
+    This outage has been added at [Planned Outages](https://www.rc.ucl.ac.uk/docs/Planned_Outages/) and should show up shortly.
+
+  - 2026-08-11 12:30 - **Myriad ACFS upgrade outage postponed**
+
+    This scheduled outage of the Myriad cluster has been cancelled.
+
+    There are some on-going issues with the back-up tape library system that we'd hoped would be fixed by this week,
+    but aren't. Neither our folks nor IBM's want to risk upgrading the ACFS filesystem software without a back-up system
+    holding current back-ups, so we're going to postpone this work.
+
+    We'll let you know when we have new dates for this work.
+    
 
 ### Kathleen
 
@@ -1447,8 +1478,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     Also available is `gaussian/g16-c01/nvhpc-24.9`
 
-#### Latest on Kathleen
-
   - 2026-05-26 10:00 - **MPI issues on Kathleen; All nodes going into RHEL9 part of Kathleen in 2 weeks**
 
     We're aware of current MPI issues on Kathleen and will be applying a kernel patch to deal with them.
@@ -1473,6 +1502,60 @@ This page outlines that status of each of the machines managed by the Research C
     had a temporary fix.
 
     The outage is listed at [Planned Outages](https://www.rc.ucl.ac.uk/docs/Planned_Outages/)
+
+  - 2026-08-07 13:15 - **Kathleen ACFS upgrade outage on 18 or 19 August**
+
+    There will be an outage for Kathleen on 18 or 19 August to upgrade the version of the filesystem software
+    that the ACFS uses (ARC Cluster File System).
+ 
+    - What is the ACFS?: https://www.rc.ucl.ac.uk/docs/Background/Data_Storage/#arc-cluster-file-system-acfs
+    - How much space do I have on the ACFS?: https://www.rc.ucl.ac.uk/docs/Data_Management/#acfs-quotas
+ 
+    Jobs will be drained for 8am on Tuesday 18 August and there will be no access to the login nodes. If the work is not
+    going ahead that day, we will allow access and jobs again until the morning of Wednesday 19 August where the same
+    restrictions will apply.
+ 
+    If your jobs cannot complete before the drain they will remain in the queue and will be scheduled again after the outage
+    is complete. You do not need to take any action.
+ 
+    Apologies for the uncertainty, we have external engineers coming to do this work on a number of different systems and the
+    exact date they are working on the part that will affect Kathleen is not fully determined so we need to drain for both days.
+ 
+    This outage has been added at [Planned Outages](https://www.rc.ucl.ac.uk/docs/Planned_Outages/) and should show up shortly.
+
+  - 2026-08-11 12:30 - **Kathleen ACFS upgrade outage postponed**
+
+    This scheduled outage of the Kathleen cluster has been cancelled.
+
+    There are some on-going issues with the back-up tape library system that we'd hoped would be fixed by this week,
+    but aren't. Neither our folks nor IBM's want to risk upgrading the ACFS filesystem software without a back-up system
+    holding current back-ups, so we're going to postpone this work.
+
+    We'll let you know when we have new dates for this work.
+
+#### Latest on Kathleen
+
+  - 2026-08-14 09:10 - **Kathleen - Connection Issue**
+
+    We’re aware there is an issue affecting connectivity to Kathleen. It appears to have begun yesterday evening around
+    19:30 and Kathleen remains unreachable. Our infrastructure colleagues are traveling to the data centre this morning
+    and we’ll send another message when the issue is resolved, or if there are any updates.
+
+    Sorry for the unplanned outage.
+
+  - 2026-08-14 09:42 - **Kathleen Outage - Update**
+
+    Unfortunately, there has been a cooling failure to the pod in which Kathleen lives. There is an emergency call out to
+    the folks who can enact the repairs but we don’t have a timeline for when the system will be operational. The entire
+    system needed to be shut down so all running jobs were affected and will need to be resubmitted. Jobs pending in the
+    queue should start when the cluster is up again, but please double check once you’re able.
+
+    We’ll send an update when Kathleen is available again.
+
+  - 2026-08-14 16:07 - **Kathleen Outage - Issue Resolved**
+
+    Kathleen is back in production. Jobs appear to have resumed but please check yours to be sure, and for anyone who had
+    a job running when the cluster went down you’ll need to resubmit.
 
 
 ### Young
@@ -1890,8 +1973,6 @@ This page outlines that status of each of the machines managed by the Research C
     these and when they are run. We are doing our best to keep the clusters secure for your use. If you have any concerns
     about whether systems are vulnerable or not, please ask the teams that run them rather than testing it yourself.
 
-#### Latest on Young
-
   - 2026-07-20 11:15 - **More GPU nodes moving to Young-ng; Young-ng info**
 
     **GPU nodes**
@@ -1940,6 +2021,150 @@ This page outlines that status of each of the machines managed by the Research C
     We caused this when adding the three GPU nodes over into Young-ng and are investigating what went wrong.
 
     There are now no GPU nodes in the old half of Young. If you have GPU jobs still in SGE's queue from before, these will never run.
+
+  - 2026-08-06 09:58 - **Temporary disruption to external connections from Young's compute nodes**
+
+    We need to reboot the gateway machine that traffic from the compute nodes goes out by. If your job is running
+    completely internally to the cluster, this will not affect anything. If your job is connecting out to somewhere
+    else on the internet (downloading, talking to a license server) then it will have a short period where it can't
+    do that, and it might try again and recover or it might fail as a result.
+
+    This affects the compute nodes in both the old and new halves of Young.
+
+    We need to do this straight away as some nodes can't reach the gateway and so are failing startup checks and not
+    accepting jobs. It may also already be affecting some compute nodes that are running jobs if they lost connection to
+    it after the job started.
+
+    The bulk of jobs on Young should not be affected and will keep running as normal.
+
+  - 2026-08-06 11:45 - **Ongoing issue on SGE side of Young only**
+
+    The Slurm side of Young is fine, but the old SGE side is not happy after that and SGE has some jobs stuck in
+    transfer status (Rt) and some it is continually trying to schedule but are being bounced back off the nodes.
+
+    We are temporarily stopping new jobs from starting in SGE until we have sorted out the underlying issue and they
+    are able to start successfully. They will stay in the queue for now and will be scheduled again once this is sorted. 
+
+  - 2026-08-06 14:55 - **Problem resolved**
+
+    This is sorted out now and new jobs have started again on the old half of Young.
+
+    The SGE execution daemons that run on each node were disrupted and needed restarting. The empty compute nodes
+    needed rebooting and SGE's qmaster needed restarting. New jobs then began being accepted properly.
+
+    We then also had to clean up the jobs in Rt status as they were not automatically being tidied up. There are still
+    a couple of those left.
+
+  - 2026-08-14 09:15 - **Young - Connection Issue**
+
+    We’re aware there is an issue affecting connectivity to Young. It appears to have begun yesterday evening around
+    19:30 and Young remains unreachable. Our infrastructure colleagues are traveling to the data centre this morning
+    and we’ll send another message when the issue is resolved, or if there are any updates.
+
+    Sorry for the unplanned outage.
+
+  - 2026-08-14 09:54 - **Young Outage - Update**
+
+    Unfortunately, there has been a cooling failure to the pod in which Young lives. There is an emergency call out
+    to the folks who can enact the repairs but we don’t have a timeline for when the system will be operational.
+    The entire system needed to be shut down so all running jobs were affected and will need to be resubmitted. Jobs
+    pending in the queue should start when the cluster is up again, but please double check once you’re able.
+
+    We’ll send an update when Young is available again.
+
+  - 2026-08-14 16:10 - **Young Outage - Issue Resolved**
+
+    Young is back in production. Jobs appear to have resumed but please check yours to be sure, and for anyone who
+    had a job running when the cluster went down you’ll need to resubmit.
+
+#### Latest on Young
+
+  - 2026-08-19 14:15 - **Young RHEL9 - New Software Stack**
+
+    A new version of the software stack is available on the RHEL9 portion of Young. It is available via the
+    `ucl-stack/2026-04` module. The `2025-12` stack will remain the default until Tuesday 08 September 2026, at which
+    time the `2026-04` stack will be loaded by default when you log in. Please use these next few weeks to test the
+    new stack and send us any issues you encounter at rc-support@ucl.ac.uk.
+
+    We’ve added logic to the `default-modules` and `ucl-stack` modules so there can’t be cross-talk between the software
+    stacks, it will give you a helpful error message, but please perform a module purge before you load the new stack, e.g.:
+
+    ```
+    module purge
+    module load ucl-stack/2026-04
+    ```
+
+    The following has been added in 2026-04:
+
+    * castep/23.1
+    * castep/25.12
+    * castep/26.11
+    * cmdstan/2.30.1
+    * cp2k/2025.2-openmpi-cuda
+    * cp2k/2025.2-openmpi
+    * cuda/12.9.1
+    * cuda/13.3.0
+    * dbcsr/2.8.0-openmpi-cuda
+    * emacs/29.4
+    * gdal/3.10.0
+    * geos/3.13.0
+    * ghostscript/10.03.1
+    * glpk/5.0
+    * gmt/6.4.0
+    * grace/5.1.25
+    * graphicsmagick/1.3.43
+    * gromacs/2024.3-cuda
+    * imagemagick/7.1.1-39
+    * intel-oneapi-compilers-classic/2021.13.1/oneapi-2024.2.1
+    * jags/4.3.2
+    * jq/1.7.1
+    * lammps/20240829.1-openmpi-cuda
+    * libwebp/1.4.0
+    * libxcursor/1.2.2
+    * mpi/openmpi/4.1.6/intel-2021.13.1
+    * namd/3.0.2
+    * ncdu/1.22
+    * nvhpc/26.3
+    * nwchem/7.2.3
+    * octopus/16.4-openmpi-cuda
+    * octopus/16.4-openmpi
+    * openbabel/3.1.1/gcc-12.3.0
+    * openfoam/2112_220610-openmpi
+    * openfoam/2312-openmpi
+    * openfoam/2512-openmpi
+    * orca/avx2-6.1.1
+    * parallel/20240822
+    * paraview/5.13.1-openmpi
+    * pcre2/10.44
+    * plumed/2.9.2-openmpi-cuda-pytorch
+    * proj/8.1.0
+    * py-torch/2.5.1-openmpi-cuda
+    * r/4.5.2
+    * udunits/2.2.28
+    * vasp/6.6.1-intel-oneapi-mpi
+    * vmd/2.0.0a8
+    * xcb-util/0.4.1
+    * xcb-util-cursor/0.1.4
+    * xz/5.4.6
+
+    Generally, if you see `cuda` in the name, it was built with support to run on the GPU nodes.
+
+    The applications we weren’t able to install this time around, but are still on our list:
+
+    * VASP 5.4.4 with VTST enabled
+    * VASP 6.3.0 with WANNIER90
+    * NVHPC VASP builds
+   
+    Here are links to our updated documentation:
+
+    - https://www.rc.ucl.ac.uk/docs/Clusters/Young/ - contains info on the current split state and links to the following.
+    - https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm/ - has the Slurm commands
+    - https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm/#specifics-of-using-slurm-on-young - on that same page has more specific-to-Young parts
+    - https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/ - has a couple of example jobscripts
+    - https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/#examples-for-young - has some more specific-to-Young examples
+
+    If you have any questions or need assistance, or would like to see any software added to the next
+    iteration of the stack, please email us at rc-support@ucl.ac.uk.
 
 
 ### Michael
@@ -2064,8 +2289,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     The outage is listed at [Planned Outages](https://www.rc.ucl.ac.uk/docs/Planned_Outages/)
 
-#### Latest on Michael
-
   - 2026-07-20 11:50 - **Plans for Michael operating system and scheduler upgrade**
 
     The below changes are not happening immediately, this is to let you know that they will be happening soon.
@@ -2107,6 +2330,31 @@ This page outlines that status of each of the machines managed by the Research C
     There will be another two months of login access for data retrieval after it stops running jobs, and then Michael
     as a whole will be retired. 
 
+#### Latest on Michael
+
+  - 2026-08-20 17:50 - **Partial Michael Outage and At-Risk Period Due to Water Leak**
+
+    There is a water leak in the data centre Michael occupies, so we're preventing new jobs starting on the nearby nodes
+    in preparation for repair work that should happen early this week.
+
+    In addition, it's possible that the leak could be more extensive than we know so far, or that the repair works could
+    involve more extensive work than expected, so please be aware that we may have to take the rest of the cluster offline
+    at short notice next week.
+
+    Hopefully we'll be able to tell you more by the end of the day on Monday.
+
+    Please accept our apologies for any hassle caused.
+
+  - 2026-08-25 16:20 - **Partial Michael Outage and At-Risk Period Due to Water Leak Ongoing**
+
+    There are continuing leaks in that area of the datacentre and so the affected and nearby nodes (208 A-type nodes)
+    are not being re-enabled.
+
+    The rest of Michael continues to run jobs. We have not been informed of the need for a full cluster outage at present
+    but investigation is ongoing.
+
+    Apologies!
+    
 
 ### Thomas
 
