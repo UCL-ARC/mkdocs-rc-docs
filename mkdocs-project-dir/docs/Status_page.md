@@ -2374,6 +2374,10 @@ This page outlines that status of each of the machines managed by the Research C
     but investigation is ongoing.
 
     Apologies!
+
+  - 2026-08-27 15:40 - **Michael leak fixed**
+
+    The leak has been fixed and jobs can start again on all the A-type nodes in Michael.
     
 
 ### Thomas
