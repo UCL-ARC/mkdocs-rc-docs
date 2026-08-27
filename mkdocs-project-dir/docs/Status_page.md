@@ -1533,8 +1533,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     We'll let you know when we have new dates for this work.
 
-#### Latest on Kathleen
-
   - 2026-08-14 09:10 - **Kathleen - Connection Issue**
 
     We’re aware there is an issue affecting connectivity to Kathleen. It appears to have begun yesterday evening around
@@ -1556,6 +1554,20 @@ This page outlines that status of each of the machines managed by the Research C
 
     Kathleen is back in production. Jobs appear to have resumed but please check yours to be sure, and for anyone who had
     a job running when the cluster went down you’ll need to resubmit.
+
+#### Latest on Kathleen
+
+  - 2026-08-27 10:50 - **Kathleen's filesystem was down this morning, now back up**
+
+    This morning we found that the routers that connect Kathleen's filesystem to the rest of the cluster were off. This
+    would have prevented new logins, caused running jobs to fail, and made existing sessions behave oddly as the filesystem
+    was not present. They were powered back on at 9:40am and we are investigating why they were off and if we can prevent this
+    happening again.
+
+    They powered off at 6:25am.
+
+    Jobs are now running normally again. (If there is an ongoing datacentre issue affecting Kathleen we might need to stop jobs.
+    As of now we are not aware of one).
 
 
 ### Young
@@ -2077,8 +2089,6 @@ This page outlines that status of each of the machines managed by the Research C
     Young is back in production. Jobs appear to have resumed but please check yours to be sure, and for anyone who
     had a job running when the cluster went down you’ll need to resubmit.
 
-#### Latest on Young
-
   - 2026-08-19 14:15 - **Young RHEL9 - New Software Stack**
 
     A new version of the software stack is available on the RHEL9 portion of Young. It is available via the
@@ -2165,6 +2175,16 @@ This page outlines that status of each of the machines managed by the Research C
 
     If you have any questions or need assistance, or would like to see any software added to the next
     iteration of the stack, please email us at rc-support@ucl.ac.uk.
+
+#### Latest on Young
+
+  - 2026-08-26 16:18 - **Young - Outage**
+
+    There’s been an issue that’s disconnected the filesystem from the nodes on Young. Unfortunately, this necessitated a
+    shutdown of the compute and login nodes. Both Young and the RHEL9 portion of Young (Young-ng) are affected and all
+    currently running jobs on the system have been killed and will need to be resubmitted once the system is up again.
+
+    We’ll send out another communication once Young and Young-ng are available.
 
 
 ### Michael
