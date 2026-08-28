@@ -2186,6 +2186,16 @@ This page outlines that status of each of the machines managed by the Research C
 
     We’ll send out another communication once Young and Young-ng are available.
 
+  - 2026-08-28 15:30 - **Young and Young-ng are partially back up**
+
+    We've had the go-ahead to re-enable some parts of Young and Young-ng. Some nodes are still down because of leaks in the datacentre.
+
+    In Young-ng, node-c12[cd] are available (standard compute nodes). These were enabled around 12:30 today.
+
+    In Young, node-c12[mnop] are available (also standard compute nodes). These and login node access have just been enabled now.
+
+    When we hear that the other nodes can be switched back on, we will do this. It is likely to be after the bank holiday at this point.
+
 
 ### Michael
 
