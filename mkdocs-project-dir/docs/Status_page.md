@@ -1403,7 +1403,8 @@ This page outlines that status of each of the machines managed by the Research C
 
     On the new half of Kathleen there is now a `ucl-stack/2026-03` module as well as the previous `ucl-stack/2025-05`. 
 
-    Additional software it provides includes: 
+    Additional software it provides includes:
+    
     - openfoamplus 2112 and 2312 (module name `openfoam`)
     - paraview
     - R 4.5.2 and the corresponding bundle package `r-4.5.2_bc-3.22` with many R and Bioconductor packages included
@@ -1463,6 +1464,7 @@ This page outlines that status of each of the machines managed by the Research C
     will deprecate and then remove it as we add newer versions of the stack, so do update your jobscripts as you submit new jobs.
 
     The 2026-03 stack has more software available, including these:
+    
     - openfoamplus 2112 and 2312 (module name `openfoam`)
     - paraview
     - R 4.5.2 and the corresponding bundle package `r-4.5.2_bc-3.22` with many R and Bioconductor packages included
@@ -2195,6 +2197,23 @@ This page outlines that status of each of the machines managed by the Research C
     In Young, node-c12[mnop] are available (also standard compute nodes). These and login node access have just been enabled now.
 
     When we hear that the other nodes can be switched back on, we will do this. It is likely to be after the bank holiday at this point.
+
+  - 2026-09-04 16:20 - **Many nodes in Young still down; GPU nodes in particular**
+
+    There have been a few questions about access to nodes in general and GPU nodes in Young-ng being down.
+
+    We still have many nodes down in both parts of Young because of the leaks on 26-28 Aug. We did have GPU nodes 004 and 006 up
+    and running jobs in Young-ng since Friday 28 Aug, but they overheated and shut down around 15:53 yesterday.
+
+    GPU nodes 001-003 are down because of the leaks, and 005 was down already because it needs repairs which we don't have an ETA for.
+
+    Given there are ongoing issues in the datacentre, it looks like all the GPU nodes are going to be down until Monday at least.
+    We will see if we can switch 004 and 006 back on then.
+
+    The high memory (Y,Z) nodes in Young and in Young-ng are also all down for the same reason.
+
+    Apologies for this. I know there is ongoing investigation in the datacentre but we don't have an answer yet for when we might be
+    able to switch the originally affected set of nodes back on.
 
 
 ### Michael
