@@ -1571,6 +1571,19 @@ This page outlines that status of each of the machines managed by the Research C
     Jobs are now running normally again. (If there is an ongoing datacentre issue affecting Kathleen we might need to stop jobs.
     As of now we are not aware of one).
 
+  - 2026-09-10 12:30 - **Network Modernisation outage for Young, Michael, Kathleen on 15 Sept**
+
+    The Network Modernisation outage to replace central UCL switches that was previously postponed has been rescheduled for
+    **Tuesday 15 September**.
+
+    The outage is expected to be completed within that day, but if it takes longer it may extend into Wednesday 16 September.
+
+    We will be draining jobs on the clusters so that they will only start if they can complete before the outage, or else they will
+    wait in the queue until it is over and they can be scheduled again. You do not need to take any action.
+
+    There will be no access to the clusters when the switches are being swapped out. Young and Kathleen should have short outages
+    as only one switch needs swapping, while Michael will take longer.
+
 
 ### Young
 
@@ -2215,6 +2228,26 @@ This page outlines that status of each of the machines managed by the Research C
     Apologies for this. I know there is ongoing investigation in the datacentre but we don't have an answer yet for when we might be
     able to switch the originally affected set of nodes back on.
 
+  - 2026-09-10 12:30 - **Network Modernisation outage for Young, Michael, Kathleen on 15 Sept**
+
+    The Network Modernisation outage to replace central UCL switches that was previously postponed has been rescheduled for
+    **Tuesday 15 September**.
+
+    The outage is expected to be completed within that day, but if it takes longer it may extend into Wednesday 16 September.
+
+    We will be draining jobs on the clusters so that they will only start if they can complete before the outage, or else they will
+    wait in the queue until it is over and they can be scheduled again. You do not need to take any action.
+
+    There will be no access to the clusters when the switches are being swapped out. Young and Kathleen should have short outages
+    as only one switch needs swapping, while Michael will take longer.
+
+    **Status of Young**
+
+    There are still many nodes in Young that are down (including the GPU nodes), the datacentre is running quite hot and we are not
+    able to switch them back on yet. The issues with cooling that required the nodes to be switched off are still ongoing and we do
+    not presently have an ETA for a fix. It is somewhat due to age and wear on components of the cooling systems in that section of
+    the datacentre and the lead times for getting replacements.
+
 
 ### Michael
 
@@ -2379,8 +2412,6 @@ This page outlines that status of each of the machines managed by the Research C
     There will be another two months of login access for data retrieval after it stops running jobs, and then Michael
     as a whole will be retired. 
 
-#### Latest on Michael
-
   - 2026-08-20 17:50 - **Partial Michael Outage and At-Risk Period Due to Water Leak**
 
     There is a water leak in the data centre Michael occupies, so we're preventing new jobs starting on the nearby nodes
@@ -2407,6 +2438,21 @@ This page outlines that status of each of the machines managed by the Research C
   - 2026-08-27 15:40 - **Michael leak fixed**
 
     The leak has been fixed and jobs can start again on all the A-type nodes in Michael.
+
+#### Latest on Michael
+
+  - 2026-09-10 12:30 - **Network Modernisation outage for Young, Michael, Kathleen on 15 Sept**
+
+    The Network Modernisation outage to replace central UCL switches that was previously postponed has been rescheduled for
+    **Tuesday 15 September**.
+
+    The outage is expected to be completed within that day, but if it takes longer it may extend into Wednesday 16 September.
+
+    We will be draining jobs on the clusters so that they will only start if they can complete before the outage, or else they will
+    wait in the queue until it is over and they can be scheduled again. You do not need to take any action.
+
+    There will be no access to the clusters when the switches are being swapped out. Young and Kathleen should have short outages
+    as only one switch needs swapping, while Michael will take longer.
     
 
 ### Thomas
