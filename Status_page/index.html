@@ -3531,22 +3531,29 @@ that section out yet, please do: <a href="https://www.rc.ucl.ac.uk/docs/Clusters
 </ul>
 <p>The <code>2025-05</code> stack is being left as the default for the next two weeks, after which the 2026-03 stack will be made the default (so if you module load ucl-stack without a version included what you get will change, but if you load a specific version you will continue to get that version).</p>
 <p>To use now, do this on the login nodes or in your jobscripts:</p>
-<p><code>module purge 
-module load ucl-stack/2026-03</code></p>
+<p><code>module purge</code></p>
+<p><code>module load ucl-stack/2026-03</code></p>
 <p>You can then run module avail to see the new modules.</p>
 <p>You should see output that looks like this:</p>
-<p>```
------------------------------------ /apps/spack/0.23/deploy/2026-03/modules/linux-rhel9-cascadelake ------------------------------------
-apr-util/1.6.3/gcc-12.3.0                                         libxcursor/1.2.2/gcc-12.3.0                         <br />
-apr/1.7.5/gcc-12.3.0                                              mpi/intel-oneapi-mpi/2021.14.0/intel-oneapi-2024.2.1<br />
-(lots more modules)</p>
-<p>------------------------------------------------- /apps/hpc-modulefiles/kathleen/core --------------------------------------------------
-default-modules/2025-05  default-modules/2026-03  ucl-stack/2025-05  ucl-stack/2026-03  userscripts/2025-05  userscripts/2026-03  </p>
-<p>------------------------------------------------- /apps/hpc-modulefiles/kathleen/apps --------------------------------------------------
-comsol/6.4-chemeng  comsol/6.4-eee  crystal23/1.0.1/intel-2021.13.1  gulp/6.4/gcc-12.3.0  star-ccm+/13.06.012  </p>
-<p>------------------------------------------------ /apps/hpc-modulefiles/kathleen/bundles ------------------------------------------------
-r-4.5.2_bc-3.22 
-```</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>    ----------------------------------- /apps/spack/0.23/deploy/2026-03/modules/linux-rhel9-cascadelake ------------------------------------
+    apr-util/1.6.3/gcc-12.3.0                                         libxcursor/1.2.2/gcc-12.3.0                           
+    apr/1.7.5/gcc-12.3.0                                              mpi/intel-oneapi-mpi/2021.14.0/intel-oneapi-2024.2.1  
+    (lots more modules)
+
+    ------------------------------------------------- /apps/hpc-modulefiles/kathleen/core --------------------------------------------------
+    default-modules/2025-05  default-modules/2026-03  ucl-stack/2025-05  ucl-stack/2026-03  userscripts/2025-05  userscripts/2026-03  
+
+    ------------------------------------------------- /apps/hpc-modulefiles/kathleen/apps --------------------------------------------------
+    comsol/6.4-chemeng  comsol/6.4-eee  crystal23/1.0.1/intel-2021.13.1  gulp/6.4/gcc-12.3.0  star-ccm+/13.06.012  
+
+    ------------------------------------------------ /apps/hpc-modulefiles/kathleen/bundles ------------------------------------------------
+    r-4.5.2_bc-3.22 
+</code></pre></div>
+
+<ul>
+<li>
 <p>If you don't see separate sections for the core, apps and bundles modules, if you log out and in again you will get the new layout.</p>
 <p>We intend to keep the current and previous stacks available and deprecate and then remove the oldest stack as we build more. You will receive notice of this.</p>
 <p>We are aware of NAMD issues and are still working on a different NAMD install. We are also waiting for new installers for various of the other licensed applications that belong to departments.</p>
@@ -3661,6 +3668,12 @@ As of now we are not aware of one).</p>
 wait in the queue until it is over and they can be scheduled again. You do not need to take any action.</p>
 <p>There will be no access to the clusters when the switches are being swapped out. Young and Kathleen should have short outages
 as only one switch needs swapping, while Michael will take longer.</p>
+</li>
+<li>
+<p>2026-09-15 12:45 - <strong>Login node access available again</strong></p>
+<p>Login node access is available again on Young and Kathleen. </p>
+<p>We have been updating the version of Slurm during the outage. We are still rolling out compute node updates, so jobs will not
+begin running again until later today.    </p>
 </li>
 </ul>
 <h3 id="young">Young<a class="headerlink" href="#young" title="Permanent link">§</a></h3>
@@ -4108,8 +4121,8 @@ time the <code>2026-04</code> stack will be loaded by default when you log in. P
 new stack and send us any issues you encounter at rc-support@ucl.ac.uk.</p>
 <p>We’ve added logic to the <code>default-modules</code> and <code>ucl-stack</code> modules so there can’t be cross-talk between the software
 stacks, it will give you a helpful error message, but please perform a module purge before you load the new stack, e.g.:</p>
-<p><code>module purge
-module load ucl-stack/2026-04</code></p>
+<p><code>module purge</code>
+<code>module load ucl-stack/2026-04</code></p>
 <p>The following has been added in 2026-04:</p>
 <ul>
 <li>castep/23.1</li>
@@ -4224,6 +4237,12 @@ as only one switch needs swapping, while Michael will take longer.</p>
 able to switch them back on yet. The issues with cooling that required the nodes to be switched off are still ongoing and we do
 not presently have an ETA for a fix. It is somewhat due to age and wear on components of the cooling systems in that section of
 the datacentre and the lead times for getting replacements.</p>
+</li>
+<li>
+<p>2026-09-15 12:45 - <strong>Login node access available again</strong></p>
+<p>Login node access is available again on Young and Kathleen. </p>
+<p>We have been updating the version of Slurm during the outage. We are still rolling out compute node updates, so jobs will not
+begin running again until later today.</p>
 </li>
 </ul>
 <h3 id="michael">Michael<a class="headerlink" href="#michael" title="Permanent link">§</a></h3>
