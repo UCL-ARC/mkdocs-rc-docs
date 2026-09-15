@@ -4253,6 +4253,16 @@ the datacentre and the lead times for getting replacements.</p>
 <p>We have been updating the version of Slurm during the outage. We are still rolling out compute node updates, so jobs will not
 begin running again until later today.</p>
 </li>
+<li>
+<p>2026-09-15 17:20 - <strong>Jobs enabled on Young-ng</strong></p>
+<p>Jobs were re-enabled on Young-ng at around 16:15 and are running.</p>
+<p>We have had an internal miscommunication that meant that all the nodes were put into Young-ng when half of the non-gpu
+nodes should still be in the SGE side of Young. We are sorting that out now and re-draining the nodes from Young-ng. It
+will take a bit longer to restart SGE jobs as a result.</p>
+<p>My apologies, this change happened when a lot of people were on/had just come back from leave and I wasn't aware it had been
+planned.</p>
+<p>(We do still have a large number of nodes down due to the datacentre issues).</p>
+</li>
 </ul>
 <h3 id="michael">Michael<a class="headerlink" href="#michael" title="Permanent link">§</a></h3>
 <ul>
