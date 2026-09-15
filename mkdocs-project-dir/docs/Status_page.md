@@ -1589,7 +1589,18 @@ This page outlines that status of each of the machines managed by the Research C
     Login node access is available again on Young and Kathleen. 
 
     We have been updating the version of Slurm during the outage. We are still rolling out compute node updates, so jobs will not
-    begin running again until later today.    
+    begin running again until later today.
+
+  - 2026-09-15 16:05 - **Jobs running**
+
+    Jobs are enabled on Kathleen and have begun running.
+
+    You can currently log in to `login01`, `login02` and `kathleen.rc.ucl.ac.uk` and these take you to the same nodes as `login21`,
+    `login22` or `kathleen-ng.rc.ucl.ac.uk`, which appear to not currently be directing correctly. We're checking what changed with
+    the newer set of addresses.
+
+    (You may need to delete the previous entry for `login01`, `login02` and `kathleen.rc.ucl.ac.uk` in your `.ssh/known_hosts` as
+    detailed at https://www.rc.ucl.ac.uk/docs/howto/#remote-host-identification-has-changed).
 
 
 ### Young
