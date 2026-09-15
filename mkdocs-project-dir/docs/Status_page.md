@@ -1422,16 +1422,16 @@ This page outlines that status of each of the machines managed by the Research C
 
     To use now, do this on the login nodes or in your jobscripts:
 
-    ```
-    module purge 
-    module load ucl-stack/2026-03
-    ```
+    `module purge`
+    
+    `module load ucl-stack/2026-03`
+    
 
     You can then run module avail to see the new modules.
 
     You should see output that looks like this:
 
-    ```
+```
     ----------------------------------- /apps/spack/0.23/deploy/2026-03/modules/linux-rhel9-cascadelake ------------------------------------
     apr-util/1.6.3/gcc-12.3.0                                         libxcursor/1.2.2/gcc-12.3.0                           
     apr/1.7.5/gcc-12.3.0                                              mpi/intel-oneapi-mpi/2021.14.0/intel-oneapi-2024.2.1  
@@ -1445,9 +1445,9 @@ This page outlines that status of each of the machines managed by the Research C
 
     ------------------------------------------------ /apps/hpc-modulefiles/kathleen/bundles ------------------------------------------------
     r-4.5.2_bc-3.22 
-    ```
+```
 
-    If you don't see separate sections for the core, apps and bundles modules, if you log out and in again you will get the new layout.
+  - If you don't see separate sections for the core, apps and bundles modules, if you log out and in again you will get the new layout.
 
     We intend to keep the current and previous stacks available and deprecate and then remove the oldest stack as we build more. You will receive notice of this.
 
@@ -1583,6 +1583,13 @@ This page outlines that status of each of the machines managed by the Research C
 
     There will be no access to the clusters when the switches are being swapped out. Young and Kathleen should have short outages
     as only one switch needs swapping, while Michael will take longer.
+
+  - 2026-09-15 12:45 - **Login node access available again**
+
+    Login node access is available again on Young and Kathleen. 
+
+    We have been updating the version of Slurm during the outage. We are still rolling out compute node updates, so jobs will not
+    begin running again until later today.    
 
 
 ### Young
@@ -2114,10 +2121,8 @@ This page outlines that status of each of the machines managed by the Research C
     We’ve added logic to the `default-modules` and `ucl-stack` modules so there can’t be cross-talk between the software
     stacks, it will give you a helpful error message, but please perform a module purge before you load the new stack, e.g.:
 
-    ```
-    module purge
-    module load ucl-stack/2026-04
-    ```
+    `module purge`
+    `module load ucl-stack/2026-04`
 
     The following has been added in 2026-04:
 
@@ -2247,6 +2252,13 @@ This page outlines that status of each of the machines managed by the Research C
     able to switch them back on yet. The issues with cooling that required the nodes to be switched off are still ongoing and we do
     not presently have an ETA for a fix. It is somewhat due to age and wear on components of the cooling systems in that section of
     the datacentre and the lead times for getting replacements.
+
+  - 2026-09-15 12:45 - **Login node access available again**
+
+    Login node access is available again on Young and Kathleen. 
+
+    We have been updating the version of Slurm during the outage. We are still rolling out compute node updates, so jobs will not
+    begin running again until later today.
 
 
 ### Michael
