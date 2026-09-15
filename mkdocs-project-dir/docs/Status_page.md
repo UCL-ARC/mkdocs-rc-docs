@@ -2271,6 +2271,19 @@ This page outlines that status of each of the machines managed by the Research C
     We have been updating the version of Slurm during the outage. We are still rolling out compute node updates, so jobs will not
     begin running again until later today.
 
+  - 2026-09-15 17:20 - **Jobs enabled on Young-ng**
+
+    Jobs were re-enabled on Young-ng at around 16:15 and are running.
+
+    We have had an internal miscommunication that meant that all the nodes were put into Young-ng when half of the non-gpu
+    nodes should still be in the SGE side of Young. We are sorting that out now and re-draining the nodes from Young-ng. It
+    will take a bit longer to restart SGE jobs as a result.
+
+    My apologies, this change happened when a lot of people were on/had just come back from leave and I wasn't aware it had been
+    planned.
+
+    (We do still have a large number of nodes down due to the datacentre issues).
+
 
 ### Michael
 
