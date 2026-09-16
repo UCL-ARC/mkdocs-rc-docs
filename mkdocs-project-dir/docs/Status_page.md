@@ -2284,6 +2284,62 @@ This page outlines that status of each of the machines managed by the Research C
 
     (We do still have a large number of nodes down due to the datacentre issues).
 
+  - 2026-09-16 16:30 - **Status of nodes in Young and Young-ng**
+
+    We've had a few questions about queues, so I thought I would give an updated list of which nodes are meant to be where in
+    Young, and which are up and down so that you can choose where to submit jobs.
+
+    **In SGE Young:**
+
+    Nodes down:
+    
+    - node-c12h-[001-032]
+    - node-c12i-[001-036]
+    - node-c12j-[001-032]
+    - node-c12k-[001-036]
+    - node-c12l-[001-032]
+    - node-y12q-[002-003]    highmem
+    - node-z12r-[002-003]     highmem
+
+    168 C nodes, 2 Y nodes, 2 Z nodes are down in old Young.
+
+    Nodes being transferred back into old Young from Young-ng:
+
+    - node-c12m-[001-036]
+    - node-c12n-[001-032]
+    - node-c12o-[001-032]
+    - node-c12p-[001-032]
+    - node-w12a-[017-032]     hbm
+
+    That is 132 C nodes, 16 W nodes that are not currently there and running jobs, but will be transferred back once they are all empty.
+
+    Right now you will get an error if you try to submit jobs requesting a W node in old Young because there aren't any.
+    
+    **In Young-ng:**
+
+    Young-ng nodes down:
+
+    - node-x12t-[001-006]     gpu
+    - node-y12q-001          highmem
+    - node-z12r-001           highmem
+
+    6 GPU nodes, 1 Y and 1 Z node are down in Young-ng.
+
+    Young-ng nodes up and staying in young-ng:
+
+    - node-c12c-[001-036]
+    - node-c12d-[001-032]
+    - node-c12e-[001-036]
+    - node-c12f-[001-032]
+    - node-c12g-[001-036]
+    - node-c12s-[002-031]
+    - node-w12a-[001-016]     hbm
+
+    That is 202 C nodes, 16 W nodes.
+
+    Inside these ranges there are going to be a few individual nodes that are down for repair, but this is the main
+    distribution right now.
+    
 
 ### Michael
 
