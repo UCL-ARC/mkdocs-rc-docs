@@ -2545,6 +2545,13 @@ This page outlines that status of each of the machines managed by the Research C
 
     There will be no access to the clusters when the switches are being swapped out. Young and Kathleen should have short outages
     as only one switch needs swapping, while Michael will take longer.
+
+  - 2026-09-17 11:40 - **Jobs running again on Michael**
+
+    Jobs are running again on Michael.
+
+    Sorry for the delay, it did take a long time on Michael for the switch changes on Tuesday, and then we had further
+    resilience work that needed doing that was pushed to Wednesday.
     
 
 ### Thomas
