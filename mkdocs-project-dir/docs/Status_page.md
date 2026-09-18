@@ -1013,8 +1013,6 @@ This page outlines that status of each of the machines managed by the Research C
     We think this is fixed now - we have sorted out why the nodes were not able to fail over to each other.
     Logins to Myriad are working again.
 
-#### Latest on Myriad 
-
   - 2026-08-07 13:15 - **Myriad ACFS upgrade outage on 20 or 21 August**
 
     There will be an outage for Myriad on 20 or 21 August to upgrade the version of the filesystem software
@@ -1045,6 +1043,24 @@ This page outlines that status of each of the machines managed by the Research C
     holding current back-ups, so we're going to postpone this work.
 
     We'll let you know when we have new dates for this work.
+
+#### Latest on Myriad 
+
+  - 2026-09-18 12:10 - **Network Modernisation outage for Myriad on 24-25 Sept**
+
+    The Network Modernisation outage to replace central UCL switches for Myriad is taking place on **Thursday 24 September**. 
+
+    The outage may be completed within that day, but if it takes longer it will extend into Friday 25 September.
+
+    There are quite a lot of switches in Myriad so we do expect this to take all day on Thursday at a minimum.
+
+    We will be draining jobs on Myriad so that they will only start if they can complete before the outage, or else they
+    will wait in the queue until it is over and they can be scheduled again. You do not need to take any action.
+
+    There will be no access to Myriad when the switches are being swapped out.
+
+    This message will be added to https://www.rc.ucl.ac.uk/docs/Status_page/#latest-on-myriad shortly. The planned outages
+    are listed at https://www.rc.ucl.ac.uk/docs/Planned_Outages/
     
 
 ### Kathleen
