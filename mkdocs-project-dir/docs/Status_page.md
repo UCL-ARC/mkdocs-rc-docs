@@ -2339,6 +2339,22 @@ This page outlines that status of each of the machines managed by the Research C
 
     Inside these ranges there are going to be a few individual nodes that are down for repair, but this is the main
     distribution right now.
+
+  - 2026-09-18 09:55 - **Nodes up in SGE Young**
+
+    The node transfer back into the SGE half of Young was completed and jobs began running on them at 19:20 last night.
+
+    Sorry for the delay!
+
+    These are the nodes in the SGE half that are up:
+
+    - node-c12m-[001-036]
+    - node-c12n-[001-032]
+    - node-c12o-[001-032]
+    - node-c12p-[001-032]
+    - node-w12a-[017-032]     hbm
+
+    We're just checking that the W nodes are correctly scheduling jobs. The C nodes are busy.
     
 
 ### Michael
