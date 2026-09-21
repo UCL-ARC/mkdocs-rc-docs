@@ -2371,6 +2371,18 @@ This page outlines that status of each of the machines managed by the Research C
     - node-w12a-[017-032]     hbm
 
     We're just checking that the W nodes are correctly scheduling jobs. The C nodes are busy.
+
+  - 2026-09-21 10:50 - **Update on status of GPU and high memory nodes**
+
+    We were able to enable some more nodes on Friday after receiving information from the datacentre about what
+    could safely be switched back on.
+
+    In Young-ng, the GPU nodes have all been re-enabled, and we have set node-x12t-005 (which has 7 gpus only at
+    the moment) to run the short interactive jobs, as it does not look like the failed gpu will be fixed soon and
+    we can use the others in the meantime.
+
+    The high memory nodes are also all up, node-y12q-001,node-z12r-001 in young-ng and node-y12q-[002-003],
+    node-z12r-[002-003] in SGE Young.
     
 
 ### Michael
