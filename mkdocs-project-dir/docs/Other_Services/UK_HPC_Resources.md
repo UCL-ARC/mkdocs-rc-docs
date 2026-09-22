@@ -22,7 +22,7 @@ These systems are mostly still under development - a couple are accessible alrea
 ### Charger NCR (UCL/DataVita)
 
 - CPU-based
-- 148 compute nodes consisting of Intel Xeon 6730P CPUs, 296 processors, 37888 cores, 400Gbps Slingshot Interconnect 400
+- 148 compute nodes consisting of Intel Xeon 6730P CPUs, 256 processors, 37888 cores, 400Gbps Slingshot Interconnect 400
 - 8 Blackwell RTX Pro 6000 visualisation GPUs, ~850 CPU cores
 
 ### Isambard 3 NCR (University of Bristol)
