@@ -14,7 +14,7 @@ These systems are mostly still under development - a couple are accessible alrea
 ### Cirrus NCR (University of Edinburgh)
 
 - CPU-based
-- 640 compute nodes consisting of 2 x AMD Turin CPUs; 184,320 cores; 200Gbps interconnect
+- 640 compute nodes consisting of 2 x AMD Turin EPYC 9845 CPUs, 184,320 cores, 768/1536 GB DDR5, 200Gbps dual rail Slingshot 11 interconnect
 - Available now
 - [Cirrus website](https://www.cirrus.ac.uk)
 - [Access routes](https://www.cirrus.ac.uk/support-access/access/#academic-access-routes)
@@ -22,27 +22,27 @@ These systems are mostly still under development - a couple are accessible alrea
 ### Charger NCR (UCL/DataVita)
 
 - CPU-based
-- 148 compute nodes consisting of Intel Xeon CPUs; 296 processors; 37888 cores; 400Gb/s interconnect;
+- 148 compute nodes consisting of Intel Xeon 6730P CPUs, 296 processors, 37888 cores, 400Gbps Slingshot Interconnect 400
 - 8 Blackwell RTX Pro 6000 visualisation GPUs, ~850 CPU cores
 
 ### Isambard 3 NCR (University of Bristol)
 
 - CPU-based
-- 380 Nodes consisting of NVIDIA Grace-Grace CPUs; 54,720 cores; 200Gb/s interconnect
+- 380 Nodes consisting of NVIDIA Grace-Grace CPUs, 54,720 cores, 120 GB memory per Grace CPU, 200 Gbps single rail Slingshot 11 interconnect
 - Available internal to Bristol; external TBC
 - [Bristol Centre for Supercomputing](https://www.bristol.ac.uk/research/centres/bristol-supercomputing/)
 
 ### Baskerville NCR (University of Birmingham)
 
 - GPU-based
-- 200x Nvidia B200 GPUs; 23 nodes; 400Gb/s interconnect
+- 200x Nvidia B200 GPUs, 23 nodes, each with 180 GB HBM, 12T local SSD, Quad rail 400 Gbps NDR Infiniband interconnect
 - Full range of services expected in early 2027
 - [Baskerville website](https://www.baskerville.ac.uk)
 
 ### Zenith NCR (University of Cambridge)
 
 - GPU-based
-- 28 nodes consisting of 8 AMD MI355X GPUs (224 total); 400 Gb/s interconnect
+- 28 nodes consisting of 8 AMD Instinct MI355X GPUs (224 total), each with 288 GB HBM, 400 Gb/s interconnect
 - [Dawn and Zenith website](https://www.hpc.cam.ac.uk/d-w-n)
 
 ### Mary Coombs NCR (Daresbury)
