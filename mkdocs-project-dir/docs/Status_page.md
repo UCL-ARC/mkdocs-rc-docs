@@ -1061,6 +1061,10 @@ This page outlines that status of each of the machines managed by the Research C
 
     This message will be added to https://www.rc.ucl.ac.uk/docs/Status_page/#latest-on-myriad shortly. The planned outages
     are listed at https://www.rc.ucl.ac.uk/docs/Planned_Outages/
+
+  - 2026-09-24 17:40
+
+    The work on Myriad's network modernisation will be continuing into tomorrow, so access is not being restored yet.
     
 
 ### Kathleen
