@@ -16,7 +16,7 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-24-25 September 2026 | Myriad | Planned | Network Modernisation outage to replace central UCL switches. Jobs being drained. No access to Myriad during swap out of its switches. Expected to take all day Thursday at a minimum, may run into next day.
+24-25 September 2026 | Myriad | Planned | Network Modernisation outage to replace central UCL switches. Jobs being drained. No access to Myriad during swap out of its switches. Expected to take all day Thursday at a minimum, may run into next day. Update: will be continuing on Friday so access not restored yet.
 
 ## Previous Outages
 
