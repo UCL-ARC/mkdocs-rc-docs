@@ -1065,6 +1065,14 @@ This page outlines that status of each of the machines managed by the Research C
   - 2026-09-24 17:40
 
     The work on Myriad's network modernisation will be continuing into tomorrow, so access is not being restored yet.
+
+  - 2026-09-25 16:15 - **Network Modernisation outage for Myriad complete**
+
+    Myriad's login nodes and most of the compute is up and available again, and we will be starting jobs shortly once some
+    test jobs are complete.
+
+    A few nodes are down with network issues, including login16 and login18 which are part of Economics' paid nodes that run
+    Rstudio, so for members of Economics, please be aware of that. They will stay down until they can be fixed in person.
     
 
 ### Kathleen
