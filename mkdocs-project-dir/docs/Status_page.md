@@ -2643,6 +2643,13 @@ This page outlines that status of each of the machines managed by the Research C
     so we will confirm that nearer the time. A month after that if no issues are reported, we will move all the type-A nodes
     into Michael-ng and Michael will be fully upgraded.
 
+  - 2026-09-29 16:30 - **Outage of A nodes for security updates**
+
+    We also need to have an outage of the A-type nodes on Tuesday 6 October to apply security updates. We expect this to
+    take approximately 3 hours.
+
+    Jobs will begin running on the A nodes again later on Tuesday.
+    
 
 ### Thomas
 
