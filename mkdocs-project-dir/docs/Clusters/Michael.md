@@ -7,6 +7,12 @@ layout: docs
 ---
 # Michael
 
+!!! important
+    Michael's older K-type nodes are being retired on Tues 6 Oct 2026. 
+    The A-type nodes will keep running jobs until the end of March 2027, after which Michael will cease running as a service. 
+    There will be another two months of login access for data retrieval after it stops running jobs, and then Michael as a 
+    whole will be retired.
+
 Michael is an extension to the UCL-hosted Hub for Materials and
 Molecular Modelling, an EPSRC-funded Tier 2 system providing large scale
 computation to UK researchers; and delivers computational capability for
