@@ -2593,8 +2593,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     The leak has been fixed and jobs can start again on all the A-type nodes in Michael.
 
-#### Latest on Michael
-
   - 2026-09-10 12:30 - **Network Modernisation outage for Young, Michael, Kathleen on 15 Sept**
 
     The Network Modernisation outage to replace central UCL switches that was previously postponed has been rescheduled for
@@ -2614,7 +2612,37 @@ This page outlines that status of each of the machines managed by the Research C
 
     Sorry for the delay, it did take a long time on Michael for the switch changes on Tuesday, and then we had further
     resilience work that needed doing that was pushed to Wednesday.
+
+#### Latest on Michael
+
+  - 2026-09-29 13:55 - **Oldest nodes in Michael being retired; RHEL9 and Slurm are coming**
+
+    The type-K nodes in Michael are due to be retired. 
+
+    Here's what we sent in July, available at https://www.rc.ucl.ac.uk/docs/Status_page/#michael:
+
+    "Michael lifetime and retirement dates
     
+    The old type-K nodes will be available for running jobs until the end of September 2026, after which they will be retired.
+    
+    The type-A nodes will be available until the end of March 2027, after which Michael will cease running as a service.
+    There will be another two months of login access for data retrieval after it stops running jobs, and then Michael as
+    a whole will be retired."
+
+    Since we didn't give a week's notice and the Network Modernisation outage was going on, we are running the K nodes
+    for another week and are draining them for **Tuesday 6 October**, after which they will not run any more jobs. The type-A
+    nodes will keep running jobs.
+
+    **OS and scheduler upgrade**
+
+    We are also going to proceed with the move of the type-A nodes into an upgraded part of the cluster ("Michael-ng"),
+    running RHEL 9 as the operating system and Slurm as the scheduler.
+
+    We will be finalising the scheduler configuration, putting half the type-A compute nodes into it and giving you access to
+    it. Hopefully during the week of 19 October, but it may depend on other system outages we need to arrange for other clusters,
+    so we will confirm that nearer the time. A month after that if no issues are reported, we will move all the type-A nodes
+    into Michael-ng and Michael will be fully upgraded.
+
 
 ### Thomas
 
