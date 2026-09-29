@@ -4530,9 +4530,6 @@ but investigation is ongoing.</p>
 <p>2026-08-27 15:40 - <strong>Michael leak fixed</strong></p>
 <p>The leak has been fixed and jobs can start again on all the A-type nodes in Michael.</p>
 </li>
-</ul>
-<h4 id="latest-on-michael">Latest on Michael<a class="headerlink" href="#latest-on-michael" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-09-10 12:30 - <strong>Network Modernisation outage for Young, Michael, Kathleen on 15 Sept</strong></p>
 <p>The Network Modernisation outage to replace central UCL switches that was previously postponed has been rescheduled for
@@ -4548,6 +4545,29 @@ as only one switch needs swapping, while Michael will take longer.</p>
 <p>Jobs are running again on Michael.</p>
 <p>Sorry for the delay, it did take a long time on Michael for the switch changes on Tuesday, and then we had further
 resilience work that needed doing that was pushed to Wednesday.</p>
+</li>
+</ul>
+<h4 id="latest-on-michael">Latest on Michael<a class="headerlink" href="#latest-on-michael" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-09-29 13:55 - <strong>Oldest nodes in Michael being retired; RHEL9 and Slurm are coming</strong></p>
+<p>The type-K nodes in Michael are due to be retired. </p>
+<p>Here's what we sent in July, available at https://www.rc.ucl.ac.uk/docs/Status_page/#michael:</p>
+<p>"Michael lifetime and retirement dates</p>
+<p>The old type-K nodes will be available for running jobs until the end of September 2026, after which they will be retired.</p>
+<p>The type-A nodes will be available until the end of March 2027, after which Michael will cease running as a service.
+There will be another two months of login access for data retrieval after it stops running jobs, and then Michael as
+a whole will be retired."</p>
+<p>Since we didn't give a week's notice and the Network Modernisation outage was going on, we are running the K nodes
+for another week and are draining them for <strong>Tuesday 6 October</strong>, after which they will not run any more jobs. The type-A
+nodes will keep running jobs.</p>
+<p><strong>OS and scheduler upgrade</strong></p>
+<p>We are also going to proceed with the move of the type-A nodes into an upgraded part of the cluster ("Michael-ng"),
+running RHEL 9 as the operating system and Slurm as the scheduler.</p>
+<p>We will be finalising the scheduler configuration, putting half the type-A compute nodes into it and giving you access to
+it. Hopefully during the week of 19 October, but it may depend on other system outages we need to arrange for other clusters,
+so we will confirm that nearer the time. A month after that if no issues are reported, we will move all the type-A nodes
+into Michael-ng and Michael will be fully upgraded.</p>
 </li>
 </ul>
 <h3 id="thomas">Thomas<a class="headerlink" href="#thomas" title="Permanent link">§</a></h3>
