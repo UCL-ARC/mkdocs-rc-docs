@@ -2649,6 +2649,13 @@ This page outlines that status of each of the machines managed by the Research C
     take approximately 3 hours.
 
     Jobs will begin running on the A nodes again later on Tuesday.
+
+  - 2026-10-06 14:50 - **Outage over, K nodes retired**
+
+    Michael's A-type nodes have had jobs re-enabled now.
+
+    The K-type nodes have been removed from the scheduler and will no longer show up. If you have any jobs in the queue
+    requesting K-type nodes only, they will not be able to run.
     
 
 ### Thomas
