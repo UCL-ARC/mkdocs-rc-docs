@@ -16,12 +16,13 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-6 October 2026 | Michael | Planned | Outage of A-type nodes for security updates. Jobs will be drained. We expect it to take approx 3 hours then jobs will be restarted. The K-type nodes are also being drained and retired this day.
+19-23 October 2026 | Myriad, Kathleen | Planned | GPFS upgrade outage for ACFS. Effect on each cluster and whether they need to have full outages is TBC. If so, days are likely to be staggered like the cancelled August outages below.
 
 ## Previous Outages
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
+6 October 2026 | Michael | Completed | Outage of A-type nodes for security updates. Jobs will be drained. We expect it to take approx 3 hours then jobs will be restarted. The K-type nodes are also being drained and retired this day.
 24-25 September 2026 | Myriad | Completed | Network Modernisation outage to replace central UCL switches. Jobs being drained. No access to Myriad during swap out of its switches. Expected to take all day Thursday at a minimum, may run into next day. Update: will be continuing on Friday so access not restored yet.
 15-16 September 2026 | Young, Michael, Kathleen | Completed | Network Modernisation outage to replace central UCL switches. Jobs being drained. No access to each cluster during swap out of its switches. Expected to complete that day, may run into next day. Michael will take longer as more switches. Michael jobs were re-enabled on 17 Sept.
 18-19 August 2026 | Kathleen | Cancelled | Cancelled due to on-going issues with back-up system associated with ACFS. Was: GPFS upgrade outage for ACFS. Cluster will be drained for morning of 18, no access to login nodes. If work is happening on 19 instead (depends on engineers), jobs and access will be reinstated until morning of 19 when there will be no access again. 
