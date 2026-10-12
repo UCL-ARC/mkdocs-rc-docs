@@ -1044,8 +1044,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     We'll let you know when we have new dates for this work.
 
-#### Latest on Myriad 
-
   - 2026-09-18 12:10 - **Network Modernisation outage for Myriad on 24-25 Sept**
 
     The Network Modernisation outage to replace central UCL switches for Myriad is taking place on **Thursday 24 September**. 
@@ -1073,7 +1071,36 @@ This page outlines that status of each of the machines managed by the Research C
 
     A few nodes are down with network issues, including login16 and login18 which are part of Economics' paid nodes that run
     Rstudio, so for members of Economics, please be aware of that. They will stay down until they can be fixed in person.
-    
+
+#### Latest on Myriad 
+
+  - 2026-10-12 17:20 - **Myriad and Kathleen GPFS upgrade outage for ACFS around 20 Oct**
+
+    The Myriad and Kathleen outage that was previously scheduled for 18-19 Aug and 20-21 Aug has been rescheduled to
+    happen sometime between 20-23 October.
+
+    This outage is to upgrade the version of the filesystem software that the ACFS uses (ARC Cluster File System).
+
+    - What is the ACFS?: https://www.rc.ucl.ac.uk/docs/Background/Data_Storage/#arc-cluster-file-system-acfs 
+    - How much space do I have on the ACFS?: https://www.rc.ucl.ac.uk/docs/Data_Management/#acfs-quotas 
+
+    We are draining jobs on both clusters for the morning of Tuesday 20 October. If the work is happening later in the
+    week, we will allow jobs to start again and drain it for the correct day. 
+
+    During the outage there will be no access to the login nodes and no jobs will be running. Jobs will remain in the
+    queue and will start running again once we allow them to. You do not need to take any action.
+
+    Apologies for the uncertainty, external engineers are carrying out the work and we do not know precisely which days
+    they will be working yet. We will let you know as soon as we do.
+
+    **Access to Myriad-ng**
+
+    During this outage, we also intend to make some changes that will allow you to log in to "Myriad-ng", a part of Myriad
+    that is upgraded to Red Hat Enterprise Linux 9 (RHEL9) as the operating system and Slurm as the scheduler. More
+    information on this will be sent nearer the time.
+
+    The outage is listed at https://www.rc.ucl.ac.uk/docs/Planned_Outages/ and this update will be added to https://www.rc.ucl.ac.uk/docs/Status_page/ shortly.
+
 
 ### Kathleen
 
@@ -1585,8 +1612,6 @@ This page outlines that status of each of the machines managed by the Research C
     Kathleen is back in production. Jobs appear to have resumed but please check yours to be sure, and for anyone who had
     a job running when the cluster went down you’ll need to resubmit.
 
-#### Latest on Kathleen
-
   - 2026-08-27 10:50 - **Kathleen's filesystem was down this morning, now back up**
 
     This morning we found that the routers that connect Kathleen's filesystem to the rest of the cluster were off. This
@@ -1629,6 +1654,29 @@ This page outlines that status of each of the machines managed by the Research C
 
     (You may need to delete the previous entry for `login01`, `login02` and `kathleen.rc.ucl.ac.uk` in your `.ssh/known_hosts` as
     detailed at https://www.rc.ucl.ac.uk/docs/howto/#remote-host-identification-has-changed).
+
+#### Latest on Kathleen
+
+- 2026-10-12 17:20 - **Myriad and Kathleen GPFS upgrade outage for ACFS around 20 Oct**
+
+    The Myriad and Kathleen outage that was previously scheduled for 18-19 Aug and 20-21 Aug has been rescheduled to
+    happen sometime between 20-23 October.
+
+    This outage is to upgrade the version of the filesystem software that the ACFS uses (ARC Cluster File System).
+
+    - What is the ACFS?: https://www.rc.ucl.ac.uk/docs/Background/Data_Storage/#arc-cluster-file-system-acfs 
+    - How much space do I have on the ACFS?: https://www.rc.ucl.ac.uk/docs/Data_Management/#acfs-quotas 
+
+    We are draining jobs on both clusters for the morning of Tuesday 20 October. If the work is happening later in the
+    week, we will allow jobs to start again and drain it for the correct day. 
+
+    During the outage there will be no access to the login nodes and no jobs will be running. Jobs will remain in the
+    queue and will start running again once we allow them to. You do not need to take any action.
+
+    Apologies for the uncertainty, external engineers are carrying out the work and we do not know precisely which days
+    they will be working yet. We will let you know as soon as we do.
+
+    The outage is listed at https://www.rc.ucl.ac.uk/docs/Planned_Outages/ and this update will be added to https://www.rc.ucl.ac.uk/docs/Status_page/ shortly.
 
 
 ### Young
