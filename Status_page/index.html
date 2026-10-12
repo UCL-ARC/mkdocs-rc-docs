@@ -3221,9 +3221,6 @@ but aren't. Neither our folks nor IBM's want to risk upgrading the ACFS filesyst
 holding current back-ups, so we're going to postpone this work.</p>
 <p>We'll let you know when we have new dates for this work.</p>
 </li>
-</ul>
-<h4 id="latest-on-myriad">Latest on Myriad<a class="headerlink" href="#latest-on-myriad" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-09-18 12:10 - <strong>Network Modernisation outage for Myriad on 24-25 Sept</strong></p>
 <p>The Network Modernisation outage to replace central UCL switches for Myriad is taking place on <strong>Thursday 24 September</strong>. </p>
@@ -3245,6 +3242,30 @@ are listed at https://www.rc.ucl.ac.uk/docs/Planned_Outages/</p>
 test jobs are complete.</p>
 <p>A few nodes are down with network issues, including login16 and login18 which are part of Economics' paid nodes that run
 Rstudio, so for members of Economics, please be aware of that. They will stay down until they can be fixed in person.</p>
+</li>
+</ul>
+<h4 id="latest-on-myriad">Latest on Myriad<a class="headerlink" href="#latest-on-myriad" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-10-12 17:20 - <strong>Myriad and Kathleen GPFS upgrade outage for ACFS around 20 Oct</strong></p>
+<p>The Myriad and Kathleen outage that was previously scheduled for 18-19 Aug and 20-21 Aug has been rescheduled to
+happen sometime between 20-23 October.</p>
+<p>This outage is to upgrade the version of the filesystem software that the ACFS uses (ARC Cluster File System).</p>
+<ul>
+<li>What is the ACFS?: https://www.rc.ucl.ac.uk/docs/Background/Data_Storage/#arc-cluster-file-system-acfs </li>
+<li>How much space do I have on the ACFS?: https://www.rc.ucl.ac.uk/docs/Data_Management/#acfs-quotas </li>
+</ul>
+<p>We are draining jobs on both clusters for the morning of Tuesday 20 October. If the work is happening later in the
+week, we will allow jobs to start again and drain it for the correct day. </p>
+<p>During the outage there will be no access to the login nodes and no jobs will be running. Jobs will remain in the
+queue and will start running again once we allow them to. You do not need to take any action.</p>
+<p>Apologies for the uncertainty, external engineers are carrying out the work and we do not know precisely which days
+they will be working yet. We will let you know as soon as we do.</p>
+<p><strong>Access to Myriad-ng</strong></p>
+<p>During this outage, we also intend to make some changes that will allow you to log in to "Myriad-ng", a part of Myriad
+that is upgraded to Red Hat Enterprise Linux 9 (RHEL9) as the operating system and Slurm as the scheduler. More
+information on this will be sent nearer the time.</p>
+<p>The outage is listed at https://www.rc.ucl.ac.uk/docs/Planned_Outages/ and this update will be added to https://www.rc.ucl.ac.uk/docs/Status_page/ shortly.</p>
 </li>
 </ul>
 <h3 id="kathleen">Kathleen<a class="headerlink" href="#kathleen" title="Permanent link">§</a></h3>
@@ -3668,9 +3689,6 @@ queue should start when the cluster is up again, but please double check once yo
 <p>Kathleen is back in production. Jobs appear to have resumed but please check yours to be sure, and for anyone who had
 a job running when the cluster went down you’ll need to resubmit.</p>
 </li>
-</ul>
-<h4 id="latest-on-kathleen">Latest on Kathleen<a class="headerlink" href="#latest-on-kathleen" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-08-27 10:50 - <strong>Kathleen's filesystem was down this morning, now back up</strong></p>
 <p>This morning we found that the routers that connect Kathleen's filesystem to the rest of the cluster were off. This
@@ -3705,6 +3723,26 @@ begin running again until later today.</p>
 the newer set of addresses.</p>
 <p>(You may need to delete the previous entry for <code>login01</code>, <code>login02</code> and <code>kathleen.rc.ucl.ac.uk</code> in your <code>.ssh/known_hosts</code> as
 detailed at https://www.rc.ucl.ac.uk/docs/howto/#remote-host-identification-has-changed).</p>
+</li>
+</ul>
+<h4 id="latest-on-kathleen">Latest on Kathleen<a class="headerlink" href="#latest-on-kathleen" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-10-12 17:20 - <strong>Myriad and Kathleen GPFS upgrade outage for ACFS around 20 Oct</strong></p>
+<p>The Myriad and Kathleen outage that was previously scheduled for 18-19 Aug and 20-21 Aug has been rescheduled to
+happen sometime between 20-23 October.</p>
+<p>This outage is to upgrade the version of the filesystem software that the ACFS uses (ARC Cluster File System).</p>
+<ul>
+<li>What is the ACFS?: https://www.rc.ucl.ac.uk/docs/Background/Data_Storage/#arc-cluster-file-system-acfs </li>
+<li>How much space do I have on the ACFS?: https://www.rc.ucl.ac.uk/docs/Data_Management/#acfs-quotas </li>
+</ul>
+<p>We are draining jobs on both clusters for the morning of Tuesday 20 October. If the work is happening later in the
+week, we will allow jobs to start again and drain it for the correct day. </p>
+<p>During the outage there will be no access to the login nodes and no jobs will be running. Jobs will remain in the
+queue and will start running again once we allow them to. You do not need to take any action.</p>
+<p>Apologies for the uncertainty, external engineers are carrying out the work and we do not know precisely which days
+they will be working yet. We will let you know as soon as we do.</p>
+<p>The outage is listed at https://www.rc.ucl.ac.uk/docs/Planned_Outages/ and this update will be added to https://www.rc.ucl.ac.uk/docs/Status_page/ shortly.</p>
 </li>
 </ul>
 <h3 id="young">Young<a class="headerlink" href="#young" title="Permanent link">§</a></h3>
