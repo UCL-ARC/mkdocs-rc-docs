@@ -16,7 +16,7 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-19-23 October 2026 | Myriad, Kathleen | Planned | GPFS upgrade outage for ACFS. Effect on each cluster and whether they need to have full outages is TBC. If so, days are likely to be staggered like the cancelled August outages below.
+20-23 October 2026 | Myriad, Kathleen | Planned | GPFS upgrade outage for ACFS. Rescheduling of the cancelled August outages below. Jobs drained for 20 Oct and no access to login nodes, if the outage is not happening until a later day we will re-enable jobs until the new drain date (depends on engineers). 
 
 ## Previous Outages
 
