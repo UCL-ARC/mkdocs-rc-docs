@@ -31,9 +31,14 @@ Your jobscripts will need to be rewritten as Slurm jobscripts, and there are dif
 
 Myriad-ng currently contains type B and D cpu nodes, plus type E and L GPU nodes. It contains S, Q and R nodetypes that belong to specific groups and are not accessible to all.  Please see [node types](#node-types) below for details. You can run `sinfo` to see the nodes that exist in Myriad-ng.
 
-### Filesystem Issues
+### Filesystem issues
 
 <mark>Myriad's ongoing filesystem issues present more strongly on myriad-ng. We understand this is frustrating, but in order to fix the problem, we need all of Myriad on RHEL9 first. So please do try submitting jobs on myriad-ng. Your files are accessible from the old half of Myriad and the new, and it may be easier to read and edit files from the old half.</mark>
+
+### Timelines for full migration
+
+If we do not receive reports of major issues with the software stack, we are looking to put all of Myriad into Myriad-ng during the week of 16 or 23 November. Please do report any issues to rc-support@ucl.ac.uk. There will be a delay in Open OnDemand availability on the new system while we do the setup work. 
+
 
 ## Accounts
 
