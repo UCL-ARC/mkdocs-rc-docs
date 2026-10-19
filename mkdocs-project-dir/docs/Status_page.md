@@ -1101,6 +1101,17 @@ This page outlines that status of each of the machines managed by the Research C
 
     The outage is listed at https://www.rc.ucl.ac.uk/docs/Planned_Outages/ and this update will be added to https://www.rc.ucl.ac.uk/docs/Status_page/ shortly.
 
+  - 2026-10-19 16:21 - **Outage moved to Weds 21 Oct**
+
+    The Myriad and Kathleen outage for the ACFS software upgrade will not be happening on Tues 20 October. You will still
+    be able to access the clusters on Tuesday and jobs will be running. (Sorry for the late notice, this is about external
+    engineer availability).
+
+    Jobs are being drained for the morning of **Weds 21 October** now.
+
+    On Myriad we are definitely having an outage on Weds 21 October for the Myriad-ng access changes, even if there is no
+    ACFS work taking place.
+
 
 ### Kathleen
 
@@ -1677,6 +1688,14 @@ This page outlines that status of each of the machines managed by the Research C
     they will be working yet. We will let you know as soon as we do.
 
     The outage is listed at https://www.rc.ucl.ac.uk/docs/Planned_Outages/ and this update will be added to https://www.rc.ucl.ac.uk/docs/Status_page/ shortly.
+
+  - 2026-10-19 16:21 - **Outage moved to Weds 21 Oct**
+
+    The Myriad and Kathleen outage for the ACFS software upgrade will not be happening on Tues 20 October. You will still
+    be able to access the clusters on Tuesday and jobs will be running. (Sorry for the late notice, this is about external
+    engineer availability).
+
+    Jobs are being drained for the morning of **Weds 21 October** now.
 
 
 ### Young
