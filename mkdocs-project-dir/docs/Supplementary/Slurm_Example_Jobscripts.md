@@ -251,7 +251,6 @@ The threshholds for whether your job will land on a `Y` vs. `Z` node can be foun
 #### Single node high memory interactive session
 `srun --nodes=1 --ntasks-per-node=16 --mem-per-cpu=100G --time=12:00:00 --pty bash -l`
 
-
 ### GPU jobs
 
 #### GPU node script
@@ -288,10 +287,55 @@ Note that we're requesting both one GPU and 20G of temporary storage.
 #### GPU node interactive session
 `srun --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1,tmpfs:20G --time=2:00:00 --pty bash -l`
 
-### What is the difference between srun and salloc?
+## Examples for Myriad
 
-#### srun
+Myriad runs only single node jobs so specifying `--nodes=1` is unnecessary, but not harmful if you choose to.
+
+### GPU jobs
+
+There are both `E` and `L` type nodes in the GPU partition on Myriad.  If you don't specify any `--constraint` you have a chance to land on either node type.
+
+#### GPU node script
+```
+#!/bin/bash
+
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem-per-cpu=16G
+#SBATCH --gres=gpu:1,tmpfs:80G
+#SBATCH --constraint=E
+#SBATCH --time=12:00:00
+#SBATCH --job-name=Single_GPU_L
+
+# Purging and reloading all modules to be sure of the job's environment
+module purge
+module load ucl-stack/2026-07
+
+# Loading the modules your application needs to execute
+module load <name of the module(s) you need
+
+# Outputting the nvidia information about the node
+nvidia-smi
+
+# Printing the location of the temporary directory
+echo $TMPDIR
+
+# Lines to execute below here
+<application execution here>
+
+```
+
+Note that we're requesting both one `E` type GPU and 80G of temporary storage.
+
+#### GPU node interactive session
+There are only `L` type nodes in the interactive GPU partition on Myriad, so no need to specify a constraint.
+
+`srun --ntasks-per-node=1 --mem-per-cpu=16G --gres=gpu:1,tmpfs:80G --time=12:00:00 --pty bash -l`
+
+
+## What is the difference between srun and salloc?
+
+### srun
 If you're confused about why `srun` is used above to start an interactive session but also used to execute a parallel application within a script, there is no need to worry -- it is confusing!  `srun` is a very versatile command.  When used with no inputs it will execute whatever comes after it on all resources available.  If it detects you're using MPI it will execute in parallel using MPI.  If there is no MPI it will execute the command once on each of the available allocated CPUs.  If there are no resources yet allocated via `sbatch` or `salloc` it will look to see if you've asked for resources, allocate them for you, and then run the command.  If you feed it the `--pty` you can NOT specify a command and it will start an interactive session for you.  Versatile!
 
-#### salloc
+### salloc
 The more straight-forward command is `salloc` as its only purpose is to allocate resources and spawn an interactive session. The two methods are very similar, just remember that when you use `salloc` to start an interactive session you need to use `srun <application executable>` to run on the allocated compute resources, as you would in a submission script.

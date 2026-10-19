@@ -7,6 +7,43 @@ layout: cluster
 Myriad is designed for high I/O, high throughput jobs that will run
 within a single node rather than multi-node parallel jobs.
 
+## New operating system and scheduler
+
+A portion of Myriad is currently updated to our new operating system (RHEL 9.6) and new scheduler, Slurm.
+
+The new portion of Myriad (referred to as myriad-ng) can be accessed via `myriad-ng.rc.ucl.ac.uk` which will log you onto an updated login node.
+
+The new software stack is provided by a module called `ucl-stack/2026-07` which should be loaded by default. If not (for example if you `module purge` in your .bashrc) you can load the new environment with:
+
+```
+module load ucl-stack/2026-07
+module load default-modules/2026-07
+```
+
+The default compiler is now GCC and the default MPI is OpenMPI. We do also have Intel OneAPI modules.
+
+Your jobscripts will need to be rewritten as Slurm jobscripts, and there are different commands for submitting jobs and checking your job status.  Please see the following documentation pages for specifics on using Slurm, and note there are specific sub-sections within each page for the Myriad configuration.
+
+* [Usage of Slurm](../Supplementary/Slurm.md)
+* [Specifics of Using Slurm on Myriad](../Supplementary/Slurm.md#specifics-of-using-slurm-on-myriad)
+* [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
+* [Slurm Example Jobscripts for Myriad](../Supplementary/Slurm_Example_Jobscripts.md#examples-for-myriad)
+
+At present, project use and allocations aren't enabled in the new environment and all jobs will run as free through the `allusers` account.
+
+Myriad-ng currently contains <mark>DETAILS GO HERE.</mark>  Please see [node types](#node-types) below for details.
+
+The old half of Myriad has <mark>DETAILS GO HERE</mark>.
+
+### Filesystem and Scheduler Issues
+
+<mark>We're aware of the filesystem sluggishness on myriad-ng. It is very actively being addressed but even with the slowdown it is worthwhile to test your workflow on RHEL9 for when the entire system switches over.</mark>
+
+With the current version of SLURM there is an error message appearing which doesn't affect jobs from running succesfully, but can be alarming.  The error will appear as many times as you have tasks assigned to the job, and should happen at the start of the job.
+```
+error: _handle_getgr: incomplete data, ignoring request
+```
+
 ## Accounts
 
 Myriad accounts can be applied for via the [Research Computing sign up process](../Account_Services.md).
