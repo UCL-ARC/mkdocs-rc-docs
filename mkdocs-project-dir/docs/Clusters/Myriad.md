@@ -31,14 +31,9 @@ Your jobscripts will need to be rewritten as Slurm jobscripts, and there are dif
 
 Myriad-ng currently contains type B and D cpu nodes, plus type E and L GPU nodes. It contains S, Q and R nodetypes that belong to specific groups and are not accessible to all.  Please see [node types](#node-types) below for details. You can run `sinfo` to see the nodes that exist in Myriad-ng.
 
-### Filesystem and Scheduler Issues
+### Filesystem Issues
 
-<mark>We're aware of the filesystem sluggishness on myriad-ng. It is very actively being addressed but even with the slowdown it is worthwhile to test your workflow on RHEL9 for when the entire system switches over.</mark>
-
-With the current version of SLURM there is an error message appearing which doesn't affect jobs from running succesfully, but can be alarming.  The error will appear as many times as you have tasks assigned to the job, and should happen at the start of the job.
-```
-error: _handle_getgr: incomplete data, ignoring request
-```
+<mark>Myriad's ongoing filesystem issues present more strongly on myriad-ng. We understand this is frustrating, but in order to fix the problem, we need all of Myriad on RHEL9 first. So please do try submitting jobs on myriad-ng. Your files are accessible from the old half of Myriad and the new, and it may be easier to read and edit files from the old half.</mark>
 
 ## Accounts
 
