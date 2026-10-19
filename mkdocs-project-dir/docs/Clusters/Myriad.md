@@ -29,11 +29,7 @@ Your jobscripts will need to be rewritten as Slurm jobscripts, and there are dif
 * [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
 * [Slurm Example Jobscripts for Myriad](../Supplementary/Slurm_Example_Jobscripts.md#examples-for-myriad)
 
-At present, project use and allocations aren't enabled in the new environment and all jobs will run as free through the `allusers` account.
-
-Myriad-ng currently contains <mark>DETAILS GO HERE.</mark>  Please see [node types](#node-types) below for details.
-
-The old half of Myriad has <mark>DETAILS GO HERE</mark>.
+Myriad-ng currently contains type B and D cpu nodes, plus type E and L GPU nodes. It contains S, Q and R nodetypes that belong to specific groups and are not accessible to all.  Please see [node types](#node-types) below for details. You can run `sinfo` to see the nodes that exist in Myriad-ng.
 
 ### Filesystem and Scheduler Issues
 
