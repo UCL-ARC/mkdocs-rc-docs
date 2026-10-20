@@ -2529,6 +2529,10 @@ This page outlines that status of each of the machines managed by the Research C
 
     Jobs are running on the remaining nodes.
 
+  - 2026-10-20 14:45 - **Cooling problem in Young, some nodes off - fixed**
+
+    Cooling has been restored and all the nodes above are allowed to run jobs again.
+    
 
 ### Michael
 
