@@ -1137,6 +1137,11 @@ This page outlines that status of each of the machines managed by the Research C
 
     Sorry again for the unpredictability.
 
+  - 2026-10-20 12:10 - **Issue with scheduler on Myriad - fixed**
+
+    This is fixed now and qstat and qsub should be working again as normal. Running jobs will not have been affected and
+    jobs that were in the queue are still there. 
+
 
 ### Kathleen
 
