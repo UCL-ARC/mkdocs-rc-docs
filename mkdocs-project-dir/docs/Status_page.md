@@ -1112,6 +1112,31 @@ This page outlines that status of each of the machines managed by the Research C
     On Myriad we are definitely having an outage on Weds 21 October for the Myriad-ng access changes, even if there is no
     ACFS work taking place.
 
+  - 2026-10-20 10:25 - **Issue with scheduler on Myriad**
+
+    We're aware of a problem with the scheduler on Myriad this morning that results in errors like:
+
+    `error: commlib error: got select error (Connection refused)`
+    `error: unable to send message to qmaster using port 6444 on host "util01.myriad.ucl.ac.uk": got send error`
+
+    when running qstat, qsub etc commands. The qmaster is part of the scheduler.
+
+    This is not related to any of the planned outages and is being worked on.
+
+  - 2026-10-20 10:35 - **Myriad and Kathleen GPFS upgrade outage for ACFS rescheduled to next week**
+
+    The engineers are still not available and the outage for the ACFS software upgrade is being postponed until next week.
+
+    We will be draining jobs on Myriad and Kathleen for Tuesday 27 October at 8am. Again, we are not sure precisely which
+    day that week the ACFS work will happen, so the outages will move again if necessary. The day that they are happening,
+    no jobs will be running and you will not be able to log in.
+
+    Myriad is still having the outage tomorrow to give you access to Myriad-ng.
+
+    Kathleen has no outage this week.
+
+    Sorry again for the unpredictability.
+
 
 ### Kathleen
 
@@ -1697,6 +1722,20 @@ This page outlines that status of each of the machines managed by the Research C
 
     Jobs are being drained for the morning of **Weds 21 October** now.
 
+  - 2026-10-20 10:35 - **Myriad and Kathleen GPFS upgrade outage for ACFS rescheduled to next week**
+
+    The engineers are still not available and the outage for the ACFS software upgrade is being postponed until next week.
+
+    We will be draining jobs on Myriad and Kathleen for Tuesday 27 October at 8am. Again, we are not sure precisely which
+    day that week the ACFS work will happen, so the outages will move again if necessary. The day that they are happening,
+    no jobs will be running and you will not be able to log in.
+
+    Myriad is still having the outage tomorrow to give you access to Myriad-ng.
+
+    Kathleen has no outage this week.
+
+    Sorry again for the unpredictability.
+    
 
 ### Young
 
