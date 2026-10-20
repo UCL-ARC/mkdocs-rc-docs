@@ -4426,9 +4426,6 @@ distribution right now.</p>
 </ul>
 <p>We're just checking that the W nodes are correctly scheduling jobs. The C nodes are busy.</p>
 </li>
-</ul>
-<h4 id="latest-on-young">Latest on Young<a class="headerlink" href="#latest-on-young" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-09-21 10:50 - <strong>Update on status of GPU and high memory nodes</strong></p>
 <p>We were able to enable some more nodes on Friday after receiving information from the datacentre about what
@@ -4439,11 +4436,27 @@ we can use the others in the meantime.</p>
 <p>The high memory nodes are also all up, node-y12q-001,node-z12r-001 in young-ng and node-y12q-[002-003],
 node-z12r-[002-003] in SGE Young.</p>
 </li>
+</ul>
+<h4 id="latest-on-young">Latest on Young<a class="headerlink" href="#latest-on-young" title="Permanent link">§</a></h4>
+<ul>
 <li>
 <p>2026-09-22 11:00 - <strong>Young will be running until the end of December; Gold allocations will continue</strong></p>
 <p>Young's original end of running time was the end of September this year. We have funds to continue running it
 until the end of December, so I have given the points of contact another full three-month allocation. The
 Gold allocation is still only available on SGE Young and not Young-ng.</p>
+</li>
+<li>
+<p>2026-10-20 11:50 - <strong>Cooling problem in Young, some nodes off</strong></p>
+<p>There's another cooling issue affecting many of the racks in Young.</p>
+<p>For the time being, we have had to stop jobs running on these nodes:</p>
+<ul>
+<li>CPU node-c12c/d/e/f (in Young-ng)</li>
+<li>all of node-w (both halves of Young)</li>
+<li>GPU node-x12t-[001-003] (in Young-ng)</li>
+</ul>
+<p>In <code>sinfo</code> on Young-ng these will show up as drain or drng (draining).</p>
+<p>I do not know yet when we might be able to switch these back on.</p>
+<p>Jobs are running on the remaining nodes.</p>
 </li>
 </ul>
 <h3 id="michael">Michael<a class="headerlink" href="#michael" title="Permanent link">§</a></h3>
