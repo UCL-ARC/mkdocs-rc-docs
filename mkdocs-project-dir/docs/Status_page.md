@@ -2488,8 +2488,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     We're just checking that the W nodes are correctly scheduling jobs. The C nodes are busy.
 
-#### Latest on Young
-
   - 2026-09-21 10:50 - **Update on status of GPU and high memory nodes**
 
     We were able to enable some more nodes on Friday after receiving information from the datacentre about what
@@ -2501,12 +2499,30 @@ This page outlines that status of each of the machines managed by the Research C
 
     The high memory nodes are also all up, node-y12q-001,node-z12r-001 in young-ng and node-y12q-[002-003],
     node-z12r-[002-003] in SGE Young.
+
+#### Latest on Young
     
   - 2026-09-22 11:00 - **Young will be running until the end of December; Gold allocations will continue**
 
     Young's original end of running time was the end of September this year. We have funds to continue running it
     until the end of December, so I have given the points of contact another full three-month allocation. The
     Gold allocation is still only available on SGE Young and not Young-ng.
+
+  - 2026-10-20 11:50 - **Cooling problem in Young, some nodes off**
+
+    There's another cooling issue affecting many of the racks in Young.
+
+    For the time being, we have had to stop jobs running on these nodes:
+
+    - CPU node-c12c/d/e/f (in Young-ng)
+    - all of node-w (both halves of Young)
+    - GPU node-x12t-[001-003] (in Young-ng)
+
+    In `sinfo` on Young-ng these will show up as drain or drng (draining).
+
+    I do not know yet when we might be able to switch these back on.
+
+    Jobs are running on the remaining nodes.
 
 
 ### Michael
