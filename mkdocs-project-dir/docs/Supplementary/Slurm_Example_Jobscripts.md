@@ -131,7 +131,7 @@ By default we have set `--hint=nomultithread` so hyperthreads will not be used u
 
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=CPU_Single_Node
 
 # Purging and reloading all modules to be sure of the job's environment
@@ -150,7 +150,7 @@ module load <name of the module(s) you need>
 The resource request is identical to the script above. However, once the resources are allocated you'll be migrated to the compute node and will need to then execute any lines manually.  The module commands and `<application execution here>` would be done by-hand.  You'll notice also the `--pty` flag at the end which stands for "pseudo terminal" and is letting Slurm know to start the session using `bash`.
 
 ```
-srun --nodes=1 --ntasks-per-node=8 --time=12:00:00 --pty bash -l
+srun --nodes=1 --ntasks-per-node=8 --time=1:00:00 --pty bash -l
 ```
 
 #### Multi-node script
@@ -162,7 +162,7 @@ By default the `mpi/openmpi/4.1.6/gcc-12.3.0-avx2` module is loaded.  If you nee
 
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=16
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=CPU_Multi_Node
 
 # Purging and reloading to be sure of the job's environment
@@ -194,7 +194,7 @@ This will start a new session on the login node with the requested resources all
 #SBATCH --partition=hbm
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=HBM_Job
 
 # Purging and reloading all modules to be sure of the job's environment
@@ -215,7 +215,7 @@ echo $TMPDIR
 Note that the `hbm` partition you need to explicitly specify.  If you don't, the job will run on a regular CPU node.  In this example we've also asked for 40G of temporary storage on the node.  
 
 #### Single node HBM interactive session
-`srun --partition=hbm --nodes=1 --ntasks-per-node=4 --time=12:00:00 --pty bash -l`
+`srun --partition=hbm --nodes=1 --ntasks-per-node=4 --time=2:00:00 --pty bash -l`
 
 ### High-Memory node jobs
 
@@ -226,7 +226,7 @@ Note that the `hbm` partition you need to explicitly specify.  If you don't, the
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
 #SBATCH --mem-per-cpu=100G
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=High_Mem_Job
 
 # Purging and reloading all modules to be sure of the job's environment
@@ -249,8 +249,7 @@ There are two ways to specify your memory needs, either with `--mem` which speci
 The threshholds for whether your job will land on a `Y` vs. `Z` node can be found in [Young Node Types](../Clusters/Young.md/#node-types).
 
 #### Single node high memory interactive session
-`srun --nodes=1 --ntasks-per-node=16 --mem-per-cpu=100G --time=12:00:00 --pty bash -l`
-
+`srun --nodes=1 --ntasks-per-node=16 --mem-per-cpu=100G --time=2:00:00 --pty bash -l`
 
 ### GPU jobs
 
@@ -260,9 +259,9 @@ The threshholds for whether your job will land on a `Y` vs. `Z` node can be foun
 
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --mem-per-cpu=8G
+#SBATCH --mem=8G
 #SBATCH --gres=gpu:1,tmpfs:20G
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=GPU_Single_GPU
 
 # Purging and reloading all modules to be sure of the job's environment
@@ -286,12 +285,57 @@ echo $TMPDIR
 Note that we're requesting both one GPU and 20G of temporary storage.
 
 #### GPU node interactive session
-`srun --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1,tmpfs:20G --time=2:00:00 --pty bash -l`
+`srun --nodes=1 --ntasks-per-node=1 --mem=8G --gres=gpu:1,tmpfs:20G --time=2:00:00 --pty bash -l`
 
-### What is the difference between srun and salloc?
+## Examples for Myriad
 
-#### srun
+Myriad runs only single node jobs so specifying `--nodes=1` is unnecessary, but not harmful if you choose to.
+
+### GPU jobs
+
+There are both `E` and `L` type nodes in the GPU partition on Myriad.  If you don't specify any `--constraint` you have a chance to land on either node type.
+
+#### GPU node script
+```
+#!/bin/bash
+
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem=16G
+#SBATCH --gres=gpu:1,tmpfs:20G
+#SBATCH --constraint=E
+#SBATCH --time=2:00:00
+#SBATCH --job-name=Single_GPU_L
+
+# Purging and reloading all modules to be sure of the job's environment
+module purge
+module load ucl-stack/2026-07
+
+# Loading the modules your application needs to execute
+module load <name of the module(s) you need
+
+# Outputting the nvidia information about the node
+nvidia-smi
+
+# Printing the location of the temporary directory
+echo $TMPDIR
+
+# Lines to execute below here
+<application execution here>
+
+```
+
+Note that we're requesting both one `E` type GPU and 20G of temporary storage.
+
+#### GPU node interactive session
+
+The following asks for the same resources as the batch job above but will start an interactive session.
+
+`srun --ntasks-per-node=1 --mem=16G --gres=gpu:1,tmpfs:20G --constraint=E --time=2:00:00 --pty bash -l`
+
+## What is the difference between srun and salloc?
+
+### srun
 If you're confused about why `srun` is used above to start an interactive session but also used to execute a parallel application within a script, there is no need to worry -- it is confusing!  `srun` is a very versatile command.  When used with no inputs it will execute whatever comes after it on all resources available.  If it detects you're using MPI it will execute in parallel using MPI.  If there is no MPI it will execute the command once on each of the available allocated CPUs.  If there are no resources yet allocated via `sbatch` or `salloc` it will look to see if you've asked for resources, allocate them for you, and then run the command.  If you feed it the `--pty` you can NOT specify a command and it will start an interactive session for you.  Versatile!
 
-#### salloc
+### salloc
 The more straight-forward command is `salloc` as its only purpose is to allocate resources and spawn an interactive session. The two methods are very similar, just remember that when you use `salloc` to start an interactive session you need to use `srun <application executable>` to run on the allocated compute resources, as you would in a submission script.

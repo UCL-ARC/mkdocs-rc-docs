@@ -68,6 +68,31 @@ Practical examples of how to run parallel tasks can be found in [Slurm Example J
 
 Slurm requires all the `#SBATCH` directives to be together at the top of the file. Once there are any commands being run, it will ignore any further `#SBATCH` lines. This is different from SGE which would parse those lines from anywhere in the file.
 
+### Interactive Sessions
+
+In addition to requesting job resources through a submission script, you can also run in an interactive manner similar to how you would run something on your PC or a login node.  Interactive sessions are best when you are in active development or need to quickly iterate a series of jobs.
+
+There are two methods for starting an interactive session.  `srun` will migrate your session to a compute node immediately whereas `salloc` will allocate resources and start a new session but leave you on the login node.  `salloc` is generally best for multi-node MPI jobs whereas `srun` should be used for pretty much all other single-node interactive jobs.
+
+All commands and resource requests are passed in via the command line, no Slurm script is used.
+
+This example would start an interactive session with 32G RAM and 8 CPUs on one node.
+```
+srun --mem-per-cpu=4G --nodes=1 --ntasks-per-node=8 --pty bash -l
+```
+
+This next example would start a session that requests 64 CPUs across 4 nodes, with 32G RAM reserved per node.  Since it uses salloc the session will start on the login node and *not* migrate the session to a compute node.  From here you could use `srun` or `mpirun` to execute an application in parallel.
+```
+salloc --mem-per-cpu=2G --nodes=4 --ntasks-per-node=16
+```
+
+This final example would start an interactive session on one GPU node, with one GPU, 8G RAM, and 1 CPU.
+```
+srun --gres=gpu:1 --mem-per-cpu=8G --nodes=1 --ntasks-per-node=1 --pty bash -l
+```
+
+For more detailed examples, please refer to [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
+
 ### Passing in command-line arguments
 
 You can also pass options directly to the `sbatch` command and this will override the settings in your script. This can be useful if you are scripting your job submissions in more complicated ways.
@@ -97,58 +122,6 @@ sbatch --depend=12345 myscript.sh
 ```
 
 Note that for future reference, it helps if you have these options inside your jobscript rather than passed in on the command line whenever possible, so there is one place to check what your past jobs were requesting.
-
-### Specifics of using Slurm on Young
-
-#### Partitions
-
-The correct partition will be assigned based on the resources you ask for.  However, to use High Bandwith Memory (HBM) nodes you will need to explicitly specify:
-```
---partition=hbm
-```
-This will be covered in more detail in the example scripts linked to below.
-
-#### Interactive Sessions
-
-In addition to requesting job resources through a submission script, you can also run in an interactive manner similar to how you would run something on your PC or a login node.  Interactive sessions are best when you are in active development or need to quickly iterate a series of jobs.
-
-There are two methods for starting an interactive session.  `srun` will migrate your session to a compute node immediately whereas `salloc` will allocate resources and start a new session but leave you on the login node.  `salloc` is generally best for multi-node MPI jobs whereas `srun` should be used for pretty much all other single-node interactive jobs.
-
-All commands and resource requests are passed in via the command line, no Slurm script is used.
-
-This example would start an interactive session with 32G RAM and 8 CPUs on one node.
-```
-srun --mem-per-cpu=4G --nodes=1 --ntasks-per-node=8 --pty bash -l
-```
-
-This next example would start a session that requests 64 CPUs across 4 nodes, with 32G RAM reserved per node.  Since it uses salloc the session will start on the login node and *not* migrate the session to a compute node.  From here you could use `srun` or `mpirun` to execute an application in parallel.
-```
-salloc --mem-per-cpu=2G --nodes=4 --ntasks-per-node=16
-```
-
-This final example would start an interactive session on one GPU node, with one GPU, 8G RAM, and 1 CPU.
-```
-srun --gres=gpu:1 --mem-per-cpu=8G --nodes=1 --ntasks-per-node=1 --pty bash -l
-```
-
-For more detailed examples, please refer to [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
-
-#### Temporary Storage
-
-If you're running on a GPU node you can request temporary storage on the node's local disk.  By default, a temporary directory is created and the location stored in the `TMPDIR` environmental variable.  If you don't explicitly request more you're automatically given 100MiB.
-
-If you're running on a High-Bandwidth-Memory (HBM) node, then you automatically are allocated all the available local disk in the job and do not need to ask for it. 
-
-To request more local temp space on a GPU node, up to a maximum of 5900GiB, you use the `--gres=tmpfs:<amount>`.  In this example we request 80GiB.
-```
---gres=tmpfs:80G
-```
-
-If you're requesting both a GPU and temp space, you separate the `gres` request with a comma (no space).
-```
---gres=gpu:1,tmpfs:80G
-```
-
 
 ### Checking your previous jobscripts
 
@@ -240,3 +213,67 @@ JobID             User    JobName               Start                 End  Alloc
 If a job ended and didn't create the files you expect, check the start and end times to see whether it ran out of wallclock time.
 
 If a job only ran for seconds and didn't produce the expected output, there was probably something wrong in your script - check the .out.txt and .err.txt files in the directory you submitted the job from for errors.
+
+## Specifics of using Slurm on Young
+
+### Partitions
+
+The correct partition will be assigned based on the resources you ask for.  However, to use High Bandwith Memory (HBM) nodes you will need to explicitly specify:
+```
+--partition=hbm
+```
+This will be covered in more detail in the example scripts linked to below.
+
+### Temporary Storage
+
+If you're running on a Kathleen GPU node you can request temporary storage on the node's local disk.  By default, a temporary directory is created and the location stored in the `TMPDIR` environmental variable.  If you don't explicitly request more you're automatically given 100MiB.
+
+If you're running on a High-Bandwidth-Memory (HBM) node, then you automatically are allocated all the available local disk in the job and do not need to ask for it. 
+
+To request more local temp space on a GPU node, up to a maximum of 5900GiB, you use the `--gres=tmpfs:<amount>`.  In this example we request 80GiB.
+```
+--gres=tmpfs:80G
+```
+
+If you're requesting both a GPU and temp space, you separate the `gres` request with a comma (no space).
+```
+--gres=gpu:1,tmpfs:80G
+```
+
+## Specifics of using Slurm on Myriad
+
+### GPUs on Myriad
+
+There are two types on GPU nodes on Myriad, 40GB A100 (`L Nodes`) and 32GB V100 (`E Nodes`).  If you are submitting a batch job and ask for `--gres=gpu:1` you have a chance to request one GPU on either type of node. If you need a specific node type you use the `--constraint` option in your submission script.
+
+If you specify no constraint it is the equivalent of `--constraint=[E|L]`, which says to allocate exclusively `E` OR `L` type nodes.
+
+For example, this job script header would ask for one V100 GPU and the A100 GPUs wouldn't be considered to run the job.
+```
+#!/bin/bash
+
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem=8G
+#SBATCH --gres=gpu:1
+#SBATCH --constraint=E
+#SBATCH --time=12:00:00
+#SBATCH --job-name=V100_GPU_Job
+```
+
+Keep in mind, the more specific you are the smaller the pool of resources your job has to run on.  For a list of node-types and their corresponding letter to use as a constraint see [node types](../Clusters/Myriad.md#node-types).
+
+Interactive jobs run only on `L` type nodes so there is no need to specify a `--constraint`. 
+
+### Temporary Storage
+
+You can request temporary storage on all Myriad nodes.  By default, a temporary directory is created and the location stored in the `TMPDIR` environmental variable.  If you don't explicitly request more you're automatically given 100MiB.
+
+To request more local temp space you use the `--gres=tmpfs:<amount>`.  In this example we request 80GiB.
+```
+--gres=tmpfs:80G
+```
+
+If you're requesting both a GPU and temp space, you separate the `gres` request with a comma (no space).
+```
+--gres=gpu:1,tmpfs:80G
+```
