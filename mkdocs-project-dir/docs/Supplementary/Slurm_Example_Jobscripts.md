@@ -327,10 +327,10 @@ echo $TMPDIR
 Note that we're requesting both one `E` type GPU and 20G of temporary storage.
 
 #### GPU node interactive session
-There are only `L` type nodes in the interactive GPU partition on Myriad, so no need to specify a constraint.
 
-`srun --ntasks-per-node=1 --mem=16G --gres=gpu:1,tmpfs:20G --time=2:00:00 --pty bash -l`
+The following asks for the same resources as the batch job above but will start an interactive session.
 
+`srun --ntasks-per-node=1 --mem=16G --gres=gpu:1,tmpfs:20G --constraint=E --time=2:00:00 --pty bash -l`
 
 ## What is the difference between srun and salloc?
 
