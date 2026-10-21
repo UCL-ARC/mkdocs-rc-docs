@@ -304,7 +304,7 @@ There are both `E` and `L` type nodes in the GPU partition on Myriad.  If you do
 #SBATCH --gres=gpu:1,tmpfs:20G
 #SBATCH --constraint=E
 #SBATCH --time=2:00:00
-#SBATCH --job-name=Single_GPU_L
+#SBATCH --job-name=Single_GPU_E
 
 # Purging and reloading all modules to be sure of the job's environment
 module purge
