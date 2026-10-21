@@ -131,7 +131,7 @@ By default we have set `--hint=nomultithread` so hyperthreads will not be used u
 
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=CPU_Single_Node
 
 # Purging and reloading all modules to be sure of the job's environment
@@ -150,7 +150,7 @@ module load <name of the module(s) you need>
 The resource request is identical to the script above. However, once the resources are allocated you'll be migrated to the compute node and will need to then execute any lines manually.  The module commands and `<application execution here>` would be done by-hand.  You'll notice also the `--pty` flag at the end which stands for "pseudo terminal" and is letting Slurm know to start the session using `bash`.
 
 ```
-srun --nodes=1 --ntasks-per-node=8 --time=12:00:00 --pty bash -l
+srun --nodes=1 --ntasks-per-node=8 --time=1:00:00 --pty bash -l
 ```
 
 #### Multi-node script
@@ -162,7 +162,7 @@ By default the `mpi/openmpi/4.1.6/gcc-12.3.0-avx2` module is loaded.  If you nee
 
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=16
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=CPU_Multi_Node
 
 # Purging and reloading to be sure of the job's environment
@@ -194,7 +194,7 @@ This will start a new session on the login node with the requested resources all
 #SBATCH --partition=hbm
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=HBM_Job
 
 # Purging and reloading all modules to be sure of the job's environment
@@ -215,7 +215,7 @@ echo $TMPDIR
 Note that the `hbm` partition you need to explicitly specify.  If you don't, the job will run on a regular CPU node.  In this example we've also asked for 40G of temporary storage on the node.  
 
 #### Single node HBM interactive session
-`srun --partition=hbm --nodes=1 --ntasks-per-node=4 --time=12:00:00 --pty bash -l`
+`srun --partition=hbm --nodes=1 --ntasks-per-node=4 --time=2:00:00 --pty bash -l`
 
 ### High-Memory node jobs
 
@@ -226,7 +226,7 @@ Note that the `hbm` partition you need to explicitly specify.  If you don't, the
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
 #SBATCH --mem-per-cpu=100G
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=High_Mem_Job
 
 # Purging and reloading all modules to be sure of the job's environment
@@ -249,7 +249,7 @@ There are two ways to specify your memory needs, either with `--mem` which speci
 The threshholds for whether your job will land on a `Y` vs. `Z` node can be found in [Young Node Types](../Clusters/Young.md/#node-types).
 
 #### Single node high memory interactive session
-`srun --nodes=1 --ntasks-per-node=16 --mem-per-cpu=100G --time=12:00:00 --pty bash -l`
+`srun --nodes=1 --ntasks-per-node=16 --mem-per-cpu=100G --time=2:00:00 --pty bash -l`
 
 ### GPU jobs
 
@@ -259,9 +259,9 @@ The threshholds for whether your job will land on a `Y` vs. `Z` node can be foun
 
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --mem-per-cpu=8G
+#SBATCH --mem=8G
 #SBATCH --gres=gpu:1,tmpfs:20G
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=GPU_Single_GPU
 
 # Purging and reloading all modules to be sure of the job's environment
@@ -285,7 +285,7 @@ echo $TMPDIR
 Note that we're requesting both one GPU and 20G of temporary storage.
 
 #### GPU node interactive session
-`srun --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1,tmpfs:20G --time=2:00:00 --pty bash -l`
+`srun --nodes=1 --ntasks-per-node=1 --mem=8G --gres=gpu:1,tmpfs:20G --time=2:00:00 --pty bash -l`
 
 ## Examples for Myriad
 
@@ -300,10 +300,10 @@ There are both `E` and `L` type nodes in the GPU partition on Myriad.  If you do
 #!/bin/bash
 
 #SBATCH --ntasks-per-node=1
-#SBATCH --mem-per-cpu=16G
-#SBATCH --gres=gpu:1,tmpfs:80G
+#SBATCH --mem=16G
+#SBATCH --gres=gpu:1,tmpfs:20G
 #SBATCH --constraint=E
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=Single_GPU_L
 
 # Purging and reloading all modules to be sure of the job's environment
@@ -324,12 +324,12 @@ echo $TMPDIR
 
 ```
 
-Note that we're requesting both one `E` type GPU and 80G of temporary storage.
+Note that we're requesting both one `E` type GPU and 20G of temporary storage.
 
 #### GPU node interactive session
 There are only `L` type nodes in the interactive GPU partition on Myriad, so no need to specify a constraint.
 
-`srun --ntasks-per-node=1 --mem-per-cpu=16G --gres=gpu:1,tmpfs:80G --time=2:00:00 --pty bash -l`
+`srun --ntasks-per-node=1 --mem=16G --gres=gpu:1,tmpfs:20G --time=2:00:00 --pty bash -l`
 
 
 ## What is the difference between srun and salloc?
