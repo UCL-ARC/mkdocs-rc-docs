@@ -2158,7 +2158,68 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples-for-myriad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples for Myriad
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples for Myriad">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
+  <a href="#gpu-jobs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU jobs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPU jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-node-script_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU node script
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-node-interactive-session_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU node interactive session
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-is-the-difference-between-srun-and-salloc" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2189,11 +2250,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -2331,7 +2387,7 @@ myprogram dataset${SLURM_ARRAY_TASK_ID}.csv
 
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=CPU_Single_Node
 
 # Purging and reloading all modules to be sure of the job's environment
@@ -2347,7 +2403,7 @@ module load &lt;name of the module(s) you need&gt;
 
 <h4 id="single-node-interactive-session">Single node interactive session<a class="headerlink" href="#single-node-interactive-session" title="Permanent link">§</a></h4>
 <p>The resource request is identical to the script above. However, once the resources are allocated you'll be migrated to the compute node and will need to then execute any lines manually.  The module commands and <code>&lt;application execution here&gt;</code> would be done by-hand.  You'll notice also the <code>--pty</code> flag at the end which stands for "pseudo terminal" and is letting Slurm know to start the session using <code>bash</code>.</p>
-<div class="codehilite"><pre><span></span><code>srun --nodes=1 --ntasks-per-node=8 --time=12:00:00 --pty bash -l
+<div class="codehilite"><pre><span></span><code>srun --nodes=1 --ntasks-per-node=8 --time=1:00:00 --pty bash -l
 </code></pre></div>
 
 <h4 id="multi-node-script">Multi-node script<a class="headerlink" href="#multi-node-script" title="Permanent link">§</a></h4>
@@ -2356,7 +2412,7 @@ module load &lt;name of the module(s) you need&gt;
 
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=16
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=CPU_Multi_Node
 
 # Purging and reloading to be sure of the job's environment
@@ -2383,7 +2439,7 @@ srun &lt;application to execute&gt;
 #SBATCH --partition=hbm
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=HBM_Job
 
 # Purging and reloading all modules to be sure of the job's environment
@@ -2402,7 +2458,7 @@ echo $TMPDIR
 
 <p>Note that the <code>hbm</code> partition you need to explicitly specify.  If you don't, the job will run on a regular CPU node.  In this example we've also asked for 40G of temporary storage on the node.  </p>
 <h4 id="single-node-hbm-interactive-session">Single node HBM interactive session<a class="headerlink" href="#single-node-hbm-interactive-session" title="Permanent link">§</a></h4>
-<p><code>srun --partition=hbm --nodes=1 --ntasks-per-node=4 --time=12:00:00 --pty bash -l</code></p>
+<p><code>srun --partition=hbm --nodes=1 --ntasks-per-node=4 --time=2:00:00 --pty bash -l</code></p>
 <h3 id="high-memory-node-jobs">High-Memory node jobs<a class="headerlink" href="#high-memory-node-jobs" title="Permanent link">§</a></h3>
 <h4 id="single-node-high-memory-script">Single node high memory script<a class="headerlink" href="#single-node-high-memory-script" title="Permanent link">§</a></h4>
 <div class="codehilite"><pre><span></span><code>#!/bin/bash
@@ -2410,7 +2466,7 @@ echo $TMPDIR
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
 #SBATCH --mem-per-cpu=100G
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=High_Mem_Job
 
 # Purging and reloading all modules to be sure of the job's environment
@@ -2430,16 +2486,16 @@ echo $TMPDIR
 <p>There are two ways to specify your memory needs, either with <code>--mem</code> which specifies memory per node, or with a combination of <code>--ntasks-per-node</code> and <code>--mem-per-cpu</code> which functionally specifies memory per node.  <code>--cpus-per-task</code> can also be set, but defaults to <code>1</code>.</p>
 <p>The threshholds for whether your job will land on a <code>Y</code> vs. <code>Z</code> node can be found in <a href="../../Clusters/Young/#node-types">Young Node Types</a>.</p>
 <h4 id="single-node-high-memory-interactive-session">Single node high memory interactive session<a class="headerlink" href="#single-node-high-memory-interactive-session" title="Permanent link">§</a></h4>
-<p><code>srun --nodes=1 --ntasks-per-node=16 --mem-per-cpu=100G --time=12:00:00 --pty bash -l</code></p>
+<p><code>srun --nodes=1 --ntasks-per-node=16 --mem-per-cpu=100G --time=2:00:00 --pty bash -l</code></p>
 <h3 id="gpu-jobs">GPU jobs<a class="headerlink" href="#gpu-jobs" title="Permanent link">§</a></h3>
 <h4 id="gpu-node-script">GPU node script<a class="headerlink" href="#gpu-node-script" title="Permanent link">§</a></h4>
 <div class="codehilite"><pre><span></span><code>#!/bin/bash
 
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --mem-per-cpu=8G
+#SBATCH --mem=8G
 #SBATCH --gres=gpu:1,tmpfs:20G
-#SBATCH --time=12:00:00
+#SBATCH --time=2:00:00
 #SBATCH --job-name=GPU_Single_GPU
 
 # Purging and reloading all modules to be sure of the job's environment
@@ -2461,11 +2517,46 @@ echo $TMPDIR
 
 <p>Note that we're requesting both one GPU and 20G of temporary storage.</p>
 <h4 id="gpu-node-interactive-session">GPU node interactive session<a class="headerlink" href="#gpu-node-interactive-session" title="Permanent link">§</a></h4>
-<p><code>srun --nodes=1 --ntasks-per-node=1 --mem-per-cpu=8G --gres=gpu:1,tmpfs:20G --time=2:00:00 --pty bash -l</code></p>
-<h3 id="what-is-the-difference-between-srun-and-salloc">What is the difference between srun and salloc?<a class="headerlink" href="#what-is-the-difference-between-srun-and-salloc" title="Permanent link">§</a></h3>
-<h4 id="srun">srun<a class="headerlink" href="#srun" title="Permanent link">§</a></h4>
+<p><code>srun --nodes=1 --ntasks-per-node=1 --mem=8G --gres=gpu:1,tmpfs:20G --time=2:00:00 --pty bash -l</code></p>
+<h2 id="examples-for-myriad">Examples for Myriad<a class="headerlink" href="#examples-for-myriad" title="Permanent link">§</a></h2>
+<p>Myriad runs only single node jobs so specifying <code>--nodes=1</code> is unnecessary, but not harmful if you choose to.</p>
+<h3 id="gpu-jobs_1">GPU jobs<a class="headerlink" href="#gpu-jobs_1" title="Permanent link">§</a></h3>
+<p>There are both <code>E</code> and <code>L</code> type nodes in the GPU partition on Myriad.  If you don't specify any <code>--constraint</code> you have a chance to land on either node type.</p>
+<h4 id="gpu-node-script_1">GPU node script<a class="headerlink" href="#gpu-node-script_1" title="Permanent link">§</a></h4>
+<div class="codehilite"><pre><span></span><code>#!/bin/bash
+
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem=16G
+#SBATCH --gres=gpu:1,tmpfs:20G
+#SBATCH --constraint=E
+#SBATCH --time=2:00:00
+#SBATCH --job-name=Single_GPU_L
+
+# Purging and reloading all modules to be sure of the job's environment
+module purge
+module load ucl-stack/2026-07
+
+# Loading the modules your application needs to execute
+module load &lt;name of the module(s) you need
+
+# Outputting the nvidia information about the node
+nvidia-smi
+
+# Printing the location of the temporary directory
+echo $TMPDIR
+
+# Lines to execute below here
+&lt;application execution here&gt;
+</code></pre></div>
+
+<p>Note that we're requesting both one <code>E</code> type GPU and 20G of temporary storage.</p>
+<h4 id="gpu-node-interactive-session_1">GPU node interactive session<a class="headerlink" href="#gpu-node-interactive-session_1" title="Permanent link">§</a></h4>
+<p>The following asks for the same resources as the batch job above but will start an interactive session.</p>
+<p><code>srun --ntasks-per-node=1 --mem=16G --gres=gpu:1,tmpfs:20G --constraint=E --time=2:00:00 --pty bash -l</code></p>
+<h2 id="what-is-the-difference-between-srun-and-salloc">What is the difference between srun and salloc?<a class="headerlink" href="#what-is-the-difference-between-srun-and-salloc" title="Permanent link">§</a></h2>
+<h3 id="srun">srun<a class="headerlink" href="#srun" title="Permanent link">§</a></h3>
 <p>If you're confused about why <code>srun</code> is used above to start an interactive session but also used to execute a parallel application within a script, there is no need to worry -- it is confusing!  <code>srun</code> is a very versatile command.  When used with no inputs it will execute whatever comes after it on all resources available.  If it detects you're using MPI it will execute in parallel using MPI.  If there is no MPI it will execute the command once on each of the available allocated CPUs.  If there are no resources yet allocated via <code>sbatch</code> or <code>salloc</code> it will look to see if you've asked for resources, allocate them for you, and then run the command.  If you feed it the <code>--pty</code> you can NOT specify a command and it will start an interactive session for you.  Versatile!</p>
-<h4 id="salloc">salloc<a class="headerlink" href="#salloc" title="Permanent link">§</a></h4>
+<h3 id="salloc">salloc<a class="headerlink" href="#salloc" title="Permanent link">§</a></h3>
 <p>The more straight-forward command is <code>salloc</code> as its only purpose is to allocate resources and spawn an interactive session. The two methods are very similar, just remember that when you use <code>salloc</code> to start an interactive session you need to use <code>srun &lt;application executable&gt;</code> to run on the allocated compute resources, as you would in a submission script.</p>
 
 

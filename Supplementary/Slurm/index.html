@@ -1965,40 +1965,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#passing-in-command-line-arguments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Passing in command-line arguments
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#specifics-of-using-slurm-on-young" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Specifics of using Slurm on Young
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Specifics of using Slurm on Young">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#partitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Partitions
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#interactive-sessions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2010,18 +1976,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#temporary-storage" class="md-nav__link">
+  <a href="#passing-in-command-line-arguments" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Temporary Storage
+        Passing in command-line arguments
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -2124,6 +2085,84 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#specifics-of-using-slurm-on-young" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specifics of using Slurm on Young
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifics of using Slurm on Young">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporary-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temporary Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifics-of-using-slurm-on-myriad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specifics of using Slurm on Myriad
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifics of using Slurm on Myriad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpus-on-myriad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPUs on Myriad
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporary-storage_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temporary Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2195,6 +2234,23 @@ srun myprog
 <p>Practical examples of how to run parallel tasks can be found in <a href="../Slurm_Example_Jobscripts/">Slurm Example Jobscripts</a>.</p>
 <h4 id="slurm-directives-must-be-at-the-top">Slurm directives must be at the top<a class="headerlink" href="#slurm-directives-must-be-at-the-top" title="Permanent link">§</a></h4>
 <p>Slurm requires all the <code>#SBATCH</code> directives to be together at the top of the file. Once there are any commands being run, it will ignore any further <code>#SBATCH</code> lines. This is different from SGE which would parse those lines from anywhere in the file.</p>
+<h3 id="interactive-sessions">Interactive Sessions<a class="headerlink" href="#interactive-sessions" title="Permanent link">§</a></h3>
+<p>In addition to requesting job resources through a submission script, you can also run in an interactive manner similar to how you would run something on your PC or a login node.  Interactive sessions are best when you are in active development or need to quickly iterate a series of jobs.</p>
+<p>There are two methods for starting an interactive session.  <code>srun</code> will migrate your session to a compute node immediately whereas <code>salloc</code> will allocate resources and start a new session but leave you on the login node.  <code>salloc</code> is generally best for multi-node MPI jobs whereas <code>srun</code> should be used for pretty much all other single-node interactive jobs.</p>
+<p>All commands and resource requests are passed in via the command line, no Slurm script is used.</p>
+<p>This example would start an interactive session with 32G RAM and 8 CPUs on one node.</p>
+<div class="codehilite"><pre><span></span><code>srun --mem-per-cpu=4G --nodes=1 --ntasks-per-node=8 --pty bash -l
+</code></pre></div>
+
+<p>This next example would start a session that requests 64 CPUs across 4 nodes, with 32G RAM reserved per node.  Since it uses salloc the session will start on the login node and <em>not</em> migrate the session to a compute node.  From here you could use <code>srun</code> or <code>mpirun</code> to execute an application in parallel.</p>
+<div class="codehilite"><pre><span></span><code>salloc --mem-per-cpu=2G --nodes=4 --ntasks-per-node=16
+</code></pre></div>
+
+<p>This final example would start an interactive session on one GPU node, with one GPU, 8G RAM, and 1 CPU.</p>
+<div class="codehilite"><pre><span></span><code>srun --gres=gpu:1 --mem-per-cpu=8G --nodes=1 --ntasks-per-node=1 --pty bash -l
+</code></pre></div>
+
+<p>For more detailed examples, please refer to <a href="../Slurm_Example_Jobscripts/">Slurm Example Jobscripts</a></p>
 <h3 id="passing-in-command-line-arguments">Passing in command-line arguments<a class="headerlink" href="#passing-in-command-line-arguments" title="Permanent link">§</a></h3>
 <p>You can also pass options directly to the <code>sbatch</code> command and this will override the settings in your script. This can be useful if you are scripting your job submissions in more complicated ways.</p>
 <p>For example, if you want to change the name of the job for this one instance of the job you can submit your script with:</p>
@@ -2214,41 +2270,6 @@ srun myprog
 </code></pre></div>
 
 <p>Note that for future reference, it helps if you have these options inside your jobscript rather than passed in on the command line whenever possible, so there is one place to check what your past jobs were requesting.</p>
-<h3 id="specifics-of-using-slurm-on-young">Specifics of using Slurm on Young<a class="headerlink" href="#specifics-of-using-slurm-on-young" title="Permanent link">§</a></h3>
-<h4 id="partitions">Partitions<a class="headerlink" href="#partitions" title="Permanent link">§</a></h4>
-<p>The correct partition will be assigned based on the resources you ask for.  However, to use High Bandwith Memory (HBM) nodes you will need to explicitly specify:</p>
-<div class="codehilite"><pre><span></span><code>--partition=hbm
-</code></pre></div>
-
-<p>This will be covered in more detail in the example scripts linked to below.</p>
-<h4 id="interactive-sessions">Interactive Sessions<a class="headerlink" href="#interactive-sessions" title="Permanent link">§</a></h4>
-<p>In addition to requesting job resources through a submission script, you can also run in an interactive manner similar to how you would run something on your PC or a login node.  Interactive sessions are best when you are in active development or need to quickly iterate a series of jobs.</p>
-<p>There are two methods for starting an interactive session.  <code>srun</code> will migrate your session to a compute node immediately whereas <code>salloc</code> will allocate resources and start a new session but leave you on the login node.  <code>salloc</code> is generally best for multi-node MPI jobs whereas <code>srun</code> should be used for pretty much all other single-node interactive jobs.</p>
-<p>All commands and resource requests are passed in via the command line, no Slurm script is used.</p>
-<p>This example would start an interactive session with 32G RAM and 8 CPUs on one node.</p>
-<div class="codehilite"><pre><span></span><code>srun --mem-per-cpu=4G --nodes=1 --ntasks-per-node=8 --pty bash -l
-</code></pre></div>
-
-<p>This next example would start a session that requests 64 CPUs across 4 nodes, with 32G RAM reserved per node.  Since it uses salloc the session will start on the login node and <em>not</em> migrate the session to a compute node.  From here you could use <code>srun</code> or <code>mpirun</code> to execute an application in parallel.</p>
-<div class="codehilite"><pre><span></span><code>salloc --mem-per-cpu=2G --nodes=4 --ntasks-per-node=16
-</code></pre></div>
-
-<p>This final example would start an interactive session on one GPU node, with one GPU, 8G RAM, and 1 CPU.</p>
-<div class="codehilite"><pre><span></span><code>srun --gres=gpu:1 --mem-per-cpu=8G --nodes=1 --ntasks-per-node=1 --pty bash -l
-</code></pre></div>
-
-<p>For more detailed examples, please refer to <a href="../Slurm_Example_Jobscripts/">Slurm Example Jobscripts</a></p>
-<h4 id="temporary-storage">Temporary Storage<a class="headerlink" href="#temporary-storage" title="Permanent link">§</a></h4>
-<p>If you're running on a GPU node you can request temporary storage on the node's local disk.  By default, a temporary directory is created and the location stored in the <code>TMPDIR</code> environmental variable.  If you don't explicitly request more you're automatically given 100MiB.</p>
-<p>If you're running on a High-Bandwidth-Memory (HBM) node, then you automatically are allocated all the available local disk in the job and do not need to ask for it. </p>
-<p>To request more local temp space on a GPU node, up to a maximum of 5900GiB, you use the <code>--gres=tmpfs:&lt;amount&gt;</code>.  In this example we request 80GiB.</p>
-<div class="codehilite"><pre><span></span><code>--gres=tmpfs:80G
-</code></pre></div>
-
-<p>If you're requesting both a GPU and temp space, you separate the <code>gres</code> request with a comma (no space).</p>
-<div class="codehilite"><pre><span></span><code>--gres=gpu:1,tmpfs:80G
-</code></pre></div>
-
 <h3 id="checking-your-previous-jobscripts">Checking your previous jobscripts<a class="headerlink" href="#checking-your-previous-jobscripts" title="Permanent link">§</a></h3>
 <p>If you want to check what you submitted for a specific job ID, you can still do this with the <code>scriptfor</code> utility. (This now runs the <code>sacct</code> command for you with relevant options).</p>
 <div class="codehilite"><pre><span></span><code>scriptfor 12345
@@ -2307,6 +2328,50 @@ sacct -X -o "jobid,user,jobname,start,end,alloccpus,nodelist,state,exitcode" -S 
 
 <p>If a job ended and didn't create the files you expect, check the start and end times to see whether it ran out of wallclock time.</p>
 <p>If a job only ran for seconds and didn't produce the expected output, there was probably something wrong in your script - check the .out.txt and .err.txt files in the directory you submitted the job from for errors.</p>
+<h2 id="specifics-of-using-slurm-on-young">Specifics of using Slurm on Young<a class="headerlink" href="#specifics-of-using-slurm-on-young" title="Permanent link">§</a></h2>
+<h3 id="partitions">Partitions<a class="headerlink" href="#partitions" title="Permanent link">§</a></h3>
+<p>The correct partition will be assigned based on the resources you ask for.  However, to use High Bandwith Memory (HBM) nodes you will need to explicitly specify:</p>
+<div class="codehilite"><pre><span></span><code>--partition=hbm
+</code></pre></div>
+
+<p>This will be covered in more detail in the example scripts linked to below.</p>
+<h3 id="temporary-storage">Temporary Storage<a class="headerlink" href="#temporary-storage" title="Permanent link">§</a></h3>
+<p>If you're running on a Kathleen GPU node you can request temporary storage on the node's local disk.  By default, a temporary directory is created and the location stored in the <code>TMPDIR</code> environmental variable.  If you don't explicitly request more you're automatically given 100MiB.</p>
+<p>If you're running on a High-Bandwidth-Memory (HBM) node, then you automatically are allocated all the available local disk in the job and do not need to ask for it. </p>
+<p>To request more local temp space on a GPU node, up to a maximum of 5900GiB, you use the <code>--gres=tmpfs:&lt;amount&gt;</code>.  In this example we request 80GiB.</p>
+<div class="codehilite"><pre><span></span><code>--gres=tmpfs:80G
+</code></pre></div>
+
+<p>If you're requesting both a GPU and temp space, you separate the <code>gres</code> request with a comma (no space).</p>
+<div class="codehilite"><pre><span></span><code>--gres=gpu:1,tmpfs:80G
+</code></pre></div>
+
+<h2 id="specifics-of-using-slurm-on-myriad">Specifics of using Slurm on Myriad<a class="headerlink" href="#specifics-of-using-slurm-on-myriad" title="Permanent link">§</a></h2>
+<h3 id="gpus-on-myriad">GPUs on Myriad<a class="headerlink" href="#gpus-on-myriad" title="Permanent link">§</a></h3>
+<p>There are two types on GPU nodes on Myriad, 40GB A100 (<code>L Nodes</code>) and 32GB V100 (<code>E Nodes</code>).  If you are submitting a batch job and ask for <code>--gres=gpu:1</code> you have a chance to request one GPU on either type of node. If you need a specific node type you use the <code>--constraint</code> option in your submission script.</p>
+<p>If you specify no constraint it is the equivalent of <code>--constraint=[E|L]</code>, which says to allocate exclusively <code>E</code> OR <code>L</code> type nodes.</p>
+<p>For example, this job script header would ask for one V100 GPU and the A100 GPUs wouldn't be considered to run the job.</p>
+<div class="codehilite"><pre><span></span><code>#!/bin/bash
+
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem=8G
+#SBATCH --gres=gpu:1
+#SBATCH --constraint=E
+#SBATCH --time=12:00:00
+#SBATCH --job-name=V100_GPU_Job
+</code></pre></div>
+
+<p>Keep in mind, the more specific you are the smaller the pool of resources your job has to run on.  For a list of node-types and their corresponding letter to use as a constraint see <a href="../../Clusters/Myriad/#node-types">node types</a>.</p>
+<p>Interactive jobs run only on <code>L</code> type nodes so there is no need to specify a <code>--constraint</code>. </p>
+<h3 id="temporary-storage_1">Temporary Storage<a class="headerlink" href="#temporary-storage_1" title="Permanent link">§</a></h3>
+<p>You can request temporary storage on all Myriad nodes.  By default, a temporary directory is created and the location stored in the <code>TMPDIR</code> environmental variable.  If you don't explicitly request more you're automatically given 100MiB.</p>
+<p>To request more local temp space you use the <code>--gres=tmpfs:&lt;amount&gt;</code>.  In this example we request 80GiB.</p>
+<div class="codehilite"><pre><span></span><code>--gres=tmpfs:80G
+</code></pre></div>
+
+<p>If you're requesting both a GPU and temp space, you separate the <code>gres</code> request with a comma (no space).</p>
+<div class="codehilite"><pre><span></span><code>--gres=gpu:1,tmpfs:80G
+</code></pre></div>
 
 
 
