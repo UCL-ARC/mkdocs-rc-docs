@@ -1072,8 +1072,6 @@ This page outlines that status of each of the machines managed by the Research C
     A few nodes are down with network issues, including login16 and login18 which are part of Economics' paid nodes that run
     Rstudio, so for members of Economics, please be aware of that. They will stay down until they can be fixed in person.
 
-#### Latest on Myriad 
-
   - 2026-10-12 17:20 - **Myriad and Kathleen GPFS upgrade outage for ACFS around 20 Oct**
 
     The Myriad and Kathleen outage that was previously scheduled for 18-19 Aug and 20-21 Aug has been rescheduled to
@@ -1141,6 +1139,90 @@ This page outlines that status of each of the machines managed by the Research C
 
     This is fixed now and qstat and qsub should be working again as normal. Running jobs will not have been affected and
     jobs that were in the queue are still there. 
+
+#### Latest on Myriad 
+
+  - 2026-10-21 11:48 - **Myriad-ng information; scheduler outage last night**
+
+    After the outage today finishes, part of Myriad's nodes will be in a portion that has been upgraded to RHEL9 as the
+    operating system and Slurm as the scheduler. We refer to this part as Myriad-ng.
+
+    Myriad-ng will contain a quarter of the cpu nodes (B and D type), one type L GPU node (4x 40G A100) and two type E GPU
+    nodes (V100) - plus some owned nodes (Q,R,S). You can run `sinfo` to see the nodes that are in there.
+
+    The documentation at the following links will update shortly:
+    
+    - https://www.rc.ucl.ac.uk/docs/Clusters/Myriad/ - contains info on the current split state and links to the following.
+    - https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm/ - has the Slurm commands
+    - https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/ - has some example jobscripts
+
+    You can't log in yet, we will send an update when the outage is over.
+
+    **Logging in to myriad-ng**
+
+    To access, after the outage log in to `myriad-ng.rc.ucl.ac.uk` instead of `myriad.rc.ucl.ac.uk`. This is a round-robin
+    address for two login nodes, login21 and login22.
+
+    You can do this via the ssh-gateway if you have set up keys on it (https://www.rc.ucl.ac.uk/docs/Remote_Access/):
+
+    `ssh -J ssh-gateway.ucl.ac.uk myriad-ng.rc.ucl.ac.uk`
+
+    Known issue: you cannot currently access myriad-ng.rc.ucl.ac.uk directly if you are on the VPN or on Eduroam on campus.
+    We are trying to get this sorted out as it is unclear what the issue with routing is. You can still go through the
+    ssh-gateway in these cases.
+
+    You can also log into myriad's old login nodes as usual and then `ssh login21` or `ssh login22` to get to the myriad-ng
+    login nodes. It will ask for your password. 
+
+    **Software stack**
+
+    The new software stack is primarily managed by Spack. There is a new top-level module called `ucl-stack/2026-07` that makes
+    this version of the stack available to you. The intent is that we'll have more regular updates of the whole stack over time,
+    and the current and previous one will be available and older ones are deprecated then deleted.
+
+    There is a new `default-modules/2026-07` that loads some modules by default for you.
+
+    The default compiler is now GCC and the default MPI is OpenMPI.
+
+    Type `module avail` to see the software. We have kept a lot of dependencies for software as hidden modules that don't show up
+    in the list by default, but you can see them with `module avail --all` or by searching for something specific, like
+    `module avail libpng`. You will see that there is a hash value at the end of the module name for these hidden modules.
+
+    To make the modules available on both the old and new halves of Myriad, we have made changes to your `.bashrc`, a file in
+    your home directory that sets some things up every time you log in. If you had a custom .bashrc, this will still be used on
+    the old half of Myriad. 
+
+    If you had installed software in your home directory, this is unlikely to work on myriad-ng as all the system libraries have
+    changed. It will probably need a new install for myriad-ng. (You have the same home directory with the same contents on both
+    halves of Myriad).
+
+    **Running jobs**
+
+    The scheduler is now Slurm. Your jobscripts will need to be rewritten as Slurm jobscripts, and there are different commands
+    for submitting jobs and checking your job status. Please see the following documentation pages for specifics on using Slurm,
+    and note there are specific sub-sections within each page for the Myriad configuration.
+
+    - https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm/
+    - https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/
+    
+    **Filesystem issues**
+
+    Myriad's ongoing filesystem issues present more strongly on myriad-ng. We understand this is frustrating, but in order to fix
+    the problem, we need all of Myriad on RHEL9 first. So please do try submitting jobs on myriad-ng. Your files are accessible
+    from the old half of Myriad and the new, and it may be easier to read and edit files from the old half.
+
+    **Timelines for full migration**
+
+    If we do not receive reports of major issues with the software stack, we are looking to put all of Myriad into Myriad-ng during
+    the week of 16 or 23 November. Please do report any issues to rc-support@ucl.ac.uk. There will be a delay in Open OnDemand
+    availability on the new system while we do the setup work. 
+
+    Once all of Myriad is on RHEL9 then we will schedule outages for the remedial filesystem work.
+
+    **Scheduler issue on Myriad last night**
+
+    We had a reoccurrence of the scheduler problem on current Myriad at 21:33 last night, before the outage began. We will do further
+    investigation of what caused it.
 
 
 ### Kathleen
