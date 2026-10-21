@@ -1224,6 +1224,33 @@ This page outlines that status of each of the machines managed by the Research C
     We had a reoccurrence of the scheduler problem on current Myriad at 21:33 last night, before the outage began. We will do further
     investigation of what caused it.
 
+  - 2026-10-21 17:55 - **Myriad update**
+
+    The move of nodes into Myriad-ng has been successful.
+
+    It has taken some time to sort out the scheduler on current Myriad and we still aren't sure why it has started
+    having issues the last two nights. 
+
+    We are allowing logins to Myriad and Myriad-ng.
+
+    Jobs will be enabled on Myriad-ng in Slurm in about an hour when some performance tests complete.
+
+    On Myriad, we will enable jobs tomorrow to make sure we are present if something starts going wrong again with SGE (the
+    current scheduler).
+
+    **Q&A:**
+
+    Q: Have the paid nodes/Gold priority access been migrated?
+
+    A: Not yet. If you want your paid node/Gold migrating sooner, email rc-support@ucl.ac.uk and let us know, otherwise
+    you will be in the last tranche migrated. People with Gold will temporarily be given their time as dedicated nodes instead,
+    as the replacement for Gold requires some more infrastructure to be set up first (with a portal).
+
+    Q: When are all the GPU nodes being migrated?
+
+    A: We will be migrating them in portions over the next few weeks, along with more CPU nodes. Prior to the final migration,
+    there will be just a few GPU nodes left in current Myriad. We will let you know what we are migrating when.
+
 
 ### Kathleen
 
