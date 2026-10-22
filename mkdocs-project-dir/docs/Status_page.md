@@ -1260,6 +1260,10 @@ This page outlines that status of each of the machines managed by the Research C
 
     We are still cleaning up Myriad's scheduler on the SGE side, so jobs there are not enabled yet. Work is ongoing.
 
+  - 2026-10-22 16:40 - **Jobs re-enabled on SGE Myriad**
+
+    Jobs have been re-enabled on the SGE part of Myriad.
+    
 
 ### Kathleen
 
