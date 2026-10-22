@@ -1251,6 +1251,15 @@ This page outlines that status of each of the machines managed by the Research C
     A: We will be migrating them in portions over the next few weeks, along with more CPU nodes. Prior to the final migration,
     there will be just a few GPU nodes left in current Myriad. We will let you know what we are migrating when.
 
+  - 2026-10-22 13:10 - **Myriad update**
+
+    Sorry, we got ahead of ourselves and had left out two very important changes to allow you to use myriad-ng successfully.
+
+    As of 11am today you should all have been able to log in to myriad-ng, and as of 12:00 you should all have been able
+    to submit Slurm jobs. 
+
+    We are still cleaning up Myriad's scheduler on the SGE side, so jobs there are not enabled yet. Work is ongoing.
+
 
 ### Kathleen
 
