@@ -16,13 +16,13 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-21 October 2026 | Myriad | Planned | Outage to enable access to Myriad-ng. Jobs drained for 8am and no access to cluster while we make some changes. When we come back up, some of the nodes will be in the new RHEL9 and Slurm portion of the cluster.
 27-30 October 2026 | Myriad, Kathleen | Planned | GPFS upgrade outage for ACFS. Rescheduling of the cancelled August outages below. Jobs drained for 8am 27 Oct and no access to login nodes, if the outage is not happening until a later day we will re-enable jobs until the new drain date (depends on engineers). Edit: Outage postponed to next week, Tues 27 October onwards. 
 
 ## Previous Outages
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
+21 October 2026 | Myriad | Completed | Outage to enable access to Myriad-ng. Jobs drained for 8am and no access to cluster while we make some changes. When we come back up, some of the nodes will be in the new RHEL9 and Slurm portion of the cluster. 22 Oct: Myriad-ng now accessible and running jobs. SGE part having unrelated issues, see [Status page](Status_page.md#latest-on-myriad).
 6 October 2026 | Michael | Completed | Outage of A-type nodes for security updates. Jobs will be drained. We expect it to take approx 3 hours then jobs will be restarted. The K-type nodes are also being drained and retired this day.
 24-25 September 2026 | Myriad | Completed | Network Modernisation outage to replace central UCL switches. Jobs being drained. No access to Myriad during swap out of its switches. Expected to take all day Thursday at a minimum, may run into next day. Update: will be continuing on Friday so access not restored yet.
 15-16 September 2026 | Young, Michael, Kathleen | Completed | Network Modernisation outage to replace central UCL switches. Jobs being drained. No access to each cluster during swap out of its switches. Expected to complete that day, may run into next day. Michael will take longer as more switches. Michael jobs were re-enabled on 17 Sept.
