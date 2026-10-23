@@ -13,6 +13,8 @@ A portion of Myriad is currently updated to our new operating system (RHEL 9.6) 
 
 The new portion of Myriad (referred to as myriad-ng) can be accessed via `myriad-ng.rc.ucl.ac.uk` which will log you onto an updated login node.
 
+<mark>Myriad-ng is currently experiencing an unscheduled maintenance, we'll send an update when it is available again.</mark>
+
 The new software stack is provided by a module called `ucl-stack/2026-07` which should be loaded by default. If not (for example if you `module purge` in your .bashrc or have a custom .bashrc) you can load the new environment with:
 
 ```
