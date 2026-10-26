@@ -16,7 +16,7 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
-27-30 October 2026 | Myriad, Kathleen | Planned | GPFS upgrade outage for ACFS. Rescheduling of the cancelled August outages below. Jobs drained for 8am 27 Oct and no access to login nodes, if the outage is not happening until a later day we will re-enable jobs until the new drain date (depends on engineers). Edit: Outage postponed to next week, Tues 27 October onwards. 
+27-30 October 2026 | Myriad, Kathleen | Planned | GPFS upgrade outage for ACFS. Rescheduling of the cancelled August outages below. ~~Jobs drained for 8am 27 Oct and no access to login nodes, if the outage is not happening until a later day we will re-enable jobs until the new drain date (depends on engineers)~~. Edit 26 Oct: We have put holds on all jobs and unmounted the ACFS from login and compute nodes. Users can remove holds from jobs that are not using the ACFS and they will be able to run during the period this work is happening, see [Status page - Myriad](Status_page.md#latest-on-myriad) and [Status page - Kathleen](Status_page.md#latest-on-kathleen). 
 
 ## Previous Outages
 
