@@ -1263,7 +1263,54 @@ This page outlines that status of each of the machines managed by the Research C
   - 2026-10-22 16:40 - **Jobs re-enabled on SGE Myriad**
 
     Jobs have been re-enabled on the SGE part of Myriad.
-    
+
+  - 2026-10-23 10:20 - **Myriad and Myriad-ng updates**
+
+    Unfortunately, there was an issue with the client-cluster management node for the Myriad-ng filesystem, which led to
+    instability across the cluster. The decision was made around 6pm last night to block logins until it can be resolved.
+    You’ll see an `Unscheduled Maintenance` message if you try and connect. We’ll send an update when logins are re-enabled.
+
+    On Myriad as part of the SGE scheduler fix we rebooted the nodes to apply a patch and the GPU nodes came back up in an
+    incorrect state. It has been resolved but there may have been a period last night where GPU jobs tried to run and would
+    have failed.
+
+  - 2026-10-26 10:00 - **Myriad and Kathleen problems; ACFS outage update**
+
+    On Friday evening, Kathleen's mount of the ACFS started hanging. This caused the login nodes to hang, so new logins would
+    have failed. At that point, the mount from the compute nodes was still ok, and jobs kept running. Later on, it also failed
+    from the compute nodes.
+
+    On Saturday in the very early morning, the mounts of the ACFS and RDSS (including biomed) on Myriad also hung, affecting the
+    login nodes and all the compute. Compute nodes were failing job startup checks as a result, so jobs were cycling between `Rr`
+    and `Rq` and not able to start properly.
+
+    The RDSS and ACFS issues are ongoing.
+
+    They are currently unmounted from all the login nodes, so you can log in, but not see the ACFS or RDSS.
+
+    The compute nodes still have hanging mounts so cannot start jobs. We have put user holds on all jobs on Myriad and Kathleen.
+    On Myriad they will show as having a `h` in the status, on Kathleen they show as `JobHeldUser`.
+
+    We still have the scheduled ACFS outage from tomorrow. 
+
+    **We plan to avoid a full outage for the ACFS work**
+
+    What we intend to do is to unmount the ACFS from all compute nodes. This will mean that jobs that don't use the ACFS will be
+    able to run, but jobs that use the ACFS will not. Once this is done, we will tell you, and at that point you will be able to
+    remove the holds from your jobs that don't use the ACFS, and those jobs will run. We will keep it this way throughout the
+    ACFS work - so there will not be another full outage due to the ACFS this week, and jobs using only Myriad's or Kathleen's
+    parallel filesystem will be able to run fine.
+
+    We will give you instructions on how to remove the holds once the compute nodes are ready to successfully run jobs. 
+
+    Right now, please leave your jobs in the queue and do not do anything.
+
+    **Myriad-ng**
+
+    Access to Myriad-ng was still being prevented as was emailed on Friday morning. On attempting to log in, it will say
+    `Unscheduled maintenance` and close the connection. On Myriad-ng we still need to fix its management node for connections
+    to Myriad's filesystem. 
+
 
 ### Kathleen
 
@@ -1862,6 +1909,37 @@ This page outlines that status of each of the machines managed by the Research C
     Kathleen has no outage this week.
 
     Sorry again for the unpredictability.
+
+  - 2026-10-26 10:00 - **Myriad and Kathleen problems; ACFS outage update**
+
+    On Friday evening, Kathleen's mount of the ACFS started hanging. This caused the login nodes to hang, so new logins would
+    have failed. At that point, the mount from the compute nodes was still ok, and jobs kept running. Later on, it also failed
+    from the compute nodes.
+
+    On Saturday in the very early morning, the mounts of the ACFS and RDSS (including biomed) on Myriad also hung, affecting the
+    login nodes and all the compute. Compute nodes were failing job startup checks as a result, so jobs were cycling between `Rr`
+    and `Rq` and not able to start properly.
+
+    The RDSS and ACFS issues are ongoing.
+
+    They are currently unmounted from all the login nodes, so you can log in, but not see the ACFS or RDSS.
+
+    The compute nodes still have hanging mounts so cannot start jobs. We have put user holds on all jobs on Myriad and Kathleen.
+    On Myriad they will show as having a `h` in the status, on Kathleen they show as `JobHeldUser`.
+
+    We still have the scheduled ACFS outage from tomorrow. 
+
+    **We plan to avoid a full outage for the ACFS work**
+
+    What we intend to do is to unmount the ACFS from all compute nodes. This will mean that jobs that don't use the ACFS will be
+    able to run, but jobs that use the ACFS will not. Once this is done, we will tell you, and at that point you will be able to
+    remove the holds from your jobs that don't use the ACFS, and those jobs will run. We will keep it this way throughout the
+    ACFS work - so there will not be another full outage due to the ACFS this week, and jobs using only Myriad's or Kathleen's
+    parallel filesystem will be able to run fine.
+
+    We will give you instructions on how to remove the holds once the compute nodes are ready to successfully run jobs. 
+
+    Right now, please leave your jobs in the queue and do not do anything.
     
 
 ### Young
