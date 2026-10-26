@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -3387,6 +3387,41 @@ to submit Slurm jobs. </p>
 <p>2026-10-22 16:40 - <strong>Jobs re-enabled on SGE Myriad</strong></p>
 <p>Jobs have been re-enabled on the SGE part of Myriad.</p>
 </li>
+<li>
+<p>2026-10-23 10:20 - <strong>Myriad and Myriad-ng updates</strong></p>
+<p>Unfortunately, there was an issue with the client-cluster management node for the Myriad-ng filesystem, which led to
+instability across the cluster. The decision was made around 6pm last night to block logins until it can be resolved.
+You’ll see an <code>Unscheduled Maintenance</code> message if you try and connect. We’ll send an update when logins are re-enabled.</p>
+<p>On Myriad as part of the SGE scheduler fix we rebooted the nodes to apply a patch and the GPU nodes came back up in an
+incorrect state. It has been resolved but there may have been a period last night where GPU jobs tried to run and would
+have failed.</p>
+</li>
+<li>
+<p>2026-10-26 10:00 - <strong>Myriad and Kathleen problems; ACFS outage update</strong></p>
+<p>On Friday evening, Kathleen's mount of the ACFS started hanging. This caused the login nodes to hang, so new logins would
+have failed. At that point, the mount from the compute nodes was still ok, and jobs kept running. Later on, it also failed
+from the compute nodes.</p>
+<p>On Saturday in the very early morning, the mounts of the ACFS and RDSS (including biomed) on Myriad also hung, affecting the
+login nodes and all the compute. Compute nodes were failing job startup checks as a result, so jobs were cycling between <code>Rr</code>
+and <code>Rq</code> and not able to start properly.</p>
+<p>The RDSS and ACFS issues are ongoing.</p>
+<p>They are currently unmounted from all the login nodes, so you can log in, but not see the ACFS or RDSS.</p>
+<p>The compute nodes still have hanging mounts so cannot start jobs. We have put user holds on all jobs on Myriad and Kathleen.
+On Myriad they will show as having a <code>h</code> in the status, on Kathleen they show as <code>JobHeldUser</code>.</p>
+<p>We still have the scheduled ACFS outage from tomorrow. </p>
+<p><strong>We plan to avoid a full outage for the ACFS work</strong></p>
+<p>What we intend to do is to unmount the ACFS from all compute nodes. This will mean that jobs that don't use the ACFS will be
+able to run, but jobs that use the ACFS will not. Once this is done, we will tell you, and at that point you will be able to
+remove the holds from your jobs that don't use the ACFS, and those jobs will run. We will keep it this way throughout the
+ACFS work - so there will not be another full outage due to the ACFS this week, and jobs using only Myriad's or Kathleen's
+parallel filesystem will be able to run fine.</p>
+<p>We will give you instructions on how to remove the holds once the compute nodes are ready to successfully run jobs. </p>
+<p>Right now, please leave your jobs in the queue and do not do anything.</p>
+<p><strong>Myriad-ng</strong></p>
+<p>Access to Myriad-ng was still being prevented as was emailed on Friday morning. On attempting to log in, it will say
+<code>Unscheduled maintenance</code> and close the connection. On Myriad-ng we still need to fix its management node for connections
+to Myriad's filesystem. </p>
+</li>
 </ul>
 <h3 id="kathleen">Kathleen<a class="headerlink" href="#kathleen" title="Permanent link">§</a></h3>
 <ul>
@@ -3880,6 +3915,28 @@ no jobs will be running and you will not be able to log in.</p>
 <p>Myriad is still having the outage tomorrow to give you access to Myriad-ng.</p>
 <p>Kathleen has no outage this week.</p>
 <p>Sorry again for the unpredictability.</p>
+</li>
+<li>
+<p>2026-10-26 10:00 - <strong>Myriad and Kathleen problems; ACFS outage update</strong></p>
+<p>On Friday evening, Kathleen's mount of the ACFS started hanging. This caused the login nodes to hang, so new logins would
+have failed. At that point, the mount from the compute nodes was still ok, and jobs kept running. Later on, it also failed
+from the compute nodes.</p>
+<p>On Saturday in the very early morning, the mounts of the ACFS and RDSS (including biomed) on Myriad also hung, affecting the
+login nodes and all the compute. Compute nodes were failing job startup checks as a result, so jobs were cycling between <code>Rr</code>
+and <code>Rq</code> and not able to start properly.</p>
+<p>The RDSS and ACFS issues are ongoing.</p>
+<p>They are currently unmounted from all the login nodes, so you can log in, but not see the ACFS or RDSS.</p>
+<p>The compute nodes still have hanging mounts so cannot start jobs. We have put user holds on all jobs on Myriad and Kathleen.
+On Myriad they will show as having a <code>h</code> in the status, on Kathleen they show as <code>JobHeldUser</code>.</p>
+<p>We still have the scheduled ACFS outage from tomorrow. </p>
+<p><strong>We plan to avoid a full outage for the ACFS work</strong></p>
+<p>What we intend to do is to unmount the ACFS from all compute nodes. This will mean that jobs that don't use the ACFS will be
+able to run, but jobs that use the ACFS will not. Once this is done, we will tell you, and at that point you will be able to
+remove the holds from your jobs that don't use the ACFS, and those jobs will run. We will keep it this way throughout the
+ACFS work - so there will not be another full outage due to the ACFS this week, and jobs using only Myriad's or Kathleen's
+parallel filesystem will be able to run fine.</p>
+<p>We will give you instructions on how to remove the holds once the compute nodes are ready to successfully run jobs. </p>
+<p>Right now, please leave your jobs in the queue and do not do anything.</p>
 </li>
 </ul>
 <h3 id="young">Young<a class="headerlink" href="#young" title="Permanent link">§</a></h3>
@@ -4914,10 +4971,10 @@ requesting K-type nodes only, they will not be able to run.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["instant"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["instant"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>
