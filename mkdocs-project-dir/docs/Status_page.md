@@ -1309,7 +1309,28 @@ This page outlines that status of each of the machines managed by the Research C
 
     Access to Myriad-ng was still being prevented as was emailed on Friday morning. On attempting to log in, it will say
     `Unscheduled maintenance` and close the connection. On Myriad-ng we still need to fix its management node for connections
-    to Myriad's filesystem. 
+    to Myriad's filesystem.
+
+  - 2026-10-26 11:30 - **Myriad and Kathleen jobs can be released**
+
+    Myriad and Kathleen are ready for you to release job holds, if your job doesn't use the ACFS.
+
+    Please leave jobs that need to use the ACFS in the queue as it is not accessible and if you release them they will fail.
+    (If they are using files in the ACFS directory in your home, they are using the ACFS).
+
+    **On Myriad:**
+
+    - `qrls $JOB_ID` (eg `qrls 12345`) will release the job with that ID.
+    - `qrls` followed by a space-separated list of job IDs will release that list of jobs, eg `qrls 12345 12346 12347`
+    - `qrls all` will release the holds on all your jobs.
+
+    **On Kathleen:**
+
+    - `scontrol release` followed by a job ID or comma-separated list of job IDs will release those jobs, eg `scontrol release 12345,12346,12347`
+
+    **Myriad-ng**
+
+    Myriad-ng is still not accessible.
 
 
 ### Kathleen
@@ -1940,6 +1961,23 @@ This page outlines that status of each of the machines managed by the Research C
     We will give you instructions on how to remove the holds once the compute nodes are ready to successfully run jobs. 
 
     Right now, please leave your jobs in the queue and do not do anything.
+
+  - 2026-10-26 11:30 - **Myriad and Kathleen jobs can be released**
+
+    Myriad and Kathleen are ready for you to release job holds, if your job doesn't use the ACFS.
+
+    Please leave jobs that need to use the ACFS in the queue as it is not accessible and if you release them they will fail.
+    (If they are using files in the ACFS directory in your home, they are using the ACFS).
+
+    **On Myriad:**
+
+    - `qrls $JOB_ID` (eg `qrls 12345`) will release the job with that ID.
+    - `qrls` followed by a space-separated list of job IDs will release that list of jobs, eg `qrls 12345 12346 12347`
+    - `qrls all` will release the holds on all your jobs.
+
+    **On Kathleen:**
+
+    - `scontrol release` followed by a job ID or comma-separated list of job IDs will release those jobs, eg `scontrol release 12345,12346,12347`
     
 
 ### Young
