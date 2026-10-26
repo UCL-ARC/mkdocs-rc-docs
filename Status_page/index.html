@@ -3420,7 +3420,25 @@ parallel filesystem will be able to run fine.</p>
 <p><strong>Myriad-ng</strong></p>
 <p>Access to Myriad-ng was still being prevented as was emailed on Friday morning. On attempting to log in, it will say
 <code>Unscheduled maintenance</code> and close the connection. On Myriad-ng we still need to fix its management node for connections
-to Myriad's filesystem. </p>
+to Myriad's filesystem.</p>
+</li>
+<li>
+<p>2026-10-26 11:30 - <strong>Myriad and Kathleen jobs can be released</strong></p>
+<p>Myriad and Kathleen are ready for you to release job holds, if your job doesn't use the ACFS.</p>
+<p>Please leave jobs that need to use the ACFS in the queue as it is not accessible and if you release them they will fail.
+(If they are using files in the ACFS directory in your home, they are using the ACFS).</p>
+<p><strong>On Myriad:</strong></p>
+<ul>
+<li><code>qrls $JOB_ID</code> (eg <code>qrls 12345</code>) will release the job with that ID.</li>
+<li><code>qrls</code> followed by a space-separated list of job IDs will release that list of jobs, eg <code>qrls 12345 12346 12347</code></li>
+<li><code>qrls all</code> will release the holds on all your jobs.</li>
+</ul>
+<p><strong>On Kathleen:</strong></p>
+<ul>
+<li><code>scontrol release</code> followed by a job ID or comma-separated list of job IDs will release those jobs, eg <code>scontrol release 12345,12346,12347</code></li>
+</ul>
+<p><strong>Myriad-ng</strong></p>
+<p>Myriad-ng is still not accessible.</p>
 </li>
 </ul>
 <h3 id="kathleen">Kathleen<a class="headerlink" href="#kathleen" title="Permanent link">§</a></h3>
@@ -3937,6 +3955,22 @@ ACFS work - so there will not be another full outage due to the ACFS this week, 
 parallel filesystem will be able to run fine.</p>
 <p>We will give you instructions on how to remove the holds once the compute nodes are ready to successfully run jobs. </p>
 <p>Right now, please leave your jobs in the queue and do not do anything.</p>
+</li>
+<li>
+<p>2026-10-26 11:30 - <strong>Myriad and Kathleen jobs can be released</strong></p>
+<p>Myriad and Kathleen are ready for you to release job holds, if your job doesn't use the ACFS.</p>
+<p>Please leave jobs that need to use the ACFS in the queue as it is not accessible and if you release them they will fail.
+(If they are using files in the ACFS directory in your home, they are using the ACFS).</p>
+<p><strong>On Myriad:</strong></p>
+<ul>
+<li><code>qrls $JOB_ID</code> (eg <code>qrls 12345</code>) will release the job with that ID.</li>
+<li><code>qrls</code> followed by a space-separated list of job IDs will release that list of jobs, eg <code>qrls 12345 12346 12347</code></li>
+<li><code>qrls all</code> will release the holds on all your jobs.</li>
+</ul>
+<p><strong>On Kathleen:</strong></p>
+<ul>
+<li><code>scontrol release</code> followed by a job ID or comma-separated list of job IDs will release those jobs, eg <code>scontrol release 12345,12346,12347</code></li>
+</ul>
 </li>
 </ul>
 <h3 id="young">Young<a class="headerlink" href="#young" title="Permanent link">§</a></h3>
