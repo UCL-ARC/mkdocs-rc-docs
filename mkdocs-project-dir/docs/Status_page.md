@@ -1140,8 +1140,6 @@ This page outlines that status of each of the machines managed by the Research C
     This is fixed now and qstat and qsub should be working again as normal. Running jobs will not have been affected and
     jobs that were in the queue are still there. 
 
-#### Latest on Myriad 
-
   - 2026-10-21 11:48 - **Myriad-ng information; scheduler outage last night**
 
     After the outage today finishes, part of Myriad's nodes will be in a portion that has been upgraded to RHEL9 as the
@@ -1331,6 +1329,28 @@ This page outlines that status of each of the machines managed by the Research C
     **Myriad-ng**
 
     Myriad-ng is still not accessible.
+
+#### Latest on Myriad 
+
+  - 2026-10-27 16:40 - **Scheduler issue on Myriad; ACFS upgrade ongoing**
+
+    Myriad's scheduler is having the same issue as before, and the qmaster is down and commands like qstat and qsub
+    are giving this error:
+
+    `error: commlib error: got select error (Connection refused)`
+    `error: unable to send message to qmaster using port 6444 on host "util01.myriad.ucl.ac.uk": got send error`
+
+    We were checking if we could fix it quickly, but this is not possible and we will not be running jobs until tomorrow at least. 
+
+    The scheduler's database seems to be being corrupted occasionally when some jobs end. We aren't sure why this has suddenly
+    started happening and it seems unrelated to the contents of the jobs. It can take a while to clean up. It is separate from
+    the ACFS work.
+
+    **ACFS upgrade**
+
+    This work is ongoing. I was asked to make it clear that the RDSS is also not mounted from the login nodes of Myriad or
+    Kathleen at present, to prevent any issues with login nodes hanging if either the ACFS or RDSS become unresponsive during
+    the upgrades.
 
 
 ### Kathleen
