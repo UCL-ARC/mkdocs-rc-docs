@@ -3296,9 +3296,6 @@ no jobs will be running and you will not be able to log in.</p>
 <p>This is fixed now and qstat and qsub should be working again as normal. Running jobs will not have been affected and
 jobs that were in the queue are still there. </p>
 </li>
-</ul>
-<h4 id="latest-on-myriad">Latest on Myriad<a class="headerlink" href="#latest-on-myriad" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-10-21 11:48 - <strong>Myriad-ng information; scheduler outage last night</strong></p>
 <p>After the outage today finishes, part of Myriad's nodes will be in a portion that has been upgraded to RHEL9 as the
@@ -3439,6 +3436,24 @@ to Myriad's filesystem.</p>
 </ul>
 <p><strong>Myriad-ng</strong></p>
 <p>Myriad-ng is still not accessible.</p>
+</li>
+</ul>
+<h4 id="latest-on-myriad">Latest on Myriad<a class="headerlink" href="#latest-on-myriad" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-10-27 16:40 - <strong>Scheduler issue on Myriad; ACFS upgrade ongoing</strong></p>
+<p>Myriad's scheduler is having the same issue as before, and the qmaster is down and commands like qstat and qsub
+are giving this error:</p>
+<p><code>error: commlib error: got select error (Connection refused)</code>
+<code>error: unable to send message to qmaster using port 6444 on host "util01.myriad.ucl.ac.uk": got send error</code></p>
+<p>We were checking if we could fix it quickly, but this is not possible and we will not be running jobs until tomorrow at least. </p>
+<p>The scheduler's database seems to be being corrupted occasionally when some jobs end. We aren't sure why this has suddenly
+started happening and it seems unrelated to the contents of the jobs. It can take a while to clean up. It is separate from
+the ACFS work.</p>
+<p><strong>ACFS upgrade</strong></p>
+<p>This work is ongoing. I was asked to make it clear that the RDSS is also not mounted from the login nodes of Myriad or
+Kathleen at present, to prevent any issues with login nodes hanging if either the ACFS or RDSS become unresponsive during
+the upgrades.</p>
 </li>
 </ul>
 <h3 id="kathleen">Kathleen<a class="headerlink" href="#kathleen" title="Permanent link">§</a></h3>
