@@ -1352,6 +1352,16 @@ This page outlines that status of each of the machines managed by the Research C
     Kathleen at present, to prevent any issues with login nodes hanging if either the ACFS or RDSS become unresponsive during
     the upgrades.
 
+  - 2026-10-28 11:10 - **Myriad updates**
+
+    One of my colleagues did heroically get Myriad's scheduler sorted out again last night, so jobs with the holds released
+    have continued to run overnight and you can release more held jobs or submit more new jobs today.
+
+    We'll be reviewing when we can remount the ACFS and RDSS and will update you when those are available again.
+
+    Myriad-ng has been sorted out and you can log into it again. We expect jobs to be re-enabled on Myriad-ng later today.
+    Running `sinfo` will show you if the nodes are still in maintenance mode.
+
 
 ### Kathleen
 
