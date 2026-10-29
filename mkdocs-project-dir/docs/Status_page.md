@@ -1362,6 +1362,20 @@ This page outlines that status of each of the machines managed by the Research C
     Myriad-ng has been sorted out and you can log into it again. We expect jobs to be re-enabled on Myriad-ng later today.
     Running `sinfo` will show you if the nodes are still in maintenance mode.
 
+  - 2026-10-29 11:20 - **ACFS and RDSS are mounted from the login nodes on Myriad and Kathleen**
+
+    Upgrades are continuing but we think it is safe to mount the RDSS and ACFS from the Myriad and Kathleen login nodes again.
+    They are still not mounted from the compute nodes.
+
+    This means if you have an RDSS space (Research Data Storage Service), it is accessible from `/rdss` or `/biomed`.
+
+    The ACFS directory in your home will work again, and also the full address at `/acfs/users/username`.
+
+    Jobs still cannot access the ACFS.
+
+    If there are any issues with the mount points for these, they will cause hangs on the login nodes only and will not affect
+    the currently running jobs. If this happens, we can unmount them again from the login nodes.
+
 
 ### Kathleen
 
@@ -1916,8 +1930,6 @@ This page outlines that status of each of the machines managed by the Research C
     (You may need to delete the previous entry for `login01`, `login02` and `kathleen.rc.ucl.ac.uk` in your `.ssh/known_hosts` as
     detailed at https://www.rc.ucl.ac.uk/docs/howto/#remote-host-identification-has-changed).
 
-#### Latest on Kathleen
-
 - 2026-10-12 17:20 - **Myriad and Kathleen GPFS upgrade outage for ACFS around 20 Oct**
 
     The Myriad and Kathleen outage that was previously scheduled for 18-19 Aug and 20-21 Aug has been rescheduled to
@@ -2008,6 +2020,22 @@ This page outlines that status of each of the machines managed by the Research C
     **On Kathleen:**
 
     - `scontrol release` followed by a job ID or comma-separated list of job IDs will release those jobs, eg `scontrol release 12345,12346,12347`
+
+#### Latest on Kathleen
+
+  - 2026-10-29 11:20 - **ACFS and RDSS are mounted from the login nodes on Myriad and Kathleen**
+
+    Upgrades are continuing but we think it is safe to mount the RDSS and ACFS from the Myriad and Kathleen login nodes again.
+    They are still not mounted from the compute nodes.
+
+    This means if you have an RDSS space (Research Data Storage Service), it is accessible from `/rdss` or `/biomed`.
+
+    The ACFS directory in your home will work again, and also the full address at `/acfs/users/username`.
+
+    Jobs still cannot access the ACFS.
+
+    If there are any issues with the mount points for these, they will cause hangs on the login nodes only and will not affect
+    the currently running jobs. If this happens, we can unmount them again from the login nodes.
     
 
 ### Young
