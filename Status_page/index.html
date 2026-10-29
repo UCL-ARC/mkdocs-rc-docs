@@ -3463,6 +3463,16 @@ have continued to run overnight and you can release more held jobs or submit mor
 <p>Myriad-ng has been sorted out and you can log into it again. We expect jobs to be re-enabled on Myriad-ng later today.
 Running <code>sinfo</code> will show you if the nodes are still in maintenance mode.</p>
 </li>
+<li>
+<p>2026-10-29 11:20 - <strong>ACFS and RDSS are mounted from the login nodes on Myriad and Kathleen</strong></p>
+<p>Upgrades are continuing but we think it is safe to mount the RDSS and ACFS from the Myriad and Kathleen login nodes again.
+They are still not mounted from the compute nodes.</p>
+<p>This means if you have an RDSS space (Research Data Storage Service), it is accessible from <code>/rdss</code> or <code>/biomed</code>.</p>
+<p>The ACFS directory in your home will work again, and also the full address at <code>/acfs/users/username</code>.</p>
+<p>Jobs still cannot access the ACFS.</p>
+<p>If there are any issues with the mount points for these, they will cause hangs on the login nodes only and will not affect
+the currently running jobs. If this happens, we can unmount them again from the login nodes.</p>
+</li>
 </ul>
 <h3 id="kathleen">Kathleen<a class="headerlink" href="#kathleen" title="Permanent link">§</a></h3>
 <ul>
@@ -3920,9 +3930,6 @@ the newer set of addresses.</p>
 <p>(You may need to delete the previous entry for <code>login01</code>, <code>login02</code> and <code>kathleen.rc.ucl.ac.uk</code> in your <code>.ssh/known_hosts</code> as
 detailed at https://www.rc.ucl.ac.uk/docs/howto/#remote-host-identification-has-changed).</p>
 </li>
-</ul>
-<h4 id="latest-on-kathleen">Latest on Kathleen<a class="headerlink" href="#latest-on-kathleen" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-10-12 17:20 - <strong>Myriad and Kathleen GPFS upgrade outage for ACFS around 20 Oct</strong></p>
 <p>The Myriad and Kathleen outage that was previously scheduled for 18-19 Aug and 20-21 Aug has been rescheduled to
@@ -3994,6 +4001,19 @@ parallel filesystem will be able to run fine.</p>
 <ul>
 <li><code>scontrol release</code> followed by a job ID or comma-separated list of job IDs will release those jobs, eg <code>scontrol release 12345,12346,12347</code></li>
 </ul>
+</li>
+</ul>
+<h4 id="latest-on-kathleen">Latest on Kathleen<a class="headerlink" href="#latest-on-kathleen" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-10-29 11:20 - <strong>ACFS and RDSS are mounted from the login nodes on Myriad and Kathleen</strong></p>
+<p>Upgrades are continuing but we think it is safe to mount the RDSS and ACFS from the Myriad and Kathleen login nodes again.
+They are still not mounted from the compute nodes.</p>
+<p>This means if you have an RDSS space (Research Data Storage Service), it is accessible from <code>/rdss</code> or <code>/biomed</code>.</p>
+<p>The ACFS directory in your home will work again, and also the full address at <code>/acfs/users/username</code>.</p>
+<p>Jobs still cannot access the ACFS.</p>
+<p>If there are any issues with the mount points for these, they will cause hangs on the login nodes only and will not affect
+the currently running jobs. If this happens, we can unmount them again from the login nodes.</p>
 </li>
 </ul>
 <h3 id="young">Young<a class="headerlink" href="#young" title="Permanent link">§</a></h3>
