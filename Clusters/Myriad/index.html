@@ -2469,6 +2469,7 @@ variants, new letters are added.</p>
 <th>Max usable RAM per node</th>
 <th>tmpfs</th>
 <th>Nodes</th>
+<th>Note</th>
 </tr>
 </thead>
 <tbody>
@@ -2479,22 +2480,25 @@ variants, new letters are added.</p>
 <td>160GB (or 36 cores at 4.4G per core)</td>
 <td>1500G</td>
 <td>342</td>
+<td></td>
 </tr>
 <tr>
-<td>I,B</td>
+<td>B</td>
 <td>36</td>
 <td>1.5TB</td>
 <td>1483GB (or 36 cores at 41.1G per core)</td>
 <td>1500G</td>
-<td>17</td>
+<td>15</td>
+<td></td>
 </tr>
 <tr>
-<td>E,F</td>
+<td>E</td>
 <td>36 + 2 V100 GPUs</td>
 <td>192GB</td>
 <td>160GB (or 36 cores at 4.4G per core)</td>
 <td>1500G</td>
-<td>19</td>
+<td>17</td>
+<td></td>
 </tr>
 <tr>
 <td>L</td>
@@ -2502,7 +2506,8 @@ variants, new letters are added.</p>
 <td>192GB</td>
 <td>160GB (or 36 cores at 4.4G per core)</td>
 <td>1500G</td>
-<td>6</td>
+<td>7</td>
+<td></td>
 </tr>
 <tr>
 <td>T</td>
@@ -2510,7 +2515,8 @@ variants, new letters are added.</p>
 <td>768GB</td>
 <td>755GB (or 64 cores at 11.7G per core)</td>
 <td>420G</td>
-<td>6</td>
+<td>7</td>
+<td>5x dedicated/priority access for groups</td>
 </tr>
 <tr>
 <td>U</td>
@@ -2519,6 +2525,7 @@ variants, new letters are added.</p>
 <td>223GB (or 48 cores at 4.6G per core)</td>
 <td>1700G</td>
 <td>1</td>
+<td></td>
 </tr>
 <tr>
 <td>V</td>
@@ -2527,18 +2534,48 @@ variants, new letters are added.</p>
 <td>223GB (or 48 cores at 4.6G per core)</td>
 <td>1800G</td>
 <td>2</td>
+<td>1x priority access for group</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>96 + 8 RTX PRO 6000</td>
+<td>768GB</td>
+<td>753GB (or 96 cores at 7.8G per core)</td>
+<td>800G</td>
+<td>1</td>
+<td>1x dedicated access for group</td>
+</tr>
+<tr>
+<td>R</td>
+<td>64 + 2 H200 141GB GPUs</td>
+<td>768GB</td>
+<td>753GB (or 64 cores at 11.7G per core)</td>
+<td>800G</td>
+<td>1</td>
+<td>1x dedicated access for group</td>
+</tr>
+<tr>
+<td>S</td>
+<td>32 + 2 H200 141GB GPUs</td>
+<td>768GB</td>
+<td>753GB (or 32 cores at 23.5G per core)</td>
+<td>1500G</td>
+<td>2</td>
+<td>2x dedicated access for groups</td>
 </tr>
 </tbody>
 </table>
-<p>You can tell the type of a node by its name: type D nodes are named
-<code>node-d00a-001</code> etc.</p>
+<p>You can tell the type of a node by its name: type D nodes are named <code>node-d00a-001</code> etc. Some nodetypes are primarily 
+paid for by specific groups so general free access may be limited or nonexistent.</p>
 <p>Here are the processors each node type has:</p>
 <ul>
-<li>F, I: Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz</li>
-<li>B, D, E, L: Intel(R) Xeon(R) Gold 6240 CPU @ 2.60GHz</li>
-<li>T: AMD EPYC 9554P 64C 360W 3.1GHz (64 cores)</li>
-<li>U: Intel(R) Xeon(R) Gold 6336Y CPU @ 2.40GHz</li>
-<li>V: Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz</li>
+<li>B, D, E, L: 2x Intel(R) Xeon(R) Gold 6240 18C CPU @ 2.60GHz</li>
+<li>T: 1x AMD EPYC 9554P 64C 360W 3.1GHz (64 cores)</li>
+<li>U: 2x Intel(R) Xeon(R) Gold 6336Y 24C CPU @ 2.40GHz</li>
+<li>V: 2x Intel(R) Xeon(R) Gold 6342 24C CPU @ 2.80GHz</li>
+<li>Q: 2x AMD EPYC 9455 48C 300W 3.15GHz, multithreading available</li>
+<li>R: 2x AMD EPYC 9355 32C 280W 3.55GHz, multithreading available</li>
+<li>S: 1x AMD EPYC 9355 32C 280W 3.55GHz, multithreading available </li>
 </ul>
 <p>(If you ever need to check this, you can include <code>cat /proc/cpuinfo</code> in your jobscript so
 you get it in your job's .o file for the exact node your job ran on. You will get an entry
@@ -2548,7 +2585,7 @@ for every core).</p>
 <ul>
 <li>U-type and V-type each have four NVIDIA 80G A100s. (Compute Capability 80). The CPUs and disk are slightly different.</li>
 <li>L-type nodes each have four NVIDIA 40G A100s. (Compute Capability 80)</li>
-<li>F-type and E-type nodes each have two NVIDIA Tesla V100s. The CPUs are slightly different on the different letters, see above. (Compute Capability 70)</li>
+<li>E-type nodes have two NVIDIA Tesla V100s. (Compute Capability 70)</li>
 </ul>
 <p>You can include <code>nvidia-smi</code> in your jobscript to get information about the GPU your job ran on.</p>
 <h3 id="compute-capability">Compute Capability<a class="headerlink" href="#compute-capability" title="Permanent link">§</a></h3>
