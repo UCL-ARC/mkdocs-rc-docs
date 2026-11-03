@@ -3435,11 +3435,8 @@ to Myriad's filesystem.</p>
 <li><code>scontrol release</code> followed by a job ID or comma-separated list of job IDs will release those jobs, eg <code>scontrol release 12345,12346,12347</code></li>
 </ul>
 <p><strong>Myriad-ng</strong></p>
-<p>Myriad-ng is still not accessible.</p>
+<p>Myriad-ng is still not accessible. </p>
 </li>
-</ul>
-<h4 id="latest-on-myriad">Latest on Myriad<a class="headerlink" href="#latest-on-myriad" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-10-27 16:40 - <strong>Scheduler issue on Myriad; ACFS upgrade ongoing</strong></p>
 <p>Myriad's scheduler is having the same issue as before, and the qmaster is down and commands like qstat and qsub
@@ -3472,6 +3469,31 @@ They are still not mounted from the compute nodes.</p>
 <p>Jobs still cannot access the ACFS.</p>
 <p>If there are any issues with the mount points for these, they will cause hangs on the login nodes only and will not affect
 the currently running jobs. If this happens, we can unmount them again from the login nodes.</p>
+</li>
+</ul>
+<h4 id="latest-on-myriad">Latest on Myriad<a class="headerlink" href="#latest-on-myriad" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-11-03 14:25 - <strong>Loss of external connectivity on 14 Nov, jobs will be held on 13 Nov</strong></p>
+<p>UCL network modernisation work will cause a loss of external connectivity from all clusters on Saturday 14 November.</p>
+<p>This means that jobs that run completely internal to the cluster should be able to continue, but anything that needs to
+connect to something else will not be able to for at least part of the day and there will be no login access when
+connectivity is down.</p>
+<p>To prepare for this, we will unmount the ACFS and RDSS from Myriad and Kathleen on Friday 13 November and put holds on
+all jobs again. </p>
+<p>If your job does not use the ACFS or any other external resource, including license managers or needing to download software,
+you can release the holds on Friday, any parts of Saturday where you have access or on Sunday.</p>
+<p>We will make the RDSS and ACFS available again from Myriad and Kathleen on Monday 16 November and release the remaining holds.</p>
+<p><strong>On Myriad SGE:</strong></p>
+<ul>
+<li><code>qrls $JOB_ID</code> (eg <code>qrls 12345</code>) will release the job with that ID.</li>
+<li><code>qrls</code> followed by a space-separated list of job IDs will release that list of jobs, eg <code>qrls 12345 12346 12347</code></li>
+<li><code>qrls all</code> will release the holds on all your jobs.</li>
+</ul>
+<p><strong>On Kathleen and Myriad-ng:</strong></p>
+<ul>
+<li><code>scontrol release</code> followed by a job ID or comma-separated list of job IDs will release those jobs, eg <code>scontrol release 12345,12346,12347</code></li>
+</ul>
 </li>
 </ul>
 <h3 id="kathleen">Kathleen<a class="headerlink" href="#kathleen" title="Permanent link">§</a></h3>
@@ -4002,9 +4024,6 @@ parallel filesystem will be able to run fine.</p>
 <li><code>scontrol release</code> followed by a job ID or comma-separated list of job IDs will release those jobs, eg <code>scontrol release 12345,12346,12347</code></li>
 </ul>
 </li>
-</ul>
-<h4 id="latest-on-kathleen">Latest on Kathleen<a class="headerlink" href="#latest-on-kathleen" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-10-29 11:20 - <strong>ACFS and RDSS are mounted from the login nodes on Myriad and Kathleen</strong></p>
 <p>Upgrades are continuing but we think it is safe to mount the RDSS and ACFS from the Myriad and Kathleen login nodes again.
@@ -4014,6 +4033,31 @@ They are still not mounted from the compute nodes.</p>
 <p>Jobs still cannot access the ACFS.</p>
 <p>If there are any issues with the mount points for these, they will cause hangs on the login nodes only and will not affect
 the currently running jobs. If this happens, we can unmount them again from the login nodes.</p>
+</li>
+</ul>
+<h4 id="latest-on-kathleen">Latest on Kathleen<a class="headerlink" href="#latest-on-kathleen" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-11-03 14:25 - <strong>Loss of external connectivity on 14 Nov, jobs will be held on 13 Nov</strong></p>
+<p>UCL network modernisation work will cause a loss of external connectivity from all clusters on Saturday 14 November.</p>
+<p>This means that jobs that run completely internal to the cluster should be able to continue, but anything that needs to
+connect to something else will not be able to for at least part of the day and there will be no login access when
+connectivity is down.</p>
+<p>To prepare for this, we will unmount the ACFS and RDSS from Myriad and Kathleen on Friday 13 November and put holds on
+all jobs again. </p>
+<p>If your job does not use the ACFS or any other external resource, including license managers or needing to download software,
+you can release the holds on Friday, any parts of Saturday where you have access or on Sunday.</p>
+<p>We will make the RDSS and ACFS available again from Myriad and Kathleen on Monday 16 November and release the remaining holds.</p>
+<p><strong>On Myriad SGE:</strong></p>
+<ul>
+<li><code>qrls $JOB_ID</code> (eg <code>qrls 12345</code>) will release the job with that ID.</li>
+<li><code>qrls</code> followed by a space-separated list of job IDs will release that list of jobs, eg <code>qrls 12345 12346 12347</code></li>
+<li><code>qrls all</code> will release the holds on all your jobs.</li>
+</ul>
+<p><strong>On Kathleen and Myriad-ng:</strong></p>
+<ul>
+<li><code>scontrol release</code> followed by a job ID or comma-separated list of job IDs will release those jobs, eg <code>scontrol release 12345,12346,12347</code></li>
+</ul>
 </li>
 </ul>
 <h3 id="young">Young<a class="headerlink" href="#young" title="Permanent link">§</a></h3>
@@ -4888,9 +4932,6 @@ as only one switch needs swapping, while Michael will take longer.</p>
 <p>Sorry for the delay, it did take a long time on Michael for the switch changes on Tuesday, and then we had further
 resilience work that needed doing that was pushed to Wednesday.</p>
 </li>
-</ul>
-<h4 id="latest-on-michael">Latest on Michael<a class="headerlink" href="#latest-on-michael" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-09-29 13:55 - <strong>Oldest nodes in Michael being retired; RHEL9 and Slurm are coming</strong></p>
 <p>The type-K nodes in Michael are due to be retired. </p>
@@ -4922,6 +4963,15 @@ take approximately 3 hours.</p>
 <p>Michael's A-type nodes have had jobs re-enabled now.</p>
 <p>The K-type nodes have been removed from the scheduler and will no longer show up. If you have any jobs in the queue
 requesting K-type nodes only, they will not be able to run.</p>
+</li>
+</ul>
+<h4 id="latest-on-michael">Latest on Michael<a class="headerlink" href="#latest-on-michael" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-11-03 14:30 - <strong>Loss of external connectivity on 14 Nov on Michael</strong></p>
+<p>There is some more UCL network modernisation work happening on Saturday 14 November. Everything running internal
+to Michael should be able to continue, but anything that needs to connect out will be unable to do so for at least
+part of the day, and you will be unable to log in during that time. </p>
 </li>
 </ul>
 <h3 id="thomas">Thomas<a class="headerlink" href="#thomas" title="Permanent link">§</a></h3>
