@@ -2130,10 +2130,22 @@
 </thead>
 <tbody>
 <tr>
-<td>27-30 October 2026</td>
+<td>10 November 2026</td>
+<td>Young</td>
+<td>Planned</td>
+<td>Outage for old SGE half of Young for kernel updates and patching. Queue drained for 8am. Login nodes login01 and login02 will each be down for around 15 minutes in turn to be rebooted. There will be a console message telling you this. Jobs expected to be re-enabled towards end of day.</td>
+</tr>
+<tr>
+<td>13 November 2026</td>
 <td>Myriad, Kathleen</td>
 <td>Planned</td>
-<td>GPFS upgrade outage for ACFS. Rescheduling of the cancelled August outages below. <del>Jobs drained for 8am 27 Oct and no access to login nodes, if the outage is not happening until a later day we will re-enable jobs until the new drain date (depends on engineers)</del>. Edit 26 Oct: We have put holds on all jobs and unmounted the ACFS from login and compute nodes. Users can remove holds from jobs that are not using the ACFS and they will be able to run during the period this work is happening, see <a href="../Status_page/#latest-on-myriad">Status page - Myriad</a> and <a href="../Status_page/#latest-on-kathleen">Status page - Kathleen</a>.</td>
+<td>ACFS and RDSS being unmounted on Myriad and Kathleen from login and compute in preparation for network outage tomorrow (see next item). Jobs will have holds put on them that can be released if they are not using the ACFS or any other external resource. ACFS and RDSS will be made available again on Monday 16 Nov.</td>
+</tr>
+<tr>
+<td>14 November 2026</td>
+<td>Myriad, Kathleen, Young, Michael</td>
+<td>Planned</td>
+<td>UCL network modernisation work will result in loss of external connectivity to clusters. Jobs running internal to the cluster and not using the ACFS (only available on Myriad and Kathleen) should be able to continue. Anything needing to connect out (including to license servers) will be unable to do so for at least part of the day. No login access to clusters when connectivity is down.</td>
 </tr>
 </tbody>
 </table>
@@ -2148,6 +2160,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>27-30 October 2026</td>
+<td>Myriad, Kathleen</td>
+<td>Completed</td>
+<td>GPFS upgrade outage for ACFS. Rescheduling of the cancelled August outages below. <del>Jobs drained for 8am 27 Oct and no access to login nodes, if the outage is not happening until a later day we will re-enable jobs until the new drain date (depends on engineers)</del>. Edit 26 Oct: We have put holds on all jobs and unmounted the ACFS from login and compute nodes. Users can remove holds from jobs that are not using the ACFS and they will be able to run during the period this work is happening, see <a href="../Status_page/#latest-on-myriad">Status page - Myriad</a> and <a href="../Status_page/#latest-on-kathleen">Status page - Kathleen</a>. ACFS access from compute re-enabled on Mon 2 Nov.</td>
+</tr>
 <tr>
 <td>21 October 2026</td>
 <td>Myriad</td>

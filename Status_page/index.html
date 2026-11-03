@@ -4689,7 +4689,23 @@ Gold allocation is still only available on SGE Young and not Young-ng.</p>
 <p>2026-10-20 14:45 - <strong>Cooling problem in Young, some nodes off - fixed</strong></p>
 <p>Cooling has been restored and all the nodes above are allowed to run jobs again.</p>
 </li>
+<li>
+<p>2026-11-03 12:55 - <strong>Planned outage for SGE Young on Tues 10 November; loss of external connectivity on 14 Nov</strong></p>
+<p>We are planning an outage for the old SGE half of Young on Tuesday 10 November for kernel updates and patching.</p>
+<p>We will drain the queue for 8am so jobs that cannot complete before then will stay in the queue until after the
+outage when they will start running again. You do not need to take any action.</p>
+<p>Login nodes login01 and login02 will each be down for around 15 minutes in turn to be rebooted. There will be a
+console message telling you this is happening if you logged in before the reboot.</p>
+<p>The compute nodes will take longer to update. We will re-enable jobs towards the end of the day when this is complete.</p>
+<p>This does not affect Young-ng.</p>
+</li>
 </ul>
+<p><strong>Loss of external connectivity on Saturday 14 November</strong></p>
+<div class="codehilite"><pre><span></span><code>There is some more UCL network modernisation work happening on Saturday 14 November. Everything running internal to 
+Young and Young-ng should be able to continue, but anything that needs to connect out will be unable to do so for at 
+least part of the day, and you will be unable to log in during that time. This affects both the old and new halves of Young.
+</code></pre></div>
+
 <h3 id="michael">Michael<a class="headerlink" href="#michael" title="Permanent link">§</a></h3>
 <ul>
 <li>
