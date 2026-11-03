@@ -1328,9 +1328,7 @@ This page outlines that status of each of the machines managed by the Research C
 
     **Myriad-ng**
 
-    Myriad-ng is still not accessible.
-
-#### Latest on Myriad 
+    Myriad-ng is still not accessible. 
 
   - 2026-10-27 16:40 - **Scheduler issue on Myriad; ACFS upgrade ongoing**
 
@@ -1375,6 +1373,34 @@ This page outlines that status of each of the machines managed by the Research C
 
     If there are any issues with the mount points for these, they will cause hangs on the login nodes only and will not affect
     the currently running jobs. If this happens, we can unmount them again from the login nodes.
+
+#### Latest on Myriad
+
+  - 2026-11-03 14:25 - **Loss of external connectivity on 14 Nov, jobs will be held on 13 Nov**
+
+    UCL network modernisation work will cause a loss of external connectivity from all clusters on Saturday 14 November.
+
+    This means that jobs that run completely internal to the cluster should be able to continue, but anything that needs to
+    connect to something else will not be able to for at least part of the day and there will be no login access when
+    connectivity is down.
+
+    To prepare for this, we will unmount the ACFS and RDSS from Myriad and Kathleen on Friday 13 November and put holds on
+    all jobs again. 
+
+    If your job does not use the ACFS or any other external resource, including license managers or needing to download software,
+    you can release the holds on Friday, any parts of Saturday where you have access or on Sunday.
+
+    We will make the RDSS and ACFS available again from Myriad and Kathleen on Monday 16 November and release the remaining holds.
+
+    **On Myriad SGE:**
+
+    - `qrls $JOB_ID` (eg `qrls 12345`) will release the job with that ID.
+    - `qrls` followed by a space-separated list of job IDs will release that list of jobs, eg `qrls 12345 12346 12347`
+    - `qrls all` will release the holds on all your jobs.
+
+    **On Kathleen and Myriad-ng:**
+
+    - `scontrol release` followed by a job ID or comma-separated list of job IDs will release those jobs, eg `scontrol release 12345,12346,12347`
 
 
 ### Kathleen
@@ -2021,8 +2047,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     - `scontrol release` followed by a job ID or comma-separated list of job IDs will release those jobs, eg `scontrol release 12345,12346,12347`
 
-#### Latest on Kathleen
-
   - 2026-10-29 11:20 - **ACFS and RDSS are mounted from the login nodes on Myriad and Kathleen**
 
     Upgrades are continuing but we think it is safe to mount the RDSS and ACFS from the Myriad and Kathleen login nodes again.
@@ -2036,7 +2060,35 @@ This page outlines that status of each of the machines managed by the Research C
 
     If there are any issues with the mount points for these, they will cause hangs on the login nodes only and will not affect
     the currently running jobs. If this happens, we can unmount them again from the login nodes.
-    
+
+#### Latest on Kathleen
+
+  - 2026-11-03 14:25 - **Loss of external connectivity on 14 Nov, jobs will be held on 13 Nov**
+
+    UCL network modernisation work will cause a loss of external connectivity from all clusters on Saturday 14 November.
+
+    This means that jobs that run completely internal to the cluster should be able to continue, but anything that needs to
+    connect to something else will not be able to for at least part of the day and there will be no login access when
+    connectivity is down.
+
+    To prepare for this, we will unmount the ACFS and RDSS from Myriad and Kathleen on Friday 13 November and put holds on
+    all jobs again. 
+
+    If your job does not use the ACFS or any other external resource, including license managers or needing to download software,
+    you can release the holds on Friday, any parts of Saturday where you have access or on Sunday.
+
+    We will make the RDSS and ACFS available again from Myriad and Kathleen on Monday 16 November and release the remaining holds.
+
+    **On Myriad SGE:**
+
+    - `qrls $JOB_ID` (eg `qrls 12345`) will release the job with that ID.
+    - `qrls` followed by a space-separated list of job IDs will release that list of jobs, eg `qrls 12345 12346 12347`
+    - `qrls all` will release the holds on all your jobs.
+
+    **On Kathleen and Myriad-ng:**
+
+    - `scontrol release` followed by a job ID or comma-separated list of job IDs will release those jobs, eg `scontrol release 12345,12346,12347`
+
 
 ### Young
 
@@ -3060,8 +3112,6 @@ This page outlines that status of each of the machines managed by the Research C
     Sorry for the delay, it did take a long time on Michael for the switch changes on Tuesday, and then we had further
     resilience work that needed doing that was pushed to Wednesday.
 
-#### Latest on Michael
-
   - 2026-09-29 13:55 - **Oldest nodes in Michael being retired; RHEL9 and Slurm are coming**
 
     The type-K nodes in Michael are due to be retired. 
@@ -3103,7 +3153,15 @@ This page outlines that status of each of the machines managed by the Research C
 
     The K-type nodes have been removed from the scheduler and will no longer show up. If you have any jobs in the queue
     requesting K-type nodes only, they will not be able to run.
-    
+
+#### Latest on Michael
+
+  - 2026-11-03 14:30 - **Loss of external connectivity on 14 Nov on Michael**
+
+    There is some more UCL network modernisation work happening on Saturday 14 November. Everything running internal
+    to Michael should be able to continue, but anything that needs to connect out will be unable to do so for at least
+    part of the day, and you will be unable to log in during that time. 
+
 
 ### Thomas
 
