@@ -2828,6 +2828,26 @@ This page outlines that status of each of the machines managed by the Research C
   - 2026-10-20 14:45 - **Cooling problem in Young, some nodes off - fixed**
 
     Cooling has been restored and all the nodes above are allowed to run jobs again.
+
+  - 2026-11-03 12:55 - **Planned outage for SGE Young on Tues 10 November; loss of external connectivity on 14 Nov**
+
+    We are planning an outage for the old SGE half of Young on Tuesday 10 November for kernel updates and patching.
+
+    We will drain the queue for 8am so jobs that cannot complete before then will stay in the queue until after the
+    outage when they will start running again. You do not need to take any action.
+
+    Login nodes login01 and login02 will each be down for around 15 minutes in turn to be rebooted. There will be a
+    console message telling you this is happening if you logged in before the reboot.
+
+    The compute nodes will take longer to update. We will re-enable jobs towards the end of the day when this is complete.
+
+    This does not affect Young-ng.
+
+   **Loss of external connectivity on Saturday 14 November**
+
+    There is some more UCL network modernisation work happening on Saturday 14 November. Everything running internal to 
+    Young and Young-ng should be able to continue, but anything that needs to connect out will be unable to do so for at 
+    least part of the day, and you will be unable to log in during that time. This affects both the old and new halves of Young.
     
 
 ### Michael
