@@ -16,9 +16,10 @@ After an outage, the first day or two back should be considered 'at risk'; that 
 
 Date                | Service | Status | Reason 
 --------------------|---------|--------|--------
+4 November 2026 | Kathleen, Myriad-ng, Young-ng | Planned | Security updates and minor Slurm update. Login nodes will be rebooted one at a time with console messages giving notice. Compute will have a rolling reboot as jobs end. No overall outage of clusters required.
 10 November 2026 | Young | Planned | Outage for old SGE half of Young for kernel updates and patching. Queue drained for 8am. Login nodes login01 and login02 will each be down for around 15 minutes in turn to be rebooted. There will be a console message telling you this. Jobs expected to be re-enabled towards end of day.
-13 November 2026 | Myriad, Kathleen | Planned | ACFS and RDSS being unmounted on Myriad and Kathleen from login and compute in preparation for network outage tomorrow (see next item). Jobs will have holds put on them that can be released if they are not using the ACFS or any other external resource. ACFS and RDSS will be made available again on Monday 16 Nov.
-14 November 2026 | Myriad, Kathleen, Young, Michael | Planned | UCL network modernisation work will result in loss of external connectivity to clusters. Jobs running internal to the cluster and not using the ACFS (only available on Myriad and Kathleen) should be able to continue. Anything needing to connect out (including to license servers) will be unable to do so for at least part of the day. No login access to clusters when connectivity is down.
+~~13 November 2026~~ | Myriad, Kathleen | Postponed | ACFS and RDSS being unmounted on Myriad and Kathleen from login and compute in preparation for network outage tomorrow (see next item). Jobs will have holds put on them that can be released if they are not using the ACFS or any other external resource. ACFS and RDSS will be made available again on Monday 16 Nov. Postponed to next month, date TBC.
+~~14 November 2026~~ | Myriad, Kathleen, Young, Michael | Postponed | UCL network modernisation work will result in loss of external connectivity to clusters. Jobs running internal to the cluster and not using the ACFS (only available on Myriad and Kathleen) should be able to continue. Anything needing to connect out (including to license servers) will be unable to do so for at least part of the day. No login access to clusters when connectivity is down. Postponed to next month, date TBC.
 
 ## Previous Outages
 

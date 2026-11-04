@@ -1374,8 +1374,6 @@ This page outlines that status of each of the machines managed by the Research C
     If there are any issues with the mount points for these, they will cause hangs on the login nodes only and will not affect
     the currently running jobs. If this happens, we can unmount them again from the login nodes.
 
-#### Latest on Myriad
-
   - 2026-11-03 14:25 - **Loss of external connectivity on 14 Nov, jobs will be held on 13 Nov**
 
     UCL network modernisation work will cause a loss of external connectivity from all clusters on Saturday 14 November.
@@ -1402,6 +1400,29 @@ This page outlines that status of each of the machines managed by the Research C
 
     - `scontrol release` followed by a job ID or comma-separated list of job IDs will release those jobs, eg `scontrol release 12345,12346,12347`
 
+#### Latest on Myriad
+
+  - 2026-11-04 13:35 - **Loss of external connectivity on 14 Nov postponed**
+
+    The proposed UCL network modernisation outage of 14 November has now been postponed until next month, date to be confirmed.
+
+    Nothing will be happening on 13-14 Nov now.
+
+  - 2026-11-04 14:25 - **Security updates being run on Kathleen, Myriad-ng, Young-ng today**
+
+    We have some security updates and a minor Slurm update to roll out on the RHEL9 clusters (Kathleen, Myriad-ng,
+    Young-ng). The security updates need applying as soon as possible, so we will be doing this today.
+
+    The login nodes will be rebooted one at a time and there will be console messages explaining what is happening
+    if you are logged in to that one, with plenty of notice.
+
+    The compute nodes will have a rolling reboot, so after jobs finish on each one they will reboot and pick up the
+    updated system image.
+
+    There will not need to be an overall outage of the clusters.
+
+    If anything does temporarily time out, it should be available again shortly.
+    
 
 ### Kathleen
 
@@ -2061,8 +2082,6 @@ This page outlines that status of each of the machines managed by the Research C
     If there are any issues with the mount points for these, they will cause hangs on the login nodes only and will not affect
     the currently running jobs. If this happens, we can unmount them again from the login nodes.
 
-#### Latest on Kathleen
-
   - 2026-11-03 14:25 - **Loss of external connectivity on 14 Nov, jobs will be held on 13 Nov**
 
     UCL network modernisation work will cause a loss of external connectivity from all clusters on Saturday 14 November.
@@ -2089,6 +2108,28 @@ This page outlines that status of each of the machines managed by the Research C
 
     - `scontrol release` followed by a job ID or comma-separated list of job IDs will release those jobs, eg `scontrol release 12345,12346,12347`
 
+#### Latest on Kathleen
+
+  - 2026-11-04 13:35 - **Loss of external connectivity on 14 Nov postponed**
+
+    The proposed UCL network modernisation outage of 14 November has now been postponed until next month, date to be confirmed.
+
+    Nothing will be happening on 13-14 Nov now.
+
+  - 2026-11-04 14:25 - **Security updates being run on Kathleen, Myriad-ng, Young-ng today**
+
+    We have some security updates and a minor Slurm update to roll out on the RHEL9 clusters (Kathleen, Myriad-ng,
+    Young-ng). The security updates need applying as soon as possible, so we will be doing this today.
+
+    The login nodes will be rebooted one at a time and there will be console messages explaining what is happening
+    if you are logged in to that one, with plenty of notice.
+
+    The compute nodes will have a rolling reboot, so after jobs finish on each one they will reboot and pick up the
+    updated system image.
+
+    There will not need to be an overall outage of the clusters.
+
+    If anything does temporarily time out, it should be available again shortly.
 
 ### Young
 
@@ -2852,8 +2893,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     The high memory nodes are also all up, node-y12q-001,node-z12r-001 in young-ng and node-y12q-[002-003],
     node-z12r-[002-003] in SGE Young.
-
-#### Latest on Young
     
   - 2026-09-22 11:00 - **Young will be running until the end of December; Gold allocations will continue**
 
@@ -2900,7 +2939,29 @@ This page outlines that status of each of the machines managed by the Research C
     There is some more UCL network modernisation work happening on Saturday 14 November. Everything running internal to 
     Young and Young-ng should be able to continue, but anything that needs to connect out will be unable to do so for at 
     least part of the day, and you will be unable to log in during that time. This affects both the old and new halves of Young.
-    
+
+#### Latest on Young
+
+  - 2026-11-04 13:35 - **Loss of external connectivity on 14 Nov postponed**
+
+    The proposed UCL network modernisation outage of 14 November has now been postponed until next month, date to be confirmed.
+
+    Our outage of SGE Young on Tues 10 November goes ahead.
+
+  - 2026-11-04 14:25 - **Security updates being run on Kathleen, Myriad-ng, Young-ng today**
+
+    We have some security updates and a minor Slurm update to roll out on the RHEL9 clusters (Kathleen, Myriad-ng,
+    Young-ng). The security updates need applying as soon as possible, so we will be doing this today.
+
+    The login nodes will be rebooted one at a time and there will be console messages explaining what is happening
+    if you are logged in to that one, with plenty of notice.
+
+    The compute nodes will have a rolling reboot, so after jobs finish on each one they will reboot and pick up the
+    updated system image.
+
+    There will not need to be an overall outage of the clusters.
+
+    If anything does temporarily time out, it should be available again shortly.
 
 ### Michael
 
@@ -3162,6 +3223,9 @@ This page outlines that status of each of the machines managed by the Research C
     to Michael should be able to continue, but anything that needs to connect out will be unable to do so for at least
     part of the day, and you will be unable to log in during that time. 
 
+  - 2026-11-04 13:35 - **Loss of external connectivity on 14 Nov postponed**
+
+    The proposed UCL network modernisation outage of 14 November has now been postponed until next month, date to be confirmed.
 
 ### Thomas
 
