@@ -3470,9 +3470,6 @@ They are still not mounted from the compute nodes.</p>
 <p>If there are any issues with the mount points for these, they will cause hangs on the login nodes only and will not affect
 the currently running jobs. If this happens, we can unmount them again from the login nodes.</p>
 </li>
-</ul>
-<h4 id="latest-on-myriad">Latest on Myriad<a class="headerlink" href="#latest-on-myriad" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-11-03 14:25 - <strong>Loss of external connectivity on 14 Nov, jobs will be held on 13 Nov</strong></p>
 <p>UCL network modernisation work will cause a loss of external connectivity from all clusters on Saturday 14 November.</p>
@@ -3494,6 +3491,25 @@ you can release the holds on Friday, any parts of Saturday where you have access
 <ul>
 <li><code>scontrol release</code> followed by a job ID or comma-separated list of job IDs will release those jobs, eg <code>scontrol release 12345,12346,12347</code></li>
 </ul>
+</li>
+</ul>
+<h4 id="latest-on-myriad">Latest on Myriad<a class="headerlink" href="#latest-on-myriad" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-11-04 13:35 - <strong>Loss of external connectivity on 14 Nov postponed</strong></p>
+<p>The proposed UCL network modernisation outage of 14 November has now been postponed until next month, date to be confirmed.</p>
+<p>Nothing will be happening on 13-14 Nov now.</p>
+</li>
+<li>
+<p>2026-11-04 14:25 - <strong>Security updates being run on Kathleen, Myriad-ng, Young-ng today</strong></p>
+<p>We have some security updates and a minor Slurm update to roll out on the RHEL9 clusters (Kathleen, Myriad-ng,
+Young-ng). The security updates need applying as soon as possible, so we will be doing this today.</p>
+<p>The login nodes will be rebooted one at a time and there will be console messages explaining what is happening
+if you are logged in to that one, with plenty of notice.</p>
+<p>The compute nodes will have a rolling reboot, so after jobs finish on each one they will reboot and pick up the
+updated system image.</p>
+<p>There will not need to be an overall outage of the clusters.</p>
+<p>If anything does temporarily time out, it should be available again shortly.</p>
 </li>
 </ul>
 <h3 id="kathleen">Kathleen<a class="headerlink" href="#kathleen" title="Permanent link">§</a></h3>
@@ -4034,9 +4050,6 @@ They are still not mounted from the compute nodes.</p>
 <p>If there are any issues with the mount points for these, they will cause hangs on the login nodes only and will not affect
 the currently running jobs. If this happens, we can unmount them again from the login nodes.</p>
 </li>
-</ul>
-<h4 id="latest-on-kathleen">Latest on Kathleen<a class="headerlink" href="#latest-on-kathleen" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-11-03 14:25 - <strong>Loss of external connectivity on 14 Nov, jobs will be held on 13 Nov</strong></p>
 <p>UCL network modernisation work will cause a loss of external connectivity from all clusters on Saturday 14 November.</p>
@@ -4058,6 +4071,25 @@ you can release the holds on Friday, any parts of Saturday where you have access
 <ul>
 <li><code>scontrol release</code> followed by a job ID or comma-separated list of job IDs will release those jobs, eg <code>scontrol release 12345,12346,12347</code></li>
 </ul>
+</li>
+</ul>
+<h4 id="latest-on-kathleen">Latest on Kathleen<a class="headerlink" href="#latest-on-kathleen" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-11-04 13:35 - <strong>Loss of external connectivity on 14 Nov postponed</strong></p>
+<p>The proposed UCL network modernisation outage of 14 November has now been postponed until next month, date to be confirmed.</p>
+<p>Nothing will be happening on 13-14 Nov now.</p>
+</li>
+<li>
+<p>2026-11-04 14:25 - <strong>Security updates being run on Kathleen, Myriad-ng, Young-ng today</strong></p>
+<p>We have some security updates and a minor Slurm update to roll out on the RHEL9 clusters (Kathleen, Myriad-ng,
+Young-ng). The security updates need applying as soon as possible, so we will be doing this today.</p>
+<p>The login nodes will be rebooted one at a time and there will be console messages explaining what is happening
+if you are logged in to that one, with plenty of notice.</p>
+<p>The compute nodes will have a rolling reboot, so after jobs finish on each one they will reboot and pick up the
+updated system image.</p>
+<p>There will not need to be an overall outage of the clusters.</p>
+<p>If anything does temporarily time out, it should be available again shortly.</p>
 </li>
 </ul>
 <h3 id="young">Young<a class="headerlink" href="#young" title="Permanent link">§</a></h3>
@@ -4707,9 +4739,6 @@ we can use the others in the meantime.</p>
 <p>The high memory nodes are also all up, node-y12q-001,node-z12r-001 in young-ng and node-y12q-[002-003],
 node-z12r-[002-003] in SGE Young.</p>
 </li>
-</ul>
-<h4 id="latest-on-young">Latest on Young<a class="headerlink" href="#latest-on-young" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-09-22 11:00 - <strong>Young will be running until the end of December; Gold allocations will continue</strong></p>
 <p>Young's original end of running time was the end of September this year. We have funds to continue running it
@@ -4750,6 +4779,25 @@ Young and Young-ng should be able to continue, but anything that needs to connec
 least part of the day, and you will be unable to log in during that time. This affects both the old and new halves of Young.
 </code></pre></div>
 
+<h4 id="latest-on-young">Latest on Young<a class="headerlink" href="#latest-on-young" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-11-04 13:35 - <strong>Loss of external connectivity on 14 Nov postponed</strong></p>
+<p>The proposed UCL network modernisation outage of 14 November has now been postponed until next month, date to be confirmed.</p>
+<p>Our outage of SGE Young on Tues 10 November goes ahead.</p>
+</li>
+<li>
+<p>2026-11-04 14:25 - <strong>Security updates being run on Kathleen, Myriad-ng, Young-ng today</strong></p>
+<p>We have some security updates and a minor Slurm update to roll out on the RHEL9 clusters (Kathleen, Myriad-ng,
+Young-ng). The security updates need applying as soon as possible, so we will be doing this today.</p>
+<p>The login nodes will be rebooted one at a time and there will be console messages explaining what is happening
+if you are logged in to that one, with plenty of notice.</p>
+<p>The compute nodes will have a rolling reboot, so after jobs finish on each one they will reboot and pick up the
+updated system image.</p>
+<p>There will not need to be an overall outage of the clusters.</p>
+<p>If anything does temporarily time out, it should be available again shortly.</p>
+</li>
+</ul>
 <h3 id="michael">Michael<a class="headerlink" href="#michael" title="Permanent link">§</a></h3>
 <ul>
 <li>
@@ -4972,6 +5020,10 @@ requesting K-type nodes only, they will not be able to run.</p>
 <p>There is some more UCL network modernisation work happening on Saturday 14 November. Everything running internal
 to Michael should be able to continue, but anything that needs to connect out will be unable to do so for at least
 part of the day, and you will be unable to log in during that time. </p>
+</li>
+<li>
+<p>2026-11-04 13:35 - <strong>Loss of external connectivity on 14 Nov postponed</strong></p>
+<p>The proposed UCL network modernisation outage of 14 November has now been postponed until next month, date to be confirmed.</p>
 </li>
 </ul>
 <h3 id="thomas">Thomas<a class="headerlink" href="#thomas" title="Permanent link">§</a></h3>
