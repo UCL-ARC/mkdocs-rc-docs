@@ -2251,7 +2251,7 @@
 <p>Kathleen is a compute cluster designed for extensively parallel, multi-node batch-processing jobs, having high-bandwidth connections between each individual node. It is named after <a href="https://en.wikipedia.org/wiki/Kathleen_Lonsdale">Professor Dame Kathleen Lonsdale</a>, a pioneering chemist and activist, and was installed in December 2019. It went into service at the end of January 2020.</p>
 <h2 id="new-operating-system-and-scheduler">New operating system and scheduler<a class="headerlink" href="#new-operating-system-and-scheduler" title="Permanent link">§</a></h2>
 <p>Kathleen is currently updated to our new operating system (RHEL9) and new scheduler, Slurm.</p>
-<p>It can be accessed via <code>kathleen-ng.rc.ucl.ac.uk</code> which will log you in to updated login nodes.</p>
+<p>It can be accessed via <code>kathleen.rc.ucl.ac.uk</code> which will log you in to updated login nodes.</p>
 <p>The new software stack is provided by a module called <code>ucl-stack/2026-03</code> which should be being loaded by default. If not (for example if you <code>module purge</code> in your .bashrc) you can load the new environment by:</p>
 <div class="codehilite"><pre><span></span><code>module load ucl-stack/2026-03
 module load default-modules/2026-03
@@ -2269,10 +2269,10 @@ module load default-modules/2026-03
 <h2 id="logging-in">Logging in<a class="headerlink" href="#logging-in" title="Permanent link">§</a></h2>
 <p>Please use your UCL username and password to connect to Kathleen with an SSH client.</p>
 <div class="codehilite"><pre><span></span><code># Kathleen, RHEL9 and Slurm
-ssh uccaxxx@kathleen-ng.rc.ucl.ac.uk
+ssh uccaxxx@kathleen.rc.ucl.ac.uk
 </code></pre></div>
 
-<p>If using PuTTY, put <code>kathleen-ng.rc.ucl.ac.uk</code> as the hostname and your
+<p>If using PuTTY, put <code>kathleen.rc.ucl.ac.uk</code> as the hostname and your
 seven-character username (with no @ after) as the username when logging
 in, eg. <code>uccaxxx</code>. When entering your password in PuTTY no characters or
 bulletpoints will show on screen - this is normal.</p>
@@ -2280,8 +2280,8 @@ bulletpoints will show on screen - this is normal.</p>
 instructions for <a href="../../howto/#logging-in-from-outside-the-ucl-firewall">Logging in from outside the UCL firewall</a>.</p>
 <p>The login nodes allow you to manage your files, compile code and submit jobs. Very short (\&lt;15mins) and non-resource-intensive software tests can be run on the login nodes, but anything more should be submitted as a job.</p>
 <h3 id="logging-in-to-a-specific-node">Logging in to a specific node<a class="headerlink" href="#logging-in-to-a-specific-node" title="Permanent link">§</a></h3>
-<p>You can access a specific Kathleen login node by using their dedicated addresses instead of the main <code>kathleen-ng.rc.ucl.ac.uk</code> address, for example:</p>
-<div class="codehilite"><pre><span></span><code>ssh uccaxxx@login21.kathleen.rc.ucl.ac.uk
+<p>You can access a specific Kathleen login node by using their dedicated addresses instead of the main <code>kathleen.rc.ucl.ac.uk</code> address, for example:</p>
+<div class="codehilite"><pre><span></span><code>ssh uccaxxx@login21.kathleen.ucl.ac.uk
 </code></pre></div>
 
 <p>The main address will unpredictably direct you to either one of these (to balance load), so if you need multiple sessions on one, this lets you do that.</p>
