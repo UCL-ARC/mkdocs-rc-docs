@@ -13,7 +13,7 @@ Kathleen is a compute cluster designed for extensively parallel, multi-node batc
 
 Kathleen is currently updated to our new operating system (RHEL9) and new scheduler, Slurm.
 
-It can be accessed via `kathleen-ng.rc.ucl.ac.uk` which will log you in to updated login nodes.
+It can be accessed via `kathleen.rc.ucl.ac.uk` which will log you in to updated login nodes.
 
 The new software stack is provided by a module called `ucl-stack/2026-03` which should be being loaded by default. If not (for example if you `module purge` in your .bashrc) you can load the new environment by:
 
@@ -41,10 +41,10 @@ Please use your UCL username and password to connect to Kathleen with an SSH cli
 
 ```
 # Kathleen, RHEL9 and Slurm
-ssh uccaxxx@kathleen-ng.rc.ucl.ac.uk
+ssh uccaxxx@kathleen.rc.ucl.ac.uk
 ```
 
-If using PuTTY, put `kathleen-ng.rc.ucl.ac.uk` as the hostname and your
+If using PuTTY, put `kathleen.rc.ucl.ac.uk` as the hostname and your
 seven-character username (with no @ after) as the username when logging
 in, eg. `uccaxxx`. When entering your password in PuTTY no characters or
 bulletpoints will show on screen - this is normal.
@@ -56,10 +56,10 @@ The login nodes allow you to manage your files, compile code and submit jobs. Ve
 
 ### Logging in to a specific node
 
-You can access a specific Kathleen login node by using their dedicated addresses instead of the main `kathleen-ng.rc.ucl.ac.uk` address, for example:
+You can access a specific Kathleen login node by using their dedicated addresses instead of the main `kathleen.rc.ucl.ac.uk` address, for example:
 
 ```
-ssh uccaxxx@login21.kathleen.rc.ucl.ac.uk
+ssh uccaxxx@login21.kathleen.ucl.ac.uk
 ```
 
 The main address will unpredictably direct you to either one of these (to balance load), so if you need multiple sessions on one, this lets you do that.
