@@ -1400,8 +1400,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     - `scontrol release` followed by a job ID or comma-separated list of job IDs will release those jobs, eg `scontrol release 12345,12346,12347`
 
-#### Latest on Myriad
-
   - 2026-11-04 13:35 - **Loss of external connectivity on 14 Nov postponed**
 
     The proposed UCL network modernisation outage of 14 November has now been postponed until next month, date to be confirmed.
@@ -1422,6 +1420,30 @@ This page outlines that status of each of the machines managed by the Research C
     There will not need to be an overall outage of the clusters.
 
     If anything does temporarily time out, it should be available again shortly.
+
+#### Latest on Myriad
+
+  - 2026-11-09 10:30 - **Myriad SGE scheduler down at weekend, now fixed; More nodes being migrated to Myriad-ng**
+
+    Myriad's SGE qmaster went down again on Sunday and you would have seen these errors:
+
+    `error: commlib error: got select error (Connection refused)`
+    `error: unable to send message to qmaster using port 6444 on host "util01.myriad.ucl.ac.uk": got send error`
+
+    This was fixed this morning and you should be able to run qstat and qsub again.
+
+    **More nodes being migrated into Myriad-ng**
+
+    On Wednesday this week we are going to move these nodes into Myriad-ng:
+
+    - One general access T node, two paid T nodes
+    - Another quarter of the standard compute nodes
+    - 8x type-E GPU nodes
+    - 3x type-L GPU nodes
+    - 1x type-U GPU node
+
+    There will need to be a brief scheduler outage on Myriad-ng for us to update the configuration. We will let you know
+    when that is happening.
     
 
 ### Kathleen
