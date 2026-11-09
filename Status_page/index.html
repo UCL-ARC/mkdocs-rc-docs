@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -3492,9 +3492,6 @@ you can release the holds on Friday, any parts of Saturday where you have access
 <li><code>scontrol release</code> followed by a job ID or comma-separated list of job IDs will release those jobs, eg <code>scontrol release 12345,12346,12347</code></li>
 </ul>
 </li>
-</ul>
-<h4 id="latest-on-myriad">Latest on Myriad<a class="headerlink" href="#latest-on-myriad" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-11-04 13:35 - <strong>Loss of external connectivity on 14 Nov postponed</strong></p>
 <p>The proposed UCL network modernisation outage of 14 November has now been postponed until next month, date to be confirmed.</p>
@@ -3510,6 +3507,27 @@ if you are logged in to that one, with plenty of notice.</p>
 updated system image.</p>
 <p>There will not need to be an overall outage of the clusters.</p>
 <p>If anything does temporarily time out, it should be available again shortly.</p>
+</li>
+</ul>
+<h4 id="latest-on-myriad">Latest on Myriad<a class="headerlink" href="#latest-on-myriad" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-11-09 10:30 - <strong>Myriad SGE scheduler down at weekend, now fixed; More nodes being migrated to Myriad-ng</strong></p>
+<p>Myriad's SGE qmaster went down again on Sunday and you would have seen these errors:</p>
+<p><code>error: commlib error: got select error (Connection refused)</code>
+<code>error: unable to send message to qmaster using port 6444 on host "util01.myriad.ucl.ac.uk": got send error</code></p>
+<p>This was fixed this morning and you should be able to run qstat and qsub again.</p>
+<p><strong>More nodes being migrated into Myriad-ng</strong></p>
+<p>On Wednesday this week we are going to move these nodes into Myriad-ng:</p>
+<ul>
+<li>One general access T node, two paid T nodes</li>
+<li>Another quarter of the standard compute nodes</li>
+<li>8x type-E GPU nodes</li>
+<li>3x type-L GPU nodes</li>
+<li>1x type-U GPU node</li>
+</ul>
+<p>There will need to be a brief scheduler outage on Myriad-ng for us to update the configuration. We will let you know
+when that is happening.</p>
 </li>
 </ul>
 <h3 id="kathleen">Kathleen<a class="headerlink" href="#kathleen" title="Permanent link">§</a></h3>
@@ -5169,7 +5187,7 @@ part of the day, and you will be unable to log in during that time. </p>
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["instant"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>
