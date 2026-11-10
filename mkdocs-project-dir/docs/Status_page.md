@@ -2999,6 +2999,11 @@ This page outlines that status of each of the machines managed by the Research C
 
     If anything does temporarily time out, it should be available again shortly.
 
+  - 2026-11-10 11:45 - **Planned outage for SGE Young on Tues 10 November is complete**
+
+    The planned outage for the SGE half of Young for kernel updates and patching is complete and jobs are running again.
+    
+
 ### Michael
 
   - 2024-01-24 16:40 - Problem on Michael's admin nodes causing DNS failures - now solved
