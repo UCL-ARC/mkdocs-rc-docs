@@ -1458,7 +1458,12 @@ This page outlines that status of each of the machines managed by the Research C
     Sorry about this, it happens when it corrupts some of the information in its job database when some jobs terminate and
     we work around it by identifying and removing the completed jobs it has issues with which requires some manual work, but
     we still don't know why it started doing this all of a sudden. It has no relation to the job contents.
-    
+
+  - 2026-11-10 13:05 - **Myriad SGE scheduler issues fixed**
+
+    The problem with the scheduler was fixed on the SGE part of Myriad at around 12:25 and you should be able
+    to run qsub and qstat again.
+
 
 ### Kathleen
 
