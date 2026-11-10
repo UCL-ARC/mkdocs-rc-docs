@@ -1444,6 +1444,20 @@ This page outlines that status of each of the machines managed by the Research C
 
     There will need to be a brief scheduler outage on Myriad-ng for us to update the configuration. We will let you know
     when that is happening.
+
+  - 2026-11-10 11:10 - **Myriad SGE scheduler issues again**
+
+    On the SGE part of Myriad, the qmaster is having issues again. We are working on it.
+
+    Commands like qsub and qstat will be giving this error:
+
+    `error: commlib error: got select error (Connection refused)`
+    
+    `error: unable to send message to qmaster using port 6444 on host "util01.myriad.ucl.ac.uk": got send error`
+
+    Sorry about this, it happens when it corrupts some of the information in its job database when some jobs terminate and
+    we work around it by identifying and removing the completed jobs it has issues with which requires some manual work, but
+    we still don't know why it started doing this all of a sudden. It has no relation to the job contents.
     
 
 ### Kathleen
