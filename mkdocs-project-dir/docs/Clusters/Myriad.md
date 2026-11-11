@@ -126,25 +126,27 @@ Myriad contains three main node types: standard compute nodes, high memory
 nodes and GPU nodes. As new nodes as added over time with slightly newer processor
 variants, new letters are added.
 
-| Type  | Cores per node         | RAM per node | Max usable RAM per node                 | tmpfs | Nodes | Note
-| ----- | ---------------------- | ------------ | --------------------------------------- | ----- | ----- | ----
-| D     | 36                     | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G | 342   |
-| B     | 36                     | 1.5TB        | 1483GB (or 36 cores at 41.1G per core)  | 1500G |  15   |
-| E     | 36 + 2 V100 GPUs       | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G |  17   |
-| L     | 36 + 4 A100 40G GPUs   | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G |   7   |
-| T     | 64                     | 768GB        | 755GB (or 64 cores at 11.7G per core)   |  420G |   7   | 5x dedicated/priority access for groups
-| U     | 48 + 4 A100 80G GPUs   | 256GB        | 223GB (or 48 cores at 4.6G per core)    | 1700G |   1   |
-| V     | 48 + 4 A100 80G GPUs   | 256GB        | 223GB (or 48 cores at 4.6G per core)    | 1800G |   2   | 1x priority access for group
-| Q     | 96 + 8 RTX PRO 6000    | 768GB        | 753GB (or 96 cores at 7.8G per core)    |  800G |   1   | 1x dedicated access for group
-| R     | 64 + 2 H200 141GB GPUs | 768GB        | 753GB (or 64 cores at 11.7G per core)   |  800G |   1   | 1x dedicated access for group
-| S     | 32 + 2 H200 141GB GPUs | 768GB        | 753GB (or 32 cores at 23.5G per core)   | 1500G |   2   | 2x dedicated access for groups
+| Type  | Cores per node | GPUs           | RAM per node | Max usable RAM per node                 | tmpfs | Nodes | Multithreading | Note
+| ----- | ---------------|--------------- | ------------ | --------------------------------------- | ----- | ----- | -------------- | ----
+| D     | 36             | None           | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G | 342   | No             |
+| B     | 36             | None           | 1.5TB        | 1483GB (or 36 cores at 41.1G per core)  | 1500G |  15   | No             |
+| E     | 36             | 2 V100         | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G |  17   | No             |
+| F     | 36             | 2 A100 40G     | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G |   1   | No             |
+| L     | 36             | 4 A100 40G     | 192GB        | 160GB (or 36 cores at 4.4G per core)    | 1500G |   6   | No             |
+| T     | 64             | None           | 768GB        | 755GB (or 64 cores at 11.7G per core)   |  800G |   7   | No             | 5 nodes dedicated/priority access for groups
+| U     | 48             | 4 A100 80G     | 256GB        | 223GB (or 48 cores at 4.6G per core)    | 1700G |   1   | No             |
+| V     | 48             | 4 A100 80G     | 256GB        | 223GB (or 48 cores at 4.6G per core)    | 1800G |   2   | No             | 1 node priority access for group
+| Q     | 96             | 8 RTX PRO 6000 | 768GB        | 753GB (or 96 cores at 7.8G per core)    |  800G |   1   | Yes            | 1 node dedicated access for group
+| R     | 64             | 2 H200 141GB   | 768GB        | 753GB (or 64 cores at 11.7G per core)   |  800G |   1   | Yes            | 1 node dedicated access for group
+| S     | 32             | 2 H200 141GB   | 768GB        | 753GB (or 32 cores at 23.5G per core)   | 1500G |   2   | Yes            | 2 nodes dedicated access for groups
 
 You can tell the type of a node by its name: type D nodes are named `node-d00a-001` etc. Some nodetypes are primarily 
-paid for by specific groups so general free access may be limited or nonexistent.
+paid for by specific groups so general free access may be limited or nonexistent. A few dedicated nodes have multithreading available and 
+if enabled in the job 2 threads can be requested per physical processor.
 
 Here are the processors each node type has:
 
-  - B, D, E, L: 2x Intel(R) Xeon(R) Gold 6240 18C CPU @ 2.60GHz
+  - B, D, E, F, L: 2x Intel(R) Xeon(R) Gold 6240 18C CPU @ 2.60GHz
   - T: 1x AMD EPYC 9554P 64C 360W 3.1GHz (64 cores)
   - U: 2x Intel(R) Xeon(R) Gold 6336Y 24C CPU @ 2.40GHz
   - V: 2x Intel(R) Xeon(R) Gold 6342 24C CPU @ 2.80GHz
