@@ -2465,10 +2465,12 @@ variants, new letters are added.</p>
 <tr>
 <th>Type</th>
 <th>Cores per node</th>
+<th>GPUs</th>
 <th>RAM per node</th>
 <th>Max usable RAM per node</th>
 <th>tmpfs</th>
 <th>Nodes</th>
+<th>Multithreading</th>
 <th>Note</th>
 </tr>
 </thead>
@@ -2476,100 +2478,132 @@ variants, new letters are added.</p>
 <tr>
 <td>D</td>
 <td>36</td>
+<td>None</td>
 <td>192GB</td>
 <td>160GB (or 36 cores at 4.4G per core)</td>
 <td>1500G</td>
 <td>342</td>
+<td>No</td>
 <td></td>
 </tr>
 <tr>
 <td>B</td>
 <td>36</td>
+<td>None</td>
 <td>1.5TB</td>
 <td>1483GB (or 36 cores at 41.1G per core)</td>
 <td>1500G</td>
 <td>15</td>
+<td>No</td>
 <td></td>
 </tr>
 <tr>
 <td>E</td>
-<td>36 + 2 V100 GPUs</td>
+<td>36</td>
+<td>2 V100</td>
 <td>192GB</td>
 <td>160GB (or 36 cores at 4.4G per core)</td>
 <td>1500G</td>
 <td>17</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>F</td>
+<td>36</td>
+<td>2 A100 40G</td>
+<td>192GB</td>
+<td>160GB (or 36 cores at 4.4G per core)</td>
+<td>1500G</td>
+<td>1</td>
+<td>No</td>
 <td></td>
 </tr>
 <tr>
 <td>L</td>
-<td>36 + 4 A100 40G GPUs</td>
+<td>36</td>
+<td>4 A100 40G</td>
 <td>192GB</td>
 <td>160GB (or 36 cores at 4.4G per core)</td>
 <td>1500G</td>
-<td>7</td>
+<td>6</td>
+<td>No</td>
 <td></td>
 </tr>
 <tr>
 <td>T</td>
 <td>64</td>
+<td>None</td>
 <td>768GB</td>
 <td>755GB (or 64 cores at 11.7G per core)</td>
-<td>420G</td>
+<td>800G</td>
 <td>7</td>
-<td>5x dedicated/priority access for groups</td>
+<td>No</td>
+<td>5 nodes dedicated/priority access for groups</td>
 </tr>
 <tr>
 <td>U</td>
-<td>48 + 4 A100 80G GPUs</td>
+<td>48</td>
+<td>4 A100 80G</td>
 <td>256GB</td>
 <td>223GB (or 48 cores at 4.6G per core)</td>
 <td>1700G</td>
 <td>1</td>
+<td>No</td>
 <td></td>
 </tr>
 <tr>
 <td>V</td>
-<td>48 + 4 A100 80G GPUs</td>
+<td>48</td>
+<td>4 A100 80G</td>
 <td>256GB</td>
 <td>223GB (or 48 cores at 4.6G per core)</td>
 <td>1800G</td>
 <td>2</td>
-<td>1x priority access for group</td>
+<td>No</td>
+<td>1 node priority access for group</td>
 </tr>
 <tr>
 <td>Q</td>
-<td>96 + 8 RTX PRO 6000</td>
+<td>96</td>
+<td>8 RTX PRO 6000</td>
 <td>768GB</td>
 <td>753GB (or 96 cores at 7.8G per core)</td>
 <td>800G</td>
 <td>1</td>
-<td>1x dedicated access for group</td>
+<td>Yes</td>
+<td>1 node dedicated access for group</td>
 </tr>
 <tr>
 <td>R</td>
-<td>64 + 2 H200 141GB GPUs</td>
+<td>64</td>
+<td>2 H200 141GB</td>
 <td>768GB</td>
 <td>753GB (or 64 cores at 11.7G per core)</td>
 <td>800G</td>
 <td>1</td>
-<td>1x dedicated access for group</td>
+<td>Yes</td>
+<td>1 node dedicated access for group</td>
 </tr>
 <tr>
 <td>S</td>
-<td>32 + 2 H200 141GB GPUs</td>
+<td>32</td>
+<td>2 H200 141GB</td>
 <td>768GB</td>
 <td>753GB (or 32 cores at 23.5G per core)</td>
 <td>1500G</td>
 <td>2</td>
-<td>2x dedicated access for groups</td>
+<td>Yes</td>
+<td>2 nodes dedicated access for groups</td>
 </tr>
 </tbody>
 </table>
 <p>You can tell the type of a node by its name: type D nodes are named <code>node-d00a-001</code> etc. Some nodetypes are primarily 
-paid for by specific groups so general free access may be limited or nonexistent.</p>
+paid for by specific groups so general free access may be limited or nonexistent. A few dedicated nodes have multithreading available and 
+if enabled in the job 2 threads can be requested per physical processor.</p>
 <p>Here are the processors each node type has:</p>
 <ul>
-<li>B, D, E, L: 2x Intel(R) Xeon(R) Gold 6240 18C CPU @ 2.60GHz</li>
+<li>B, D, E, F, L: 2x Intel(R) Xeon(R) Gold 6240 18C CPU @ 2.60GHz</li>
 <li>T: 1x AMD EPYC 9554P 64C 360W 3.1GHz (64 cores)</li>
 <li>U: 2x Intel(R) Xeon(R) Gold 6336Y 24C CPU @ 2.40GHz</li>
 <li>V: 2x Intel(R) Xeon(R) Gold 6342 24C CPU @ 2.80GHz</li>
