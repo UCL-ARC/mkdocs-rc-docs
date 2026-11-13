@@ -244,9 +244,9 @@ If you're requesting both a GPU and temp space, you separate the `gres` request 
 
 ### GPUs on Myriad
 
-There are two types on GPU nodes on Myriad, 40GB A100 (`L Nodes`) and 32GB V100 (`E Nodes`).  If you are submitting a batch job and ask for `--gres=gpu:1` you have a chance to request one GPU on either type of node. If you need a specific node type you use the `--constraint` option in your submission script.
+There are three types on GPU nodes on Myriad, 40GB A100 (`L Nodes`), 80GB A100 (`U Nodes`), and 32GB V100 (`E Nodes`).  If you are submitting a batch job and ask for `--gres=gpu:1` you have a chance to request one GPU on any type of node. If you need a specific node type you use the `--constraint` option in your submission script.
 
-If you specify no constraint it is the equivalent of `--constraint=[E|L]`, which says to allocate exclusively `E` OR `L` type nodes.
+If you specify no constraint it is the equivalent of `--constraint=[E|L|U]`, which says to allocate exclusively `E` OR `L` OR `U` type nodes.
 
 For example, this job script header would ask for one V100 GPU and the A100 GPUs wouldn't be considered to run the job.
 ```
@@ -261,8 +261,6 @@ For example, this job script header would ask for one V100 GPU and the A100 GPUs
 ```
 
 Keep in mind, the more specific you are the smaller the pool of resources your job has to run on.  For a list of node-types and their corresponding letter to use as a constraint see [node types](../Clusters/Myriad.md#node-types).
-
-Interactive jobs run only on `L` type nodes so there is no need to specify a `--constraint`. 
 
 ### Temporary Storage
 
