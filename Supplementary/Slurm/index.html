@@ -2348,8 +2348,8 @@ sacct -X -o "jobid,user,jobname,start,end,alloccpus,nodelist,state,exitcode" -S 
 
 <h2 id="specifics-of-using-slurm-on-myriad">Specifics of using Slurm on Myriad<a class="headerlink" href="#specifics-of-using-slurm-on-myriad" title="Permanent link">§</a></h2>
 <h3 id="gpus-on-myriad">GPUs on Myriad<a class="headerlink" href="#gpus-on-myriad" title="Permanent link">§</a></h3>
-<p>There are two types on GPU nodes on Myriad, 40GB A100 (<code>L Nodes</code>) and 32GB V100 (<code>E Nodes</code>).  If you are submitting a batch job and ask for <code>--gres=gpu:1</code> you have a chance to request one GPU on either type of node. If you need a specific node type you use the <code>--constraint</code> option in your submission script.</p>
-<p>If you specify no constraint it is the equivalent of <code>--constraint=[E|L]</code>, which says to allocate exclusively <code>E</code> OR <code>L</code> type nodes.</p>
+<p>There are three types on GPU nodes on Myriad, 40GB A100 (<code>L Nodes</code>), 80GB A100 (<code>U Nodes</code>), and 32GB V100 (<code>E Nodes</code>).  If you are submitting a batch job and ask for <code>--gres=gpu:1</code> you have a chance to request one GPU on any type of node. If you need a specific node type you use the <code>--constraint</code> option in your submission script.</p>
+<p>If you specify no constraint it is the equivalent of <code>--constraint=[E|L|U]</code>, which says to allocate exclusively <code>E</code> OR <code>L</code> OR <code>U</code> type nodes.</p>
 <p>For example, this job script header would ask for one V100 GPU and the A100 GPUs wouldn't be considered to run the job.</p>
 <div class="codehilite"><pre><span></span><code>#!/bin/bash
 
@@ -2362,7 +2362,6 @@ sacct -X -o "jobid,user,jobname,start,end,alloccpus,nodelist,state,exitcode" -S 
 </code></pre></div>
 
 <p>Keep in mind, the more specific you are the smaller the pool of resources your job has to run on.  For a list of node-types and their corresponding letter to use as a constraint see <a href="../../Clusters/Myriad/#node-types">node types</a>.</p>
-<p>Interactive jobs run only on <code>L</code> type nodes so there is no need to specify a <code>--constraint</code>. </p>
 <h3 id="temporary-storage_1">Temporary Storage<a class="headerlink" href="#temporary-storage_1" title="Permanent link">§</a></h3>
 <p>You can request temporary storage on all Myriad nodes.  By default, a temporary directory is created and the location stored in the <code>TMPDIR</code> environmental variable.  If you don't explicitly request more you're automatically given 100MiB.</p>
 <p>To request more local temp space you use the <code>--gres=tmpfs:&lt;amount&gt;</code>.  In this example we request 80GiB.</p>
