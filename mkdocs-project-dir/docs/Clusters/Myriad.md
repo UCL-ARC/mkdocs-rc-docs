@@ -29,7 +29,7 @@ Your jobscripts will need to be rewritten as Slurm jobscripts, and there are dif
 * [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
 * [Slurm Example Jobscripts for Myriad](../Supplementary/Slurm_Example_Jobscripts.md#examples-for-myriad)
 
-Myriad-ng currently contains type B and D cpu nodes, plus type E and L GPU nodes. It contains S, Q and R nodetypes that belong to specific groups and are not accessible to all.  Please see [node types](#node-types) below for details. You can run `sinfo` to see the nodes that exist in Myriad-ng.
+Myriad-ng currently contains type B, D, and T cpu nodes, plus type E, L, and U GPU nodes. It contains S, Q and R nodetypes that belong to specific groups and are not accessible to all.  Please see [node types](#node-types) below for details. You can run `sinfo` to see the nodes that exist in Myriad-ng.
 
 ### Filesystem issues
 
