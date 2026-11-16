@@ -6,14 +6,14 @@ categories:
 
 # Purchasing in Myriad
 
-!!! important "16 July 2026: Myriad node purchases no longer available"
-    No new hardware will be added to Myriad. Paid resources should be available in a future cluster. The node specs below are obsolete. 
+!!! important "16 July 2026: Myriad paid resources no longer available"
+    No new hardware will be added to Myriad to provide paid access. Paid resources will be available in a future cluster.  
 
     Please contact rc-support@ucl.ac.uk. 
 
-Researchers may purchase additional resources to be used as part of the [Myriad](../Clusters/Myriad.md) High Performance Computing cluster if the free service does not meet their needs. These resources can be made available in one of two ways:
+Researchers may purchase additional resources to be used as part of one of ARC's High Performance Computing clusters if the free service does not meet their needs, if this service is offered in that cluster. These resources can be made available in one of two ways:
 
- - Nodes purchased by researchers can be converted into a quarterly allocation of “priority cycles” equivalent to the amount of computation provided by the nodes, but usable across the whole cluster. We calculate how much time exists on your nodes for three months, and every three months you receive an allocation of that much priority time to use however you want on Myriad (GPU/large memory nodes cost more to use, and give you more if you buy them). We recommend this route.
+ - Nodes purchased by researchers can be converted into a quarterly allocation of "priority cycles" equivalent to the amount of computation provided by the nodes, but usable across the whole cluster. We calculate how much time exists on your nodes for three months, and every three months you receive an allocation of that much priority time to use on the cluster they were set up on (GPU/large memory nodes cost more to use, and give you more if you buy them). We recommend this route.
  - The purchaser may request to buy nodes to be reserved for their group or department, restricting usage to the owned nodes. There may be an additional cost implication to this option (price on application).
 
 Costs will include backend infrastructure – racks, switches, cables etc – needed to integrate the compute nodes into the facility. Both options can be costed into research proposals. These costs will be stated in an agreed Statement of Work document giving details of the number of each node type to be purchased, which must be approved by ARC and the purchaser before the purchase can go ahead.
@@ -21,84 +21,8 @@ Costs will include backend infrastructure – racks, switches, cables etc – ne
 
 ## Node types
 
-We have one standard compute nodes, and several variants of NVIDIA and AMD GPU nodes.
+We will have one CPU node type and a couple of GPU node options in the new cluster. Please contact us for information.
 
-### Standard compute node
-
-#### [CPU node] 
-Lenovo ThinkSystem SD535 V3
-
-- 1 x AMD EPYC 9554P 64C 360W 3.1GHz (64 cores)
-- 768G RAM
-- 2x 480GB M.2 7450 PRO NVMe SSD (960G)
-
-### NVIDIA GPU nodes
-Note that RAM and disk amounts are volatile just now and some of these specs are likely to change. The H200s are also being discontinued.
-
-#### [GPU node 2U 01] 
-Lenovo ThinkSystem SR655 V3 with 2x NVIDIA L40S GPUs
-
-- 1x AMD EPYC 9355 32C 280W 3.55GHz Processor (32 cores)
-- 768G RAM, 2x 960GB M.2 NVMe (1920GB)
-- 2x NVIDIA L40S 48GB
-
-#### [GPU node 2U 02] 
-Lenovo ThinkSystem SR655 V3 with 2x NVIDIA H200
-
-- 2 x AMD EPYC 9355 32C 280W 3.55GHz Processor (64 cores)
-- 768G RAM, 2x 960GB M.2 NVMe (960GB)
-- 2 x NVIDIA H200 NVL 141GB PCIe GPU
-
-#### [GPU node 2U 03] 
-Lenovo ThinkSystem SR655 V3 with 4x NVIDIA L4
-
-- 1x AMD EPYC 9355 32C 280W 3.55GHz Processor (32 cores)
-- 768G RAM, 2x 960GB M.2 NVMe (1920GB)
-- 4x NVIDIA L4 24GB
-
-#### [GPU node 2U 04]
-Lenovo ThinkSystem SR655 V3 with 2x NVIDIA RTX 6000 (Max-Q)
-
-- 1x AMD EPYC 9355 32C 280W 3.55GHz Processor (32 cores)
-- 768GB RAM, 2x 480GB M.2 NVMe (960G)
-- 2x RTX 6000 Ada 96GB
-
-#### [GPU node 3U 03] 
-Lenovo ThinkSystem SR675 V3 with 8x NVIDIA RTX PRO 6000 GPUs
-
-- 2 x AMD EPYC 9455 48C 300W 3.15GHz Processor (96 cores)
-- 768G RAM, 2 x M.2 VA 480GB NVMe SSD (960G)
-- 8 x NVIDIA RTX PRO 6000 Blackwell Server Edition 96GB
-
-#### [GPU node 3U 04] 
-Lenovo ThinkSystem SR675 V3 with 8x NVIDIA H200 GPUs
-
-- 2x AMD EPYC 9475F 48C 400W 3.65GHz Processor (96 cores total)
-- 1536G RAM, 2x 15.36TB NVMe (30.72TB)
-- 8x NVIDIA H200 NVL 141GB PCIe GPU + NVLink Bridges
-
-#### [GPU node 3U 05] 
-Lenovo ThinkSystem SR675 V3 with 4x NVIDIA H200 GPUs
-
-- 2x AMD EPYC 9355 32C 280W 3.55GHz (64 cores total)
-- 768GB RAM, 2 x M.2 VA 480GB NVMe SSD (960GB)
-- 4 x NVIDIA H200 NVL 141GB PCIe GPU
-
-### AMD GPU nodes
-
-#### [GPU node 3U AMD 01]
-Lenovo SR675 V3 with 4x AMD Instinct MI210
-
-- 2x AMD EPYC 9354P 32C 280W 3.25GHz (64 cores total)
-- 1536GB RAM, 2x 960GB NVMe (1920GB)
-- 4x AMD Instinct MI210
-
-#### [GPU node 3U AMD 02]
-Lenovo SR675 V3 with 8x AMD Instinct MI210
-
-- 2x AMD EPYC 9354P 32C 280W 3.25GHz 
-- 1536GB RAM, 2x E1.S 5.9mm 7450 PRO 3.84TB NVMe
-- 8x AMD Instinct MI210
 
 ## FAQs
 
