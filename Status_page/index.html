@@ -3508,9 +3508,6 @@ updated system image.</p>
 <p>There will not need to be an overall outage of the clusters.</p>
 <p>If anything does temporarily time out, it should be available again shortly.</p>
 </li>
-</ul>
-<h4 id="latest-on-myriad">Latest on Myriad<a class="headerlink" href="#latest-on-myriad" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-11-09 10:30 - <strong>Myriad SGE scheduler down at weekend, now fixed; More nodes being migrated to Myriad-ng</strong></p>
 <p>Myriad's SGE qmaster went down again on Sunday and you would have seen these errors:</p>
@@ -3543,6 +3540,36 @@ we still don't know why it started doing this all of a sudden. It has no relatio
 <p>2026-11-10 13:05 - <strong>Myriad SGE scheduler issues fixed</strong></p>
 <p>The problem with the scheduler was fixed on the SGE part of Myriad at around 12:25 and you should be able
 to run qsub and qstat again.</p>
+</li>
+<li>
+<p>2026-11-11 10:05 - <strong>Myriad SGE scheduler issues again</strong></p>
+<p>This just happened again at 10am today, we are working on it.</p>
+</li>
+<li>
+<p>2026-11-11 11:05 - <strong>Myriad SGE scheduler issues fixed</strong></p>
+<p>Myriad's SGE scheduler is fixed again.</p>
+</li>
+</ul>
+<h4 id="latest-on-myriad">Latest on Myriad<a class="headerlink" href="#latest-on-myriad" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-11-17 13:40 - <strong>Migration of next quarter of nodes to Myriad-ng on 24 Nov</strong></p>
+<p>We will be migrating the next quarter of nodes from SGE Myriad into Myriad-ng on Tuesday 24 November. </p>
+<p>The nodes will be drained on the SGE side for that morning, so won't start new jobs that cannot finish in time.</p>
+<p>As before, there will be a brief scheduler outage on Myriad-ng for us to update the configuration so there may be
+a short period where you cannot run squeue and sbatch.</p>
+<p>We will be moving:</p>
+<ul>
+<li>78 type-D standard compute nodes</li>
+<li>4 type-B high memory nodes</li>
+<li>4 type-E V100 GPU nodes</li>
+<li>1 type-L A100 GPU node</li>
+<li>1 type-V A100 GPU node</li>
+<li>2 type-T CPU nodes.</li>
+</ul>
+<p>These are all general use nodes.</p>
+<p>We are collecting requests for more software to be installed on Myriad-ng, so do let us know if there is something
+you are waiting for and haven't already asked us for. (MATLAB is in progress).</p>
 </li>
 </ul>
 <h3 id="kathleen">Kathleen<a class="headerlink" href="#kathleen" title="Permanent link">§</a></h3>
@@ -4804,14 +4831,12 @@ outage when they will start running again. You do not need to take any action.</
 console message telling you this is happening if you logged in before the reboot.</p>
 <p>The compute nodes will take longer to update. We will re-enable jobs towards the end of the day when this is complete.</p>
 <p>This does not affect Young-ng.</p>
+<p><strong>Loss of external connectivity on Saturday 14 November</strong></p>
+<p>There is some more UCL network modernisation work happening on Saturday 14 November. Everything running internal to 
+Young and Young-ng should be able to continue, but anything that needs to connect out will be unable to do so for at 
+least part of the day, and you will be unable to log in during that time. This affects both the old and new halves of Young.</p>
 </li>
 </ul>
-<p><strong>Loss of external connectivity on Saturday 14 November</strong></p>
-<div class="codehilite"><pre><span></span><code>There is some more UCL network modernisation work happening on Saturday 14 November. Everything running internal to 
-Young and Young-ng should be able to continue, but anything that needs to connect out will be unable to do so for at 
-least part of the day, and you will be unable to log in during that time. This affects both the old and new halves of Young.
-</code></pre></div>
-
 <h4 id="latest-on-young">Latest on Young<a class="headerlink" href="#latest-on-young" title="Permanent link">§</a></h4>
 <ul>
 <li>
@@ -5049,9 +5074,6 @@ take approximately 3 hours.</p>
 <p>The K-type nodes have been removed from the scheduler and will no longer show up. If you have any jobs in the queue
 requesting K-type nodes only, they will not be able to run.</p>
 </li>
-</ul>
-<h4 id="latest-on-michael">Latest on Michael<a class="headerlink" href="#latest-on-michael" title="Permanent link">§</a></h4>
-<ul>
 <li>
 <p>2026-11-03 14:30 - <strong>Loss of external connectivity on 14 Nov on Michael</strong></p>
 <p>There is some more UCL network modernisation work happening on Saturday 14 November. Everything running internal
@@ -5061,6 +5083,89 @@ part of the day, and you will be unable to log in during that time. </p>
 <li>
 <p>2026-11-04 13:35 - <strong>Loss of external connectivity on 14 Nov postponed</strong></p>
 <p>The proposed UCL network modernisation outage of 14 November has now been postponed until next month, date to be confirmed.</p>
+</li>
+</ul>
+<h4 id="latest-on-michael">Latest on Michael<a class="headerlink" href="#latest-on-michael" title="Permanent link">§</a></h4>
+<ul>
+<li>
+<p>2026-11-11 13:10 - <strong>RHEL9 section of Michael to be available on Tues 24 Nov</strong></p>
+<p>We are finally able to start moving Michael nodes into its RHEL9 and Slurm segment. We will be referring to this
+part of the cluster as "Michael-ng".</p>
+<p>Half the compute nodes will be drained for the morning of Tuesday 24 November and will be added to Michael-ng. We
+expect you to be able to log in to it by the end of the day, though it may be Wednesday morning, we will keep you updated.</p>
+<p>Once Michael-ng is ready to be logged into, you will access it via <code>michael-ng.rc.ucl.ac.uk</code>. You will still be able
+to access the SGE half of Michael at <code>michael.rc.ucl.ac.uk</code>.</p>
+<p>Everyone who has run a job on Michael in 2026 will be able to log into Michael-ng. If anyone needs access who hasn't
+run a job in 2026, please email rc-support@ucl.ac.uk and we'll get you added. The filesystem is the same so your existing
+SSH key will continue to work on both halves.</p>
+<p><strong>Software stack</strong></p>
+<p>The new software stack is primarily managed by Spack. There is a new top-level module called <code>ucl-stack/2026-04</code> that makes
+this version of the stack available to you. The intent is that we'll have more regular updates of the whole stack over time,
+and the current and previous one will be available and older ones are deprecated then deleted.</p>
+<p>There is a new <code>default-modules/2026-04</code> that loads some modules by default for you.</p>
+<p>The default compiler is now GCC and the default MPI is OpenMPI. There is also an Intel OneAPI compiler and mpi.</p>
+<p>Type <code>module avail</code> to see the software. We have kept a lot of dependencies for software as hidden modules that don't
+show up in the list by default, but you can see them with <code>module avail --all</code> or by searching for something specific, like
+<code>module avail libpng</code>. You will see that there is a hash value at the end of the module name for these hidden modules.</p>
+<p>To make the modules available on both the old and new halves of Michael, a long time ago we made changes to your .bashrc,
+a file in your home directory that sets some things up every time you log in. If you have changed your .bashrc since we did
+this, you can find the new default one at <code>/etc/skel/.bashrc</code>.</p>
+<p>If you had installed software in your home directory, this is unlikely to work on michael-ng as all the system libraries have
+changed. It will probably need a new install for michael-ng. (You have the same home directory with the same contents on both
+halves of Michael).</p>
+<p><strong>Why are there -avx2 modules?</strong></p>
+<p>If you do module avail vasp for example you will see two sets of modules:</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>--------------------------------------------- /apps/spack/0.23/deploy/2026-04/modules/linux-rhel9-x86_64_v3 ----------------------------------------------
+vasp/5.4.4-intel-oneapi-mpi/oneapi-2024.2.1-avx2  vasp/6.5.1-intel-oneapi-mpi/oneapi-2024.2.1-avx2
+vasp/6.4.3-intel-oneapi-mpi/oneapi-2024.2.1-avx2  vasp/6.6.1-intel-oneapi-mpi/oneapi-2024.2.1-avx2
+
+--------------------------------------------- /apps/spack/0.23/deploy/2026-04/modules/linux-rhel9-x86_64_v4 ----------------------------------------------
+vasp/5.4.4-intel-oneapi-mpi/oneapi-2024.2.1  vasp/6.5.1-intel-oneapi-mpi/oneapi-2024.2.1
+vasp/6.4.3-intel-oneapi-mpi/oneapi-2024.2.1  vasp/6.6.1-intel-oneapi-mpi/oneapi-2024.2.1
+</code></pre></div>
+
+<ul>
+<li>
+<p>This is because this software stack was created for use on both Michael and Young, at the time type-K nodes were
+    still in place, and Young has GPU nodes without AVX512. The next iteration will be simplified. (Michael and Young
+    share a filesystem these days, so there is only one application install location).</p>
+<p>Where both exist, you should use the modules in the linux-rhel9-x86_64_v4 section that do not have -avx2 in the name,
+in order for avx512 instructions to be available.</p>
+<p><strong>Jobscripts</strong></p>
+<p>Once you have access to Michael-ng your jobscripts will need to be rewritten as Slurm jobscripts, and there are
+different commands for submitting jobs and checking your job status. Please see the following documentation pages
+for specifics on using Slurm.</p>
+<ul>
+<li><a href="https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm/">Usage of Slurm</a></li>
+<li><a href="https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/">Slurm Example Jobscripts</a></li>
+</ul>
+<p><strong>Projects</strong></p>
+<p>We have created the existing Faraday projects in Slurm as accounts. The names will be entirely lower case, eg
+<code>faraday_catmat</code> and <code>faraday_msm_dos</code> instead of <code>Faraday_CATMAT</code> and <code>Faraday_MSM_dos</code>.</p>
+<p>Instead of specifying the account like this:</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>    #$ -P Free
+    #$ -A Faraday_CATMAT
+</code></pre></div>
+
+<ul>
+<li>You would do</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>    #SBATCH --account=faraday_catmat
+</code></pre></div>
+
+<ul>
+<li>
+<p>You have been added to the accounts you have submitted jobs under in the last year - again contact us if you want
+    to submit jobs under other accounts.</p>
+<p>There will be an updated <code>budgets</code> command on Michael-ng that you can run to see the accounts you are in.</p>
+<p><strong>Plan for remainder of upgrade</strong></p>
+<p>Please give us feedback on what is or isn't working in the new environment and if any software you rely on is missing.</p>
+<p>Assuming no large changes are needed, we then plan to move all of Michael's nodes into michael-ng before UCL Christmas
+closing on afternoon of 23 Dec (ideally we will complete the move the week of 14 December).</p>
 </li>
 </ul>
 <h3 id="thomas">Thomas<a class="headerlink" href="#thomas" title="Permanent link">§</a></h3>
