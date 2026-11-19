@@ -59,7 +59,7 @@ The login nodes allow you to manage your files, compile code and submit jobs. Ve
 You can access a specific Kathleen login node by using their dedicated addresses instead of the main `kathleen.rc.ucl.ac.uk` address, for example:
 
 ```
-ssh uccaxxx@login21.kathleen.ucl.ac.uk
+ssh uccaxxx@login21.kathleen.rc.ucl.ac.uk
 ```
 
 The main address will unpredictably direct you to either one of these (to balance load), so if you need multiple sessions on one, this lets you do that.
