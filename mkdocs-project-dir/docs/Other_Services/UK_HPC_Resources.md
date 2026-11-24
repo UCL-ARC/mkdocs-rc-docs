@@ -16,7 +16,10 @@ HECs (High End Consortia) that had time on ARCHER2 may have transitional arrange
 ### Cirrus NCR (University of Edinburgh)
 
 - CPU-based
-- 640 compute nodes consisting of 2 x AMD Turin EPYC 9845 CPUs, 184,320 cores total, 768/1536 GB DDR5, 200Gbps dual rail Slingshot 11 interconnect
+- 640 compute nodes (184,320 cores total) consisting of
+   - 2 x AMD Turin EPYC 9845 CPUs
+   - 768/1536 GB DDR5
+- 200Gbps dual rail Slingshot 11 interconnect
 - Available now
 - [Cirrus website](https://www.cirrus.ac.uk)
 - [Access routes](https://www.cirrus.ac.uk/support-access/access/#academic-access-routes)
@@ -24,34 +27,47 @@ HECs (High End Consortia) that had time on ARCHER2 may have transitional arrange
 ### Charger NCR (UCL/DataVita)
 
 - CPU-based
-- 148 compute nodes consisting of 2x Intel Xeon 6980P CPUs, 256 cores per node, 37,888 cores total, 1536G DDR5 RAM per node, 400Gbps Slingshot Interconnect 400
+- 148 compute nodes (37,888 cores total) consisting of
+   - 2x Intel Xeon 6980P CPUs per node, 256 cores
+   - 1536G DDR5 RAM per node
+- 400Gbps Slingshot Interconnect 400
 - 8 Blackwell RTX Pro 6000 visualisation GPUs, ~850 CPU cores
 - [Charger website](https://www.ucl.ac.uk/research-innovation/advanced-research-computing/platforms-and-services/national-compute-resource-charger)
 
 ### Isambard 3 NCR (University of Bristol)
 
 - CPU-based
-- 380 Nodes consisting of NVIDIA Grace-Grace CPUs, 54,720 cores total, 120 GB memory per Grace CPU, 200 Gbps single rail Slingshot 11 interconnect
+- 380 Nodes (54,720 cores total) consisting of
+   - NVIDIA Grace-Grace CPUs
+   - 120 GB memory per Grace CPU
+- 200 Gbps single rail Slingshot 11 interconnect
 - Available internal to Bristol; external waiting for next UKRI call.
 - [Bristol Centre for Supercomputing](https://www.bristol.ac.uk/research/centres/bristol-supercomputing/)
 
 ### Baskerville NCR (University of Birmingham)
 
 - GPU-based
-- 200x Nvidia B200 GPUs, 23 nodes, each with 180 GB HBM, 12T local SSD, Quad rail 400 Gbps NDR Infiniband interconnect
+- 200x Nvidia B200 GPUs, 23 nodes
+   - each with 180 GB HBM
+   - 12T local SSD
+- Quad rail 400 Gbps NDR Infiniband interconnect
 - Full range of services expected in early 2027
 - [Baskerville website](https://www.baskerville.ac.uk)
 
 ### Zenith NCR (University of Cambridge)
 
 - GPU-based
-- 28 nodes consisting of 8 AMD Instinct MI355X GPUs (224 total), each with 288 GB HBM, 400 Gb/s interconnect
+- 28 nodes consisting of
+   - 8 AMD Instinct MI355X GPUs (224 total)
+   - 288 GB HBM
+- 400 Gb/s interconnect
 - [Dawn and Zenith website](https://www.hpc.cam.ac.uk/d-w-n)
 
 ### Mary Coombs NCR (Daresbury)
 
 - GPU-based
-- 628 NVIDIA H100 GPUs (157 nodes), Infiniband NDR200 interconnect
+- 628 NVIDIA H100 GPUs (157 nodes)
+- Infiniband NDR200 interconnect
 - [Mary Coombs website](https://www.hartree.stfc.ac.uk/technologies/mary-coombs/)
 
 ## AI Research Resource (AIRR)
@@ -70,7 +86,9 @@ HECs (High End Consortia) that had time on ARCHER2 may have transitional arrange
 
 ### DAWN (Zenith), (University of Cambridge)
 
-- 256 Dell PowerEdge XE9640 server nodes, 2x Intel Xeon Platinum CPUs and 3x Intel Data Centre GPU Max 1550
+- 256 Dell PowerEdge XE9640 server nodes consisting of
+   - 3x Intel Data Centre GPU Max 1550
+   - 2x Intel Xeon Platinum CPUs
 - [Dawn and Zenith website](https://www.hpc.cam.ac.uk/d-w-n)
 
 
