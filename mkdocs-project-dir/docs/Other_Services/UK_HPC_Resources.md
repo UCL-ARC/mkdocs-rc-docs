@@ -81,6 +81,10 @@ UKRI-funded communities through the Digital Research Infrastructure programme.
 
 ## Next National Supercomputing Service (NNSS)
 
-Replaces ARCHER2 as the UK National Supercomputer, with different focus for use cases. ARCHER2 was retired on 20 Nov 2026.
+Replaces ARCHER2 as the UK National Supercomputer, with different focus on Grand Challenge use cases. ARCHER2 was retired on 20 Nov 2026. 
+ARCHER2 usage that was not Grand Challenge type is expected to move to NCRs.
+
+The NNSS will "target mission-driven research and support strategic national goals, with a focus on Grand Challenges and the ability to
+conduct computational research at very large-scale".
 
 [UKRI National Compute Ecosystem Town Hall Meeting](https://zenodo.org/records/20539798) slides from 2 June 2026.
