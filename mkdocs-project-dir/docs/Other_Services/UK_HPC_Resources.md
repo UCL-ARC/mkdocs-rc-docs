@@ -9,7 +9,9 @@ There are other UK HPC resources that may be available to you.
 
 ## National Compute Resources (NCR)
 
-These systems are mostly still under development - a couple are accessible already.
+The NCRs have one central access portal and UKRI awards time on specific machines. 
+
+HECs (High End Consortia) that had time on ARCHER2 may have transitional arrangements for early access to NCRs for some of their projects. 
 
 ### Cirrus NCR (University of Edinburgh)
 
@@ -24,12 +26,13 @@ These systems are mostly still under development - a couple are accessible alrea
 - CPU-based
 - 148 compute nodes consisting of 2x Intel Xeon 6980P CPUs, 256 cores per node, 37,888 cores total, 1536G DDR5 RAM per node, 400Gbps Slingshot Interconnect 400
 - 8 Blackwell RTX Pro 6000 visualisation GPUs, ~850 CPU cores
+- [Charger website](https://www.ucl.ac.uk/research-innovation/advanced-research-computing/platforms-and-services/national-compute-resource-charger)
 
 ### Isambard 3 NCR (University of Bristol)
 
 - CPU-based
 - 380 Nodes consisting of NVIDIA Grace-Grace CPUs, 54,720 cores total, 120 GB memory per Grace CPU, 200 Gbps single rail Slingshot 11 interconnect
-- Available internal to Bristol; external TBC
+- Available internal to Bristol; external waiting for next UKRI call.
 - [Bristol Centre for Supercomputing](https://www.bristol.ac.uk/research/centres/bristol-supercomputing/)
 
 ### Baskerville NCR (University of Birmingham)
@@ -78,6 +81,6 @@ UKRI-funded communities through the Digital Research Infrastructure programme.
 
 ## Next National Supercomputing Service (NNSS)
 
-Replaces ARCHER2 as the UK National Supercomputer, with different focus for use cases.
+Replaces ARCHER2 as the UK National Supercomputer, with different focus for use cases. ARCHER2 was retired on 20 Nov 2026.
 
 [UKRI National Compute Ecosystem Town Hall Meeting](https://zenodo.org/records/20539798) slides from 2 June 2026.
