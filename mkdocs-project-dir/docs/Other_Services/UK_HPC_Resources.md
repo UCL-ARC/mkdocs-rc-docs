@@ -31,7 +31,8 @@ HECs (High End Consortia) that had time on ARCHER2 may have transitional arrange
    - 2x Intel Xeon 6980P CPUs per node, 256 cores
    - 1536G DDR5 RAM per node
 - 400Gbps Slingshot Interconnect 400
-- 8 Blackwell RTX Pro 6000 visualisation GPUs, ~850 CPU cores
+- HPE Cray ClusterStor E2000 6PB Lustre filesystem (5PB disk, 1PB NVMe)
+- 8 Blackwell RTX Pro 6000 visualisation GPUs, 320 CPU cores
 - [Charger website](https://www.ucl.ac.uk/research-innovation/advanced-research-computing/platforms-and-services/national-compute-resource-charger)
 
 ### Isambard 3 NCR (University of Bristol)
