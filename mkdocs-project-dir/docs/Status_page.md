@@ -3327,8 +3327,6 @@ This page outlines that status of each of the machines managed by the Research C
 
     The proposed UCL network modernisation outage of 14 November has now been postponed until next month, date to be confirmed.
 
-#### Latest on Michael
-
   - 2026-11-11 13:10 - **RHEL9 section of Michael to be available on Tues 24 Nov**
 
     We are finally able to start moving Michael nodes into its RHEL9 and Slurm segment. We will be referring to this
@@ -3425,6 +3423,99 @@ vasp/6.4.3-intel-oneapi-mpi/oneapi-2024.2.1  vasp/6.6.1-intel-oneapi-mpi/oneapi-
     
     Assuming no large changes are needed, we then plan to move all of Michael's nodes into michael-ng before UCL Christmas
     closing on afternoon of 23 Dec (ideally we will complete the move the week of 14 December).
+
+#### Latest on Michael
+
+  - 2026-11-25 13:00 - **RHEL9 section of Michael is available**
+
+    You should be able to log in to `michael-ng.rc.ucl.ac.uk` or to a specific login node with `login21.michael-ng.rc.ucl.ac.uk`
+    or `login22.michael-ng.rc.ucl.ac.uk`.
+
+    Everyone who has run a job on Michael in 2026 will be able to log into Michael-ng. If anyone needs access who hasn't
+    run a job in 2026, please email rc-support@ucl.ac.uk and we'll get you added. The filesystem is the same so your existing
+    SSH key will continue to work on both halves.
+
+    **Software stack**
+
+    The new software stack is primarily managed by Spack. There is a new top-level module called `ucl-stack/2026-04` that makes
+    this version of the stack available to you. The intent is that we'll have more regular updates of the whole stack over time,
+    and the current and previous one will be available and older ones are deprecated then deleted.
+    
+    There is a new `default-modules/2026-04` that loads some modules by default for you.
+    
+    The default compiler is now GCC and the default MPI is OpenMPI. There is also an Intel OneAPI compiler and mpi.
+    
+    Type `module avail` to see the software. We have kept a lot of dependencies for software as hidden modules that don't
+    show up in the list by default, but you can see them with `module avail --all` or by searching for something specific, like
+    `module avail libpng`. You will see that there is a hash value at the end of the module name for these hidden modules.
+    
+    To make the modules available on both the old and new halves of Michael, a long time ago we made changes to your .bashrc,
+    a file in your home directory that sets some things up every time you log in. If you have changed your .bashrc since we did
+    this, you can find the new default one at `/etc/skel/.bashrc`.
+    
+    If you had installed software in your home directory, this is unlikely to work on michael-ng as all the system libraries have
+    changed. It will probably need a new install for michael-ng. (You have the same home directory with the same contents on both
+    halves of Michael).
+
+    **Why are there -avx2 modules?**
+
+    If you do module avail vasp for example you will see two sets of modules:
+
+```
+--------------------------------------------- /apps/spack/0.23/deploy/2026-04/modules/linux-rhel9-x86_64_v3 ----------------------------------------------
+vasp/5.4.4-intel-oneapi-mpi/oneapi-2024.2.1-avx2  vasp/6.5.1-intel-oneapi-mpi/oneapi-2024.2.1-avx2
+vasp/6.4.3-intel-oneapi-mpi/oneapi-2024.2.1-avx2  vasp/6.6.1-intel-oneapi-mpi/oneapi-2024.2.1-avx2
+
+--------------------------------------------- /apps/spack/0.23/deploy/2026-04/modules/linux-rhel9-x86_64_v4 ----------------------------------------------
+vasp/5.4.4-intel-oneapi-mpi/oneapi-2024.2.1  vasp/6.5.1-intel-oneapi-mpi/oneapi-2024.2.1
+vasp/6.4.3-intel-oneapi-mpi/oneapi-2024.2.1  vasp/6.6.1-intel-oneapi-mpi/oneapi-2024.2.1
+```
+
+  - This is because this software stack was created for use on both Michael and Young, at the time type-K nodes were
+    still in place, and Young has GPU nodes without AVX512. The next iteration will be simplified. (Michael and Young
+    share a filesystem these days, so there is only one application install location).
+
+    Where both exist, you should use the modules in the linux-rhel9-x86_64_v4 section that do not have -avx2 in the name,
+    in order for avx512 instructions to be available.
+
+    **Jobscripts**
+
+    Once you have access to Michael-ng your jobscripts will need to be rewritten as Slurm jobscripts, and there are
+    different commands for submitting jobs and checking your job status. Please see the following documentation pages
+    for specifics on using Slurm.
+
+    - [Usage of Slurm](https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm/)
+    - [Slurm Example Jobscripts](https://www.rc.ucl.ac.uk/docs/Supplementary/Slurm_Example_Jobscripts/)
+   
+    **Projects**
+
+    We have created the existing Faraday projects in Slurm as accounts. The names will be entirely lower case, eg
+    `faraday_catmat` and `faraday_msm_dos` instead of `Faraday_CATMAT` and `Faraday_MSM_dos`.
+
+    Instead of specifying the account like this:
+
+```
+    #$ -P Free
+    #$ -A Faraday_CATMAT
+```
+
+  - You would do
+
+```
+    #SBATCH --account=faraday_catmat
+```
+
+  - You have been added to the accounts you have submitted jobs under in the last year - again contact us if you want
+    to submit jobs under other accounts.
+
+    The `budgets` command on Michael-ng will show you the accounts you are in.
+
+    **Plan for remainder of upgrade**
+
+    Please give us feedback on what is or isn't working in the new environment and if any software you rely on is missing.
+    
+    Assuming no large changes are needed, we then plan to move all of Michael's nodes into michael-ng before UCL Christmas
+    closing on afternoon of 23 Dec (ideally we will complete the move the week of 14 December).    
 
 
 ### Thomas
