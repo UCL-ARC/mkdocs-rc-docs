@@ -8,9 +8,9 @@ layout: docs
 # Michael
 
 !!! important
-    Michael's older K-type nodes are being retired on Tues 6 Oct 2026. 
+    Michael's older K-type nodes were retired on Tues 6 Oct 2026. 
     The A-type nodes will keep running jobs until the end of March 2027, after which Michael will cease running as a service. 
-    There will be another two months of login access for data retrieval after it stops running jobs, and then Michael as a 
+    There will be another eight weeks of login access for data retrieval after it stops running jobs, and then Michael as a 
     whole will be retired.
 
 Michael is an extension to the UCL-hosted Hub for Materials and
@@ -19,11 +19,78 @@ computation to UK researchers; and delivers computational capability for
 the Faraday Institution, a national institute for electrochemical energy
 storage science and technology.
 
+## New operating system and scheduler
+
+Half of Michael is currently updated to our new operating system (RHEL 9.6) and new scheduler, Slurm.
+
+Currently, the new portion of Michael (referred to as Michael-ng) can be accessed via `michael-ng.rc.ucl.ac.uk` which will log you onto an updated login node.
+
+Everyone who has run a job on Michael in 2026 will be able to log into Michael-ng. If anyone needs access who hasn't run a job in 2026, please email rc-support@ucl.ac.uk and we'll get you added. The filesystem is the same so your existing SSH key will continue to work on both halves.
+
+The new software stack is provided by a module called `ucl-stack/2026-04` which makes this version of the stack available to you and 
+should be loaded by default. If not (for example if you `module purge` in your .bashrc) you can load the new environment with:
+
+```
+module load ucl-stack/2026-04
+module load default-modules/2026-04
+```
+
+The default compiler is now GCC and the default MPI is OpenMPI. We do also have Intel OneAPI modules.
+
+This software stack is shared with Young and when you examine the available modules (`module avail`) you'll notice some with the `-avx2` suffix 
+and some without. The type-A nodes are compatible with the AVX-512 instruction set and you should select end-use application modules without 
+the `-avx2` ending if possible. If you load a non`-avx2` module and it loads dependencies which have the `-avx2` ending, that is expected and 
+no cause for alarm.
+
+### Hidden modules and Python naming
+
+A large number of modules for underpinning libraries or Python packages are hidden by default in `module avail` to make it easier to see the 
+end applications. You can see all of them with `module avail --all` or all Python packages with `module avail --all py`. Python packages all 
+begin with `py-` so are called `py-numpy` and `py-matplotlib` rather than `numpy` and `matplotlib`.
+
+### Slurm
+
+Your jobscripts will need to be rewritten as Slurm jobscripts, and there are different commands for submitting jobs and checking your job status.
+Please see the following documentation pages for specifics on using Slurm.
+
+* [Usage of Slurm](../Supplementary/Slurm.md)
+* [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
+
+### Projects
+
+We have created the existing Faraday projects in Slurm as accounts. The names will be entirely lower case, eg `faraday_catmat` and 
+`faraday_msm_dos` instead of `Faraday_CATMAT` and `Faraday_MSM_dos`.
+
+Instead of specifying the account like this:
+
+```
+#$ -P Free
+#$ -A Faraday_CATMAT
+```
+
+You would do
+
+```
+#SBATCH --account=faraday_catmat
+```
+
+You have been added to the accounts you have submitted jobs under in the last year - again contact us if you want to submit jobs under 
+other accounts.
+
+The `budgets` command on Michael-ng will show you the accounts you are in.
+
+### Plan for remainder of upgrade
+
+Please give us feedback on what is or isn't working in the new environment and if any software you rely on is missing.
+
+Assuming no large changes are needed, we then plan to move all of Michael's nodes into michael-ng before UCL Christmas closing 
+on afternoon of 23 Dec (ideally we will complete the move the week of 14 December).
+
+
 ## Applying for an account
 
 Michael accounts belong to you as an individual and are applied for via
-[David Scanlon](http://davidscanlon.com/?page_id=5) who is the point of 
-contact for Michael.
+[Qiong Cai](https://www.surrey.ac.uk/people/qiong-cai) who is the point of contact for Michael.
 
 You will need to supply an SSH public key, which is the only method used
 to log in.
