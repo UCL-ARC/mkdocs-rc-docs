@@ -22,6 +22,14 @@ module load default-modules/2026-07
 
 The default compiler is now GCC and the default MPI is OpenMPI. We do also have Intel OneAPI modules.
 
+### Hidden modules and Python naming
+
+A large number of modules for underpinning libraries or Python packages are hidden by default in `module avail` to make it easier to see the 
+end applications. You can see all of them with `module avail --all` or all Python packages with `module avail --all py`. Python packages all 
+begin with `py-` so are called `py-numpy` and `py-matplotlib` rather than `numpy` and `matplotlib`.
+
+### Slurm
+
 Your jobscripts will need to be rewritten as Slurm jobscripts, and there are different commands for submitting jobs and checking your job status.  Please see the following documentation pages for specifics on using Slurm, and note there are specific sub-sections within each page for the Myriad configuration.
 
 * [Usage of Slurm](../Supplementary/Slurm.md)
