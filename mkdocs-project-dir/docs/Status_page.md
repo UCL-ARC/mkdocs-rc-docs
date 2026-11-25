@@ -1510,8 +1510,7 @@ This page outlines that status of each of the machines managed by the Research C
     name, so `py-numpy` and `py-matplotlib` rather than `numpy` and `matplotlib`. The Python packages are mostly dependencies of other 
     end applications, so are hidden modules by default, but you can see them all with `module avail --all py`. 
 
-    Information on Myriad-ng is at [Myriad - New operating system and scheduler](https://www.rc.ucl.ac.uk/docs/Clusters/Myriad/#new-operating-system-and-scheduler)
-    - you log in to `myriad-ng.rc.ucl.ac.uk`.
+    Information on Myriad-ng is at [Myriad - New operating system and scheduler](https://www.rc.ucl.ac.uk/docs/Clusters/Myriad/#new-operating-system-and-scheduler) - you log in to `myriad-ng.rc.ucl.ac.uk`.
 
     The emails we have previously sent about the migrations are included at [Status page - Latest on Myriad](https://www.rc.ucl.ac.uk/docs/Status_page/#latest-on-myriad)
 
