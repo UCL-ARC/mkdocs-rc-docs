@@ -1495,6 +1495,32 @@ This page outlines that status of each of the machines managed by the Research C
     We are collecting requests for more software to be installed on Myriad-ng, so do let us know if there is something
     you are waiting for and haven't already asked us for. (MATLAB is in progress).
 
+  - 2026-11-25 11:25 - **Three quarters of compute in Myriad-ng**
+
+    We've had a couple of questions about queue lengths on original Myriad, so here is a reminder than three quarters of
+    Myriad's compute is now in Myriad-ng as of yesterday. If you are still only using the original SGE part of Myriad, your
+    jobs will be queueing a lot longer as there are fewer nodes to run them on.
+
+    We would ideally like to migrate all of Myriad into Myriad-ng before the Christmas break, if this is doable. So please do
+    look at moving your work to Myriad-ng if you have not had a look yet.
+
+    We are building up a list of additional requested software on Myriad-ng and will be prioritising the installs based on demand. 
+    As before, you can also install software in your own space on Myriad, and if it requires certain libraries, have a look at 
+    `module avail --all` for that library so you can load existing modules. Any Python packages will have `py-` at the start of the 
+    name, so `py-numpy` and `py-matplotlib` rather than `numpy` and `matplotlib`. The Python packages are mostly dependencies of other 
+    end applications, so are hidden modules by default, but you can see them all with `module avail --all py`. 
+
+    Information on Myriad-ng is at [Myriad - New operating system and scheduler](https://www.rc.ucl.ac.uk/docs/Clusters/Myriad/#new-operating-system-and-scheduler)
+    - you log in to `myriad-ng.rc.ucl.ac.uk`.
+
+    The emails we have previously sent about the migrations are included at [Status page - Latest on Myriad](https://www.rc.ucl.ac.uk/docs/Status_page/#latest-on-myriad)
+
+    **UCL Network Modernisation outage**
+
+    While I am emailing you, the UCL Network Modernisation outage has been rescheduled to Saturday 12 December and is now listed 
+    at [Planned Outages](https://www.rc.ucl.ac.uk/docs/Planned_Outages/) - we will send a reminder and details like before closer to 
+    the time. The ACFS and RDSS will be unavailable on Myriad from the Friday and during that weekend.
+
 
 ### Kathleen
 
