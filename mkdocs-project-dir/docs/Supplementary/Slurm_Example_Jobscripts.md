@@ -293,7 +293,7 @@ Myriad runs only single node jobs so specifying `--nodes=1` is unnecessary, but 
 
 ### GPU jobs
 
-There are both `E` and `L` and `U` type nodes in the GPU partition on Myriad.  If you don't specify any `--constraint` you have a chance to land on any node type.
+There are `E`, `F`, `L`, `U` and `V` type nodes in the GPU partition on Myriad. (And type `S`, `Q` and `R` which all belong to paid groups). If you don't specify any `--constraint` you have a chance to land on any node type.
 
 #### GPU node script
 ```
