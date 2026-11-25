@@ -1018,6 +1018,67 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#new-operating-system-and-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New operating system and scheduler
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="New operating system and scheduler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hidden-modules-and-python-naming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hidden modules and Python naming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slurm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan-for-remainder-of-upgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plan for remainder of upgrade
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#applying-for-an-account" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2440,6 +2501,67 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#new-operating-system-and-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New operating system and scheduler
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="New operating system and scheduler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hidden-modules-and-python-naming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hidden modules and Python naming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slurm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan-for-remainder-of-upgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plan for remainder of upgrade
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#applying-for-an-account" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2928,9 +3050,9 @@
 <h1 id="michael">Michael<a class="headerlink" href="#michael" title="Permanent link">§</a></h1>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Michael's older K-type nodes are being retired on Tues 6 Oct 2026. 
+<p>Michael's older K-type nodes were retired on Tues 6 Oct 2026. 
 The A-type nodes will keep running jobs until the end of March 2027, after which Michael will cease running as a service. 
-There will be another two months of login access for data retrieval after it stops running jobs, and then Michael as a 
+There will be another eight weeks of login access for data retrieval after it stops running jobs, and then Michael as a 
 whole will be retired.</p>
 </div>
 <p>Michael is an extension to the UCL-hosted Hub for Materials and
@@ -2938,10 +3060,54 @@ Molecular Modelling, an EPSRC-funded Tier 2 system providing large scale
 computation to UK researchers; and delivers computational capability for
 the Faraday Institution, a national institute for electrochemical energy
 storage science and technology.</p>
+<h2 id="new-operating-system-and-scheduler">New operating system and scheduler<a class="headerlink" href="#new-operating-system-and-scheduler" title="Permanent link">§</a></h2>
+<p>Half of Michael is currently updated to our new operating system (RHEL 9.6) and new scheduler, Slurm.</p>
+<p>Currently, the new portion of Michael (referred to as Michael-ng) can be accessed via <code>michael-ng.rc.ucl.ac.uk</code> which will log you onto an updated login node.</p>
+<p>Everyone who has run a job on Michael in 2026 will be able to log into Michael-ng. If anyone needs access who hasn't run a job in 2026, please email rc-support@ucl.ac.uk and we'll get you added. The filesystem is the same so your existing SSH key will continue to work on both halves.</p>
+<p>The new software stack is provided by a module called <code>ucl-stack/2026-04</code> which makes this version of the stack available to you and 
+should be loaded by default. If not (for example if you <code>module purge</code> in your .bashrc) you can load the new environment with:</p>
+<div class="codehilite"><pre><span></span><code>module load ucl-stack/2026-04
+module load default-modules/2026-04
+</code></pre></div>
+
+<p>The default compiler is now GCC and the default MPI is OpenMPI. We do also have Intel OneAPI modules.</p>
+<p>This software stack is shared with Young and when you examine the available modules (<code>module avail</code>) you'll notice some with the <code>-avx2</code> suffix 
+and some without. The type-A nodes are compatible with the AVX-512 instruction set and you should select end-use application modules without 
+the <code>-avx2</code> ending if possible. If you load a non<code>-avx2</code> module and it loads dependencies which have the <code>-avx2</code> ending, that is expected and 
+no cause for alarm.</p>
+<h3 id="hidden-modules-and-python-naming">Hidden modules and Python naming<a class="headerlink" href="#hidden-modules-and-python-naming" title="Permanent link">§</a></h3>
+<p>A large number of modules for underpinning libraries or Python packages are hidden by default in <code>module avail</code> to make it easier to see the 
+end applications. You can see all of them with <code>module avail --all</code> or all Python packages with <code>module avail --all py</code>. Python packages all 
+begin with <code>py-</code> so are called <code>py-numpy</code> and <code>py-matplotlib</code> rather than <code>numpy</code> and <code>matplotlib</code>.</p>
+<h3 id="slurm">Slurm<a class="headerlink" href="#slurm" title="Permanent link">§</a></h3>
+<p>Your jobscripts will need to be rewritten as Slurm jobscripts, and there are different commands for submitting jobs and checking your job status.
+Please see the following documentation pages for specifics on using Slurm.</p>
+<ul>
+<li><a href="../../Supplementary/Slurm/">Usage of Slurm</a></li>
+<li><a href="../../Supplementary/Slurm_Example_Jobscripts/">Slurm Example Jobscripts</a></li>
+</ul>
+<h3 id="projects">Projects<a class="headerlink" href="#projects" title="Permanent link">§</a></h3>
+<p>We have created the existing Faraday projects in Slurm as accounts. The names will be entirely lower case, eg <code>faraday_catmat</code> and 
+<code>faraday_msm_dos</code> instead of <code>Faraday_CATMAT</code> and <code>Faraday_MSM_dos</code>.</p>
+<p>Instead of specifying the account like this:</p>
+<div class="codehilite"><pre><span></span><code>#$ -P Free
+#$ -A Faraday_CATMAT
+</code></pre></div>
+
+<p>You would do</p>
+<div class="codehilite"><pre><span></span><code>#SBATCH --account=faraday_catmat
+</code></pre></div>
+
+<p>You have been added to the accounts you have submitted jobs under in the last year - again contact us if you want to submit jobs under 
+other accounts.</p>
+<p>The <code>budgets</code> command on Michael-ng will show you the accounts you are in.</p>
+<h3 id="plan-for-remainder-of-upgrade">Plan for remainder of upgrade<a class="headerlink" href="#plan-for-remainder-of-upgrade" title="Permanent link">§</a></h3>
+<p>Please give us feedback on what is or isn't working in the new environment and if any software you rely on is missing.</p>
+<p>Assuming no large changes are needed, we then plan to move all of Michael's nodes into michael-ng before UCL Christmas closing 
+on afternoon of 23 Dec (ideally we will complete the move the week of 14 December).</p>
 <h2 id="applying-for-an-account">Applying for an account<a class="headerlink" href="#applying-for-an-account" title="Permanent link">§</a></h2>
 <p>Michael accounts belong to you as an individual and are applied for via
-<a href="http://davidscanlon.com/?page_id=5">David Scanlon</a> who is the point of 
-contact for Michael.</p>
+<a href="https://www.surrey.ac.uk/people/qiong-cai">Qiong Cai</a> who is the point of contact for Michael.</p>
 <p>You will need to supply an SSH public key, which is the only method used
 to log in.</p>
 <h2 id="creating-an-ssh-key-pair">Creating an ssh key pair<a class="headerlink" href="#creating-an-ssh-key-pair" title="Permanent link">§</a></h2>
