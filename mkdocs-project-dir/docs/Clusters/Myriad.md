@@ -9,7 +9,7 @@ within a single node rather than multi-node parallel jobs.
 
 ## New operating system and scheduler
 
-A portion of Myriad is currently updated to our new operating system (RHEL 9.6) and new scheduler, Slurm.
+Three quarters of Myriad is currently updated to our new operating system (RHEL 9.6) and new scheduler, Slurm.
 
 The new portion of Myriad (referred to as myriad-ng) can be accessed via `myriad-ng.rc.ucl.ac.uk` which will log you onto an updated login node.
 
@@ -29,7 +29,7 @@ Your jobscripts will need to be rewritten as Slurm jobscripts, and there are dif
 * [Slurm Example Jobscripts](../Supplementary/Slurm_Example_Jobscripts.md)
 * [Slurm Example Jobscripts for Myriad](../Supplementary/Slurm_Example_Jobscripts.md#examples-for-myriad)
 
-Myriad-ng currently contains type B, D, and T cpu nodes, plus type E, L, and U GPU nodes. It contains S, Q and R nodetypes that belong to specific groups and are not accessible to all.  Please see [node types](#node-types) below for details. You can run `sinfo` to see the nodes that exist in Myriad-ng.
+Myriad-ng currently contains type B, D, and T cpu nodes, plus type E, F, L, U and V GPU nodes. It contains S, Q and R nodetypes that belong to specific groups and are not accessible to all.  Please see [node types](#node-types) below for details. You can run `sinfo` to see the nodes that exist in Myriad-ng.
 
 ### Filesystem issues
 
@@ -37,7 +37,7 @@ Myriad-ng currently contains type B, D, and T cpu nodes, plus type E, L, and U G
 
 ### Timelines for full migration
 
-If we do not receive reports of major issues with the software stack, we are looking to put all of Myriad into Myriad-ng during the week of 16 or 23 November. Please do report any issues to rc-support@ucl.ac.uk. There will be a delay in Open OnDemand availability on the new system while we do the setup work. 
+If we do not receive reports of major issues with the software stack, we are looking to put all of Myriad into Myriad-ng before UCL Christmas closing if we are able. Please do report any issues to rc-support@ucl.ac.uk. There will be a delay in Open OnDemand availability on the new system while we do the setup work. 
 
 
 ## Accounts
